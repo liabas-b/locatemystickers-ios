@@ -14,6 +14,7 @@
 #import "StickerRecord.h"
 #import "AccountRecord.h"
 
+#import "JsonTools.h"
 
 #import "UCTabBarItem.h"
 
@@ -48,10 +49,10 @@
 	
 	self.searchRecordList = [[NSMutableArray alloc] init];
 	self.filteredSearchRecordList = [[NSMutableArray alloc] init];
-	
+	/*
 	StickerRecord *stickerRecord = [[StickerRecord alloc] init];
-	stickerRecord.name = @"Est cumque et magnam in at minus recusandae sint.";
-	stickerRecord.createdAt = @"2013-02-15T08:28:18Z";
+	//	stickerRecord.name = @"Est cumque et magnam in at minus recusandae sint.";
+	stickerRecord.createdAt = [NSDate date];//@"2013-02-15T08:28:18Z";
 	stickerRecord.isActive = NO;
 	
 	AccountRecord *accountRecord = [[AccountRecord alloc] init];
@@ -59,7 +60,7 @@
 	
 	[self.searchRecordList addObject:stickerRecord];
 	[self.searchRecordList addObject:accountRecord];
-	
+	*/
 	[self.tableView reloadData];
 }
 
@@ -173,10 +174,62 @@
 	return YES;
 }
 
+#pragma maek - Search stuff
+
+- (void)handleStartSearchUser:(NSString *)searchText {
+	NSString *stringSearchRequest = [NSString stringWithFormat:@"http://web-service.locatemystickers.com/users.json?direction=asc&sort=id&search=%@&column=name", searchText];
+	
+	
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:stringSearchRequest]];
+	[request setHTTPMethod:@"GET"];
+	
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		[self didReceiveData:data];
+	}];
+}
+
+- (void)didReceiveData:(NSData *)data {
+	//INFO: debug
+	
+	if (data) {
+		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		NSLog(@"------ <%@>", dataString);
+	}
+	else
+		NSLog(@"BAD");
+	
+	
+	if (data) {
+		//TODO: save file
+		if (self.searchRecordList) {
+			[self.searchRecordList removeAllObjects];
+		}
+		
+		self.searchRecordList = [[NSMutableArray alloc] init];
+		
+		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
+		
+		//NSLog(@"%@", [dataDictionary objectForKey:@"data"]);
+		
+		for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
+			//NSLog(@"%@", item);
+			AccountRecord *accountRecord = [[AccountRecord alloc] initWithDictinary:item];
+			[self.searchRecordList addObject:accountRecord];
+		}
+		[self.tableView reloadData];
+		
+	}
+}
+
+
 #pragma mark Content Filtering
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
 	NSLog(@"searchText: %@", searchText);
+	
+	[self handleStartSearchUser:searchText];
     //INFO: Update the filtered array based on the search text and scope.
     //INFO: Remove all objects from the filtered search array
     [self.filteredSearchRecordList removeAllObjects];
