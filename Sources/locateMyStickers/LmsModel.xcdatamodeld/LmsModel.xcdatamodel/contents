@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C60" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AccountRecord" representedClassName="AccountRecord" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idAccount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="LocationRecord" representedClassName="LocationRecord" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="idLocation" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="OptionsRecord" representedClassName="OptionsRecord" syncable="YES">
+        <attribute name="displayFollowedStickersEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="locatePhoneEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
+    <entity name="StickerRecord" representedClassName="StickerRecord" syncable="YES">
+        <attribute name="codeAnnotation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="StickerRecord" positionX="160" positionY="192" width="128" height="150"/>
+        <element name="LocationRecord" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="AccountRecord" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="OptionsRecord" positionX="160" positionY="192" width="128" height="75"/>
+    </elements>
+</model>

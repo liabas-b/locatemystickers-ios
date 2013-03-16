@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+
 #import "LocationManager.h"
 #import "SessionManager.h"
 #import "ConnectionManager.h"
@@ -18,6 +20,11 @@
 @property (nonatomic, strong) LocationManager *locationManager;
 @property (nonatomic, strong) SessionManager *sessionManager;
 @property (nonatomic, strong) ConnectionManager *connectionManager;
+
+@property(strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property(strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property(strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
 
 + (NSURL *)applicationDocumentsDirectory;
 + (AppDelegate *)appDelegate;
