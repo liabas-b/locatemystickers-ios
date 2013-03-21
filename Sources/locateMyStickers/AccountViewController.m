@@ -32,16 +32,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+	
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+	
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
 	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
 	[self.tableView addGestureRecognizer:gestureRecognizer];
-
+	
 	[self parseData];
 }
 
@@ -87,22 +87,24 @@
 
 - (void)didReceiveData:(NSData *)data {
 	//INFO: debug
-	/*
-	 if (data) {
-	 NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	 NSLog(@"------ <%@>", dataString);
-	 }
-	 else
-	 NSLog(@"BAD");
-	 */
+	
+	if (data) {
+		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		NSLog(@"------ <%@>", dataString);
+	}
+	else
+		NSLog(@"BAD");
+	
 	
 	if (data) {
 		//TODO: save file
-				
+		
 		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
-		self.accoutRecord = [[AccountRecord alloc] initWithDictinary:dataDictionary];
-
-		[self updateView];
+		if (dataDictionary) {
+			self.accoutRecord = [[AccountRecord alloc] initWithDictinary:dataDictionary];
+			
+			[self updateView];
+		}
 	}
 }
 

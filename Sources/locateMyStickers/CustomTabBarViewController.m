@@ -7,6 +7,8 @@
 //
 
 #import "CustomTabBarViewController.h"
+#import "StickerAddingTableViewController.h"
+#import "AppDelegate.h"
 #import "ImageTools.h"
 
 @interface CustomTabBarViewController ()
@@ -74,6 +76,14 @@
 #pragma mark - CustomTabBarProtocol
 
 - (void)didTouchButton:(id)sender {
+	
+	UIStoryboard *storyboard = [AppDelegate mainStoryBoard];
+	
+	StickerAddingTableViewController *stickerAddingTableViewController  = (StickerAddingTableViewController *)[storyboard instantiateViewControllerWithIdentifier:@"stickerAdding"];
+	
+	[self presentViewController:stickerAddingTableViewController animated:YES completion:nil];
+	//	[self pushViewController:stickerAddingTableViewController animated:YES];
+	
 	if ([self.delegate respondsToSelector:@selector(didTouchButton:)]) {
 		[self.delegate didTouchButton:self];
 	}

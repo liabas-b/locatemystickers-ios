@@ -50,17 +50,17 @@
 	self.searchRecordList = [[NSMutableArray alloc] init];
 	self.filteredSearchRecordList = [[NSMutableArray alloc] init];
 	/*
-	StickerRecord *stickerRecord = [[StickerRecord alloc] init];
-	//	stickerRecord.name = @"Est cumque et magnam in at minus recusandae sint.";
-	stickerRecord.createdAt = [NSDate date];//@"2013-02-15T08:28:18Z";
-	stickerRecord.isActive = NO;
-	
-	AccountRecord *accountRecord = [[AccountRecord alloc] init];
-	accountRecord.name = @"Benoit Liabastre";
-	
-	[self.searchRecordList addObject:stickerRecord];
-	[self.searchRecordList addObject:accountRecord];
-	*/
+	 StickerRecord *stickerRecord = [[StickerRecord alloc] init];
+	 //	stickerRecord.name = @"Est cumque et magnam in at minus recusandae sint.";
+	 stickerRecord.createdAt = [NSDate date];//@"2013-02-15T08:28:18Z";
+	 stickerRecord.isActive = NO;
+	 
+	 AccountRecord *accountRecord = [[AccountRecord alloc] init];
+	 accountRecord.name = @"Benoit Liabastre";
+	 
+	 [self.searchRecordList addObject:stickerRecord];
+	 [self.searchRecordList addObject:accountRecord];
+	 */
 	[self.tableView reloadData];
 }
 
@@ -212,11 +212,12 @@
 		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
 		
 		//NSLog(@"%@", [dataDictionary objectForKey:@"data"]);
-		
-		for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
-			//NSLog(@"%@", item);
-			AccountRecord *accountRecord = [[AccountRecord alloc] initWithDictinary:item];
-			[self.searchRecordList addObject:accountRecord];
+		if (dataDictionary) {
+			for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
+				//NSLog(@"%@", item);
+				AccountRecord *accountRecord = [[AccountRecord alloc] initWithDictinary:item];
+				[self.searchRecordList addObject:accountRecord];
+			}
 		}
 		[self.tableView reloadData];
 		

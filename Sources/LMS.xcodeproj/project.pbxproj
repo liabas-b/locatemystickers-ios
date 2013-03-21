@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9029C71C16E240AE00047CF4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9029C71B16E240AE00047CF4 /* SettingsViewController.m */; };
 		9029C71F16E246C600047CF4 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9029C71E16E246C600047CF4 /* UserCell.m */; };
+		902FB85916FACA34006262FF /* StickerAddingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902FB85816FACA34006262FF /* StickerAddingTableViewController.m */; };
 		903B9CCF16DF83710030471D /* JsonTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 903B9CCE16DF83710030471D /* JsonTools.m */; };
 		903B9CDA16DF9F6C0030471D /* logout-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 903B9CD916DF9F6C0030471D /* logout-icon.png */; };
 		903B9CDC16DFA1590030471D /* logout2-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 903B9CDB16DFA1590030471D /* logout2-icon.png */; };
@@ -72,7 +73,6 @@
 		9086ED0816DA508D00965576 /* account_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9086ED0416DA508D00965576 /* account_white@2x.png */; };
 		9086ED0C16DA5CE600965576 /* locateMyStickersRedLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9086ED0B16DA5CE600965576 /* locateMyStickersRedLogo.png */; };
 		9086ED1016DA5DD600965576 /* StickersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9086ED0F16DA5DD600965576 /* StickersTableViewController.m */; };
-		9086ED1416DA5E3900965576 /* StickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9086ED1316DA5E3900965576 /* StickerViewController.m */; };
 		9086ED1816DA5E7700965576 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9086ED1716DA5E7700965576 /* MapViewController.m */; };
 		9086ED1C16DA5EA200965576 /* UserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9086ED1B16DA5EA200965576 /* UserTableViewController.m */; };
 		9086ED2016DA5EC000965576 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9086ED1F16DA5EC000965576 /* SearchTableViewController.m */; };
@@ -109,6 +109,8 @@
 		9029C71B16E240AE00047CF4 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		9029C71D16E246C600047CF4 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
 		9029C71E16E246C600047CF4 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
+		902FB85716FACA34006262FF /* StickerAddingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerAddingTableViewController.h; sourceTree = "<group>"; };
+		902FB85816FACA34006262FF /* StickerAddingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerAddingTableViewController.m; sourceTree = "<group>"; };
 		903B9CCD16DF83710030471D /* JsonTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonTools.h; sourceTree = "<group>"; };
 		903B9CCE16DF83710030471D /* JsonTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonTools.m; sourceTree = "<group>"; };
 		903B9CD916DF9F6C0030471D /* logout-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout-icon.png"; sourceTree = "<group>"; };
@@ -195,8 +197,6 @@
 		9086ED0B16DA5CE600965576 /* locateMyStickersRedLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locateMyStickersRedLogo.png; sourceTree = "<group>"; };
 		9086ED0E16DA5DD600965576 /* StickersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickersTableViewController.h; sourceTree = "<group>"; };
 		9086ED0F16DA5DD600965576 /* StickersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickersTableViewController.m; sourceTree = "<group>"; };
-		9086ED1216DA5E3900965576 /* StickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerViewController.h; sourceTree = "<group>"; };
-		9086ED1316DA5E3900965576 /* StickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerViewController.m; sourceTree = "<group>"; };
 		9086ED1616DA5E7700965576 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		9086ED1716DA5E7700965576 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		9086ED1A16DA5EA200965576 /* UserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTableViewController.h; sourceTree = "<group>"; };
@@ -554,13 +554,13 @@
 			name = "Stickers Table";
 			sourceTree = "<group>";
 		};
-		9086ED1116DA5DED00965576 /* Sticker */ = {
+		9086ED1116DA5DED00965576 /* Sticker Adding */ = {
 			isa = PBXGroup;
 			children = (
-				9086ED1216DA5E3900965576 /* StickerViewController.h */,
-				9086ED1316DA5E3900965576 /* StickerViewController.m */,
+				902FB85716FACA34006262FF /* StickerAddingTableViewController.h */,
+				902FB85816FACA34006262FF /* StickerAddingTableViewController.m */,
 			);
-			name = Sticker;
+			name = "Sticker Adding";
 			sourceTree = "<group>";
 		};
 		9086ED1516DA5E6500965576 /* Map */ = {
@@ -624,7 +624,7 @@
 				90B80A7316D6D981004CA608 /* Login */,
 				9086ED0D16DA5DA100965576 /* Stickers Table */,
 				903B9CED16DFBB190030471D /* Sticker Detail */,
-				9086ED1116DA5DED00965576 /* Sticker */,
+				9086ED1116DA5DED00965576 /* Sticker Adding */,
 				9086ED1516DA5E6500965576 /* Map */,
 				9086ED1916DA5E7C00965576 /* User Table */,
 				9086ED1D16DA5EA900965576 /* Search Table */,
@@ -894,7 +894,6 @@
 				9086ECDB16DA46C100965576 /* CustomTabBarViewController.m in Sources */,
 				9086ECDE16DA471200965576 /* ImageTools.m in Sources */,
 				9086ED1016DA5DD600965576 /* StickersTableViewController.m in Sources */,
-				9086ED1416DA5E3900965576 /* StickerViewController.m in Sources */,
 				9086ED1816DA5E7700965576 /* MapViewController.m in Sources */,
 				9086ED1C16DA5EA200965576 /* UserTableViewController.m in Sources */,
 				9086ED2016DA5EC000965576 /* SearchTableViewController.m in Sources */,
@@ -910,6 +909,7 @@
 				9070E9C816F3287400E3D409 /* AccountRecord.m in Sources */,
 				9070E9CB16F3287400E3D409 /* StickerRecord.m in Sources */,
 				9070E9CE16F3287400E3D409 /* LocationRecord.m in Sources */,
+				902FB85916FACA34006262FF /* StickerAddingTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
