@@ -73,7 +73,6 @@
 - (void)textViewDidEndEditing:(UITextView *)textView {
 	if ([self.descriptionTextView.text length] == 0)
 		self.descriptionLabel.hidden = NO;
-	
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
