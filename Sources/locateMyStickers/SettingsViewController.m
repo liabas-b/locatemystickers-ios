@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import "AppDelegate.h"
+#import "LocationManager.h"
 
 @interface SettingsViewController ()
 
@@ -69,6 +70,13 @@
 - (IBAction)handleLocatePhoneEnabled:(id)sender {
 	//INFO: check if the user have enabled location on his phone
 	self.optionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:![self.optionsRecord.locatePhoneEnabled boolValue]];
+	
+	if ([self.optionsRecord.locatePhoneEnabled boolValue]== YES) {
+		[[AppDelegate appDelegate].locationManager start];
+	} else {
+		[[AppDelegate appDelegate].locationManager stop];
+		
+	}
 }
 
 @end

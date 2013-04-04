@@ -32,6 +32,8 @@
 	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
 	[self.tableView addGestureRecognizer:gestureRecognizer];
 	gestureRecognizer.cancelsTouchesInView = NO;
+	
+	self.nameTextField.text = self.result;
 }
 
 - (void)didReceiveMemoryWarning
@@ -94,6 +96,7 @@
 	//[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:0 animated:YES];
 }
 
-
-
+- (IBAction)handleFinishedButton:(id)sender {
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

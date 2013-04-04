@@ -20,7 +20,7 @@
 		internetReachable = [Reachability reachabilityForInternetConnection];
 		[internetReachable startNotifier];
 		
-		hostReachable = [Reachability reachabilityWithHostName:@"sykletiljobben.no"];
+		hostReachable = [Reachability reachabilityWithHostName:@"locatemystickers.com"];
 		[hostReachable startNotifier];
 	}
     return self;
@@ -33,7 +33,7 @@
 - (void)checkNetworkStatus:(NSNotification *)notice {
     NetworkStatus internetStatus = [internetReachable currentReachabilityStatus];
 
-	BOOL savInternetActive = self.internetActive;
+	//BOOL savInternetActive = self.internetActive;
 	BOOL savHostActive = self.hostActive;
 	
     switch (internetStatus)

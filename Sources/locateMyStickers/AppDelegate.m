@@ -21,8 +21,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-	
 	[self UIAppearances];
 	[self cleanUpCach];
 	
@@ -43,6 +41,8 @@
 {
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
+		//INFo: start loacation manager
+		//INFO: init database
 		[self managedObjectContext];
 		if (self.isFirstLaunch == YES) {
 			[self performSelectorOnMainThread:@selector(populateDefaultStore) withObject:nil waitUntilDone:NO];
@@ -254,22 +254,20 @@
 #pragma mark - UIAppearances
 
 -(void)UIAppearances {
-    //INFO: set the background of tab bar
-	// UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header"]];
 	
     if ([[[UIDevice currentDevice] systemVersion] floatValue] > 4.9) {
 		UIImage *navBarImage = [UIImage imageNamed:@"header"];//barre320x44
 		[[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
 		
-		UIImage *backButtonImage = [[UIImage imageNamed:@"back"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 13, 0, 6)];//button_back-tmp.png
+		//[[UIToolbar appearance] setColor:[UIColor redColor]];//setBackgroundImage:navBarImage];
+		
+		UIImage *backButtonImage = [[UIImage imageNamed:@"back"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 13, 0, 6)];
 		[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 		
-		// Change the appearance of other navigation button
+		//INFO: Change the appearance of other navigation button
 		UIImage *barButtonImage = [[UIImage imageNamed:@"redNormalButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 6)];
 		[[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 				
-		//UIImage* backButtonImage = [UIImage imageNamed:@"button_back-tmp.png"];
-		//[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     }
     else {
         //INFO: iOS 4.whatever and below

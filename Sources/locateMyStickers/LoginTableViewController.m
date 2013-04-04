@@ -8,6 +8,7 @@
 
 #import "LoginTableViewController.h"
 #import "UITextField+Extended.h"
+#import "BButton.h"
 
 #import "LROAuth2Client.h"
 #import "LROAuth2AccessToken.h"
@@ -76,7 +77,7 @@ static NSString* const keyLoginResult = @"loginResult";
 	UIImage *backgroundImage = [UIImage imageNamed:@"BackgroundWhite"];
 	UIImageView *backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
 	[self.tableView setBackgroundView:backgroundView];
-
+	
 	//INFO: Password TextField
 	self.passwordTextField.borderStyle = UITextBorderStyleNone;
 	
@@ -94,13 +95,18 @@ static NSString* const keyLoginResult = @"loginResult";
     self.loginTextField.layer.borderWidth = 1.0f;
 	
 	[[self.loginTextField layer] setBorderColor:[[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0] CGColor]];
+	
+	//INFO: login Button
+	[self.loginButton setType:BButtonTypeDefault];
+	[self.loginButton setColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]];
+//	[self.loginButton setColor:[UIColor colorWithRed:180.0/255.0 green:180.0/255.0 blue:180.0/255.0 alpha:1.0]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
 	AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
+	
 	[appDelegate.sessionManager loadAccessToken];
 }
 
@@ -172,7 +178,7 @@ static NSString* const keyLoginResult = @"loginResult";
 	if ([self.loginTextField.text length] > 0 &&
 		[self.passwordTextField.text length] > 0) {
 		//TODO: do the login --> if success performSegueWithIdentifier
-
+		
 		self.loginAcivityIndicator.hidden = NO;
 		self.loginButton.hidden = YES;
 		[self.loginAcivityIndicator startAnimating];
@@ -184,7 +190,7 @@ static NSString* const keyLoginResult = @"loginResult";
 		[self.view.superview addSubview:self.popupLoginView];
 		self.popupLoginView.hidden = NO;
 		[appDelegate.sessionManager authorizeUsingPopupLoginView:self.popupLoginView];
-
+		
 	}
 	else {
 		//TODO: display error
@@ -196,7 +202,7 @@ static NSString* const keyLoginResult = @"loginResult";
 
 - (void)displayError {
 #warning maybe bad alert message
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Feil innlogging" message:@"Brukernavn eller passord er feil." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect login" message:@"Username or password are incorrect." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
 	
 	self.loginAcivityIndicator.hidden = YES;
@@ -206,7 +212,7 @@ static NSString* const keyLoginResult = @"loginResult";
 
 - (void)displayNetworkError {
 	
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Feil innlogging" message:@"Ingen Internett-tilkobling" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect login" message:@"Ingen Internett-tilkobling" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
 	
 	self.loginAcivityIndicator.hidden = YES;
@@ -274,8 +280,8 @@ static NSString* const keyLoginResult = @"loginResult";
 	if (error.code == -1004 || error.code == -1003) {
 		[self performSelectorOnMainThread:@selector(displayNetworkError) withObject:nil waitUntilDone:NO];
 	}
-		
-		
+	
+	
 }
 
 @end

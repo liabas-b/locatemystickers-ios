@@ -20,6 +20,6 @@ static NSString* const keyNetworkStatusChanged = @"networkStatusChanged";
 @property BOOL internetActive;
 @property BOOL hostActive;
 
-- (void) checkNetworkStatus:(NSNotification *)notice;
+- (void)checkNetworkStatus:(NSNotification *)notice;
 
 @end

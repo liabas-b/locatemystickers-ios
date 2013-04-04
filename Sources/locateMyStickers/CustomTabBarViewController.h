@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomTabBarProtocol.h"
+#import "ScanWidgetController.h"
 
-@interface CustomTabBarViewController : UITabBarController
+@interface CustomTabBarViewController : UITabBarController <ScanProtocol>
 
 @property(nonatomic, strong)UIImage *buttonImage;
 @property(nonatomic, strong)UIImage *highlightImage;
 @property(nonatomic, strong)id<CustomTabBarProtocol> delegate;
+
+@property (nonatomic, strong) ScanWidgetController *scanWidgetController;
 
 - (id)initWithButtonImageName:(NSString *)imageName  highlightImageName:(NSString *)highlightImageName;
 

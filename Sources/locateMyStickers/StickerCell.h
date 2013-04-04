@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class BButton;
+
 @interface StickerCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *activatedImage;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) IBOutlet BButton *mapButton;
 
 - (IBAction)handlerMapButton:(id)sender;
 

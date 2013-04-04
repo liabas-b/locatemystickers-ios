@@ -177,7 +177,8 @@
 #pragma maek - Search stuff
 
 - (void)handleStartSearchUser:(NSString *)searchText {
-	NSString *stringSearchRequest = [NSString stringWithFormat:@"http://web-service.locatemystickers.com/users.json?direction=asc&sort=id&search=%@&column=name", searchText];
+//	NSString *stringSearchRequest = [NSString stringWithFormat:@"http://web-service.locatemystickers.com/users.json?direction=asc&sort=id&search=%@&column=name", searchText];
+	NSString *stringSearchRequest = [NSString stringWithFormat:@"http://http://192.168.1.100:3000/users.json?direction=asc&sort=id&search=%@&column=name", searchText];
 	
 	
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:stringSearchRequest]];

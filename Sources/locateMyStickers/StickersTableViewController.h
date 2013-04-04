@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class OptionsRecord;
+
 @interface StickersTableViewController : UITableViewController
 
-@property (nonatomic, strong)NSMutableArray *stickersRecordList;
+@property (nonatomic, strong) NSMutableArray *stickersRecordList;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) OptionsRecord *optionsRecord;
+
++ (NSDate *)getDate:(NSString *)date withFormat:(NSString *)format;
 
 @end

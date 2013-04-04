@@ -18,4 +18,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *labelsTextField;
 @property (strong, nonatomic) IBOutlet UIButton *finishedButton;
 
+@property(nonatomic, strong) NSString *result;
+
+- (IBAction)handleFinishedButton:(id)sender;
+
 @end

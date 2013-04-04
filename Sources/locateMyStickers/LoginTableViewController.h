@@ -12,10 +12,11 @@
 
 //@class LROAuth2Client;
 @class PopUpLoginView;
+@class BButton;
 
 @interface LoginTableViewController : UITableViewController <UITextFieldDelegate, SessionDelegate>
 
-@property (strong, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong, nonatomic) IBOutlet BButton *loginButton;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loginAcivityIndicator;
 
 @property (strong, nonatomic) IBOutlet UITextField *loginTextField;

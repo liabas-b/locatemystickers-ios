@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+@class StickerRecord;
+
 @interface MapViewController : UIViewController <MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong)StickerRecord *stickerRecord;
 @property (nonatomic, strong)NSMutableArray *locationsRecordList;
 
 @end

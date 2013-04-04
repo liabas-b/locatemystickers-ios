@@ -12,6 +12,11 @@
 #import "JsonTools.h"
 
 #import "LocationRecord.h"
+#import "StickerRecord.h"
+
+#import "AppDelegate.h"
+#import "LocationManager.h"
+
 
 @interface MapViewController ()
 
@@ -35,8 +40,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-	[self parseData];
-
+	
+	[[AppDelegate appDelegate].locationManager addObserver:self forKeyPath:keyPathMeasurementArray options:NSKeyValueObservingOptionNew context:nil];
+	
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,19 +58,45 @@
 											andUnselected:@"world_white"];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
+	//INFO: if sticker Record is set --> ask for all the location of the sticker
+	//TODO: set the view with the stickerRecord
+	if (self.stickerRecord != nil) {
+		[self parseData];
+	}
+	
+	//	self.locationsRecordList = [[NSMutableArray alloc] init];
+	NSError *error;
+	
+	
+	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"LocationRecord"
+											  inManagedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+	[fetchRequest setEntity:entity];
+	[fetchRequest setReturnsObjectsAsFaults:NO];
+	
+	NSArray *fetchedObjects = [[AppDelegate appDelegate].managedObjectContext executeFetchRequest:fetchRequest error:&error];
+	self.locationsRecordList = [[NSMutableArray alloc] initWithArray:fetchedObjects];
+	
+	[self updateLocations];
+	
+}
+
 #pragma mark - map
 
 - (void)updateLocations {
 	
 	
 	/*MKCoordinateRegion region =  MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 50, 50);
-	
-	if (region.center.longitude == -180.00000000)
-		return;
-
-	
-	[self.mapView setRegion:region animated:NO];
-	 	*/
+	 
+	 if (region.center.longitude == -180.00000000)
+	 return;
+	 
+	 
+	 [self.mapView setRegion:region animated:NO];
+	 */
 	BOOL startExist = NO;
 	for (LocationRecord *locationRecord in self.locationsRecordList) {
 		CLLocationCoordinate2D startCoordinate;
@@ -80,10 +112,10 @@
 			
 			MKMapPoint points[2] = {MKMapPointForCoordinate(startCoordinate), MKMapPointForCoordinate(endCoordinate)};
 			MKPolyline* polyline = [MKPolyline polylineWithPoints:points count:2];
-			[self.mapView addOverlay:polyline];			
+			[self.mapView addOverlay:polyline];
 			
 			startCoordinate = endCoordinate;
-
+			
 		}
 	}
 }
@@ -114,7 +146,9 @@
     // TODO: Create an Operation Queue [OK]
 	
 	
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://web-service.locatemystickers.com/users/1/stickers/460/locations.json"]];
+	//	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://web-service.locatemystickers.com/users/1/stickers/460/locations.json"]];
+	NSString *requestString = [NSString stringWithFormat:@"http://192.168.1.100:3000/users/1/stickers/%@/locations.json", self.stickerRecord.codeAnnotation];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	[request setHTTPMethod:@"GET"];
 	
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -126,14 +160,14 @@
 
 - (void)didReceiveData:(NSData *)data {
 	//INFO: debug
-	/*
-	 if (data) {
-	 NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	 NSLog(@"------ <%@>", dataString);
-	 }
-	 else
-	 NSLog(@"BAD");
-	 */
+	
+	if (data) {
+		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		NSLog(@"------ <%@>", dataString);
+	}
+	else
+		NSLog(@"BAD");
+	
 	
 	if (data) {
 		//TODO: save file
@@ -156,6 +190,31 @@
 		[self updateLocations];
 		
 	}
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:keyPathMeasurementArray]) {
+        if ([change[NSKeyValueChangeKindKey] intValue] == NSKeyValueChangeInsertion) {
+			//TODO:[self.mapView addOverlay:polyline];
+			
+			//
+            NSIndexSet* insertedIndexSet = change[NSKeyValueChangeIndexesKey];
+			
+            [insertedIndexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+				
+				NSLog(@"observeValueForKeyPath: %@", [AppDelegate appDelegate].locationManager.measurementArray[idx]);
+				/*
+				CLLocation* location = self.locationManager.measurementArray[idx];
+				LocAnnotation* annotation = [[LocAnnotation alloc] initWithCoordinate:location.coordinate];
+				[self.mapView addAnnotation:annotation];
+*/
+				 }];
+        }
+    }
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 @end

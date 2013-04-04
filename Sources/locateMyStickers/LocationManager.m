@@ -7,6 +7,10 @@
 //
 
 #import "LocationManager.h"
+#import "AppDelegate.h"
+#import "LocationRecord.h"
+
+NSString* const keyPathMeasurementArray = @"measurementArray";
 
 @interface LocationManager ()
 
@@ -21,6 +25,17 @@
 {
     if (self = [super init]) {
         self.measurementArray = [NSMutableArray new];
+		NSError *error;
+		
+		
+		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+		NSEntityDescription *entity = [NSEntityDescription entityForName:@"LocationRecord"
+												  inManagedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+		[fetchRequest setEntity:entity];
+		[fetchRequest setReturnsObjectsAsFaults:NO];
+		
+		NSArray *fetchedObjects = [[AppDelegate appDelegate].managedObjectContext executeFetchRequest:fetchRequest error:&error];
+		self.measurementArray = [[NSMutableArray alloc] initWithArray:fetchedObjects];
     }
 	
     return self;
@@ -70,8 +85,6 @@
 
 - (BOOL)isLocationServiceAvailable
 {
-#warning check langage
-	
     if ([CLLocationManager locationServicesEnabled] == NO) {
         UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"You currently have all location services for this device disabled. If you proceed, you will be asked to confirm whether location services should be reenabled." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [servicesDisabledAlert show];
@@ -105,14 +118,43 @@
         // test that the horizontal accuracy does not indicate an invalid measurement
         if (location.horizontalAccuracy < 0) return;
 		
-		/*
+		//TODO: add location to the web service and add it to DB
+		
+/*
+		int idLocation = 0;
+		if ([self.measurementArray count] > 0) {
+			idLocation = [((LocationRecord*)[self.measurementArray lastObject]).idLocation intValue] + 1;
+		}
+		else {
+			idLocation = 0;
+		}
+		*/
+		//LocationRecord *locationRecord = [LocationRecord new];
+		
+//		[self.measurementArray addObject:locationRecord];
+		
+		NSError *error;
+		LocationRecord *locationRecord = [NSEntityDescription insertNewObjectForEntityForName:@"LocationRecord" inManagedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+		
+		locationRecord.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
+		locationRecord.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
+		locationRecord.createdAt = [NSDate date];
+		locationRecord.updatedAt = [NSDate date];
+		//locationRecord.idLocation = [NSNumber numberWithInt:idLocation];
+
+
+		if (![[AppDelegate appDelegate].managedObjectContext save:&error])
+			NSLog(@"Saving error: %@", error);
+		
+		//[self.measurementArray addObject:locationRecord];
+		
 		 NSInteger count = [self.measurementArray count];
 		 [self willChange:NSKeyValueChangeInsertion
          valuesAtIndexes:[NSIndexSet indexSetWithIndex:count] forKey: @"measurementArray"];
 		 [self.measurementArray insertObject:location atIndex:count];
 		 [self didChange:NSKeyValueChangeInsertion
          valuesAtIndexes:[NSIndexSet indexSetWithIndex:count] forKey: @"measurementArray"];
-		*/
+		 
 		
     }
 	if (isInBackground) {
@@ -121,7 +163,7 @@
 	}
 }
 
-- (void) doUpdate
+- (void)doUpdate
 {
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -141,14 +183,14 @@
 	});
 }
 
-- (void) beginBackgroundUpdateTask
+- (void)beginBackgroundUpdateTask
 {
     self.backgroundUpdateTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
         [self endBackgroundUpdateTask];
     }];
 }
 
-- (void) endBackgroundUpdateTask
+- (void)endBackgroundUpdateTask
 {
     [[UIApplication sharedApplication] endBackgroundTask:self.backgroundUpdateTask];
     self.backgroundUpdateTask = UIBackgroundTaskInvalid;

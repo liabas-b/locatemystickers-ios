@@ -8,10 +8,13 @@
 
 #import <CoreLocation/CoreLocation.h>
 
+extern NSString* const keyPathMeasurementArray;
+
 @interface LocationManager : CLLocationManager <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSMutableArray* measurementArray;
 @property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundUpdateTask;
+
 - (void)setup;
 - (void)start;
 - (void)stop;

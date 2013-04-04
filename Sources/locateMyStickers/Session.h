@@ -11,9 +11,6 @@
 #import "LROAuth2AccessToken.h"
 
 @interface Session : NSObject
-//TODO: add:
-// - OAth2
-// - secret token
 
 @property (nonatomic, strong) LROAuth2Client *oauthClient;
 @property (nonatomic, assign) BOOL isAuthentified;
