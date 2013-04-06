@@ -12,5 +12,6 @@
 
 @property(nonatomic, strong)NSMutableArray *searchRecordList;
 @property(strong,nonatomic)NSMutableArray *filteredSearchRecordList;
+@property(strong, nonatomic)UITableView *searchTableView;
 
 @end

@@ -12,11 +12,17 @@
 #import "UserCell.h"
 
 #import "StickerRecord.h"
+#import "StickerRecord+Manager.h"
+
 #import "AccountRecord.h"
+#import "AccountRecord+Manager.h"
 
 #import "JsonTools.h"
 
 #import "UCTabBarItem.h"
+
+#import "AppDelegate.h"
+#import "SessionManager.h"
 
 
 @interface SearchTableViewController ()
@@ -38,29 +44,12 @@
 {
     [super viewDidLoad];
 	
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-	
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	
 	self.searchDisplayController.searchBar.showsScopeBar = NO;
 	[self.searchDisplayController.searchBar sizeToFit];
 	
 	self.searchRecordList = [[NSMutableArray alloc] init];
 	self.filteredSearchRecordList = [[NSMutableArray alloc] init];
-	/*
-	 StickerRecord *stickerRecord = [[StickerRecord alloc] init];
-	 //	stickerRecord.name = @"Est cumque et magnam in at minus recusandae sint.";
-	 stickerRecord.createdAt = [NSDate date];//@"2013-02-15T08:28:18Z";
-	 stickerRecord.isActive = NO;
-	 
-	 AccountRecord *accountRecord = [[AccountRecord alloc] init];
-	 accountRecord.name = @"Benoit Liabastre";
-	 
-	 [self.searchRecordList addObject:stickerRecord];
-	 [self.searchRecordList addObject:accountRecord];
-	 */
+	
 	[self.tableView reloadData];
 }
 
@@ -110,7 +99,6 @@
 	
 	if ([dataRecord isKindOfClass:[StickerRecord class]]) {
 		StickerCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StickerCell" forIndexPath:indexPath];
-		
 		[self configureStickerCell:cell withStickerRecord:dataRecord];//atIndexPath:indexPath];
 		return cell;
 	} else {
@@ -129,10 +117,9 @@
 	cell.stickersNumberLabel.text = @"42";
 }
 
-
 - (void)configureStickerCell:(StickerCell *)cell withStickerRecord:(StickerRecord*)stickerRecord {
 	cell.nameLabel.text = stickerRecord.name;
-	cell.timeLabel.text = stickerRecord.createdAt;
+	cell.timeLabel.text = [stickerRecord.createdAt description];
 	if (stickerRecord.isActive)
 		cell.activatedImage.backgroundColor = [UIColor greenColor];
 	else
@@ -157,17 +144,22 @@
 }
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-	searchBar.showsScopeBar = YES;
-	[searchBar sizeToFit];
+//	searchBar.showsScopeBar = YES;
+//	[searchBar sizeToFit];
 	
+	[self.searchDisplayController setActive:YES animated:YES];
 	[searchBar setShowsCancelButton:YES animated:YES];
 	
 	return YES;
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-	searchBar.showsScopeBar = NO;
-	[searchBar sizeToFit];
+//	searchBar.showsScopeBar = NO;
+//	[searchBar sizeToFit];
+	[self.searchDisplayController setActive:NO animated:YES];
+//	self.searchDisplayController.searchBar.showsScopeBar = NO;
+//	[self.searchDisplayController.searchBar sizeToFit];
+	
 	
 	[searchBar setShowsCancelButton:NO animated:YES];
 	
@@ -176,22 +168,45 @@
 
 #pragma maek - Search stuff
 
-- (void)handleStartSearchUser:(NSString *)searchText {
-//	NSString *stringSearchRequest = [NSString stringWithFormat:@"http://web-service.locatemystickers.com/users.json?direction=asc&sort=id&search=%@&column=name", searchText];
-	NSString *stringSearchRequest = [NSString stringWithFormat:@"http://http://192.168.1.100:3000/users.json?direction=asc&sort=id&search=%@&column=name", searchText];
+- (void)handleStartSearchUsers:(NSString *)searchText {
 	
+	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
+	NSString *requestString = [NSString stringWithFormat:@"%@/users.json?direction=asc&sort=id&search=%@&column=name", hostName, searchText];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:stringSearchRequest]];
 	[request setHTTPMethod:@"GET"];
 	
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+	//	NSURLResponse *response;
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
+
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		[self didReceiveAccountData:data forSearchText:searchText];
+	}];
+
+}
+
+- (void)handleStartSearchStickers:(NSString *)searchText {
+	
+	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
+	NSString *requestString = [NSString stringWithFormat:@"%@/users/3/stickers.json?direction=asc&sort=id&search=%@&column=name", hostName, searchText];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
+	
+	[request setHTTPMethod:@"GET"];
+	
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+/*
+	NSURLResponse *response;
+	NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];//sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
+	[self didReceiveStickerData:data forSearchText:searchText];
+*/
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-		[self didReceiveData:data];
+		[self didReceiveStickerData:data forSearchText:searchText];
 	}];
 }
 
-- (void)didReceiveData:(NSData *)data {
+- (void)didReceiveAccountData:(NSData *)data forSearchText:(NSString *)searchText {
 	//INFO: debug
 	
 	if (data) {
@@ -204,70 +219,127 @@
 	
 	if (data) {
 		//TODO: save file
-		if (self.searchRecordList) {
+		NSString *categoryName = [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]];
+		NSLog(@"categoryName: %@", categoryName);
+		
+		if (self.searchRecordList && ![categoryName isEqualToString:@"Everything"]) {
 			[self.searchRecordList removeAllObjects];
 		}
 		
-		self.searchRecordList = [[NSMutableArray alloc] init];
-		
-		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
-		
-		//NSLog(@"%@", [dataDictionary objectForKey:@"data"]);
-		if (dataDictionary) {
-			for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
-				//NSLog(@"%@", item);
-				AccountRecord *accountRecord = [[AccountRecord alloc] initWithDictinary:item];
+		NSArray *dataArray = [JsonTools getArrayFromData:data];
+		if (dataArray) {
+			for (NSDictionary *item in dataArray) {
+				NSLog(@"--|--%@--|--", item);
+				AccountRecord *accountRecord = [AccountRecord addUpdateAccountWithDictionary:item managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
 				[self.searchRecordList addObject:accountRecord];
 			}
 		}
-		[self.tableView reloadData];
+
+		//INFO: Filter the array using NSPredicate
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@", searchText];
 		
+		NSArray *tempArray = [self.searchRecordList filteredArrayUsingPredicate:predicate];
+		NSLog(@"%@", tempArray);
+		self.filteredSearchRecordList = [NSMutableArray arrayWithArray:tempArray];
+		
+		[self.searchTableView reloadData];
+		[self.tableView reloadData];
 	}
 }
+
+- (void)didReceiveStickerData:(NSData *)data forSearchText:(NSString *)searchText {
+	//INFO: debug
+	
+	if (data) {
+		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		NSLog(@"------ <%@>", dataString);
+	}
+	else
+		NSLog(@"BAD");
+	
+	
+	if (data) {
+		//TODO: save file
+		NSString *categoryName = [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]];
+		//NSLog(@"categoryName: %@", categoryName);
+		if (self.searchRecordList && ![categoryName isEqualToString:@"Everything"]) {
+			[self.searchRecordList removeAllObjects];
+		}
+		
+		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
+		if (dataDictionary) {
+			for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
+				NSLog(@"--|--%@--|--", item);
+				StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:item managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+				[self.searchRecordList addObject:stickerRecord];
+			}
+		}
+		
+		//INFO: Filter the array using NSPredicate
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@", searchText];
+		
+		NSArray *tempArray = [self.searchRecordList filteredArrayUsingPredicate:predicate];
+		NSLog(@"%@", tempArray);
+		self.filteredSearchRecordList = [NSMutableArray arrayWithArray:tempArray];
+		
+		[self.searchTableView reloadData];
+		[self.tableView reloadData];
+	}
+}
+
 
 
 #pragma mark Content Filtering
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
 	NSLog(@"searchText: %@", searchText);
+
+	NSLog(@"scope: %@", scope);
 	
-	[self handleStartSearchUser:searchText];
-    //INFO: Update the filtered array based on the search text and scope.
-    //INFO: Remove all objects from the filtered search array
-    [self.filteredSearchRecordList removeAllObjects];
+	[self.filteredSearchRecordList removeAllObjects];
+	
+	if ([scope isEqualToString:@"Stickers"])
+		[self handleStartSearchStickers:searchText];
+	else if ([scope isEqualToString:@"People"])
+		[self handleStartSearchUsers:searchText];
+	else {
+		[self.searchRecordList removeAllObjects];
+		
+		[self handleStartSearchStickers:searchText];
+		[self handleStartSearchUsers:searchText];
+	}
+
+	
     //INFO: Filter the array using NSPredicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@", searchText];
-	
+    /*
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@", searchText];
 	
 	NSArray *tempArray = [self.searchRecordList filteredArrayUsingPredicate:predicate];
 	NSLog(@"%@", tempArray);
-	/*
-	 if (![scope isEqualToString:@"All"]) {
-	 // Further filter the array with the scope
-	 NSPredicate *scopePredicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@",scope];
-	 tempArray = [tempArray filteredArrayUsingPredicate:scopePredicate];
-	 }
-	 */
     self.filteredSearchRecordList = [NSMutableArray arrayWithArray:tempArray];
-	
-	//    self.filteredSearchRecordList = self.searchRecordList;//[NSMutableArray arrayWithArray:[self.searchRecordList filteredArrayUsingPredicate:predicate]];
+*/	
 }
 
 #pragma mark - UISearchDisplayController Delegate Methods
+// searchDisplayController:didLoadSearchResultsTableView
+- (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView {
+	self.searchTableView = tableView;
+}
+
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     //INFO: Tells the table data source to reload when text changes
 	
 	NSString *categoryName = [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]];
-	NSLog(@"categoryName: %@", categoryName);
+	NSLog(@"searchDisplayController 1 categoryName: %@", categoryName);
     [self filterContentForSearchText:searchString scope:categoryName];
     //INFO: Return YES to cause the search result table view to be reloaded.
-    return YES;
+    return NO;
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
     //INFO: Tells the table data source to reload when scope bar selection changes
 	NSString *categoryName = [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption];
-	NSLog(@"categoryName: %@", categoryName);
+	NSLog(@"searchDisplayController 2 categoryName: %@", categoryName);
     [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:categoryName];
     //INFO: Return YES to cause the search result table view to be reloaded.
     return YES;

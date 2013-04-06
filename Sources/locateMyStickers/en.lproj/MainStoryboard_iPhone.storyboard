@@ -1403,14 +1403,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SeI-kn-A5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="2pF-Rq-xmm">
-                    <rect key="frame" x="0.0" y="0.0" width="161" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <segments>
-                        <segment title="First"/>
-                        <segment title="Second"/>
-                    </segments>
-                </segmentedControl>
                 <searchDisplayController id="n0p-r9-IzL">
                     <connections>
                         <outlet property="delegate" destination="jB4-XZ-p7Y" id="tPZ-rG-HfT"/>
@@ -1605,6 +1597,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="pHZ-S0-Prj"/>
         <segue reference="vvZ-ry-e2f"/>
-        <segue reference="9RW-bt-X42"/>
+        <segue reference="QMw-ap-fbI"/>
     </inferredMetricsTieBreakers>
 </document>

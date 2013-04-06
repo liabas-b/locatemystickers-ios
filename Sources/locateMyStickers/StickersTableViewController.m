@@ -76,18 +76,25 @@
 	[fetchRequest setReturnsObjectsAsFaults:NO];
 	NSArray *fetchedObjects = [[AppDelegate appDelegate].managedObjectContext executeFetchRequest:fetchRequest error:&error];
 	self.optionsRecord = [fetchedObjects lastObject];
-	
+
 	if ([self.optionsRecord.locatePhoneEnabled boolValue]== YES) {
 		[[AppDelegate appDelegate].locationManager start];
+	}
+	
+	[self fetchStickersList];
+}
 
+- (void)fetchStickersList {
+	if ([self.optionsRecord.locatePhoneEnabled boolValue] == YES) {
+		
 		NSArray *fetchedStickersRecordObjects = [StickerRecord stickerRecordsOfStickerTypeId:0 managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
 		self.myPhoneStickerRecordList = [[NSMutableArray alloc] initWithArray:fetchedStickersRecordObjects];
-		
 	}
 	
 	//INFO: Stickers
 	NSArray *fetchedStickersRecordObjects = [StickerRecord stickerRecordsOfStickerTypeId:1 managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
 	self.stickersRecordList = [[NSMutableArray alloc] initWithArray:fetchedStickersRecordObjects];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -340,7 +347,7 @@
     // TODO: Create an Operation Queue [OK]
 	
 	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
-	NSString *requestString = [NSString stringWithFormat:@"%@/users/1/stickers.json", hostName];
+	NSString *requestString = [NSString stringWithFormat:@"%@/users/3/stickers.json", hostName];
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	
 	[request setHTTPMethod:@"GET"];
@@ -374,6 +381,7 @@
 		}
 		[[AppDelegate appDelegate] saveContext];
 		//TODO: check if we have to fetch for the new/update entry
+		[self fetchStickersList];
 		[self.tableView reloadData];
 		
 	}

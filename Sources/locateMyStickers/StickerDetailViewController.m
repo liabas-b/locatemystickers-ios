@@ -61,7 +61,7 @@
 - (void)parseData
 {
 	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
-	NSString *requestString = [NSString stringWithFormat:@"%@/users/1/stickers/%@.json", hostName, self.stickerRecord.codeAnnotation];
+	NSString *requestString = [NSString stringWithFormat:@"%@/users/3/stickers/%@.json", hostName, self.stickerRecord.codeAnnotation];
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	
 	NSLog(@"[StickerDetailViewController] requestString: %@", requestString);

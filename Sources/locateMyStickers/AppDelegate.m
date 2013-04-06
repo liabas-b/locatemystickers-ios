@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "OptionsRecord.h"
 #import "StickerRecord.h"
+#import "StickerRecord+Manager.h"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:(v) options:NSNumericSearch] != NSOrderedAscending)
 
@@ -28,7 +29,8 @@
 	self.locationManager = [LocationManager new];
     [self.locationManager setup];
 	
-	self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.100:3000"];
+//	self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.100:3000"];
+	self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://web-service.locatemystickers.com/"];
 	
 	self.connectionManager = [ConnectionManager new];
 	
@@ -57,7 +59,15 @@
 	option.locatePhoneEnabled = [NSNumber numberWithBool:YES];
 	option.displayFollowedStickersEnabled = [NSNumber numberWithBool:YES];
 
-	StickerRecord *stickerRecord = [NSEntityDescription insertNewObjectForEntityForName:@"StickerRecord" inManagedObjectContext:self.managedObjectContext];
+	NSDictionary *stickerDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"My Phone", @"name",
+//									   @"My Phone", @"image_name",
+									   @"0", @"id",
+									   [[NSDate date] description], @"created_at",
+									   [[NSDate date] description], @"updated_at",
+									   @"1", @"is_active",
+									   @"0", @"sticker_type_id",
+									   nil];
+	StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:stickerDictionary managedObjectContext:self.managedObjectContext];//[NSEntityDescription insertNewObjectForEntityForName:@"StickerRecord" inManagedObjectContext:self.managedObjectContext];
 	//option.locatePhoneEnabled = [NSNumber numberWithBool:YES];
 	//option.displayFollowedStickersEnabled = [NSNumber numberWithBool:YES];
 
@@ -70,6 +80,7 @@
 	 @property (nonatomic, strong) NSNumber * isActive;
 	 @property (nonatomic, assign) int stickerTypeId;//TODO: add to DB
 	 */
+	/*
 	stickerRecord.name = @"My Phone";
 	stickerRecord.imageName = @"";
 	stickerRecord.codeAnnotation = @"";
@@ -77,11 +88,14 @@
 	stickerRecord.updatedAt = [NSDate date];
 	stickerRecord.isActive = [NSNumber numberWithBool:YES];
 	stickerRecord.stickerTypeId = [NSNumber numberWithInt:0];
-	
+	*/
+	[self saveContext];
+	/*
 	NSError *error;
 	if (![self.managedObjectContext save:&error])
 		NSLog(@"Error saving !! -> %@", error);
 	[self saveContext];
+	 */
 }
 
 - (void)saveContext
