@@ -7,9 +7,16 @@
 //
 
 #import "AppDelegate.h"
+
 #import "OptionsRecord.h"
+#import "OptionsRecord+Manager.h"
+
 #import "StickerRecord.h"
 #import "StickerRecord+Manager.h"
+
+#import "NSDictionary+QueryString.h"
+
+#import "JsonTools.h"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:(v) options:NSNumericSearch] != NSOrderedAscending)
 
@@ -26,13 +33,8 @@
 	[self UIAppearances];
 	[self cleanUpCach];
 	
-	self.locationManager = [LocationManager new];
-    [self.locationManager setup];
 	
-//	self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.100:3000"];
-	self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://web-service.locatemystickers.com/"];
-	
-	self.connectionManager = [ConnectionManager new];
+
 	
 	//TODO: finish to implement
 	[self commonLauchInitialization:launchOptions];
@@ -47,55 +49,122 @@
 		//INFo: start loacation manager
 		//INFO: init database
 		[self managedObjectContext];
+		
+		/*
+		if ([[OptionsRecord optionsRecordsInManagedObjectContext:self.managedObjectContext] count] == 0) {
+			self.optionsRecord = [OptionsRecord addUpdateOptionsWithDictionary:nil managedObjectContext:self.managedObjectContext];
+		}
+		else {
+			self.optionsRecord = [[OptionsRecord optionsRecordsInManagedObjectContext:self.managedObjectContext] lastObject];
+		}
+		*/
+		
+		
 		if (self.isFirstLaunch == YES) {
 			[self performSelectorOnMainThread:@selector(populateDefaultStore) withObject:nil waitUntilDone:NO];
 		}
+		else {
+			self.optionsRecord = [[OptionsRecord optionsRecordsInManagedObjectContext:self.managedObjectContext] lastObject];
+		}
+		
+		self.locationManager = [LocationManager new];
+		[self.locationManager setup];
+		
+//		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.103:3000"];
+		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://web-service.locatemystickers.com"];
+		
+		self.connectionManager = [ConnectionManager new];
+
 	});
 }
 
 - (void)populateDefaultStore {
 	//INFO: populate if needed
-	OptionsRecord *option = [NSEntityDescription insertNewObjectForEntityForName:@"OptionsRecord" inManagedObjectContext:self.managedObjectContext];
-	option.locatePhoneEnabled = [NSNumber numberWithBool:YES];
-	option.displayFollowedStickersEnabled = [NSNumber numberWithBool:YES];
-
+	
+	
+	self.optionsRecord = [OptionsRecord addUpdateOptionsWithDictionary:nil managedObjectContext:self.managedObjectContext];
+	self.optionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:NO];
+	self.optionsRecord.displayFollowedStickersEnabled = [NSNumber numberWithBool:YES];
+	self.optionsRecord.idOption = [NSNumber numberWithInt:0];
+	/*
 	NSDictionary *stickerDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"My Phone", @"name",
-//									   @"My Phone", @"image_name",
 									   @"0", @"id",
 									   [[NSDate date] description], @"created_at",
 									   [[NSDate date] description], @"updated_at",
 									   @"1", @"is_active",
 									   @"0", @"sticker_type_id",
 									   nil];
-	StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:stickerDictionary managedObjectContext:self.managedObjectContext];//[NSEntityDescription insertNewObjectForEntityForName:@"StickerRecord" inManagedObjectContext:self.managedObjectContext];
-	//option.locatePhoneEnabled = [NSNumber numberWithBool:YES];
-	//option.displayFollowedStickersEnabled = [NSNumber numberWithBool:YES];
-
-	/*
-	 @property (nonatomic, strong) NSString * name;
-	 @property (nonatomic, strong) NSString * imageName;
-	 @property (nonatomic, strong) NSString * codeAnnotation;
-	 @property (nonatomic, strong) NSDate * createdAt;
-	 @property (nonatomic, strong) NSDate * updatedAt;
-	 @property (nonatomic, strong) NSNumber * isActive;
-	 @property (nonatomic, assign) int stickerTypeId;//TODO: add to DB
-	 */
-	/*
-	stickerRecord.name = @"My Phone";
-	stickerRecord.imageName = @"";
-	stickerRecord.codeAnnotation = @"";
-	stickerRecord.createdAt = [NSDate date];
-	stickerRecord.updatedAt = [NSDate date];
-	stickerRecord.isActive = [NSNumber numberWithBool:YES];
-	stickerRecord.stickerTypeId = [NSNumber numberWithInt:0];
+	StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:stickerDictionary managedObjectContext:self.managedObjectContext];
 	*/
 	[self saveContext];
 	/*
-	NSError *error;
-	if (![self.managedObjectContext save:&error])
-		NSLog(@"Error saving !! -> %@", error);
-	[self saveContext];
+	 NSError *error;
+	 if (![self.managedObjectContext save:&error])
+	 NSLog(@"Error saving !! -> %@", error);
+	 [self saveContext];
 	 */
+}
+
+- (void)addMyPhone {
+	NSMutableDictionary *stickerDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+											  @"3", @"user_id",
+//											  @"", @"sticker[id]",
+											  @"My Phone", @"sticker[name]",
+//											  [[NSDate date] description], @"sticker[created_at]",
+//											  [[NSDate date] description], @"sticker[updated_at]",
+//											  @"1", @"sticker[is_active]",
+											  @"2", @"sticker[sticker_type_id]",
+											  nil];
+
+	
+	{
+		NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
+		NSString *requestString = [NSString stringWithFormat:@"%@/users/3/stickers.json", hostName];
+		NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
+		
+		NSLog(@"requestString = %@", requestString);
+		
+		[request setHTTPMethod:@"POST"];
+//		[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//		[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+
+		
+		[request setHTTPBody:[[stickerDictionary stringWithFormEncodedComponents] dataUsingEncoding:NSUTF8StringEncoding]];
+		NSData *data = [[stickerDictionary stringWithFormEncodedComponents] dataUsingEncoding:NSUTF8StringEncoding];
+		
+		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		NSLog(@"BODY = %@", dataString);
+		
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+		[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
+			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+			[self didReceiveData:data];
+		}];
+		//	StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:stickerDictionary managedObjectContext:self.managedObjectContext];
+		
+	}
+}
+
+- (void)didReceiveData:(NSData *)data {
+	
+	if (data) {
+		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		NSLog(@"------ <%@>", dataString);
+	}
+	else
+		NSLog(@"BAD");
+	
+	
+	if (data) {
+		
+		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
+		NSLog(@"%@", dataDictionary);
+		StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:dataDictionary managedObjectContext:self.managedObjectContext];
+		[stickerRecord debug];
+		self.optionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:YES];
+		[self saveContext];
+	}
+	
 }
 
 - (void)saveContext
@@ -111,7 +180,7 @@
         }
     }
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
 	// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -120,7 +189,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-	// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+	// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
 	// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
@@ -136,8 +205,8 @@
 	//INFO: check if is tracking
 	//if (self.sessionManager.session isTracking)
 	{
-//		[self.locationManager stopMonitoringSignificantLocationChanges];
-//		[self.locationManager startUpdatingLocation];
+		//		[self.locationManager stopMonitoringSignificantLocationChanges];
+		//		[self.locationManager startUpdatingLocation];
 	}
 }
 
@@ -148,17 +217,17 @@
 
 - (void)cleanUpCach {
 	/*
-	NSError *error;
-	NSURL *url = [[AppDelegate applicationDocumentsDirectory] URLByAppendingPathComponent:@"activityList"];
-	
-	[[NSFileManager defaultManager] removeItemAtURL:url error:&error];
-	
-	if (error) {
-		NSLog(@"ABAppDelegate: No cach to clean");
-	}
-	else
-		NSLog(@"ABAppDelegate: Cach clean");
-*/
+	 NSError *error;
+	 NSURL *url = [[AppDelegate applicationDocumentsDirectory] URLByAppendingPathComponent:@"activityList"];
+	 
+	 [[NSFileManager defaultManager] removeItemAtURL:url error:&error];
+	 
+	 if (error) {
+	 NSLog(@"ABAppDelegate: No cach to clean");
+	 }
+	 else
+	 NSLog(@"ABAppDelegate: Cach clean");
+	 */
 }
 
 #pragma mark - Core Data stack
@@ -303,7 +372,7 @@
 		//INFO: Change the appearance of other navigation button
 		UIImage *barButtonImage = [[UIImage imageNamed:@"redNormalButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 6)];
 		[[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-				
+		
     }
     else {
         //INFO: iOS 4.whatever and below
@@ -314,7 +383,7 @@
 	//INFO: set tabBar
 	
 	UIImage *tabBarBackground = [UIImage imageNamed:@"tabBar"];
-
+	
     [[UITabBar appearance] setBackgroundImage:tabBarBackground];
 	
 	//[[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"selection-tab"]];

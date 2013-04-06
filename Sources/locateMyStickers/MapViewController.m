@@ -15,6 +15,8 @@
 #import "StickerRecord.h"
 
 #import "AppDelegate.h"
+
+#import "LocAnnotation.h"
 #import "LocationManager.h"
 
 
@@ -202,14 +204,14 @@
             NSIndexSet* insertedIndexSet = change[NSKeyValueChangeIndexesKey];
 			
             [insertedIndexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-				
+				//INFO: experimental
 				NSLog(@"observeValueForKeyPath: %@", [AppDelegate appDelegate].locationManager.measurementArray[idx]);
-				/*
-				CLLocation* location = self.locationManager.measurementArray[idx];
+				
+				CLLocation* location = [AppDelegate appDelegate].locationManager.measurementArray[idx];
 				LocAnnotation* annotation = [[LocAnnotation alloc] initWithCoordinate:location.coordinate];
 				[self.mapView addAnnotation:annotation];
-*/
-				 }];
+				
+			}];
         }
     }
     else {

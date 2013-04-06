@@ -29,6 +29,10 @@
 		9045B914170F8B9600436B2E /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9045B913170F8B9600436B2E /* FontAwesome.ttf */; };
 		9045B917170F9D4400436B2E /* StickerRecord+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B916170F9D4400436B2E /* StickerRecord+Manager.m */; };
 		9045B91A170FC6F100436B2E /* AccountRecord+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B919170FC6F100436B2E /* AccountRecord+Manager.m */; };
+		9045B91D1710246600436B2E /* LocationRecord+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B91C1710246500436B2E /* LocationRecord+Manager.m */; };
+		9045B920171026ED00436B2E /* OptionsRecord+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B91F171026EC00436B2E /* OptionsRecord+Manager.m */; };
+		9045B9231710364900436B2E /* LocAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B9221710364900436B2E /* LocAnnotation.m */; };
+		9045B926171036AC00436B2E /* CLLocation (Strings).m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B925171036AC00436B2E /* CLLocation (Strings).m */; };
 		9050874816FDCB41007AF478 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9050874516FDCB08007AF478 /* libZXingWidget.a */; };
 		9050874A16FDCB5E007AF478 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9050874916FDCB5E007AF478 /* libiconv.dylib */; };
 		9050875216FDD1B6007AF478 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9050875116FDD1B6007AF478 /* CoreAudio.framework */; };
@@ -198,6 +202,14 @@
 		9045B916170F9D4400436B2E /* StickerRecord+Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "StickerRecord+Manager.m"; sourceTree = "<group>"; };
 		9045B918170FC6F000436B2E /* AccountRecord+Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AccountRecord+Manager.h"; sourceTree = "<group>"; };
 		9045B919170FC6F100436B2E /* AccountRecord+Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AccountRecord+Manager.m"; sourceTree = "<group>"; };
+		9045B91B1710246400436B2E /* LocationRecord+Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LocationRecord+Manager.h"; sourceTree = "<group>"; };
+		9045B91C1710246500436B2E /* LocationRecord+Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LocationRecord+Manager.m"; sourceTree = "<group>"; };
+		9045B91E171026E600436B2E /* OptionsRecord+Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OptionsRecord+Manager.h"; sourceTree = "<group>"; };
+		9045B91F171026EC00436B2E /* OptionsRecord+Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OptionsRecord+Manager.m"; sourceTree = "<group>"; };
+		9045B9211710364900436B2E /* LocAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocAnnotation.h; sourceTree = "<group>"; };
+		9045B9221710364900436B2E /* LocAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocAnnotation.m; sourceTree = "<group>"; };
+		9045B924171036AC00436B2E /* CLLocation (Strings).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation (Strings).h"; sourceTree = "<group>"; };
+		9045B925171036AC00436B2E /* CLLocation (Strings).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation (Strings).m"; sourceTree = "<group>"; };
 		9050873F16FDCB08007AF478 /* ZXingWidget.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingWidget.xcodeproj; path = "zxing-2.0/iphone/ZXingWidget/ZXingWidget.xcodeproj"; sourceTree = "<group>"; };
 		9050874916FDCB5E007AF478 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		9050875116FDD1B6007AF478 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -585,6 +597,8 @@
 			children = (
 				9070E9CC16F3287400E3D409 /* LocationRecord.h */,
 				9070E9CD16F3287400E3D409 /* LocationRecord.m */,
+				9045B91B1710246400436B2E /* LocationRecord+Manager.h */,
+				9045B91C1710246500436B2E /* LocationRecord+Manager.m */,
 				9070E9C916F3287400E3D409 /* StickerRecord.h */,
 				9070E9CA16F3287400E3D409 /* StickerRecord.m */,
 				9045B915170F9D4400436B2E /* StickerRecord+Manager.h */,
@@ -595,6 +609,8 @@
 				9045B919170FC6F100436B2E /* AccountRecord+Manager.m */,
 				9070E9C316F3287400E3D409 /* OptionsRecord.h */,
 				9070E9C416F3287400E3D409 /* OptionsRecord.m */,
+				9045B91E171026E600436B2E /* OptionsRecord+Manager.h */,
+				9045B91F171026EC00436B2E /* OptionsRecord+Manager.m */,
 				9070E9C016F3213A00E3D409 /* LmsModel.xcdatamodeld */,
 			);
 			name = Model;
@@ -806,6 +822,10 @@
 			children = (
 				90B80A7516D6DB44004CA608 /* LocationManager.h */,
 				90B80A7616D6DB44004CA608 /* LocationManager.m */,
+				9045B9211710364900436B2E /* LocAnnotation.h */,
+				9045B9221710364900436B2E /* LocAnnotation.m */,
+				9045B924171036AC00436B2E /* CLLocation (Strings).h */,
+				9045B925171036AC00436B2E /* CLLocation (Strings).m */,
 			);
 			name = Location;
 			sourceTree = "<group>";
@@ -1098,6 +1118,10 @@
 				9045B912170F8B4F00436B2E /* UIFont+FontAwesome.m in Sources */,
 				9045B917170F9D4400436B2E /* StickerRecord+Manager.m in Sources */,
 				9045B91A170FC6F100436B2E /* AccountRecord+Manager.m in Sources */,
+				9045B91D1710246600436B2E /* LocationRecord+Manager.m in Sources */,
+				9045B920171026ED00436B2E /* OptionsRecord+Manager.m in Sources */,
+				9045B9231710364900436B2E /* LocAnnotation.m in Sources */,
+				9045B926171036AC00436B2E /* CLLocation (Strings).m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,7 @@
     </entity>
     <entity name="OptionsRecord" representedClassName="OptionsRecord" syncable="YES">
         <attribute name="displayFollowedStickersEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="idOptions" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="locatePhoneEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <entity name="StickerRecord" representedClassName="StickerRecord" syncable="YES">
@@ -30,7 +31,7 @@
     <elements>
         <element name="AccountRecord" positionX="160" positionY="192" width="128" height="120"/>
         <element name="LocationRecord" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="OptionsRecord" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="OptionsRecord" positionX="160" positionY="192" width="128" height="90"/>
         <element name="StickerRecord" positionX="160" positionY="192" width="128" height="150"/>
     </elements>
 </model>

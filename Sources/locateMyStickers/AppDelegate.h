@@ -13,6 +13,8 @@
 #import "SessionManager.h"
 #import "ConnectionManager.h"
 
+@class OptionsRecord;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
@@ -20,12 +22,14 @@
 @property (nonatomic, strong) LocationManager *locationManager;
 @property (nonatomic, strong) SessionManager *sessionManager;
 @property (nonatomic, strong) ConnectionManager *connectionManager;
+@property (nonatomic, strong) OptionsRecord *optionsRecord;
 
 @property(strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property(strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property(strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 - (void)saveContext;
+- (void)addMyPhone;
 
 + (NSURL *)applicationDocumentsDirectory;
 + (AppDelegate *)appDelegate;

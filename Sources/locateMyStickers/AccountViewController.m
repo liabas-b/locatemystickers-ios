@@ -9,8 +9,11 @@
 #import "AccountViewController.h"
 
 #import "AccountRecord.h"
+#import "AccountRecord+Manager.h"
 
 #import "JsonTools.h"
+
+#import "AppDelegate.h"
 
 @interface AccountViewController ()
 
@@ -74,8 +77,10 @@
 	
     // TODO: Create an Operation Queue [OK]
 	
-	
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://web-service.locatemystickers.com/users/1.json"]];
+	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
+	NSString *requestString = [NSString stringWithFormat:@"%@/users/3.json", hostName];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
+
 	[request setHTTPMethod:@"GET"];
 	
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -101,7 +106,7 @@
 		
 		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
 		if (dataDictionary) {
-			self.accoutRecord = [[AccountRecord alloc] initWithDictinary:dataDictionary];
+			self.accoutRecord = [AccountRecord addUpdateAccountWithDictionary:dataDictionary managedObjectContext:[AppDelegate appDelegate].managedObjectContext];//[[AccountRecord alloc] initWithDictinary:dataDictionary];
 			
 			[self updateView];
 		}

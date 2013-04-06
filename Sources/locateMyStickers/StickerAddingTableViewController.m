@@ -97,6 +97,10 @@
 }
 
 - (IBAction)handleFinishedButton:(id)sender {
+#warning To implement
+	//TODO: - add the sticker to DB (may be need id)
+	//      - POST to the web service
+	//      - GET the id
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

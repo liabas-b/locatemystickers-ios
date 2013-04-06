@@ -11,6 +11,7 @@
 
 @implementation OptionsRecord
 
+@synthesize idOption;
 @synthesize locatePhoneEnabled;
 @synthesize displayFollowedStickersEnabled;
 

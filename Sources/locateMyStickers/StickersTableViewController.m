@@ -14,6 +14,7 @@
 #import "StickerDetailViewController.h"
 
 #import "OptionsRecord.h"
+#import "OptionsRecord+Manager.h"
 
 #import "StickerRecord.h"
 #import "BButton.h"
@@ -64,37 +65,47 @@
 	[self parseData];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
+	[self fetchStickersList];
+	//[self.tableView reloadData];
+}
+
 - (void)setup {
 	
 	//INFO: setup location manager
 	//INFO: options
-	NSError *error;
-	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"OptionsRecord"
-											  inManagedObjectContext:[AppDelegate appDelegate].managedObjectContext];
-	[fetchRequest setEntity:entity];
-	[fetchRequest setReturnsObjectsAsFaults:NO];
-	NSArray *fetchedObjects = [[AppDelegate appDelegate].managedObjectContext executeFetchRequest:fetchRequest error:&error];
-	self.optionsRecord = [fetchedObjects lastObject];
+/*
+	self.optionsRecord = [[OptionsRecord optionsRecordsInManagedObjectContext:[AppDelegate appDelegate].managedObjectContext] lastObject];//[fetchedObjects lastObject];
 
-	if ([self.optionsRecord.locatePhoneEnabled boolValue]== YES) {
+	if ([self.optionsRecord.locatePhoneEnabled boolValue] == YES) {
 		[[AppDelegate appDelegate].locationManager start];
 	}
-	
+	*/
 	[self fetchStickersList];
 }
 
 - (void)fetchStickersList {
-	if ([self.optionsRecord.locatePhoneEnabled boolValue] == YES) {
+	
+	///self.optionsRecord = [[OptionsRecord optionsRecordsInManagedObjectContext:[AppDelegate appDelegate].managedObjectContext] lastObject];//[fetchedObjects lastObject];
+	
+	if ([[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled boolValue] == YES) {
+		[[AppDelegate appDelegate].locationManager start];
+	}
+	//
+	if ([[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled boolValue] == YES) {
 		
-		NSArray *fetchedStickersRecordObjects = [StickerRecord stickerRecordsOfStickerTypeId:0 managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
-		self.myPhoneStickerRecordList = [[NSMutableArray alloc] initWithArray:fetchedStickersRecordObjects];
 	}
 	
+	NSArray *fetchedPhoneStickersRecordObjects = [StickerRecord stickerRecordsOfStickerTypeId:2 managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+	self.myPhoneStickerRecordList = [[NSMutableArray alloc] initWithArray:fetchedPhoneStickersRecordObjects];
+
 	//INFO: Stickers
 	NSArray *fetchedStickersRecordObjects = [StickerRecord stickerRecordsOfStickerTypeId:1 managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
 	self.stickersRecordList = [[NSMutableArray alloc] initWithArray:fetchedStickersRecordObjects];
-
+	
+	[self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -121,7 +132,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (section == 0 && [self.optionsRecord.locatePhoneEnabled boolValue] == YES)
+	if (section == 0) //&& [[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled boolValue] == YES)
 		return [self.myPhoneStickerRecordList count];
 	return [self.stickersRecordList count];
 }
@@ -221,7 +232,7 @@
 	cell.backgroundView = backgroundView;
 	
 	cell.iconLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:24];
-	if ([stickerRecord.stickerTypeId intValue] == 0) {
+	if ([stickerRecord.stickerTypeId intValue] > 1) {
 		cell.iconLabel.text = [NSString stringWithFormat:@" %@", [NSString fontAwesomeIconStringForEnum:FAIconMobilePhone]];
 	}
 	else
@@ -343,9 +354,6 @@
 
 - (void)parseData
 {
-	
-    // TODO: Create an Operation Queue [OK]
-	
 	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
 	NSString *requestString = [NSString stringWithFormat:@"%@/users/3/stickers.json", hostName];
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
@@ -382,7 +390,7 @@
 		[[AppDelegate appDelegate] saveContext];
 		//TODO: check if we have to fetch for the new/update entry
 		[self fetchStickersList];
-		[self.tableView reloadData];
+//		[self.tableView reloadData];
 		
 	}
 	[self.refreshControl endRefreshing];

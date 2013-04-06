@@ -12,6 +12,7 @@
 
 @interface OptionsRecord : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * idOption;
 @property (nonatomic, retain) NSNumber * locatePhoneEnabled;
 @property (nonatomic, retain) NSNumber * displayFollowedStickersEnabled;
 

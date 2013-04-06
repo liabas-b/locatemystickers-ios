@@ -268,6 +268,8 @@ static NSString* const keyLoginResult = @"loginResult";
 	AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	
 	if ([appDelegate.sessionManager isAuthentified] == YES) {
+		//TODO: - get user informations
+		//      - set AccountRecord
 		[self performSelectorOnMainThread:@selector(loadActivityViewController) withObject:nil waitUntilDone:NO];
 	}
 	else {
