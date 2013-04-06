@@ -28,12 +28,12 @@ typedef enum SessionState {
 @property (nonatomic, strong) NSTimer *authenticationTimer;
 @property (nonatomic, strong) id<SessionDelegate> delegate;
 
+- (id)initWithHostName:(NSString *)hostName;
 - (void)setupSessionWithClientID:(NSString *)clientID secret:(NSString *)secret redirectURL:(NSURL *)redirectURL;
 
 - (void)setUserURL:(NSURL *)userURL;
 - (void)setTokenURL:(NSURL *)tokenURL;
 
-//- (void)authorizeUsingWebView:(UIWebView *)webView;
 - (void)authorizeUsingPopupLoginView:(PopUpLoginView *)popUpLoginView;
 - (BOOL)isAuthentified;
 - (NSString *)accessToken;

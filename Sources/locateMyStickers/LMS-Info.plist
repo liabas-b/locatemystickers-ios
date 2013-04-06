@@ -60,11 +60,11 @@
 			<key>TintColor</key>
 			<dict>
 				<key>Blue</key>
-				<real>0.22745098039215686</real>
+				<real>0.2274509803921569</real>
 				<key>Green</key>
-				<real>0.12156862745098039</real>
+				<real>0.1215686274509804</real>
 				<key>Red</key>
-				<real>0.74117647058823533</real>
+				<real>0.7411764705882353</real>
 			</dict>
 			<key>Translucent</key>
 			<false/>
@@ -77,6 +77,10 @@
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FontAwesome.ttf</string>
 	</array>
 </dict>
 </plist>

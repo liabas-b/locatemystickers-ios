@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+@class StickerRecord;
 
 @interface StickerDetailViewController : UITableViewController <MKMapViewDelegate>
+
+@property (nonatomic, strong) StickerRecord *stickerRecord;
 
 //INFO: First row
 @property (strong, nonatomic) IBOutlet UIImageView *activatedImage;

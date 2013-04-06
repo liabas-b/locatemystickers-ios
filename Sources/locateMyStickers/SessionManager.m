@@ -20,8 +20,17 @@ static NSString* const keyLoginResult = @"loginResult";
 
 @implementation SessionManager
 
+- (id)initWithHostName:(NSString *)hostName {
+	self = [super init];
+	if(self) {
+		self.session = [Session new];
+		self.session.hostName = hostName;
+	}
+	return self;
+}
+
 - (void)setupSessionWithClientID:(NSString *)clientID secret:(NSString *)secret redirectURL:(NSURL *)redirectURL {
-	self.session = [Session new];
+	
 	self.session.oauthClient = [[LROAuth2Client alloc] initWithClientID:clientID secret:secret redirectURL:redirectURL];
 	self.session.oauthClient.delegate = self;
 }
@@ -65,7 +74,7 @@ static NSString* const keyLoginResult = @"loginResult";
 	//TODO: load from file [OK]
 	//INFO: if valid self.sessionState = authenticated;
 	//TODO: get login & password from db
-
+	
 	NSURL *accessTokenFileUrl = [[AppDelegate applicationDocumentsDirectory] URLByAppendingPathComponent:@"accessToken"];
 	
 	LROAuth2AccessToken *token = [NSKeyedUnarchiver unarchiveObjectWithFile:[accessTokenFileUrl path]];
@@ -78,25 +87,25 @@ static NSString* const keyLoginResult = @"loginResult";
 		
 		if ([self.delegate respondsToSelector:@selector(didReceiveValidToken)])
 			[self.delegate didReceiveValidToken];
-
+		
 		
 		//INFO: may be check if login are the same
 		/*
-		NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://api.bloc.net/2/account/me.json"]];
-		[request setHTTPMethod:@"GET"];
-		[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-		[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-		[request setValue:[NSString stringWithFormat:@"bearer %@", token.accessToken] forHTTPHeaderField:@"Authorization"];
-		
-		[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
-			//[self didReceiveData:data];
-			NSLog(@"data error: %@", err);
-			NSLog(@"NSURLResponse: %@", res);
-		}];
+		 NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://api.bloc.net/2/account/me.json"]];
+		 [request setHTTPMethod:@"GET"];
+		 [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+		 [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+		 [request setValue:[NSString stringWithFormat:@"bearer %@", token.accessToken] forHTTPHeaderField:@"Authorization"];
+		 
+		 [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
+		 //[self didReceiveData:data];
+		 NSLog(@"data error: %@", err);
+		 NSLog(@"NSURLResponse: %@", res);
+		 }];
 		 */
 		
 	}
-
+	
 }
 
 - (void)logout {
@@ -117,7 +126,7 @@ static NSString* const keyLoginResult = @"loginResult";
 	LROAuth2AccessToken *token = client.accessToken;
 	
 	if ([token.accessToken length] > 0) {
-
+		
 		[self.authenticationTimer invalidate];
 		
 		self.sessionState = authenticated;
@@ -182,22 +191,31 @@ static NSString* const keyLoginResult = @"loginResult";
 	[self.popupLoginView.activityIndocator stopAnimating];
 	
 	if (self.sessionState == unAuthenticated) {
-		NSString *loginFieldString = [NSString stringWithFormat:@"document.getElementById('usermail').value = '%@'", self.session.login];
+		NSString *loginFieldString = [NSString stringWithFormat:@"document.getElementById('session_email').value = '%@'", self.session.login];
 		[webView stringByEvaluatingJavaScriptFromString:loginFieldString];
-	
-		NSString *passwordFieldString = [NSString stringWithFormat:@"document.getElementById('password').value = '%@'", self.session.password];
+		
+		
+		//INFO: debug
+		//[webView stringByEvaluatingJavaScriptFromString:@"alert(document.getElementById('session_email').value)"];
+		
+		
+		NSString *passwordFieldString = [NSString stringWithFormat:@"document.getElementById('session_password').value = '%@'", self.session.password];
 		[webView stringByEvaluatingJavaScriptFromString:passwordFieldString];
-		NSString *setSubmitValueString = @"document.forms[0].submit(); document.getElementByTagName('Logg inn').onclick();";
+		
+		//INFO: debug
+		//[webView stringByEvaluatingJavaScriptFromString:@"alert(document.getElementById('session_password').value)"];
+		
+		NSString *setSubmitValueString = @"document.forms[0].submit(); document.getElementByTagName('commit').onclick();";//Sign in
 		[webView stringByEvaluatingJavaScriptFromString:setSubmitValueString];
 		self.sessionState = authentication;
 	}
 	else if (self.sessionState == authentication) {
 		/*
-		NSString *setSubmitValueString = @"document.forms[0].UserId.checked=true; document.getElementsByName('IsApproved')[0].value = true; document.forms[0].submit();";
-		[webView stringByEvaluatingJavaScriptFromString:setSubmitValueString];
-		
-		self.authenticationTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(handleTimeAuthenticationTimer) userInfo:nil repeats:NO];
-		[[NSRunLoop mainRunLoop] addTimer:self.authenticationTimer forMode:NSRunLoopCommonModes];
+		 NSString *setSubmitValueString = @"document.forms[0].UserId.checked=true; document.getElementsByName('IsApproved')[0].value = true; document.forms[0].submit();";
+		 [webView stringByEvaluatingJavaScriptFromString:setSubmitValueString];
+		 
+		 self.authenticationTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(handleTimeAuthenticationTimer) userInfo:nil repeats:NO];
+		 [[NSRunLoop mainRunLoop] addTimer:self.authenticationTimer forMode:NSRunLoopCommonModes];
 		 */
 	}
 	else {
@@ -214,15 +232,15 @@ static NSString* const keyLoginResult = @"loginResult";
 	[self.popupLoginView.activityIndocator stopAnimating];
 	
 	/*
-	// Ignore NSURLErrorDomain error -999.
-    if (error.code == NSURLErrorCancelled)
-		return;
-	
-    // Ignore "Fame Load Interrupted" errors. Seen after app store links.
-    if (error.code == 102 && [error.domain isEqual:@"WebKitErrorDomain"]) {
-		return;
-	}
-	*/
+	 // Ignore NSURLErrorDomain error -999.
+	 if (error.code == NSURLErrorCancelled)
+	 return;
+	 
+	 // Ignore "Fame Load Interrupted" errors. Seen after app store links.
+	 if (error.code == 102 && [error.domain isEqual:@"WebKitErrorDomain"]) {
+	 return;
+	 }
+	 */
 	
 	if ([self.delegate respondsToSelector:@selector(didGetWebViewError:)])
 		[self.delegate didGetWebViewError:error];
@@ -242,10 +260,10 @@ static NSString* const keyLoginResult = @"loginResult";
 	self.sessionState = unAuthenticated;
 	[[NSNotificationCenter defaultCenter] postNotificationName:keyLoginResult object:self];
 	
-	#warning check langage & more
-
-//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error" message:@"Failed to logg in" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//	[alert show];
+#warning check langage & more
+	
+	//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error" message:@"Failed to logg in" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	//	[alert show];
 }
 
 

@@ -8,12 +8,12 @@
 
 #import "StickerDetailViewController.h"
 #import "StickerRecord.h"
+#import "StickerRecord+Manager.h"
 
 #import "JsonTools.h"
+#import "AppDelegate.h"
 
 @interface StickerDetailViewController ()
-
-@property(nonatomic, strong)StickerRecord *stickerRecord;
 
 @end
 
@@ -31,13 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-	
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	
+
+	[self updateView];
 	[self parseData];
 }
 
@@ -50,27 +45,27 @@
 
 - (void)updateView {
 	
-	if (self.stickerRecord.isActive)
-		self.activatedImage.backgroundColor = [UIColor greenColor];
-	else
-		self.activatedImage.backgroundColor = [UIColor redColor];
-	self.nameLabel.text = self.stickerRecord.name;
-	self.createdAtLabel.text = self.stickerRecord.createdAt;
-	self.updatedAtLabel.text = self.stickerRecord.updatedAt;
-	
+	if (self.stickerRecord) {
+		if (self.stickerRecord.isActive)
+			self.activatedImage.backgroundColor = [UIColor greenColor];
+		else
+			self.activatedImage.backgroundColor = [UIColor redColor];
+		self.nameLabel.text = self.stickerRecord.name;
+		self.createdAtLabel.text = [self.stickerRecord.createdAt description];
+		self.updatedAtLabel.text = [self.stickerRecord.updatedAt description];
+	}
 }
-
 
 #pragma mark - data parsing
 
 - (void)parseData
 {
+	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
+	NSString *requestString = [NSString stringWithFormat:@"%@/users/1/stickers/%@.json", hostName, self.stickerRecord.codeAnnotation];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	
-    // TODO: Create an Operation Queue [OK]
-	
-	
-//	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://web-service.locatemystickers.com/users/1/stickers/460.json"]];
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://192.168.1.100:3000/users/1/stickers/460.json"]];
+	NSLog(@"[StickerDetailViewController] requestString: %@", requestString);
+
 	[request setHTTPMethod:@"GET"];
 	
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -82,23 +77,20 @@
 
 - (void)didReceiveData:(NSData *)data {
 	//INFO: debug
-	/*
-	 if (data) {
-	 NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	 NSLog(@"------ <%@>", dataString);
-	 }
-	 else
-	 NSLog(@"BAD");
-	 */
 	
 	if (data) {
-		//TODO: save file
-		
+		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		NSLog(@"------ <%@>", dataString);
+	}
+	else
+		NSLog(@"BAD");
+	
+	
+	if (data) {
 		
 		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
-		
-		
-		self.stickerRecord = [[StickerRecord alloc] initWithDictinary:[dataDictionary objectForKey:@"data"]];
+
+		self.stickerRecord = [StickerRecord addUpdateStickerWithDictionary:[dataDictionary objectForKey:@"data"] managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
 		[self.stickerRecord debug];
 		
 		[self updateView];
@@ -108,4 +100,5 @@
 
 - (IBAction)handleDetailedMapButton:(id)sender {
 }
+
 @end

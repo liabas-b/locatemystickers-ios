@@ -11,7 +11,7 @@
 
 @implementation OptionsRecord
 
-@dynamic locatePhoneEnabled;
-@dynamic displayFollowedStickersEnabled;
+@synthesize locatePhoneEnabled;
+@synthesize displayFollowedStickersEnabled;
 
 @end

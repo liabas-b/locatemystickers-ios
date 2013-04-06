@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "OptionsRecord.h"
+#import "StickerRecord.h"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:(v) options:NSNumericSearch] != NSOrderedAscending)
 
@@ -27,7 +28,7 @@
 	self.locationManager = [LocationManager new];
     [self.locationManager setup];
 	
-	self.sessionManager = [SessionManager new];
+	self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.100:3000"];
 	
 	self.connectionManager = [ConnectionManager new];
 	
@@ -55,6 +56,27 @@
 	OptionsRecord *option = [NSEntityDescription insertNewObjectForEntityForName:@"OptionsRecord" inManagedObjectContext:self.managedObjectContext];
 	option.locatePhoneEnabled = [NSNumber numberWithBool:YES];
 	option.displayFollowedStickersEnabled = [NSNumber numberWithBool:YES];
+
+	StickerRecord *stickerRecord = [NSEntityDescription insertNewObjectForEntityForName:@"StickerRecord" inManagedObjectContext:self.managedObjectContext];
+	//option.locatePhoneEnabled = [NSNumber numberWithBool:YES];
+	//option.displayFollowedStickersEnabled = [NSNumber numberWithBool:YES];
+
+	/*
+	 @property (nonatomic, strong) NSString * name;
+	 @property (nonatomic, strong) NSString * imageName;
+	 @property (nonatomic, strong) NSString * codeAnnotation;
+	 @property (nonatomic, strong) NSDate * createdAt;
+	 @property (nonatomic, strong) NSDate * updatedAt;
+	 @property (nonatomic, strong) NSNumber * isActive;
+	 @property (nonatomic, assign) int stickerTypeId;//TODO: add to DB
+	 */
+	stickerRecord.name = @"My Phone";
+	stickerRecord.imageName = @"";
+	stickerRecord.codeAnnotation = @"";
+	stickerRecord.createdAt = [NSDate date];
+	stickerRecord.updatedAt = [NSDate date];
+	stickerRecord.isActive = [NSNumber numberWithBool:YES];
+	stickerRecord.stickerTypeId = [NSNumber numberWithInt:0];
 	
 	NSError *error;
 	if (![self.managedObjectContext save:&error])

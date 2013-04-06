@@ -64,10 +64,21 @@ static NSString* const keyLoginResult = @"loginResult";
 - (void)setupSessionManager {
 	AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	//TODO: setup session manager [OK]
-	[appDelegate.sessionManager setupSessionWithClientID:@"B87FB020-B37C-439F-B29F-3111DD016DD8" secret:@"5C4134BE-9F7A-4FA5-8548-E601CF2FD970" redirectURL:[NSURL URLWithString:@"http://api.bloc.net/testtool/oauth2tools.aspx"]];
+
+	[appDelegate.sessionManager setupSessionWithClientID:@"Vt1yS6eU28cqA6cnssKANqSNWOxsGbMr8eWdBoHh" secret:@"P287fmh0dVqPvI8S4qw5FtnZx9mPMPDxO8uK6puz" redirectURL:[NSURL URLWithString:@"http://192.168.1.100:3000/oauth/access_token"]];
 	appDelegate.sessionManager.delegate = self;
-	[appDelegate.sessionManager setUserURL:[NSURL URLWithString:@"http://nbif.aktivbedrift.no/OAuth/Authorize"]];
-	[appDelegate.sessionManager setTokenURL:[NSURL URLWithString:@"http://nbif.aktivbedrift.no/OAuth/Token"]];
+	[appDelegate.sessionManager setUserURL:[NSURL URLWithString:@"http://192.168.1.100:3000/oauth/authorize"]];
+	[appDelegate.sessionManager setTokenURL:[NSURL URLWithString:@"http://192.168.1.100:3000/oauth/access_token"]];
+
+
+/*
+ [appDelegate.sessionManager setupSessionWithClientID:@"B87FB020-B37C-439F-B29F-3111DD016DD8" secret:@"5C4134BE-9F7A-4FA5-8548-E601CF2FD970" redirectURL:[NSURL URLWithString:@"http://api.bloc.net/testtool/oauth2tools.aspx"]];
+ appDelegate.sessionManager.delegate = self;
+ [appDelegate.sessionManager setUserURL:[NSURL URLWithString:@"http://nbif.aktivbedrift.no/OAuth/Authorize"]];
+ [appDelegate.sessionManager setTokenURL:[NSURL URLWithString:@"http://nbif.aktivbedrift.no/OAuth/Token"]];
+
+ 
+ */
 }
 
 - (void)setupStyle {
@@ -165,9 +176,11 @@ static NSString* const keyLoginResult = @"loginResult";
 
 - (IBAction)loginButton:(id)sender {
 	//INFO: to delete BEGIN
+	
 	[self performSelectorOnMainThread:@selector(loadActivityViewController) withObject:nil waitUntilDone:NO];
 	return;
-	//END
+
+	 //END
 	
 	AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	
@@ -280,8 +293,6 @@ static NSString* const keyLoginResult = @"loginResult";
 	if (error.code == -1004 || error.code == -1003) {
 		[self performSelectorOnMainThread:@selector(displayNetworkError) withObject:nil waitUntilDone:NO];
 	}
-	
-	
 }
 
 @end

@@ -23,6 +23,11 @@
 		903B9CE416DFABC00030471D /* adril.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 903B9CE316DFABC00030471D /* adril.jpg */; };
 		903B9CE816DFADAC0030471D /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903B9CE716DFADAC0030471D /* AccountViewController.m */; };
 		903B9CF016DFBB820030471D /* StickerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903B9CEF16DFBB820030471D /* StickerDetailViewController.m */; };
+		9045B910170F8B4F00436B2E /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B90B170F8B4F00436B2E /* FAImageView.m */; };
+		9045B911170F8B4F00436B2E /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B90D170F8B4F00436B2E /* NSString+FontAwesome.m */; };
+		9045B912170F8B4F00436B2E /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B90F170F8B4F00436B2E /* UIFont+FontAwesome.m */; };
+		9045B914170F8B9600436B2E /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9045B913170F8B9600436B2E /* FontAwesome.ttf */; };
+		9045B917170F9D4400436B2E /* StickerRecord+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B916170F9D4400436B2E /* StickerRecord+Manager.m */; };
 		9050874816FDCB41007AF478 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9050874516FDCB08007AF478 /* libZXingWidget.a */; };
 		9050874A16FDCB5E007AF478 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9050874916FDCB5E007AF478 /* libiconv.dylib */; };
 		9050875216FDD1B6007AF478 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9050875116FDD1B6007AF478 /* CoreAudio.framework */; };
@@ -181,6 +186,15 @@
 		903B9CE716DFADAC0030471D /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		903B9CEE16DFBB820030471D /* StickerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerDetailViewController.h; sourceTree = "<group>"; };
 		903B9CEF16DFBB820030471D /* StickerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerDetailViewController.m; sourceTree = "<group>"; };
+		9045B90A170F8B4F00436B2E /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
+		9045B90B170F8B4F00436B2E /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
+		9045B90C170F8B4F00436B2E /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		9045B90D170F8B4F00436B2E /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		9045B90E170F8B4F00436B2E /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FontAwesome.h"; sourceTree = "<group>"; };
+		9045B90F170F8B4F00436B2E /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
+		9045B913170F8B9600436B2E /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		9045B915170F9D4400436B2E /* StickerRecord+Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "StickerRecord+Manager.h"; sourceTree = "<group>"; };
+		9045B916170F9D4400436B2E /* StickerRecord+Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "StickerRecord+Manager.m"; sourceTree = "<group>"; };
 		9050873F16FDCB08007AF478 /* ZXingWidget.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingWidget.xcodeproj; path = "zxing-2.0/iphone/ZXingWidget/ZXingWidget.xcodeproj"; sourceTree = "<group>"; };
 		9050874916FDCB5E007AF478 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		9050875116FDD1B6007AF478 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -383,6 +397,20 @@
 			name = "Sticker Detail";
 			sourceTree = "<group>";
 		};
+		9045B907170F8B3900436B2E /* Font Awesome */ = {
+			isa = PBXGroup;
+			children = (
+				9045B90A170F8B4F00436B2E /* FAImageView.h */,
+				9045B90B170F8B4F00436B2E /* FAImageView.m */,
+				9045B90C170F8B4F00436B2E /* NSString+FontAwesome.h */,
+				9045B90D170F8B4F00436B2E /* NSString+FontAwesome.m */,
+				9045B90E170F8B4F00436B2E /* UIFont+FontAwesome.h */,
+				9045B90F170F8B4F00436B2E /* UIFont+FontAwesome.m */,
+				9045B913170F8B9600436B2E /* FontAwesome.ttf */,
+			);
+			name = "Font Awesome";
+			sourceTree = "<group>";
+		};
 		9050874016FDCB08007AF478 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +491,7 @@
 		9059589B16D3847B0055BBA8 /* locateMyStickers */ = {
 			isa = PBXGroup;
 			children = (
+				9045B907170F8B3900436B2E /* Font Awesome */,
 				90A1788517014FB9008ABC03 /* Button */,
 				905958BB16D384BC0055BBA8 /* OAuth2 */,
 				905958A416D3847B0055BBA8 /* AppDelegate.h */,
@@ -555,6 +584,8 @@
 				9070E9CD16F3287400E3D409 /* LocationRecord.m */,
 				9070E9C916F3287400E3D409 /* StickerRecord.h */,
 				9070E9CA16F3287400E3D409 /* StickerRecord.m */,
+				9045B915170F9D4400436B2E /* StickerRecord+Manager.h */,
+				9045B916170F9D4400436B2E /* StickerRecord+Manager.m */,
 				9070E9C616F3287400E3D409 /* AccountRecord.h */,
 				9070E9C716F3287400E3D409 /* AccountRecord.m */,
 				9070E9C316F3287400E3D409 /* OptionsRecord.h */,
@@ -1011,6 +1042,7 @@
 				903B9CE216DFA57C0030471D /* settings-icon.png in Resources */,
 				903B9CE416DFABC00030471D /* adril.jpg in Resources */,
 				90A1788217014E3F008ABC03 /* lms-QRcode.png in Resources */,
+				9045B914170F8B9600436B2E /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1056,6 +1088,10 @@
 				9050876016FDD410007AF478 /* ScanWidgetController.m in Sources */,
 				90A1788A17014FC7008ABC03 /* BButton.m in Sources */,
 				90A1788B17014FC7008ABC03 /* BButton+FontAwesome.m in Sources */,
+				9045B910170F8B4F00436B2E /* FAImageView.m in Sources */,
+				9045B911170F8B4F00436B2E /* NSString+FontAwesome.m in Sources */,
+				9045B912170F8B4F00436B2E /* UIFont+FontAwesome.m in Sources */,
+				9045B917170F9D4400436B2E /* StickerRecord+Manager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

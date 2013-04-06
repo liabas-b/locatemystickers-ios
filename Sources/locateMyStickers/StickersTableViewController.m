@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 
 #import "MapViewController.h"
+#import "StickerDetailViewController.h"
 
 #import "OptionsRecord.h"
 
@@ -20,6 +21,12 @@
 #import "JsonTools.h"
 
 #import "UCTabBarItem.h"
+
+#import "NSString+FontAwesome.h"
+#import "UIFont+FontAwesome.h"
+
+#import "StickerRecord+Manager.h"
+
 
 @interface StickersTableViewController ()
 
@@ -40,13 +47,10 @@
 {
     [super viewDidLoad];
 	
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-	
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	
 	self.refreshControl = [[UIRefreshControl alloc] init];
+	
+	self.myPhoneStickerRecordList = nil;
+	self.stickersRecordList = nil;
 	
 	//INFO: setting up refreshControl
 	[self.refreshControl addTarget:self action:@selector(refreshControlRequest)
@@ -63,6 +67,7 @@
 - (void)setup {
 	
 	//INFO: setup location manager
+	//INFO: options
 	NSError *error;
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"OptionsRecord"
@@ -74,8 +79,15 @@
 	
 	if ([self.optionsRecord.locatePhoneEnabled boolValue]== YES) {
 		[[AppDelegate appDelegate].locationManager start];
+
+		NSArray *fetchedStickersRecordObjects = [StickerRecord stickerRecordsOfStickerTypeId:0 managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+		self.myPhoneStickerRecordList = [[NSMutableArray alloc] initWithArray:fetchedStickersRecordObjects];
+		
 	}
 	
+	//INFO: Stickers
+	NSArray *fetchedStickersRecordObjects = [StickerRecord stickerRecordsOfStickerTypeId:1 managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+	self.stickersRecordList = [[NSMutableArray alloc] initWithArray:fetchedStickersRecordObjects];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,16 +107,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
+	if ([self.myPhoneStickerRecordList count] > 0)
+		return 2;
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	//#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return [self.stickersRecordList count];
+	if (section == 0 && [self.optionsRecord.locatePhoneEnabled boolValue] == YES)
+		return [self.myPhoneStickerRecordList count];
+	return [self.stickersRecordList count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -172,21 +184,44 @@
 	}
 	//TODO: configure cell with the sticker model
 	
-	if ([self.stickersRecordList count] > 0) {
-		StickerRecord *stickerRecord = [self.stickersRecordList objectAtIndex:indexPath.row];
-		
-		[stickerRecord debug];
-		
-		cell.nameLabel.text = stickerRecord.name;
-		cell.mapButton.tag = indexPath.row;
-		
-		NSString *timeString = [StickersTableViewController getDiffTimeInStringFromDate:stickerRecord.createdAt];
-		cell.timeLabel.text = timeString;//stickerRecord.createdAt;
-		if (stickerRecord.isActive)
-			cell.activatedImage.backgroundColor = [UIColor greenColor];
-		else
-			cell.activatedImage.backgroundColor = [UIColor redColor];
+	//if ([self.stickersRecordList count] > 0) {
+	StickerRecord *stickerRecord = nil;
+	if (indexPath.section == 0 && [self.myPhoneStickerRecordList count] > 0)
+		stickerRecord = [self.myPhoneStickerRecordList objectAtIndex:indexPath.row];
+	else if (indexPath.section == 0 && [self.myPhoneStickerRecordList count] == 0)
+		stickerRecord = [self.stickersRecordList objectAtIndex:indexPath.row];
+	else if (indexPath.section == 1)
+		stickerRecord = [self.stickersRecordList objectAtIndex:indexPath.row];
+	
+	[stickerRecord debug];
+	
+	cell.nameLabel.text = stickerRecord.name;
+	cell.mapButton.tag = indexPath.row;
+	/*
+	 NSString *timeString = [StickersTableViewController getDiffTimeInStringFromDate:stickerRecord.createdAt];
+	 cell.timeLabel.text = timeString;//stickerRecord.createdAt;
+	 */
+	if (stickerRecord.isActive)
+		cell.activatedImage.backgroundColor = [UIColor greenColor];
+	else
+		cell.activatedImage.backgroundColor = [UIColor redColor];
+	
+	UIView *backgroundView = [[UIView alloc] initWithFrame:cell.frame];
+
+	backgroundView.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0];
+	//backgroundView.backgroundColor = [UIColor colorWithRed:225.0/255.0 green:225.0/255.0 blue:225.0/255.0 alpha:1.0];
+	
+	cell.backgroundView = backgroundView;
+	
+	cell.iconLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:24];
+	if ([stickerRecord.stickerTypeId intValue] == 0) {
+		cell.iconLabel.text = [NSString stringWithFormat:@" %@", [NSString fontAwesomeIconStringForEnum:FAIconMobilePhone]];
 	}
+	else
+		cell.iconLabel.text = [NSString fontAwesomeIconStringForEnum:FAIconQrcode];
+	
+	
+	
 	/*
 	 ScoreRecord *scoreRecord = [_fetchedResultsController objectAtIndexPath:indexPath];
 	 
@@ -267,13 +302,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+
 }
 
 //mapDetail
@@ -281,15 +310,27 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"mapDetail"]) {
 		int row = ((BButton*)sender).tag;
-#pragma warning --> TO test
+#warning --> TO test
 		NSLog(@"mapDetail id: %d", row);
 		StickerRecord *stickerRecord = [self.stickersRecordList objectAtIndex:row];
 		MapViewController *mapViewController = [segue destinationViewController];
 		
 		mapViewController.stickerRecord = stickerRecord;
+	}//stickerDetail
+	if ([[segue identifier] isEqualToString:@"stickerDetail"]) {
+		StickerDetailViewController *stickerDetailViewController = [segue destinationViewController];
+		StickerRecord *stickerRecord = nil;
+		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+		if (indexPath.section == 0 && [self.myPhoneStickerRecordList count] > 0)
+			stickerRecord = [self.myPhoneStickerRecordList objectAtIndex:indexPath.row];
+		else if (indexPath.section == 0 && [self.myPhoneStickerRecordList count] == 0)
+			stickerRecord = [self.stickersRecordList objectAtIndex:indexPath.row];
+		else if (indexPath.section == 1)
+			stickerRecord = [self.stickersRecordList objectAtIndex:indexPath.row];
+		
+		stickerDetailViewController.stickerRecord = stickerRecord;
 	}
 }
-
 
 #pragma mark - data parsing
 
@@ -298,9 +339,10 @@
 	
     // TODO: Create an Operation Queue [OK]
 	
+	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
+	NSString *requestString = [NSString stringWithFormat:@"%@/users/1/stickers.json", hostName];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	
-	//	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://web-service.locatemystickers.com/users/1/stickers.json"]];
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://192.168.1.100:3000/users/1/stickers.json"]];
 	[request setHTTPMethod:@"GET"];
 	
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -312,32 +354,26 @@
 
 - (void)didReceiveData:(NSData *)data {
 	//INFO: debug
-	/*
-	 if (data) {
-	 NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	 NSLog(@"------ <%@>", dataString);
-	 }
-	 else
-	 NSLog(@"BAD");
-	 */
 	
 	if (data) {
-		//TODO: save file
-		if (self.stickersRecordList) {
-			[self.stickersRecordList removeAllObjects];
-		}
-		
-		self.stickersRecordList = [[NSMutableArray alloc] init];
+		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		NSLog(@"------ <%@>", dataString);
+	}
+	else
+		NSLog(@"BAD");
+	
+	
+	if (data) {
 		
 		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
 		
 		//NSLog(@"%@", [dataDictionary objectForKey:@"data"]);
 		
 		for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
-			//NSLog(@"%@", item);
-			StickerRecord *stickerRecord = [[StickerRecord alloc] initWithDictinary:item];
-			[self.stickersRecordList addObject:stickerRecord];
+			StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:item managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
 		}
+		[[AppDelegate appDelegate] saveContext];
+		//TODO: check if we have to fetch for the new/update entry
 		[self.tableView reloadData];
 		
 	}
@@ -349,18 +385,14 @@
 - (void)refreshControlRequest
 {
 	NSLog(@"refreshing...");
-	
-	//[RefreshControl endRefreshing];
-	
+		
 	// Update the table
-	
 	[self parseData];
 	
-	//[NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(testRefreshControl:) userInfo:nil repeats:NO];
-	
+	//[NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(endRefreshControl:) userInfo:nil repeats:NO];
 }
 
-- (void)testRefreshControl:(NSTimer *)timer {
+- (void)endRefreshControl:(NSTimer *)timer {
 	[self.refreshControl endRefreshing];
 }
 

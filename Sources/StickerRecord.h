@@ -10,18 +10,20 @@
 #import <CoreData/CoreData.h>
 
 
-@interface StickerRecord : NSObject//NSManagedObject
+@interface StickerRecord : NSManagedObject
 
-@property (nonatomic, strong) NSString * name;
-@property (nonatomic, strong) NSString * imageName;
-@property (nonatomic, strong) NSString * codeAnnotation;
-@property (nonatomic, strong) NSDate * createdAt;
-@property (nonatomic, strong) NSDate * updatedAt;
-@property (nonatomic, strong) NSNumber * isActive;
-@property (nonatomic, assign) int stickerTypeId;//TODO: add to DB
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * imageName;
+@property (nonatomic, retain) NSString * codeAnnotation;
+@property (nonatomic, retain) NSDate * createdAt;
+@property (nonatomic, retain) NSDate * updatedAt;
+@property (nonatomic, retain) NSNumber * isActive;
+@property (nonatomic, retain) NSNumber * stickerTypeId;//TODO: add to DB
 
 - (id)initWithName:(NSString *)name imageName:(NSString *)imageName codeAnnotation:(NSString *)codeAnnotation;
 - (id)initWithDictinary:(NSDictionary *)dictionary;
+
+- (void)setupWithDictionary:(NSDictionary *)dictionary;
 
 - (void)debug;
 

@@ -12,6 +12,7 @@
 
 @interface StickerCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel *iconLabel;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *activatedImage;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
