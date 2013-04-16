@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StickerRecord.h"
+
+@class BButton;
 
 @interface StickerAddingTableViewController : UITableViewController <UITextFieldDelegate>
+
+@property (nonatomic, retain) StickerRecord *stickerRecord;
 
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
 @property (strong, nonatomic) IBOutlet UISwitch *isActiveSwitch;
@@ -16,10 +21,12 @@
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (strong, nonatomic) IBOutlet UISlider *updateFrequencySlider;
 @property (strong, nonatomic) IBOutlet UITextField *labelsTextField;
-@property (strong, nonatomic) IBOutlet UIButton *finishedButton;
+@property (strong, nonatomic) IBOutlet BButton *finishedButton;
 
 @property(nonatomic, strong) NSString *result;
 
+
 - (IBAction)handleFinishedButton:(id)sender;
+
 
 @end

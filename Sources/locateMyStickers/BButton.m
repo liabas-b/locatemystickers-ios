@@ -7,6 +7,7 @@
 //
 
 #import "BButton.h"
+#import "BButton+FontAwesome.h"
 
 @interface BButton ()
 
@@ -246,5 +247,50 @@
     
     return (sum > 0.8);
 }
+
++ (UIColor *)colorForButtonType:(BButtonType)type
+{
+    UIColor *newColor = nil;
+    
+    switch (type) {
+        case BButtonTypePrimary:
+            newColor = [UIColor colorWithRed:0.00f green:0.33f blue:0.80f alpha:1.00f];
+            break;
+        case BButtonTypeInfo:
+            newColor = [UIColor colorWithRed:0.18f green:0.59f blue:0.71f alpha:1.00f];
+            break;
+        case BButtonTypeSuccess:
+            newColor = [UIColor colorWithRed:0.32f green:0.64f blue:0.32f alpha:1.00f];
+            break;
+        case BButtonTypeWarning:
+            newColor = [UIColor colorWithRed:0.97f green:0.58f blue:0.02f alpha:1.00f];
+            break;
+        case BButtonTypeDanger:
+            newColor = [UIColor colorWithRed:0.74f green:0.21f blue:0.18f alpha:1.00f];
+            break;
+        case BButtonTypeInverse:
+            newColor = [UIColor colorWithRed:0.13f green:0.13f blue:0.13f alpha:1.00f];
+            break;
+////        case BButtonTypeTwitter:
+////            newColor = [UIColor colorWithRed:0.25f green:0.60f blue:1.00f alpha:1.00f];
+////            break;
+//        case BButtonTypeFacebook:
+//            newColor = [UIColor colorWithRed:0.23f green:0.35f blue:0.60f alpha:1.00f];
+//            break;
+//        case BButtonTypePurple:
+//            newColor = [UIColor colorWithRed:0.45f green:0.30f blue:0.75f alpha:1.00f];
+//            break;
+//        case BButtonTypeGray:
+//            newColor = [UIColor colorWithRed:0.60f green:0.60f blue:0.60f alpha:1.00f];
+//            break;
+        case BButtonTypeDefault:
+        default:
+            newColor = [UIColor colorWithRed:0.85f green:0.85f blue:0.85f alpha:1.00f];
+            break;
+    }
+    
+    return newColor;
+}
+
 
 @end

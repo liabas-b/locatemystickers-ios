@@ -74,13 +74,7 @@
 	
 	
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"LocationRecord"
-											  inManagedObjectContext:[AppDelegate appDelegate].managedObjectContext];
-	[fetchRequest setEntity:entity];
-	[fetchRequest setReturnsObjectsAsFaults:NO];
-	
-	NSArray *fetchedObjects = [[AppDelegate appDelegate].managedObjectContext executeFetchRequest:fetchRequest error:&error];
-	self.locationsRecordList = [[NSMutableArray alloc] initWithArray:fetchedObjects];
+	self.locationsRecordList = [[NSMutableArray alloc] initWithArray:[LocationRecord findAll]];
 	
 	[self updateLocations];
 	
@@ -149,7 +143,7 @@
 	
 	
 	//	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://web-service.locatemystickers.com/users/1/stickers/460/locations.json"]];
-	NSString *requestString = [NSString stringWithFormat:@"http://192.168.1.100:3000/users/1/stickers/%@/locations.json", self.stickerRecord.codeAnnotation];
+	NSString *requestString = [NSString stringWithFormat:@"http://192.168.1.100:3000/users/1/stickers/%@/locations.json", self.stickerRecord.stickerId];
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	[request setHTTPMethod:@"GET"];
 	

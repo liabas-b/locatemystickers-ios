@@ -8,6 +8,14 @@
 
 #import "StickerAddingTableViewController.h"
 #import "UITextField+Extended.h"
+#import "BButton.h"
+
+#import "OptionsRecord.h"
+#import "StickerRecord.h"
+
+#import "StickerManager.h"
+#import "LocationManager.h"
+#import "AppDelegate.h"
 
 @interface StickerAddingTableViewController ()
 
@@ -28,13 +36,51 @@
 {
     [super viewDidLoad];
 	
+	
+	[self configure];
+}
+
+- (void)configure {
+	//INFO: notification
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlerAddStickerRecord:) name:keyAddStickerRecord object:nil];
+	
+	[self.finishedButton setType:BButtonTypeDefault];
+	[self.finishedButton setColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]];
+
 	//INFO: hide keyboard
 	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
 	[self.tableView addGestureRecognizer:gestureRecognizer];
 	gestureRecognizer.cancelsTouchesInView = NO;
 	
-	self.nameTextField.text = self.result;
+	[self bindView];
+	
 }
+
+- (void)bindView {
+	if (self.stickerRecord != nil) {
+		self.nameTextField.text = self.stickerRecord.name;
+		self.isActiveSwitch.on = [self.stickerRecord.isActive boolValue];
+		self.descriptionTextView.text = self.stickerRecord.text;
+		if ([self.stickerRecord.text length] > 0)
+			self.descriptionLabel.hidden = YES;
+		//		self.updateFrequencySlider.value = 0.42;
+		
+	}	
+}
+
+- (void)unBindView {
+	if (self.stickerRecord != nil) {
+		self.stickerRecord.name = self.nameTextField.text;
+		self.stickerRecord.isActive = [NSNumber numberWithBool:self.isActiveSwitch.on];
+		self.stickerRecord.text = self.descriptionTextView.text;
+//		self.stickerRecord.labels = @"";
+//		self.stickerRecord.updateFrequency = self.updateFrequencySlider.value;
+	}
+}
+
+
+#warning TODO: configure the view methode
+//TODO: configure the view methode
 
 - (void)didReceiveMemoryWarning
 {
@@ -101,6 +147,41 @@
 	//TODO: - add the sticker to DB (may be need id)
 	//      - POST to the web service
 	//      - GET the id
+	[self unBindView];
+	if (self.stickerRecord != nil) {
+		[[AppDelegate appDelegate].stickerManager addStickerRecord:self.stickerRecord];
+#warning HARD DELETE of the current sticker
+		//[self.stickerRecord deleteEntity];
+		
+		//[[AppDelegate appDelegate].managedObjectContext deleteObject:self.stickerRecord];
+	}
+}
+
+
+- (void)handlerAddStickerRecord:(NSNotification *)notification {
+	if ([notification object] != nil) {
+		NSLog(@"%s", __PRETTY_FUNCTION__);
+
+//		[[AppDelegate appDelegate].managedObjectContext deleteObject:self.stickerRecord];
+		self.stickerRecord = [notification object];
+
+		[self.stickerRecord debug];
+		//[[AppDelegate appDelegate] saveContext];
+		if ([self.stickerRecord.stickerTypeId intValue] == StickerTypeIphone) {
+			NSLog(@"%s Location phone enable", __PRETTY_FUNCTION__);
+			[MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext) {
+				OptionsRecord *localOptionsRecord = [[AppDelegate appDelegate].optionsRecord inContext:localContext];
+				localOptionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:YES];
+			} completion:^{
+				NSLog(@"%s saved OptionsRecord", __PRETTY_FUNCTION__);
+			}];
+			
+#warning SAVE CONTEXT may be
+			NSLog(@"%s Starting location manager", __PRETTY_FUNCTION__);
+			[[AppDelegate appDelegate].locationManager startWithStickerTrackingId:[self.stickerRecord.stickerId intValue]];
+		}
+	}
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
+
 @end

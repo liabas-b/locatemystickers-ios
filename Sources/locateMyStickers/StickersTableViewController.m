@@ -7,8 +7,6 @@
 //
 
 #import "StickersTableViewController.h"
-#import "StickerCell.h"
-#import "AppDelegate.h"
 
 #import "MapViewController.h"
 #import "StickerDetailViewController.h"
@@ -17,19 +15,23 @@
 #import "OptionsRecord+Manager.h"
 
 #import "StickerRecord.h"
-#import "BButton.h"
+#import "StickerRecord+Manager.h"
 
-#import "JsonTools.h"
-
-#import "UCTabBarItem.h"
+#import "StickerManager.h"
 
 #import "NSString+FontAwesome.h"
 #import "UIFont+FontAwesome.h"
 
-#import "StickerRecord+Manager.h"
+#import "UCTabBarItem.h"
+#import "BButton.h"
 
+#import "JsonTools.h"
+#import "ConventionTools.h"
+#import "AppDelegate.h"
 
 @interface StickersTableViewController ()
+
+@property (nonatomic, strong)NSIndexPath *currentIndexPath;
 
 @end
 
@@ -74,38 +76,50 @@
 
 - (void)setup {
 	
+	UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]];
+    [self.tableView setBackgroundView:backgroundView];
+	
+	
+	
 	//INFO: setup location manager
 	//INFO: options
-/*
-	self.optionsRecord = [[OptionsRecord optionsRecordsInManagedObjectContext:[AppDelegate appDelegate].managedObjectContext] lastObject];//[fetchedObjects lastObject];
-
-	if ([self.optionsRecord.locatePhoneEnabled boolValue] == YES) {
-		[[AppDelegate appDelegate].locationManager start];
-	}
-	*/
+	/*
+	 self.optionsRecord = [[OptionsRecord optionsRecordsInManagedObjectContext:[AppDelegate appDelegate].managedObjectContext] lastObject];//[fetchedObjects lastObject];
+	 
+	 if ([self.optionsRecord.locatePhoneEnabled boolValue] == YES) {
+	 [[AppDelegate appDelegate].locationManager start];
+	 }
+	 */
 	[self fetchStickersList];
 }
 
 - (void)fetchStickersList {
 	
 	///self.optionsRecord = [[OptionsRecord optionsRecordsInManagedObjectContext:[AppDelegate appDelegate].managedObjectContext] lastObject];//[fetchedObjects lastObject];
-	
-	if ([[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled boolValue] == YES) {
-		[[AppDelegate appDelegate].locationManager start];
-	}
-	//
-	if ([[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled boolValue] == YES) {
-		
-	}
-	
-	NSArray *fetchedPhoneStickersRecordObjects = [StickerRecord stickerRecordsOfStickerTypeId:2 managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+	/*
+	 if ([[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled boolValue] == YES) {
+	 [[AppDelegate appDelegate].locationManager start];
+	 }
+	 //
+	 if ([[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled boolValue] == YES) {
+	 
+	 }
+	 */
+#warning EDIT StickerType
+	NSArray *fetchedPhoneStickersRecordObjects = [StickerRecord stickerRecordsOfStickerTypeId:StickerTypeIphone];
 	self.myPhoneStickerRecordList = [[NSMutableArray alloc] initWithArray:fetchedPhoneStickersRecordObjects];
-
+	
 	//INFO: Stickers
-	NSArray *fetchedStickersRecordObjects = [StickerRecord stickerRecordsOfStickerTypeId:1 managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+	NSArray *fetchedStickersRecordObjects = [StickerRecord stickerRecordsOfStickerTypeId:StickerTypeSticker];
 	self.stickersRecordList = [[NSMutableArray alloc] initWithArray:fetchedStickersRecordObjects];
 	
 	[self.tableView reloadData];
+	/*
+	NSRange range = NSMakeRange(0, [self.tableView numberOfSections]);
+	NSIndexSet *section = [NSIndexSet indexSetWithIndexesInRange:range];
+	[self.tableView reloadSections:section withRowAnimation:UITableViewRowAnimationNone];
+	 */
 }
 
 - (void)didReceiveMemoryWarning
@@ -127,24 +141,28 @@
 {
 	if ([self.myPhoneStickerRecordList count] > 0)
 		return 2;
-    return 1;
+    return ([self.stickersRecordList count] > 0) ? 1 : 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (section == 0) //&& [[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled boolValue] == YES)
+	if (section == 0 && [self.myPhoneStickerRecordList count] > 0)
 		return [self.myPhoneStickerRecordList count];
 	return [self.stickersRecordList count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 60.0;
+	return 80.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"StickerCell";
     StickerCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+	
+	if (!cell) {
+        cell = [[StickerCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
 	
 	if ([cell isKindOfClass:[StickerCell class]]) {
 		NSLog(@"StickersTableViewController: Configure Cell");
@@ -155,54 +173,8 @@
     return cell;
 }
 
-+ (NSDate *)getDate:(NSString *)date withFormat:(NSString *)format {
-	NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-	[dateFormat setDateFormat:format];
-	return ([dateFormat dateFromString:date]);
-}
-
-
-+ (NSString *)getDiffTimeInStringFromDate:(NSDate *)date { //(NSString *)stringDate withFormat:(NSString *)format {
-	NSString *dateFromPublishedDate;
-	
-	NSDate *baseDate = [StickersTableViewController getDate:date withFormat:@"yyyy-MM-dd HH:mm:ss"];
-	NSDate *currDate = [NSDate date];
-	NSTimeInterval diff = [currDate timeIntervalSinceDate:baseDate];
-	
-	NSInteger secondsDiff = diff;
-	NSInteger minutesDiff = diff / 60;
-	NSInteger houresDiff = (diff / 60) / 60;
-	NSInteger daysDiff = (((diff / 60) / 60) / 24);
-	NSInteger monthsDiff = ((((diff / 60) / 60) / 24 / 31));
-	NSInteger yearsDiff = ((((diff / 60) / 60) / 24 / 31 / 12));
-	
-	if (secondsDiff < 60)
-		dateFromPublishedDate = [NSString stringWithFormat:@"%d sec", secondsDiff];
-	else if (minutesDiff < 60)
-		dateFromPublishedDate = [NSString stringWithFormat:@"%d min", minutesDiff];
-	else if (houresDiff < 24)
-		dateFromPublishedDate = [NSString stringWithFormat:@"%d hour", houresDiff];
-	else if (daysDiff < 31)
-		dateFromPublishedDate = [NSString stringWithFormat:@"%d day", daysDiff];
-	else if (monthsDiff < 12)
-		dateFromPublishedDate = [NSString stringWithFormat:@"%d month", monthsDiff];
-	else
-		dateFromPublishedDate = [NSString stringWithFormat:@"%d years", yearsDiff];
-	
-	return dateFromPublishedDate;
-}
-
-
 - (void)configureCell:(StickerCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-	static NSDateFormatter *formatter = nil;
-	if (formatter == nil) {
-		formatter = [[NSDateFormatter alloc] init];
-		[formatter setDateStyle:NSDateFormatterMediumStyle];
-	}
-	//TODO: configure cell with the sticker model
-	
-	//if ([self.stickersRecordList count] > 0) {
 	StickerRecord *stickerRecord = nil;
 	if (indexPath.section == 0 && [self.myPhoneStickerRecordList count] > 0)
 		stickerRecord = [self.myPhoneStickerRecordList objectAtIndex:indexPath.row];
@@ -211,140 +183,77 @@
 	else if (indexPath.section == 1)
 		stickerRecord = [self.stickersRecordList objectAtIndex:indexPath.row];
 	
-	[stickerRecord debug];
 	
+	[stickerRecord debug];
 	cell.nameLabel.text = stickerRecord.name;
-	cell.mapButton.tag = indexPath.row;
-	/*
-	 NSString *timeString = [StickersTableViewController getDiffTimeInStringFromDate:stickerRecord.createdAt];
-	 cell.timeLabel.text = timeString;//stickerRecord.createdAt;
-	 */
+	NSString *timeString = [ConventionTools getDiffTimeInStringFromDate:stickerRecord.createdAt];
+	NSLog(@"%s - <%@", __PRETTY_FUNCTION__, timeString);
+	timeString = [timeString length] > 0 ? timeString : @"new";
+	cell.timeLabel.text = timeString;
+	
 	if (stickerRecord.isActive)
 		cell.activatedImage.backgroundColor = [UIColor greenColor];
 	else
 		cell.activatedImage.backgroundColor = [UIColor redColor];
 	
-	UIView *backgroundView = [[UIView alloc] initWithFrame:cell.frame];
-
-	backgroundView.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0];
-	//backgroundView.backgroundColor = [UIColor colorWithRed:225.0/255.0 green:225.0/255.0 blue:225.0/255.0 alpha:1.0];
-	
-	cell.backgroundView = backgroundView;
-	
-	cell.iconLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:24];
-	if ([stickerRecord.stickerTypeId intValue] > 1) {
-		cell.iconLabel.text = [NSString stringWithFormat:@" %@", [NSString fontAwesomeIconStringForEnum:FAIconMobilePhone]];
-	}
-	else
-		cell.iconLabel.text = [NSString fontAwesomeIconStringForEnum:FAIconQrcode];
-	
-	
 	
 	/*
-	 ScoreRecord *scoreRecord = [_fetchedResultsController objectAtIndexPath:indexPath];
+	 UIView *backgroundView = [[UIView alloc] initWithFrame:cell.frame];
 	 
-	 ScoreRecordCell *custumCell = (ScoreRecordCell *)cell;
+	 backgroundView.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0];
+	 //backgroundView.backgroundColor = [UIColor colorWithRed:225.0/255.0 green:225.0/255.0 blue:225.0/255.0 alpha:1.0];
 	 
-	 custumCell.titleLabel.text = [NSString stringWithFormat:@"%@%% completed with size %@", scoreRecord.score, scoreRecord.size];
-	 //custumCell.timeLabel.text = [NSString stringWithFormat:@"%@ s", scoreRecord.duration];
-	 
-	 int forHours = [scoreRecord.duration intValue] / 3600;
-	 int remainder = [scoreRecord.duration intValue] % 3600;
-	 int forMinutes = remainder / 60;
-	 int forSeconds = remainder % 60;
-	 
-	 if (forHours > 0)
-	 custumCell.timeLabel.text = [NSString stringWithFormat:@"%d hours %d seconds %d ", forHours, forMinutes, forSeconds];
-	 else if (forMinutes > 0)
-	 custumCell.timeLabel.text = [NSString stringWithFormat:@"%d minutes %d seconds", forMinutes, forSeconds];
-	 else
-	 custumCell.timeLabel.text = [NSString stringWithFormat:@"%d seconds", forSeconds];
-	 
-	 //INFO: set background and icon
-	 UIView *backgroundView = [[UIView alloc] init];
-	 
-	 if ([scoreRecord.score intValue] >= 100) {
-	 backgroundView.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.3];
-	 custumCell.iconImageView.image = winImage;
-	 }
-	 else {
-	 backgroundView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3];
-	 custumCell.iconImageView.image = looseImage;
-	 }
-	 
-	 [cell setBackgroundView:backgroundView];
+	 cell.backgroundView = backgroundView;
 	 */
+	cell.iconLabel.font = [UIFont iconicFontOfSize:24];
+	if ([stickerRecord.stickerTypeId intValue] > StickerTypeSticker) {
+		
+		cell.iconLabel.text = [NSString stringFromAwesomeIcon:FAIconPhone];
+	}
+	else
+		cell.iconLabel.text = [NSString stringFromAwesomeIcon:FAIconQrcode];
+	
+	//
+	
+	
+	[cell setDelegate:self];
+	
+	[cell setFirstStateIconName:@"mathematic-multiply2-icon-white"
+                     firstColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]
+            secondStateIconName:@"editing-delete-icon-white"
+                    secondColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]//[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]
+                  thirdIconName:@"lms-icon-white"
+                     thirdColor:[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]//[UIColor colorWithRed:254.0 / 255.0 green:217.0 / 255.0 blue:56.0 / 255.0 alpha:1.0]
+                 fourthIconName:@"very-basic-globe-icon-white"
+                    fourthColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]
+				   fithIconName:@"very-basic-refresh-icon-white"
+					  fithColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]];//[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]];
+	
+    [cell.contentView setBackgroundColor:[UIColor whiteColor]];
+	
+	[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
-
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+	[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
 //mapDetail
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"mapDetail"]) {
-		int row = ((BButton*)sender).tag;
-#warning --> TO test
-		NSLog(@"mapDetail id: %d", row);
-		StickerRecord *stickerRecord = [self.stickersRecordList objectAtIndex:row];
+	
+	StickerRecord *stickerRecord = [self stickerRecordAtIndexPath:self.currentIndexPath];
+	
+	if ([[segue identifier] isEqualToString:@"mapDetail"]) {
 		MapViewController *mapViewController = [segue destinationViewController];
 		
 		mapViewController.stickerRecord = stickerRecord;
 	}//stickerDetail
 	if ([[segue identifier] isEqualToString:@"stickerDetail"]) {
 		StickerDetailViewController *stickerDetailViewController = [segue destinationViewController];
-		StickerRecord *stickerRecord = nil;
-		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-		if (indexPath.section == 0 && [self.myPhoneStickerRecordList count] > 0)
-			stickerRecord = [self.myPhoneStickerRecordList objectAtIndex:indexPath.row];
-		else if (indexPath.section == 0 && [self.myPhoneStickerRecordList count] == 0)
-			stickerRecord = [self.stickersRecordList objectAtIndex:indexPath.row];
-		else if (indexPath.section == 1)
-			stickerRecord = [self.stickersRecordList objectAtIndex:indexPath.row];
 		
 		stickerDetailViewController.stickerRecord = stickerRecord;
 	}
@@ -385,15 +294,55 @@
 		//NSLog(@"%@", [dataDictionary objectForKey:@"data"]);
 		
 		for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
-			StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:item managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+			StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:item];
 		}
-		[[AppDelegate appDelegate] saveContext];
+		[[NSManagedObjectContext defaultContext] saveNestedContexts];
 		//TODO: check if we have to fetch for the new/update entry
 		[self fetchStickersList];
-//		[self.tableView reloadData];
+		//		[self.tableView reloadData];
 		
 	}
 	[self.refreshControl endRefreshing];
+}
+
+- (void)deleteRowAtIndexPath:(NSIndexPath *)indexPath forStickerCell:(StickerCell *)cell {
+	StickerRecord *stickerRecord = [self stickerRecordAtIndexPath:self.currentIndexPath];
+	if (stickerRecord != nil) {
+		//INFO: remove from web service
+		[[AppDelegate appDelegate].stickerManager removeStickerRecord:stickerRecord];
+		
+		//INFO: remove from view
+		[self.myPhoneStickerRecordList removeObjectIdenticalTo:stickerRecord];
+		[self.stickersRecordList removeObjectIdenticalTo:stickerRecord];
+		
+		[stickerRecord deleteEntity];
+		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+
+		//TODO: delete sticker from webservice
+		
+		NSLog(@"%@", stickerRecord.stickerTypeId);//2
+		
+		
+		if (([self.myPhoneStickerRecordList count] == 0 && [stickerRecord.stickerTypeId intValue] != 1) ||
+			([self.stickersRecordList count] == 0 && [stickerRecord.stickerTypeId intValue] == 1))
+			[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+		else {
+			[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+		}
+#warning MAY be save db
+	}
+}
+
+- (StickerRecord *)stickerRecordAtIndexPath:(NSIndexPath *)indexPath {
+	StickerRecord *stickerRecord = nil;
+	//NSIndexPath *indexPath = self.currentIndexPath;//[self.tableView indexPathForSelectedRow];
+	if (indexPath.section == 0 && [self.myPhoneStickerRecordList count] > 0)
+		stickerRecord = [self.myPhoneStickerRecordList objectAtIndex:indexPath.row];
+	else if (indexPath.section == 0 && [self.myPhoneStickerRecordList count] == 0)
+		stickerRecord = [self.stickersRecordList objectAtIndex:indexPath.row];
+	else if (indexPath.section == 1)
+		stickerRecord = [self.stickersRecordList objectAtIndex:indexPath.row];
+	return stickerRecord;
 }
 
 #pragma mark - Refresh Control
@@ -401,7 +350,7 @@
 - (void)refreshControlRequest
 {
 	NSLog(@"refreshing...");
-		
+	
 	// Update the table
 	[self parseData];
 	
@@ -410,6 +359,49 @@
 
 - (void)endRefreshControl:(NSTimer *)timer {
 	[self.refreshControl endRefreshing];
+}
+
+#pragma mark - MCSwipeTableViewCellDelegate
+
+- (void)swipeStickerTableViewCell:(StickerCell *)cell didTriggerButtonState:(MCSwipeTableViewButtonState)buttonState {
+	NSLog(@"%s - %d", __PRETTY_FUNCTION__, buttonState);
+	
+	self.currentIndexPath = [self.tableView indexPathForCell:cell];
+	
+	NSLog(@"%s - %@", __PRETTY_FUNCTION__, self.currentIndexPath);
+	
+	switch (buttonState) {
+		case MCSwipeTableViewButtonState1:
+			break;
+		case MCSwipeTableViewButtonState2://INFO: delete sticker
+		{
+			[self deleteRowAtIndexPath:self.currentIndexPath forStickerCell:cell];
+		}
+			break;
+		case MCSwipeTableViewButtonState3://INFO: sticker detail
+		{
+			[cell bounceToOrigin];
+			[self performSegueWithIdentifier:@"stickerDetail" sender:self];
+		}
+			break;
+		case MCSwipeTableViewButtonState4://INFO: map
+		{
+			[cell bounceToOrigin];
+			[self performSegueWithIdentifier:@"mapDetail" sender:self];
+			
+		}
+			break;
+		case MCSwipeTableViewButtonState5://INFO: share
+			break;
+			
+		default:
+			break;
+	}
+}
+
+- (void)swipeStickerTableViewCell:(StickerCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode {
+	NSLog(@"%s - %d - %d", __PRETTY_FUNCTION__, state, mode);
+	
 }
 
 

@@ -1,32 +1,23 @@
 //
 //  NSString+FontAwesome.h
 //
-//  Copyright (c) 2012 Alex Usbergo. All rights reserved.
+//  Created by Pit Garbe on 27.09.12.
+//  Copyright (c) 2012 Pit Garbe. All rights reserved.
+//
+//  https://github.com/leberwurstsaft/FontAwesome-for-iOS
 //
 //
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
+//  -----------------------------------------
+//  Edited by Jesse Squires on 2 April, 2013.
 //
-//  The above copyright notice and this permission notice shall be included in
-//  all copies or substantial portions of the Software.
+//  http://github.com/jessesquires/BButton
 //
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  http://hexedbits.com
 //
 
 #import <Foundation/Foundation.h>
 
-static NSString *const kFontAwesomeFamilyName = @"FontAwesome";
-
-typedef NS_ENUM(NSInteger, FAIcon) {
+typedef enum {
     FAIconGlass = 0,
     FAIconMusic,
     FAIconSearch,
@@ -236,62 +227,14 @@ typedef NS_ENUM(NSInteger, FAIcon) {
     FAIconSitemap,
     FAIconUmbrella,
     FAIconPaste,
-    FAIconUserMd,
-	FAIconStethoscope,
-	FAIconBuilding,
-	FAIconHospital,
-	FAIconAmbulance,
-	FAIconMedkit,
-	FAIconHSign,
-	FAIconPlusSignAlt,
-	FAIconSpinner,
-	FAIconCloudDownload,
-	FAIconCloudUpload,
-	FAIconLightbulb,
-	FAIconExchange,
-	FAIconBellAlt,
-	FAIconFileAlt,
-	FAIconBeer,
-	FAIconCoffee,
-	FAIconFood,
-	FAIconFighterJet,
-	FAIconAngleLeft,
-	FAIconAngleRight,
-	FAIconAngleUp,
-	FAIconAngleDown,
-	FAIconDoubleAngleLeft,
-	FAIconDoubleAngleRight,
-	FAIconDoubleAngleUp,
-	FAIconDoubleAngleDown,
-	FAIconCircleBlank,
-	FAIconCircle,
-	FAIconDesktop,
-	FAIconLaptop,
-	FAIconTablet,
-	FAIconMobilePhone,
-	FAIconQuoteLeft,
-	FAIconQuoteRight,
-	FAIconReply,
-	FAIconGithubAlt,
-	FAIconFolderCloseAlt,
-	FAIconFolderOpenAlt,
-    FAIconSuitcase,
-};
+    FAIconUserMd
+} FAIcon;
+
 
 @interface NSString (FontAwesome)
 
-/* Returns the correct enum for a font-awesome icon.
- * The list of identifiers can be found here:
- * http://fortawesome.github.com/Font-Awesome/#all-icons */
-+ (FAIcon)fontAwesomeEnumForIconIdentifier:(NSString*)string;
-
-/* Returns the font-awesome character associated to the
- * icon enum passed as argument */
-+ (NSString*)fontAwesomeIconStringForEnum:(FAIcon)value;
-
-/* Returns the font-awesome character associated to the font-awesome
- * identifier.
- * http://fortawesome.github.com/Font-Awesome/#all-icons */
-+ (NSString*)fontAwesomeIconStringForIconIdentifier:(NSString*)identifier;
++ (NSString *)stringFromAwesomeIcon:(FAIcon)icon;
+- (NSString *)trimWhitespace;
+- (BOOL)isEmpty;
 
 @end

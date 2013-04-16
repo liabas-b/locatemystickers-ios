@@ -19,7 +19,8 @@
 + (BOOL)createDirectory:(NSString *)directoryName atFilePath:(NSString *)filePath;
 
 //Diff time
-+ (NSString *)getDiffTimeInStringFrom:(NSString *)stringDate withFormat:(NSString *)format;
++ (NSString *)getDiffTimeInStringFromDate:(NSDate *)baseDate;
++ (NSString *)getDiffTimeInStringFromString:(NSString *)stringDate withFormat:(NSString *)format;
 
 //Translator
 + (BOOL)string:(NSString *)sourceString containsString:(NSString *)string;

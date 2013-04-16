@@ -12,9 +12,21 @@ static NSString *entityName = @"AccountRecord";
 
 @implementation AccountRecord (Manager)
 
-+ (AccountRecord *)addUpdateAccountWithDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)moc {
-	AccountRecord *accountRecord = nil;
-	
++ (AccountRecord *)addUpdateAccountWithDictionary:(NSDictionary *)dictionary {
+
+	AccountRecord *accountRecord = [AccountRecord findFirstByAttribute:@"idAccount" withValue:[dictionary objectForKey:@"id"]];
+	if (accountRecord == nil) {
+		accountRecord = [AccountRecord createEntity];
+	}
+		accountRecord.idAccount = [NSNumber numberWithBool:[[dictionary objectForKey:@"id"] intValue]];
+		accountRecord.name = [dictionary objectForKey:@"name"];
+		accountRecord.email = [dictionary objectForKey:@"email"];
+		accountRecord.createdAt = [NSDate date];//[dictionary objectForKey:@"created_at"];
+		accountRecord.updatedAt = [NSDate date];//[dictionary objectForKey:@"updated_at"];
+
+	return accountRecord;
+}
+/*
 	NSError *error;
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	NSEntityDescription *entityStickersRecord = [NSEntityDescription entityForName:entityName
@@ -43,6 +55,7 @@ static NSString *entityName = @"AccountRecord";
 	
 	return accountRecord;
 
+
 }
 
 + (NSArray *)accountsRecordsInManagedObjectContext:(NSManagedObjectContext *)moc {
@@ -66,5 +79,5 @@ static NSString *entityName = @"AccountRecord";
 	
 	return fetchedRecordObjects;
 }
-
+ */
 @end

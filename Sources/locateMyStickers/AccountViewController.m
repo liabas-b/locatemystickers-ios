@@ -45,6 +45,8 @@
 	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
 	[self.tableView addGestureRecognizer:gestureRecognizer];
 	
+	[self setup];
+	
 	[self parseData];
 }
 
@@ -52,6 +54,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setup {
+	
+	UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]];
+    [self.tableView setBackgroundView:backgroundView];
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+	[cell.contentView setBackgroundColor:[UIColor whiteColor]];
 }
 
 #pragma mark - view
@@ -106,7 +121,7 @@
 		
 		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
 		if (dataDictionary) {
-			self.accoutRecord = [AccountRecord addUpdateAccountWithDictionary:dataDictionary managedObjectContext:[AppDelegate appDelegate].managedObjectContext];//[[AccountRecord alloc] initWithDictinary:dataDictionary];
+			self.accoutRecord = [AccountRecord addUpdateAccountWithDictionary:dataDictionary];//[[AccountRecord alloc] initWithDictinary:dataDictionary];
 			
 			[self updateView];
 		}

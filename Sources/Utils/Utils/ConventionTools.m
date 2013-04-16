@@ -76,34 +76,73 @@
 
 #pragma mark - Diff time
 
-+ (NSString *)getDiffTimeInStringFrom:(NSString *)stringDate withFormat:(NSString *)format {
-	NSString *dateFromPublishedDate;
-	
-	NSDate *baseDate = [ConventionTools getDate:stringDate withFormat:format];
++ (NSString *)getDiffTimeInStringFromDate:(NSDate *)baseDate {
 	NSDate *currDate = [NSDate date];
 	NSTimeInterval diff = [currDate timeIntervalSinceDate:baseDate];
 	
-	NSInteger secondsDiff = diff;
-	NSInteger minutesDiff = diff / 60;
-	NSInteger houresDiff = (diff / 60) / 60;
-	NSInteger daysDiff = (((diff / 60) / 60) / 24);
-	NSInteger monthsDiff = ((((diff / 60) / 60) / 24 / 31));
-	NSInteger yearsDiff = ((((diff / 60) / 60) / 24 / 31 / 12));
+	int sec = diff;
 	
-	if (secondsDiff < 60)
-		dateFromPublishedDate = [NSString stringWithFormat:@"%d sec", secondsDiff];
-	else if (minutesDiff < 60)
-		dateFromPublishedDate = [NSString stringWithFormat:@"%d min", minutesDiff];
-	else if (houresDiff < 24)
-		dateFromPublishedDate = [NSString stringWithFormat:@"%d hour", houresDiff];
-	else if (daysDiff < 31)
-		dateFromPublishedDate = [NSString stringWithFormat:@"%d day", daysDiff];
-	else if (monthsDiff < 12)
-		dateFromPublishedDate = [NSString stringWithFormat:@"%d month", monthsDiff];
-	else
-		dateFromPublishedDate = [NSString stringWithFormat:@"%d years", yearsDiff];
+    int a_sec = 1;
+    int a_min = a_sec * 60;
+    int an_hour = a_min * 60;
+    int a_day = an_hour * 24;
+    int a_month = a_day * 30;
+    int a_year = a_day * 365;
 	
-	return dateFromPublishedDate;
+    NSString *text = @"";
+	
+    if (sec >= a_year)
+    {
+        int years = floor(sec / a_year);
+        text = [NSString stringWithFormat:@"%d year%@ ", years, years > 0 ? @"s" : @""];
+		
+        sec = sec - (years * a_year);
+    }
+    if (sec >= a_month)
+    {
+        int months = floor(sec / a_month);
+		text = [NSString stringWithFormat:@"%@%d month%@ ", text, months, months > 0 ? @"s" : @""];
+		
+        sec = sec - (months * a_month);
+    }
+    if (sec >= a_day)
+    {
+        int days = floor(sec / a_day);
+		text = [NSString stringWithFormat:@"%@%d day%@ ", text, days, days > 0 ? @"s" : @""];
+		
+        sec = sec - (days * a_day);
+    }
+    if (sec >= an_hour)
+    {
+        int hours = floor(sec / an_hour);
+		text = [NSString stringWithFormat:@"%@%d hour%@ ", text, hours, hours > 0 ? @"s" : @""];
+		
+        sec = sec - (hours * an_hour);
+    }
+    if (sec >= a_min)
+    {
+        int minutes = floor(sec / a_min);
+		text = [NSString stringWithFormat:@"%@%d minute%@ ", text, minutes, minutes > 0 ? @"s" : @""];
+		
+        sec = sec - (minutes * a_min);
+    }
+    if (sec >= a_sec)
+    {
+        int seconds = floor(sec / a_sec);
+		text = [NSString stringWithFormat:@"%@%d second%@", text, seconds, seconds > 0 ? @"s" : @""];
+		
+        sec = sec - (sec * a_sec);//INFO == 0
+    }
+//	NSLog(@"<%@>", text);
+	
+	return text;
+}
+
++ (NSString *)getDiffTimeInStringFromString:(NSString *)stringDate withFormat:(NSString *)format {
+		
+	NSDate *baseDate = [ConventionTools getDate:stringDate withFormat:format];
+	
+	return [ConventionTools getDiffTimeInStringFromDate:baseDate];
 }
 
 #pragma mark -  Translator

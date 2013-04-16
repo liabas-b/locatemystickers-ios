@@ -8,6 +8,10 @@
 
 #import "SearchTableViewController.h"
 
+#import "MapViewController.h"
+
+#import "StickerDetailViewController.h"
+
 #import "StickerCell.h"
 #import "UserCell.h"
 
@@ -24,8 +28,14 @@
 #import "AppDelegate.h"
 #import "SessionManager.h"
 
+#import "NSString+FontAwesome.h"
+#import "UIFont+FontAwesome.h"
+
+#import "ConventionTools.h"
 
 @interface SearchTableViewController ()
+
+@property (nonatomic, strong)NSIndexPath *currentIndexPath;
 
 @end
 
@@ -50,6 +60,8 @@
 	self.searchRecordList = [[NSMutableArray alloc] init];
 	self.filteredSearchRecordList = [[NSMutableArray alloc] init];
 	
+	[self setup];
+	
 	[self.tableView reloadData];
 }
 
@@ -65,6 +77,23 @@
 	self.tabBarItem = [[UCTabBarItem alloc] initWithTitle:@"Search"
 											imageSelected:@"search_black"
 											andUnselected:@"search_white"];
+}
+
+- (void)setup {
+	
+	UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]];
+    [self.tableView setBackgroundView:backgroundView];
+}
+
+- (id)stickerRecordAtIndexPath:(NSIndexPath *)indexPath {
+	id dataRecord = nil;
+	//if (tableView == self.searchDisplayController.searchResultsTableView ) {
+        dataRecord = [self.filteredSearchRecordList objectAtIndex:indexPath.row];
+//    } else {
+//        dataRecord = [self.searchRecordList objectAtIndex:indexPath.row];
+//    }
+	return dataRecord;
 }
 
 #pragma mark - Table view data source
@@ -115,19 +144,79 @@
 - (void)configureUserCell:(UserCell *)cell withAccountRecord:(AccountRecord*)accountRecord {
 	cell.userNameLabel.text = accountRecord.name;
 	cell.stickersNumberLabel.text = @"42";
+	
+	[cell setDelegate:self];
+	
+	[cell setFirstStateIconName:@"mathematic-multiply2-icon-white"
+                     firstColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]
+            secondStateIconName:@"editing-delete-icon-white"
+                    secondColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]//[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]
+                  thirdIconName:@"lms-icon-white"
+                     thirdColor:[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]//[UIColor colorWithRed:254.0 / 255.0 green:217.0 / 255.0 blue:56.0 / 255.0 alpha:1.0]
+                 fourthIconName:@"very-basic-globe-icon-white"
+                    fourthColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]];//[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]];
+	
+    [cell.contentView setBackgroundColor:[UIColor whiteColor]];
+	
+	[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
 - (void)configureStickerCell:(StickerCell *)cell withStickerRecord:(StickerRecord*)stickerRecord {
 	cell.nameLabel.text = stickerRecord.name;
-	cell.timeLabel.text = [stickerRecord.createdAt description];
 	if (stickerRecord.isActive)
 		cell.activatedImage.backgroundColor = [UIColor greenColor];
 	else
 		cell.activatedImage.backgroundColor = [UIColor redColor];
+	
+	
+	cell.timeLabel.text = [ConventionTools getDiffTimeInStringFromDate:stickerRecord.createdAt];//[stickerRecord.createdAt description];
+	
+	if (stickerRecord.isActive)
+		cell.activatedImage.backgroundColor = [UIColor greenColor];
+	else
+		cell.activatedImage.backgroundColor = [UIColor redColor];
+	
+	
+	/*
+	 UIView *backgroundView = [[UIView alloc] initWithFrame:cell.frame];
+	 
+	 backgroundView.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0];
+	 //backgroundView.backgroundColor = [UIColor colorWithRed:225.0/255.0 green:225.0/255.0 blue:225.0/255.0 alpha:1.0];
+	 
+	 cell.backgroundView = backgroundView;
+	 */
+	cell.iconLabel.font = [UIFont iconicFontOfSize:24];
+	if ([stickerRecord.stickerTypeId intValue] > StickerTypeSticker) {//1
+		
+		cell.iconLabel.text = [NSString stringFromAwesomeIcon:FAIconPhone];
+	}
+	else
+		cell.iconLabel.text = [NSString stringFromAwesomeIcon:FAIconQrcode];
+	
+	//
+	
+	
+	[cell setDelegate:self];
+	
+	[cell setFirstStateIconName:@"mathematic-multiply2-icon-white"
+                     firstColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]
+            secondStateIconName:@"editing-delete-icon-white"
+                    secondColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]//[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]
+                  thirdIconName:@"lms-icon-white"
+                     thirdColor:[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]//[UIColor colorWithRed:254.0 / 255.0 green:217.0 / 255.0 blue:56.0 / 255.0 alpha:1.0]
+                 fourthIconName:@"very-basic-globe-icon-white"
+                    fourthColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]
+				   fithIconName:@"very-basic-refresh-icon-white"
+					  fithColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]];//[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]];
+	
+    [cell.contentView setBackgroundColor:[UIColor whiteColor]];
+	
+	[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+	
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 60.0;
+	return 80.0;
 }
 
 #pragma mark - Table view delegate
@@ -144,8 +233,8 @@
 }
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-//	searchBar.showsScopeBar = YES;
-//	[searchBar sizeToFit];
+	//	searchBar.showsScopeBar = YES;
+	//	[searchBar sizeToFit];
 	
 	[self.searchDisplayController setActive:YES animated:YES];
 	[searchBar setShowsCancelButton:YES animated:YES];
@@ -154,11 +243,12 @@
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-//	searchBar.showsScopeBar = NO;
-//	[searchBar sizeToFit];
+	//TODO: maybe cancel current request
+	//	searchBar.showsScopeBar = NO;
+	//	[searchBar sizeToFit];
 	[self.searchDisplayController setActive:NO animated:YES];
-//	self.searchDisplayController.searchBar.showsScopeBar = NO;
-//	[self.searchDisplayController.searchBar sizeToFit];
+	//	self.searchDisplayController.searchBar.showsScopeBar = NO;
+	//	[self.searchDisplayController.searchBar sizeToFit];
 	
 	
 	[searchBar setShowsCancelButton:NO animated:YES];
@@ -179,11 +269,11 @@
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 	//	NSURLResponse *response;
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
-
+		
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 		[self didReceiveAccountData:data forSearchText:searchText];
 	}];
-
+	
 }
 
 - (void)handleStartSearchStickers:(NSString *)searchText {
@@ -195,11 +285,11 @@
 	[request setHTTPMethod:@"GET"];
 	
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-/*
-	NSURLResponse *response;
-	NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];//sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
-	[self didReceiveStickerData:data forSearchText:searchText];
-*/
+	/*
+	 NSURLResponse *response;
+	 NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];//sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
+	 [self didReceiveStickerData:data forSearchText:searchText];
+	 */
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 		[self didReceiveStickerData:data forSearchText:searchText];
@@ -230,11 +320,12 @@
 		if (dataArray) {
 			for (NSDictionary *item in dataArray) {
 				NSLog(@"--|--%@--|--", item);
-				AccountRecord *accountRecord = [AccountRecord addUpdateAccountWithDictionary:item managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
-				[self.searchRecordList addObject:accountRecord];
+				AccountRecord *accountRecord = [AccountRecord addUpdateAccountWithDictionary:item];
+				if (accountRecord)
+					[self.searchRecordList addObject:accountRecord];
 			}
 		}
-
+		
 		//INFO: Filter the array using NSPredicate
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@", searchText];
 		
@@ -270,8 +361,11 @@
 		if (dataDictionary) {
 			for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
 				NSLog(@"--|--%@--|--", item);
-				StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:item managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
-				[self.searchRecordList addObject:stickerRecord];
+				if (item != nil) {
+					StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:item];
+					if (stickerRecord != nil)
+						[self.searchRecordList addObject:stickerRecord];
+				}
 			}
 		}
 		
@@ -293,7 +387,7 @@
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
 	NSLog(@"searchText: %@", searchText);
-
+	
 	NSLog(@"scope: %@", scope);
 	
 	[self.filteredSearchRecordList removeAllObjects];
@@ -308,16 +402,16 @@
 		[self handleStartSearchStickers:searchText];
 		[self handleStartSearchUsers:searchText];
 	}
-
+	
 	
     //INFO: Filter the array using NSPredicate
     /*
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@", searchText];
-	
-	NSArray *tempArray = [self.searchRecordList filteredArrayUsingPredicate:predicate];
-	NSLog(@"%@", tempArray);
-    self.filteredSearchRecordList = [NSMutableArray arrayWithArray:tempArray];
-*/	
+	 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@", searchText];
+	 
+	 NSArray *tempArray = [self.searchRecordList filteredArrayUsingPredicate:predicate];
+	 NSLog(@"%@", tempArray);
+	 self.filteredSearchRecordList = [NSMutableArray arrayWithArray:tempArray];
+	 */
 }
 
 #pragma mark - UISearchDisplayController Delegate Methods
@@ -360,4 +454,109 @@
  filteredCandyArray = [NSMutableArray arrayWithArray:tempArray];
  }
  */
+
+#pragma mark - segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	
+	
+	if ([[segue identifier] isEqualToString:@"mapDetail"]) {
+		StickerRecord *stickerRecord = [self stickerRecordAtIndexPath:self.currentIndexPath];
+		MapViewController *mapViewController = [segue destinationViewController];
+		
+		mapViewController.stickerRecord = stickerRecord;
+	}//stickerDetail
+	if ([[segue identifier] isEqualToString:@"stickerDetail"]) {
+		StickerRecord *stickerRecord = [self stickerRecordAtIndexPath:self.currentIndexPath];
+		
+		StickerDetailViewController *stickerDetailViewController = [segue destinationViewController];
+		
+		stickerDetailViewController.stickerRecord = stickerRecord;
+	}
+}
+
+#pragma mark - MCSwipeStickerTableViewCellDelegate
+
+- (void)swipeStickerTableViewCell:(StickerCell *)cell didTriggerButtonState:(MCSwipeTableViewButtonState)buttonState {
+	NSLog(@"%s - %d", __PRETTY_FUNCTION__, buttonState);
+	
+	self.currentIndexPath = [self.tableView indexPathForCell:cell];
+	
+	NSLog(@"%s - %@", __PRETTY_FUNCTION__, self.currentIndexPath);
+	
+	switch (buttonState) {
+		case MCSwipeTableViewButtonState1:
+			break;
+		case MCSwipeTableViewButtonState2://INFO: delete sticker
+		{
+			//[self deleteRowAtIndexPath:self.currentIndexPath forStickerCell:cell];
+		}
+			break;
+		case MCSwipeTableViewButtonState3://INFO: sticker detail
+		{
+			[cell bounceToOrigin];
+			[self performSegueWithIdentifier:@"stickerDetail" sender:self];
+		}
+			break;
+		case MCSwipeTableViewButtonState4://INFO: map
+		{
+			[cell bounceToOrigin];
+			[self performSegueWithIdentifier:@"mapDetail" sender:self];
+		}
+			break;
+		case MCSwipeTableViewButtonState5://INFO: share
+			break;
+			
+		default:
+			break;
+	}
+}
+
+- (void)swipeStickerTableViewCell:(StickerCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode {
+	NSLog(@"%s - %d - %d", __PRETTY_FUNCTION__, state, mode);
+	
+}
+
+#pragma mark - MCSwipeUserTableViewCellDelegate
+
+- (void)swipeUserTableViewCell:(UserCell *)cell didTriggerButtonState:(MCSwipeTableViewButtonState)buttonState {
+	NSLog(@"%s - %d", __PRETTY_FUNCTION__, buttonState);
+	
+	self.currentIndexPath = [self.tableView indexPathForCell:cell];
+	
+	NSLog(@"%s - %@", __PRETTY_FUNCTION__, self.currentIndexPath);
+	
+	switch (buttonState) {
+		case MCSwipeTableViewButtonState1:
+			break;
+		case MCSwipeTableViewButtonState2://INFO: delete sticker
+		{
+			//[self deleteRowAtIndexPath:self.currentIndexPath forStickerCell:cell];
+		}
+			break;
+		case MCSwipeTableViewButtonState3://INFO: sticker detail
+		{
+			[cell bounceToOrigin];
+			//[self performSegueWithIdentifier:@"stickerDetail" sender:self];
+		}
+			break;
+		case MCSwipeTableViewButtonState4://INFO: map
+		{
+			[cell bounceToOrigin];
+			//[self performSegueWithIdentifier:@"mapDetail" sender:self];
+		}
+			break;
+		case MCSwipeTableViewButtonState5://INFO: share
+			break;
+			
+		default:
+			break;
+	}
+}
+
+- (void)swipeUserTableViewCell:(UserCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode {
+	NSLog(@"%s - %d - %d", __PRETTY_FUNCTION__, state, mode);
+	
+}
+
 @end

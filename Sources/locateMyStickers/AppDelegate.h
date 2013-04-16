@@ -12,6 +12,7 @@
 #import "LocationManager.h"
 #import "SessionManager.h"
 #import "ConnectionManager.h"
+#import "StickerManager.h"
 
 @class OptionsRecord;
 
@@ -23,13 +24,18 @@
 @property (nonatomic, strong) SessionManager *sessionManager;
 @property (nonatomic, strong) ConnectionManager *connectionManager;
 @property (nonatomic, strong) OptionsRecord *optionsRecord;
+@property (nonatomic, strong) StickerManager *stickerManager;
 
+/*
 @property(strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property(strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property(strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 - (void)saveContext;
+ */
 - (void)addMyPhone;
+
++ (NSMutableURLRequest *)requestForCurrentUserWithRoute:(NSString *)route;
 
 + (NSURL *)applicationDocumentsDirectory;
 + (AppDelegate *)appDelegate;

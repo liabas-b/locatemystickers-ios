@@ -14,7 +14,7 @@
 /* Returns the FontAwesome iconic font */
 + (UIFont*)iconicFontOfSize:(CGFloat)size
 {
-    return [UIFont fontWithName:kFontAwesomeFamilyName size:size];
+    return [UIFont fontWithName:@"FontAwesome" size:size];//kFontAwesomeFamilyName
 }
 
 @end

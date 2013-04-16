@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StickerCell.h"
+#import "UserCell.h"
 
-@interface SearchTableViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
+@interface SearchTableViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate, MCSwipeStickerTableViewCellDelegate, MCSwipeUserTableViewCellDelegate>
 
 @property(nonatomic, strong)NSMutableArray *searchRecordList;
 @property(strong,nonatomic)NSMutableArray *filteredSearchRecordList;

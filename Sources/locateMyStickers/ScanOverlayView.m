@@ -134,7 +134,7 @@ static const CGFloat kPadding = 5;
 		
 		UIToolbar *topToolBar = [[UIToolbar alloc] init];
 		[topToolBar setBarStyle:UIBarStyleBlack];
-		UIImage *navBarImage = [UIImage imageNamed:@"header"];
+		UIImage *navBarImage = [UIImage imageNamed:@"lms-navigation-bar"];
 		[topToolBar setBackgroundImage:navBarImage forToolbarPosition:UIToolbarPositionTop barMetrics:UIBarMetricsDefault];
 		CGRect theRectForTopToolBar = CGRectMake(0, 0/*self.view.frame.size.height-88*/,self.frame.size.width, 44);
 		[topToolBar setFrame:theRectForTopToolBar];

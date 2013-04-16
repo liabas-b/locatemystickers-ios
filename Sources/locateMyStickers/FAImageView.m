@@ -71,16 +71,16 @@
 }
 
 #pragma mark - Properties
-
+/*
 - (void)setDefaultIconIdentifier:(NSString*)defaultIconIdentifier
 {
-    self.defaultIcon = [NSString fontAwesomeEnumForIconIdentifier:defaultIconIdentifier];
+    self.defaultIcon = [NSString stringFromAwesomeIcon:<#(FAIcon)#>//fontAwesomeEnumForIconIdentifier:defaultIconIdentifier];
 }
-
+*/
 - (void)setDefaultIcon:(FAIcon)defaultIcon
 {
     _defaultIcon = defaultIcon;
-    _defaultView.text = [NSString fontAwesomeIconStringForEnum:defaultIcon];
+    _defaultView.text = [NSString stringFromAwesomeIcon:defaultIcon];//fontAwesomeIconStringForEnum:defaultIcon];
 }
 
 @end

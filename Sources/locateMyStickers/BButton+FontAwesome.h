@@ -233,4 +233,6 @@ typedef NS_ENUM(NSInteger, FAIcon) {
 - (void)makeAwesomeWithIcon:(FAIcon)icon color:(UIColor *)color;
 - (void)makeAwesomeWithIcon:(FAIcon)icon color:(UIColor *)color fontSize:(CGFloat)fontSize;
 
+
+
 @end

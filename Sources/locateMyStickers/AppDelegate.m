@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "StickerAddingTableViewController.h"
+
 #import "OptionsRecord.h"
 #import "OptionsRecord+Manager.h"
 
@@ -15,6 +17,7 @@
 #import "StickerRecord+Manager.h"
 
 #import "NSDictionary+QueryString.h"
+
 
 #import "JsonTools.h"
 
@@ -48,7 +51,7 @@
 	dispatch_once(&onceToken, ^{
 		//INFo: start loacation manager
 		//INFO: init database
-		[self managedObjectContext];
+		//[self managedObjectContext];
 		
 		/*
 		if ([[OptionsRecord optionsRecordsInManagedObjectContext:self.managedObjectContext] count] == 0) {
@@ -58,19 +61,29 @@
 			self.optionsRecord = [[OptionsRecord optionsRecordsInManagedObjectContext:self.managedObjectContext] lastObject];
 		}
 		*/
+		//		[self dbAlreadyExist];
+		[MagicalRecord setupCoreDataStackWithStoreNamed:@"LmsModel"];
 		
+//		if (self.isFirstLaunch == YES) {
+//			[self performSelectorOnMainThread:@selector(populateDefaultStore) withObject:nil waitUntilDone:NO];
+//		}
+//		else {
+		self.optionsRecord = [[OptionsRecord findAll] lastObject];//optionsRecordsInManagedObjectContext:self.managedObjectContext] lastObject];
+		if (self.optionsRecord == nil) {
+			self.optionsRecord = [OptionsRecord createEntity];
+			
+			self.optionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:NO];
+			self.optionsRecord.displayFollowedStickersEnabled = [NSNumber numberWithBool:YES];
+			[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		}
+//		}
 		
-		if (self.isFirstLaunch == YES) {
-			[self performSelectorOnMainThread:@selector(populateDefaultStore) withObject:nil waitUntilDone:NO];
-		}
-		else {
-			self.optionsRecord = [[OptionsRecord optionsRecordsInManagedObjectContext:self.managedObjectContext] lastObject];
-		}
+		self.stickerManager = [StickerManager new];
 		
 		self.locationManager = [LocationManager new];
 		[self.locationManager setup];
 		
-//		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.103:3000"];
+//		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.104:3000"];
 		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://web-service.locatemystickers.com"];
 		
 		self.connectionManager = [ConnectionManager new];
@@ -81,92 +94,35 @@
 - (void)populateDefaultStore {
 	//INFO: populate if needed
 	
+	self.optionsRecord = [OptionsRecord createEntity];
+
+	[MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext){
+		
+		OptionsRecord *optionsRecord = [self.optionsRecord MR_inContext:localContext];
+		
+		optionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:NO];
+		optionsRecord.displayFollowedStickersEnabled = [NSNumber numberWithBool:YES];
+		
+	} completion:^{
+		self.optionsRecord = [[OptionsRecord findAll] lastObject];
+	}];
 	
-	self.optionsRecord = [OptionsRecord addUpdateOptionsWithDictionary:nil managedObjectContext:self.managedObjectContext];
-	self.optionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:NO];
-	self.optionsRecord.displayFollowedStickersEnabled = [NSNumber numberWithBool:YES];
-	self.optionsRecord.idOption = [NSNumber numberWithInt:0];
-	/*
-	NSDictionary *stickerDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"My Phone", @"name",
-									   @"0", @"id",
-									   [[NSDate date] description], @"created_at",
-									   [[NSDate date] description], @"updated_at",
-									   @"1", @"is_active",
-									   @"0", @"sticker_type_id",
-									   nil];
-	StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:stickerDictionary managedObjectContext:self.managedObjectContext];
-	*/
-	[self saveContext];
-	/*
-	 NSError *error;
-	 if (![self.managedObjectContext save:&error])
-	 NSLog(@"Error saving !! -> %@", error);
-	 [self saveContext];
-	 */
+	//[self saveContext];
 }
 
-- (void)addMyPhone {
-	NSMutableDictionary *stickerDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-											  @"3", @"user_id",
-//											  @"", @"sticker[id]",
-											  @"My Phone", @"sticker[name]",
-//											  [[NSDate date] description], @"sticker[created_at]",
-//											  [[NSDate date] description], @"sticker[updated_at]",
-//											  @"1", @"sticker[is_active]",
-											  @"2", @"sticker[sticker_type_id]",
-											  nil];
-
++ (NSMutableURLRequest *)requestForCurrentUserWithRoute:(NSString *)route {
+	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
+	int currentUserId = 3;
 	
-	{
-		NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
-		NSString *requestString = [NSString stringWithFormat:@"%@/users/3/stickers.json", hostName];
-		NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
-		
-		NSLog(@"requestString = %@", requestString);
-		
-		[request setHTTPMethod:@"POST"];
-//		[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-//		[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-
-		
-		[request setHTTPBody:[[stickerDictionary stringWithFormEncodedComponents] dataUsingEncoding:NSUTF8StringEncoding]];
-		NSData *data = [[stickerDictionary stringWithFormEncodedComponents] dataUsingEncoding:NSUTF8StringEncoding];
-		
-		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		NSLog(@"BODY = %@", dataString);
-		
-		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-		[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
-			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-			[self didReceiveData:data];
-		}];
-		//	StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:stickerDictionary managedObjectContext:self.managedObjectContext];
-		
-	}
+	NSString *requestString = [NSString stringWithFormat:@"%@/users/%d/%@.json", hostName, currentUserId, route];//stickers/67/locations
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
+	
+	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+	[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+	
+	return request;
 }
-
-- (void)didReceiveData:(NSData *)data {
-	
-	if (data) {
-		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		NSLog(@"------ <%@>", dataString);
-	}
-	else
-		NSLog(@"BAD");
-	
-	
-	if (data) {
-		
-		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
-		NSLog(@"%@", dataDictionary);
-		StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:dataDictionary managedObjectContext:self.managedObjectContext];
-		[stickerRecord debug];
-		self.optionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:YES];
-		[self saveContext];
-	}
-	
-}
-
+/*
 - (void)saveContext
 {
     NSError *error = nil;
@@ -180,7 +136,7 @@
         }
     }
 }
-
+*/
 - (void)applicationWillResignActive:(UIApplication *)application
 {
 	// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -215,6 +171,8 @@
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+//#pragma mark - Tools
+
 - (void)cleanUpCach {
 	/*
 	 NSError *error;
@@ -231,6 +189,8 @@
 }
 
 #pragma mark - Core Data stack
+
+/*
 
 // Returns the managed object context for the application.
 // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
@@ -281,34 +241,40 @@
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
-         @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
-         */
+
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
     
     return _persistentStoreCoordinator;
+}
+*/
+#pragma mark - sticker Adding
+
+- (void)stickerAdding:(StickerRecord *)stickerRecord {
+	UIStoryboard *storyboard = [AppDelegate mainStoryBoard];
+	
+	StickerAddingTableViewController *stickerAddingTableViewController  = (StickerAddingTableViewController *)[storyboard instantiateViewControllerWithIdentifier:@"stickerAdding"];
+	
+	stickerAddingTableViewController.stickerRecord = stickerRecord;
+	//stickerAddingTableViewController.result = identifierForVendor;//INFO: unique id for each phone
+	//		stickerAddingTableViewController.nameTextField
+	
+	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:stickerAddingTableViewController];
+	[self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];	
+}
+
+- (BOOL)dbAlreadyExist {
+	NSURL *storeURL = [[AppDelegate applicationDocumentsDirectory] URLByAppendingPathComponent:@"LmsModel.sqlite"];
+    
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	if (![fileManager fileExistsAtPath:[storeURL path]]) {
+		self.isFirstLaunch = YES;
+	}
+	else {
+		self.isFirstLaunch = NO;
+	}
+	return self.isFirstLaunch;
 }
 
 #pragma mark - Application's Documents directory
@@ -358,10 +324,10 @@
 
 #pragma mark - UIAppearances
 
--(void)UIAppearances {
+- (void)UIAppearances {
 	
     if ([[[UIDevice currentDevice] systemVersion] floatValue] > 4.9) {
-		UIImage *navBarImage = [UIImage imageNamed:@"header"];//barre320x44
+		UIImage *navBarImage = [UIImage imageNamed:@"lms-navigation-bar"];//barre320x44
 		[[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
 		
 		//[[UIToolbar appearance] setColor:[UIColor redColor]];//setBackgroundImage:navBarImage];

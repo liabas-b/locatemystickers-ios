@@ -34,28 +34,13 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 - (id)init
 {
     if (self = [super init]) {
-		/*
-        self.measurementArray = [NSMutableArray new];
-		NSError *error;
-		
-		
-		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-		NSEntityDescription *entity = [NSEntityDescription entityForName:@"LocationRecord"
-												  inManagedObjectContext:[AppDelegate appDelegate].managedObjectContext];
-		[fetchRequest setEntity:entity];
-		[fetchRequest setReturnsObjectsAsFaults:NO];
-		
-		NSArray *fetchedObjects = [[AppDelegate appDelegate].managedObjectContext executeFetchRequest:fetchRequest error:&error];
-		*/
-		self.measurementArray = [[NSMutableArray alloc] initWithArray:[LocationRecord locationRecordsInManagedObjectContext:[AppDelegate appDelegate].managedObjectContext]];
-		//[[NSMutableArray alloc] initWithArray:fetchedObjects];
+		self.measurementArray = [[NSMutableArray alloc] initWithArray:[LocationRecord findAll]];//[LocationRecord locationRecordsInManagedObjectContext:[AppDelegate appDelegate].managedObjectContext]];
     }
 	
     return self;
 }
 
-- (void)setup
-{
+- (void)setup {
     self.locationManager = [CLLocationManager new];
     self.locationManager.delegate = self;
 	
@@ -63,8 +48,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
     self.isUpdatingLocation = NO;
 }
 
-- (void)start
-{
+- (void)start {
     if (self.isUpdatingLocation == YES)
         return;
 	
@@ -74,10 +58,15 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 	[self.locationManager startUpdatingLocation];
     
     self.isUpdatingLocation = YES;
+	NSLog(@"%s startUpdatingLocation", __PRETTY_FUNCTION__);
 }
 
-- (void)stop
-{
+- (void)startWithStickerTrackingId:(int)trackingStickerId {
+	self.trackingStickerId = trackingStickerId;
+	[self start];
+}
+
+- (void)stop {
     if (self.isUpdatingLocation == NO)
         return;
 	
@@ -87,39 +76,39 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
         return;
 	
 	[self.locationManager stopUpdatingLocation];
+	NSLog(@"%s stopUpdatingLocation", __PRETTY_FUNCTION__);
 }
 
-- (void)reset
-{
+- (void)reset {
     [self stop];
 	
     [self.measurementArray removeAllObjects];
 }
 
-- (BOOL)isLocationServiceAvailable
-{
+- (BOOL)isLocationServiceAvailable {
     if ([CLLocationManager locationServicesEnabled] == NO) {
         UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"You currently have all location services for this device disabled. If you proceed, you will be asked to confirm whether location services should be reenabled." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [servicesDisabledAlert show];
-		
+		/*
 		[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled = NO;
 		[[AppDelegate appDelegate] saveContext];
-//		return NO;
+		 */
+		//		return NO;
     }
     else if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized) {
         UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"Location Services Not Authorized" message:@"You currently do not authorize this app to use the location service." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [servicesDisabledAlert show];
-		
+		/*
 		[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled = NO;
 		[[AppDelegate appDelegate] saveContext];
-//		return NO;
+		 */
+		//		return NO;
     }
 	//MAY be set to YES
     return YES;
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
 	BOOL isInBackground = NO;
 	
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground)
@@ -140,36 +129,53 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 		
 		//TODO: add location to the web service and add it to DB
 		
-/*
-		int idLocation = 0;
-		if ([self.measurementArray count] > 0) {
-			idLocation = [((LocationRecord*)[self.measurementArray lastObject]).idLocation intValue] + 1;
-		}
-		else {
-			idLocation = 0;
-		}
-		*/
+		/*
+		 int idLocation = 0;
+		 if ([self.measurementArray count] > 0) {
+		 idLocation = [((LocationRecord*)[self.measurementArray lastObject]).idLocation intValue] + 1;
+		 }
+		 else {
+		 idLocation = 0;
+		 }
+		 */
 		//LocationRecord *locationRecord = [LocationRecord new];
 		
-//		[self.measurementArray addObject:locationRecord];
+		//		[self.measurementArray addObject:locationRecord];
 		
 		NSError *error;
-		LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:nil managedObjectContext:[AppDelegate appDelegate].managedObjectContext];//[NSEntityDescription insertNewObjectForEntityForName:@"LocationRecord" inManagedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+		LocationRecord *locationRecord = [LocationRecord createEntity];//[LocationRecord addUpdatelocationWithDictionary:nil managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+		
 		
 		locationRecord.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
 		locationRecord.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
 		locationRecord.createdAt = [NSDate date];
 		locationRecord.updatedAt = [NSDate date];
-		//locationRecord.idLocation = [NSNumber numberWithInt:idLocation];
 
-
-		if (![[AppDelegate appDelegate].managedObjectContext save:&error])
-			NSLog(@"Saving error: %@", error);
+		 [[NSManagedObjectContext defaultContext] saveNestedContexts];
 		
+		//locationRecord.idLocation = [NSNumber numberWithInt:idLocation];
+		/*
+		[MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext){
+			
+			LocationRecord *localLocationRecord = [locationRecord inContext:localContext];
+			
+			localLocationRecord.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
+			localLocationRecord.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
+			localLocationRecord.createdAt = [NSDate date];
+			localLocationRecord.updatedAt = [NSDate date];
+			
+		} completion:^{
+			NSLog(@"%s locationRecord saved", __PRETTY_FUNCTION__);
+		}];
+		*/
+/*		if (![[AppDelegate appDelegate].managedObjectContext save:&error])
+			NSLog(@"Saving error: %@", error);
+		*/
 		//[self.measurementArray addObject:locationRecord];
 		
-		[self addLocation:locationRecord];
-		 
+		[self performSelectorInBackground:@selector(addLocation:) withObject:locationRecord];
+		//		[self addLocation:locationRecord];
+		
 		
     }
 	if (isInBackground) {
@@ -178,40 +184,32 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 	}
 }
 
-
 - (void)addLocation:(LocationRecord *)locationRecord {
 	NSMutableDictionary *locationDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-											  @"3", @"user_id",
-											  [NSString stringWithFormat:@"%@", locationRecord.latitude] , @"location[latitude]",
-											  [NSString stringWithFormat:@"%@", locationRecord.latitude] , @"location[longitude]",
-											  nil];
+											   @"3", @"id",
+											   [NSString stringWithFormat:@"%@", locationRecord.latitude], @"location[latitude]",
+											   [NSString stringWithFormat:@"%@", locationRecord.longitude], @"location[longitude]",
+											   nil];
 	
 	
 	{
-		NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
-		NSString *requestString = [NSString stringWithFormat:@"%@/users/3/stickers/67/locations.json", hostName];
-		NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
+		//INFO: stickerId of the tracked phone
+		NSString *route = [NSString stringWithFormat:@"stickers/%d/locations", self.trackingStickerId];
+		NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
 		
-		NSLog(@"requestString = %@", requestString);
-		
-		[request setHTTPMethod:@"POST"];
-		//		[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-		//		[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-		
-		
+		[request setHTTPMethod:@"POST"];		
 		[request setHTTPBody:[[locationDictionary stringWithFormEncodedComponents] dataUsingEncoding:NSUTF8StringEncoding]];
-		NSData *data = [[locationDictionary stringWithFormEncodedComponents] dataUsingEncoding:NSUTF8StringEncoding];
 		
-		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		NSLog(@"BODY = %@", dataString);
-		
+		/*
+		 NSData *data = [[locationDictionary stringWithFormEncodedComponents] dataUsingEncoding:NSUTF8StringEncoding];
+		 NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		 NSLog(@"BODY = %@", dataString);
+		 */
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 		[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
 			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 			[self didReceiveData:data];
 		}];
-		//	StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:stickerDictionary managedObjectContext:self.managedObjectContext];
-		
 	}
 }
 
@@ -228,24 +226,27 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 	if (data) {
 		
 		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
-		NSLog(@"%@", dataDictionary);
-		LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:dataDictionary managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
-		[locationRecord debug];
-
-		[[AppDelegate appDelegate] saveContext];
+		NSLog(@"dataDictionary: %@", dataDictionary);
+		if (dataDictionary != nil) {
+			LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:dataDictionary];
+			[locationRecord debug];
+			
+			[[NSManagedObjectContext defaultContext] saveNestedContexts];
+			
+			//INFO: insertion of location record in measurementArray and broadcast to subscribers
+			NSInteger count = [self.measurementArray count];
+			[self willChange:NSKeyValueChangeInsertion
+			 valuesAtIndexes:[NSIndexSet indexSetWithIndex:count] forKey: @"measurementArray"];
+			[self.measurementArray insertObject:locationRecord atIndex:count];
+			[self didChange:NSKeyValueChangeInsertion
+			valuesAtIndexes:[NSIndexSet indexSetWithIndex:count] forKey: @"measurementArray"];
+		}
 		
-		NSInteger count = [self.measurementArray count];
-		[self willChange:NSKeyValueChangeInsertion
-         valuesAtIndexes:[NSIndexSet indexSetWithIndex:count] forKey: @"measurementArray"];
-		[self.measurementArray insertObject:locationRecord atIndex:count];
-		[self didChange:NSKeyValueChangeInsertion
-		valuesAtIndexes:[NSIndexSet indexSetWithIndex:count] forKey: @"measurementArray"];
-
 	}
 	
 }
 
-
+#pragma mark - Background task
 
 - (void)doUpdate
 {
@@ -253,13 +254,34 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		
 		[self beginBackgroundUpdateTask];
-#ifdef DEBUG
+
 		NSLog(@"doing Update");
-#endif
 		NSURLResponse *response = nil;
 		NSError  *error = nil;
 		
-		//NSData * responseData = [NSURLConnection sendSynchronousRequest: request returningResponse: &response error: &error];
+#warning could kill you
+		//INFO: test
+		int stickerId = 427;
+		NSMutableDictionary *locationDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+												   @"3", @"id",
+												   @"42", @"location[latitude]",
+												   @"42", @"location[longitude]",
+												   nil];
+
+		NSString *route = [NSString stringWithFormat:@"stickers/%d/locations", stickerId];
+		NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
+		
+		[request setHTTPMethod:@"POST"];
+		[request setHTTPBody:[[locationDictionary stringWithFormEncodedComponents] dataUsingEncoding:NSUTF8StringEncoding]];
+		
+		NSData * responseData = [NSURLConnection sendSynchronousRequest: request returningResponse: &response error: &error];
+		
+		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:responseData];
+		NSLog(@"dataDictionary: %@", dataDictionary);
+		//INFO: making an alert
+		
+		[self notifyBackgroundWithMessage:@"Can speak in background with the Web Service"];
+		
 		
 		// Do something with the result
 		
@@ -270,6 +292,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 - (void)beginBackgroundUpdateTask
 {
     self.backgroundUpdateTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+		[self doUpdate];
         [self endBackgroundUpdateTask];
     }];
 }
@@ -279,4 +302,19 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
     [[UIApplication sharedApplication] endBackgroundTask:self.backgroundUpdateTask];
     self.backgroundUpdateTask = UIBackgroundTaskInvalid;
 }
+
+#pragma mark - notify
+
+- (void)notifyBackgroundWithMessage:(NSString *)message
+{
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    localNotif.fireDate = [NSDate date];
+    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+    localNotif.alertBody = message;
+    localNotif.alertAction = @"Attention";
+    localNotif.soundName = UILocalNotificationDefaultSoundName;
+    localNotif.applicationIconBadgeNumber = 0;
+    [[UIApplication sharedApplication]presentLocalNotificationNow:localNotif];
+}
+
 @end

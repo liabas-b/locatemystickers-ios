@@ -33,6 +33,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	[self setup];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,7 +49,19 @@
 											andUnselected:@"account_white"];
 }
 
+- (void)setup {
+	
+	UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]];
+    [self.tableView setBackgroundView:backgroundView];
+}
+
 #pragma mark - Table view data source
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+	[cell setBackgroundColor:[UIColor whiteColor]];
+}
+
 /*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

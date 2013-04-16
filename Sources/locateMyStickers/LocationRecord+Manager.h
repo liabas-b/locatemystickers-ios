@@ -10,8 +10,7 @@
 
 @interface LocationRecord (Manager)
 
-+ (LocationRecord *)addUpdatelocationWithDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)moc;
++ (LocationRecord *)addUpdatelocationWithDictionary:(NSDictionary *)dictionary;
 
-+ (NSArray *)locationRecordsInManagedObjectContext:(NSManagedObjectContext *)moc;
 
 @end

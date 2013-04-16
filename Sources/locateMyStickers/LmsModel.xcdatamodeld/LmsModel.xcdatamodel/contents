@@ -20,18 +20,21 @@
         <attribute name="locatePhoneEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <entity name="StickerRecord" representedClassName="StickerRecord" syncable="YES">
-        <attribute name="codeAnnotation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isActive" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stickerId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="stickerTypeId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
+    <fetchRequest name="TestFetchRequest" entity="StickerRecord" predicateString="stickerTypeId == 0"/>
     <elements>
         <element name="AccountRecord" positionX="160" positionY="192" width="128" height="120"/>
         <element name="LocationRecord" positionX="160" positionY="192" width="128" height="120"/>
         <element name="OptionsRecord" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="StickerRecord" positionX="160" positionY="192" width="128" height="150"/>
+        <element name="StickerRecord" positionX="160" positionY="192" width="128" height="180"/>
     </elements>
 </model>

@@ -27,4 +27,7 @@ typedef enum {
 
 - (void)setType:(BButtonType)type;
 
++ (UIColor *)colorForButtonType:(BButtonType)type;
+
+
 @end

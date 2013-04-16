@@ -10,6 +10,7 @@
 #import "StickerRecord.h"
 #import "StickerRecord+Manager.h"
 
+#import "ConventionTools.h"
 #import "JsonTools.h"
 #import "AppDelegate.h"
 
@@ -51,8 +52,8 @@
 		else
 			self.activatedImage.backgroundColor = [UIColor redColor];
 		self.nameLabel.text = self.stickerRecord.name;
-		self.createdAtLabel.text = [self.stickerRecord.createdAt description];
-		self.updatedAtLabel.text = [self.stickerRecord.updatedAt description];
+		self.createdAtLabel.text = [ConventionTools getDiffTimeInStringFromDate:self.stickerRecord.createdAt];//[self.stickerRecord.createdAt description];
+		self.updatedAtLabel.text = [ConventionTools getDiffTimeInStringFromDate:self.stickerRecord.updatedAt];//[self.stickerRecord.updatedAt description];
 	}
 }
 
@@ -61,7 +62,7 @@
 - (void)parseData
 {
 	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
-	NSString *requestString = [NSString stringWithFormat:@"%@/users/3/stickers/%@.json", hostName, self.stickerRecord.codeAnnotation];
+	NSString *requestString = [NSString stringWithFormat:@"%@/users/3/stickers/%@.json", hostName, self.stickerRecord.stickerId];
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	
 	NSLog(@"[StickerDetailViewController] requestString: %@", requestString);
@@ -90,7 +91,10 @@
 		
 		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
 
-		self.stickerRecord = [StickerRecord addUpdateStickerWithDictionary:[dataDictionary objectForKey:@"data"] managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+		self.stickerRecord = [StickerRecord addUpdateStickerWithDictionary:[dataDictionary objectForKey:@"data"]];
+		if (self.stickerRecord != nil)
+			[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		
 		[self.stickerRecord debug];
 		
 		[self updateView];

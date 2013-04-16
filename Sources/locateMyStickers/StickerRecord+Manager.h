@@ -11,8 +11,12 @@
 
 @interface StickerRecord (Manager)
 
-+ (StickerRecord *)addUpdateStickerWithDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)moc;
++ (StickerRecord *)addUpdateStickerWithCode:(NSString *)code;
++ (StickerRecord *)addUpdateStickerWithDictionary:(NSDictionary *)dictionary;
 
-+ (NSArray *)stickerRecordsOfStickerTypeId:(int)stickerTypeId managedObjectContext:(NSManagedObjectContext *)moc;
++ (BOOL)stickerIsAlreadyAddedWithCode:(NSString *)code;
+
++ (NSArray *)stickerRecordsOfStickerTypeId:(int)stickerTypeId;
+
 
 @end

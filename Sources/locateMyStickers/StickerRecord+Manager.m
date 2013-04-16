@@ -7,70 +7,66 @@
 //
 
 #import "StickerRecord+Manager.h"
+#import "ConventionTools.h"
 
 static NSString *entityName = @"StickerRecord";
 
 @implementation StickerRecord (Manager)
 
-+ (StickerRecord *)addUpdateStickerWithDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)moc {
-	StickerRecord *stickerRecord = nil;
-	
-	//
-	NSError *error;
-	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	NSEntityDescription *entityStickersRecord = [NSEntityDescription entityForName:entityName
-															inManagedObjectContext:moc];
-	//TODO: filtrer recherche sur id == phone
-	
-	[fetchRequest setEntity:entityStickersRecord];
-	
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"codeAnnotation == %@", [dictionary objectForKey:@"id"]];
-	[fetchRequest setPredicate:predicate];
-	
-	[fetchRequest setReturnsObjectsAsFaults:NO];
-	NSArray *fetchedStickersRecordObjects = [moc executeFetchRequest:fetchRequest error:&error];
-	if ([fetchedStickersRecordObjects count] > 0) {
-		stickerRecord = [fetchedStickersRecordObjects lastObject];
++ (StickerRecord *)addUpdateStickerWithCode:(NSString *)code {//managedObjectContext:(NSManagedObjectContext *)moc {
+	StickerRecord *stickerRecord = [StickerRecord findFirstByAttribute:@"code" withValue:code];
+
+	if (stickerRecord == nil) {
+		stickerRecord = [StickerRecord createEntity];
+		
+		stickerRecord.code = code;
+		[[NSManagedObjectContext defaultContext] saveNestedContexts];
 	}
-	else {
-		stickerRecord = (StickerRecord *)[NSEntityDescription
-										  insertNewObjectForEntityForName:entityName
-										  inManagedObjectContext:moc];
-	}
-	
-	//
-	stickerRecord.name = [dictionary objectForKey:@"name"];
-	stickerRecord.imageName = @"LocateMyStickers-QR-small2.png";
-	stickerRecord.codeAnnotation = [NSString stringWithFormat:@"%@", [dictionary objectForKey:@"id"]];//WARNING: may be bad access
-	stickerRecord.createdAt = [NSDate date];//[dictionary objectForKey:@"created_at"];
-											//	stickerRecord.createdAt = [StickersTableViewController getDate:[dictionary objectForKey:@"created_at"] withFormat:@"yyyy-MM-dd HH:mm:ss"];
-											//			stickerRecord.updatedAt = [StickersTableViewController getDate:[dictionary objectForKey:@"updated_at"] withFormat:@"yyyy-MM-dd HH:mm:ss"];
-	stickerRecord.updatedAt = [NSDate date];//[dictionary objectForKey:@"updated_at"];
-	stickerRecord.isActive = [NSNumber numberWithBool:[[dictionary objectForKey:@"is_active"] boolValue]];
-	stickerRecord.stickerTypeId = [NSNumber numberWithInt:[[dictionary objectForKey:@"sticker_type_id"] intValue]];//sticker_type_id
-	
 	return stickerRecord;
 }
 
-+ (NSArray *)stickerRecordsOfStickerTypeId:(int)stickerTypeId managedObjectContext:(NSManagedObjectContext *)moc {
-	
-	NSError *error;
-	NSEntityDescription *entityStickersRecord = [NSEntityDescription entityForName:entityName
-															inManagedObjectContext:moc];
++ (StickerRecord *)addUpdateStickerWithDictionary:(NSDictionary *)dictionary {
+	StickerRecord *stickerRecord = nil;
 
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"stickerTypeId == %d", stickerTypeId];
+	if (dictionary == nil) {
+		stickerRecord = [StickerRecord createEntity];
+		return stickerRecord;
+	}
 	
-	NSArray *sortDescriptors = [NSArray arrayWithObject:
-								[NSSortDescriptor sortDescriptorWithKey:@"createdAt"
-															  ascending:YES]];
+	if ([dictionary objectForKey:@"code"] != [NSNull null]) {
+		NSLog(@"%s %@", __PRETTY_FUNCTION__, [dictionary objectForKey:[dictionary objectForKey:@"code"]]);
+		stickerRecord = [StickerRecord findFirstByAttribute:@"code" withValue:[dictionary objectForKey:@"code"]];
+	}
+	else if ([dictionary objectForKey:@"id"] != [NSNull null]) {
+		stickerRecord = [StickerRecord findFirstByAttribute:@"stickerId" withValue:[dictionary objectForKey:@"id"]];
+	}
+	if (stickerRecord == nil) {
+		stickerRecord = [StickerRecord createEntity];
+	}
 	
-	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	[fetchRequest setEntity:entityStickersRecord];
-	[fetchRequest setPredicate:predicate];
-	[fetchRequest setSortDescriptors:sortDescriptors];
-	[fetchRequest setReturnsObjectsAsFaults:NO];
+	stickerRecord.name = [dictionary objectForKey:@"name"];
+	stickerRecord.code = [dictionary objectForKey:@"code"] != [NSNull null] ? [dictionary objectForKey:@"code"] : nil;
+	stickerRecord.imageName = @"";
+	stickerRecord.stickerId = [NSNumber numberWithInt:[[dictionary objectForKey:@"id"] intValue]];
+	stickerRecord.createdAt = [ConventionTools getDate:[dictionary objectForKey:@"created_at"] withFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+	stickerRecord.updatedAt = [ConventionTools getDate:[dictionary objectForKey:@"updated_at"] withFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+	stickerRecord.isActive = [NSNumber numberWithBool:[[dictionary objectForKey:@"is_active"] boolValue]];
+	stickerRecord.stickerTypeId = [NSNumber numberWithInt:[[dictionary objectForKey:@"sticker_type_id"] intValue]];
+	stickerRecord.text = [dictionary objectForKey:@"text"] != [NSNull null] ? [dictionary objectForKey:@"text"] : nil;
+
+	[[NSManagedObjectContext defaultContext] saveNestedContexts];
+
+	return stickerRecord;
+}
+
++ (BOOL)stickerIsAlreadyAddedWithCode:(NSString *)code {
+	StickerRecord *stickerRecord = [StickerRecord findFirstByAttribute:@"code" withValue:code];
 	
-	NSArray *fetchedRecordObjects = [moc executeFetchRequest:fetchRequest error:&error];
+	return stickerRecord != nil;
+}
+
++ (NSArray *)stickerRecordsOfStickerTypeId:(int)stickerTypeId  {
+	NSArray *fetchedRecordObjects = [StickerRecord findByAttribute:@"stickerTypeId" withValue:[NSNumber numberWithInt:stickerTypeId] andOrderBy:@"createdAt" ascending:NO];
 	
 	return fetchedRecordObjects;
 }

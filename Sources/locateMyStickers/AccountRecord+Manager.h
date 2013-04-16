@@ -10,8 +10,6 @@
 
 @interface AccountRecord (Manager)
 
-+ (AccountRecord *)addUpdateAccountWithDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)moc;
-
-+ (NSArray *)accountsRecordsInManagedObjectContext:(NSManagedObjectContext *)moc;
++ (AccountRecord *)addUpdateAccountWithDictionary:(NSDictionary *)dictionary;
 
 @end
