@@ -40,9 +40,19 @@
 	[self configure];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlerAddStickerRecord:) name:keyAddStickerRecord object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:keyAddStickerRecord object:nil];
+}
+
 - (void)configure {
 	//INFO: notification
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlerAddStickerRecord:) name:keyAddStickerRecord object:nil];
+
 	
 	[self.finishedButton setType:BButtonTypeDefault];
 	[self.finishedButton setColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]];

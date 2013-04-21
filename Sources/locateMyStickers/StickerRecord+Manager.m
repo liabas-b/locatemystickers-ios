@@ -15,19 +15,22 @@ static NSString *entityName = @"StickerRecord";
 
 + (StickerRecord *)addUpdateStickerWithCode:(NSString *)code {//managedObjectContext:(NSManagedObjectContext *)moc {
 	StickerRecord *stickerRecord = [StickerRecord findFirstByAttribute:@"code" withValue:code];
-
+	
 	if (stickerRecord == nil) {
-		stickerRecord = [StickerRecord createEntity];
-		
-		stickerRecord.code = code;
-		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		stickerRecord = [StickerRecord findFirstByAttribute:@"stickerId" withValue:code];
+		if (stickerRecord == nil) {
+			stickerRecord = [StickerRecord createEntity];
+			
+			stickerRecord.code = code;
+			[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		}
 	}
 	return stickerRecord;
 }
 
 + (StickerRecord *)addUpdateStickerWithDictionary:(NSDictionary *)dictionary {
 	StickerRecord *stickerRecord = nil;
-
+	
 	if (dictionary == nil) {
 		stickerRecord = [StickerRecord createEntity];
 		return stickerRecord;
@@ -53,9 +56,9 @@ static NSString *entityName = @"StickerRecord";
 	stickerRecord.isActive = [NSNumber numberWithBool:[[dictionary objectForKey:@"is_active"] boolValue]];
 	stickerRecord.stickerTypeId = [NSNumber numberWithInt:[[dictionary objectForKey:@"sticker_type_id"] intValue]];
 	stickerRecord.text = [dictionary objectForKey:@"text"] != [NSNull null] ? [dictionary objectForKey:@"text"] : nil;
-
+	
 	[[NSManagedObjectContext defaultContext] saveNestedContexts];
-
+	
 	return stickerRecord;
 }
 

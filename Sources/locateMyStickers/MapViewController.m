@@ -7,22 +7,21 @@
 //
 
 #import "MapViewController.h"
-#import "UCTabBarItem.h"
-
-#import "JsonTools.h"
 
 #import "LocationRecord.h"
-#import "StickerRecord.h"
+#import "LocationRecord+Manager.h"
 
-#import "AppDelegate.h"
+#import "StickerRecord.h"
+#import "StickerRecord+Manager.h"
 
 #import "LocAnnotation.h"
 #import "LocationManager.h"
 
+#import "UCTabBarItem.h"
+#import "JsonTools.h"
+#import "AppDelegate.h"
 
 @interface MapViewController ()
-
-
 
 @end
 
@@ -43,8 +42,38 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 	
-	[[AppDelegate appDelegate].locationManager addObserver:self forKeyPath:keyPathMeasurementArray options:NSKeyValueObservingOptionNew context:nil];
 	
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	//INFO: depend if the selected sticker is My phone
+	[[AppDelegate appDelegate].locationManager addObserver:self forKeyPath:keyPathMeasurementArray options:NSKeyValueObservingOptionNew context:nil];
+
+	
+	//INFO: debug
+	self.stickerRecord = [StickerRecord addUpdateStickerWithCode:@"3"];
+	
+	[self.stickerRecord debug];
+	
+	//INFO: if sticker Record is set --> ask for all the location of the sticker
+	//TODO: set the view with the stickerRecord
+	if (self.stickerRecord != nil) {
+		[self parseData];
+	}
+	
+
+#warning Setting locations records (BAD)
+	self.mapView.locationsRecordList = [[NSMutableArray alloc] initWithArray:[LocationRecord findAll]];
+#warning Updating locations
+	[self.mapView updateLocations];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	[[AppDelegate appDelegate].locationManager removeObserver:self forKeyPath:keyPathMeasurementArray];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,40 +89,21 @@
 											andUnselected:@"world_white"];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	
-	//INFO: if sticker Record is set --> ask for all the location of the sticker
-	//TODO: set the view with the stickerRecord
-	if (self.stickerRecord != nil) {
-		[self parseData];
-	}
-	
-	//	self.locationsRecordList = [[NSMutableArray alloc] init];
-	NSError *error;
-	
-	
-	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	self.locationsRecordList = [[NSMutableArray alloc] initWithArray:[LocationRecord findAll]];
-	
-	[self updateLocations];
-	
-}
-
 #pragma mark - map
 
+/*
 - (void)updateLocations {
 	
 	
-	/*MKCoordinateRegion region =  MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 50, 50);
-	 
-	 if (region.center.longitude == -180.00000000)
-	 return;
-	 
-	 
-	 [self.mapView setRegion:region animated:NO];
-	 */
-	BOOL startExist = NO;
+//	MKCoordinateRegion region =  MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 50, 50);
+//	 
+//	 if (region.center.longitude == -180.00000000)
+//	 return;
+//	 
+//	 
+//	 [self.mapView setRegion:region animated:NO];
+	
+ BOOL startExist = NO;
 	for (LocationRecord *locationRecord in self.locationsRecordList) {
 		CLLocationCoordinate2D startCoordinate;
 		CLLocationCoordinate2D endCoordinate;
@@ -133,7 +143,7 @@
     }
 }
 
-
+*/
 #pragma mark - data parsing
 
 - (void)parseData
@@ -143,8 +153,16 @@
 	
 	
 	//	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://web-service.locatemystickers.com/users/1/stickers/460/locations.json"]];
-	NSString *requestString = [NSString stringWithFormat:@"http://192.168.1.100:3000/users/1/stickers/%@/locations.json", self.stickerRecord.stickerId];
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
+	
+	
+	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", self.stickerRecord.stickerId];
+	NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
+	
+	NSLog(@"%s request: %@", __PRETTY_FUNCTION__, [request description]);
+
+	
+//	NSString *requestString = [NSString stringWithFormat:@"http://192.168.1.100:3000/users/3/stickers/%@/locations.json", self.stickerRecord.stickerId];
+//	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	[request setHTTPMethod:@"GET"];
 	
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -167,11 +185,11 @@
 	
 	if (data) {
 		//TODO: save file
-		if (self.locationsRecordList) {
-			[self.locationsRecordList removeAllObjects];
+		if (self.mapView.locationsRecordList) {
+			[self.mapView.locationsRecordList removeAllObjects];
 		}
 		
-		self.locationsRecordList = [[NSMutableArray alloc] init];
+		self.mapView.locationsRecordList = [[NSMutableArray alloc] init];
 		
 		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
 		
@@ -179,11 +197,14 @@
 		
 		for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
 			//NSLog(@"%@", item);
-			LocationRecord *locationRecord = [[LocationRecord alloc] initWithDictinary:item];
-			[self.locationsRecordList addObject:locationRecord];
+			LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:item];//[[LocationRecord alloc] initWithDictinary:item];
+			[self.mapView.locationsRecordList addObject:locationRecord];
 		}
 		//TODO: update map with locationsRecordList
-		[self updateLocations];
+		
+#warning updating LOCATIONS
+		[self.mapView updateLocations];
+		//[self updateLocations];
 		
 	}
 }

@@ -16,6 +16,8 @@
 #import "NSString+QueryString.h"
 #import "NSDictionary+QueryString.h"
 
+#import "StickerManager.h"
+
 #import "JsonTools.h"
 
 #import "AppDelegate.h"
@@ -189,7 +191,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 											   @"3", @"id",
 											   [NSString stringWithFormat:@"%@", locationRecord.latitude], @"location[latitude]",
 											   [NSString stringWithFormat:@"%@", locationRecord.longitude], @"location[longitude]",
-											   nil];
+											   nil];//[NSString stringWithFormat:@"%d", self.trackingStickerId]
 	
 	
 	{
@@ -261,12 +263,14 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 		
 #warning could kill you
 		//INFO: test
-		int stickerId = 427;
+		int stickerId = [AppDelegate appDelegate].stickerManager ;
+
+		
 		NSMutableDictionary *locationDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
 												   @"3", @"id",
 												   @"42", @"location[latitude]",
 												   @"42", @"location[longitude]",
-												   nil];
+												   nil];//[NSString stringWithFormat:@"%d", self.trackingStickerId]
 
 		NSString *route = [NSString stringWithFormat:@"stickers/%d/locations", stickerId];
 		NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];

@@ -69,7 +69,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
-	//[[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:keyStickerAlreadyExistOnWebService];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:keyStickerAlreadyExistOnWebService object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,7 +81,7 @@
 - (void)setup {
 		
 	//INFO: configure view
-	UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+	UIView *backgroundView = [[UIView alloc] initWithFrame:self.view.frame];
     [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]];
     [self.tableView setBackgroundView:backgroundView];
 }

@@ -88,11 +88,15 @@
 #pragma mark - CustomTabBarProtocol
 
 - (void)didTouchButton:(id)sender {
-	
+		
 	UIStoryboard *storyboard = [AppDelegate mainStoryBoard];
 	
 	self.scanWidgetController = (ScanWidgetController *)[storyboard instantiateViewControllerWithIdentifier:@"scanner"];
 	//[[ScanWidgetController alloc] initWithDelegate:self showCancel:YES OneDMode:NO];
+
+//	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+
+	
 	[self.scanWidgetController setupWithDelegate:self showCancel:YES OneDMode:NO];
 	QRCodeReader *qrcodeReader = [[QRCodeReader alloc] init];
 	NSSet *readers = [[NSSet alloc ] initWithObjects:qrcodeReader, nil];
@@ -100,8 +104,10 @@
 	
 	[self presentViewController:self.scanWidgetController animated:YES completion:nil];
 	
+
 	if ([self.delegate respondsToSelector:@selector(didTouchButton:)]) {
 		[self.delegate didTouchButton:self];
+		
 	}
 }
 
@@ -109,7 +115,7 @@
 
 - (void)zxingController:(ScanWidgetController *)controller didScanResult:(NSString *)result manualMode:(BOOL)manual {
 	NSLog(@"result: %@", result);
-	
+
 	//INFO: dissmiss cureent view
 	[self.scanWidgetController dismissViewControllerAnimated:YES completion:^ {
 		[self performSelectorOnMainThread:@selector(handleStickerAdding:) withObject:result waitUntilDone:NO];
@@ -216,7 +222,7 @@
 											   otherButtonTitles:nil];
         [alert show];
 	}
-	//[[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:keyStickerAlreadyExistOnWebService];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:keyStickerAlreadyExistOnWebService object:nil];
 }
 
 @end

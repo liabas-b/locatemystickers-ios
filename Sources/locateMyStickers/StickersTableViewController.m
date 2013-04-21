@@ -97,15 +97,7 @@
 - (void)fetchStickersList {
 	
 	///self.optionsRecord = [[OptionsRecord optionsRecordsInManagedObjectContext:[AppDelegate appDelegate].managedObjectContext] lastObject];//[fetchedObjects lastObject];
-	/*
-	 if ([[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled boolValue] == YES) {
-	 [[AppDelegate appDelegate].locationManager start];
-	 }
-	 //
-	 if ([[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled boolValue] == YES) {
-	 
-	 }
-	 */
+
 #warning EDIT StickerType
 	NSArray *fetchedPhoneStickersRecordObjects = [StickerRecord stickerRecordsOfStickerTypeId:StickerTypeIphone];
 	self.myPhoneStickerRecordList = [[NSMutableArray alloc] initWithArray:fetchedPhoneStickersRecordObjects];
@@ -263,9 +255,14 @@
 
 - (void)parseData
 {
-	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
-	NSString *requestString = [NSString stringWithFormat:@"%@/users/3/stickers.json", hostName];
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
+	
+	NSString *route = [NSString stringWithFormat:@"stickers"];
+	NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
+
+	
+//	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
+//	NSString *requestString = [NSString stringWithFormat:@"%@/users/3/stickers.json", hostName];
+//	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	
 	[request setHTTPMethod:@"GET"];
 	

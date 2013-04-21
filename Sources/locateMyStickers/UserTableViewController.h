@@ -10,4 +10,7 @@
 
 @interface UserTableViewController : UITableViewController
 
+@property (strong, nonatomic) IBOutlet UILabel *yourStickersLabel;
+@property (strong, nonatomic) IBOutlet UILabel *sharringStickersLabel;
+
 @end

@@ -133,20 +133,35 @@ static const CGFloat kPadding = 5;
 		//INFO: toolBar
 		
 		UIToolbar *topToolBar = [[UIToolbar alloc] init];
-		[topToolBar setBarStyle:UIBarStyleBlack];
-		UIImage *navBarImage = [UIImage imageNamed:@"lms-navigation-bar"];
-		[topToolBar setBackgroundImage:navBarImage forToolbarPosition:UIToolbarPositionTop barMetrics:UIBarMetricsDefault];
-		CGRect theRectForTopToolBar = CGRectMake(0, 0/*self.view.frame.size.height-88*/,self.frame.size.width, 44);
+		
+		
+		const float colorMask[6] = {222, 255, 222, 255, 222, 255};
+		UIImage *img = [[UIImage alloc] init];
+		UIImage *maskedImage = [UIImage imageWithCGImage: CGImageCreateWithMaskingColors(img.CGImage, colorMask)];
+		UIImage *topBarImage = [UIImage imageNamed:@"lms-navigation-bar"];
+		
+		[topToolBar setBackgroundImage:topBarImage forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+		//		[topToolBar setBarStyle:UIBarStyleBlack];
+		//UIImage *navBarImage = [UIImage imageNamed:@"lms-navigation-bar"];
+		//[topToolBar setBackgroundImage:navBarImage forToolbarPosition:UIToolbarPositionTop barMetrics:UIBarMetricsDefault];
+		[topToolBar setBackgroundColor:[UIColor clearColor]];
+		CGRect theRectForTopToolBar = CGRectMake(0, 0, self.frame.size.width, 44);
 		[topToolBar setFrame:theRectForTopToolBar];
 
+		
+
 		NSMutableArray *items = [[NSMutableArray alloc] init];
-		cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancel:)];//-> WARNING bad action
+
+		UIImage *cancelImage = [UIImage imageNamed:@"cancel-top_bar"];
+		cancelButton = [[UIBarButtonItem alloc] initWithImage:cancelImage style:UIBarButtonItemStylePlain target:self action:@selector(cancel:)];
 		[items addObject:cancelButton];
 		 
 		 UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 		 [items addObject:spacer];
 
-		torchButton = [[UIBarButtonItem alloc] initWithTitle:@"torch" style:UIBarButtonItemStylePlain target:self action:@selector(torch:)];//-> WARNING bad action
+		
+		UIImage *torchImage = [UIImage imageNamed:@"light-top_bar"];
+		torchButton = [[UIBarButtonItem alloc] initWithImage:torchImage style:UIBarButtonItemStylePlain target:self action:@selector(torch:)];
 		[items addObject:torchButton];
 
 		

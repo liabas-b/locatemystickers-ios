@@ -43,12 +43,7 @@ static NSString* const keyLoginResult = @"loginResult";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyboard:) name:keyHideKeyboard object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginResult:) name:keyLoginResult object:nil];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChanged:) name:keyNetworkStatusChanged object:nil];
-	
+		
 	[self setupSessionManager];
 	[self setupStyle];
 	
@@ -121,10 +116,24 @@ static NSString* const keyLoginResult = @"loginResult";
 	[appDelegate.sessionManager loadAccessToken];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyboard:) name:keyHideKeyboard object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginResult:) name:keyLoginResult object:nil];	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChanged:) name:keyNetworkStatusChanged object:nil];
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:keyHideKeyboard object:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:keyLoginResult object:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:keyNetworkStatusChanged object:nil];
+}
+
 - (void)dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:keyHideKeyboard];
-	[[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:keyLoginResult];
-	[[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:keyNetworkStatusChanged];
 }
 
 - (void)didReceiveMemoryWarning

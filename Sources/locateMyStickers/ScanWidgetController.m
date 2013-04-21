@@ -75,6 +75,7 @@
 		[theOverLayView setDelegate:self];
 		self.overlayView = theOverLayView;
 		
+		
 		if (readingTimeOut <= 0)
             readingTimeOut = 30;
 	}
