@@ -8,10 +8,24 @@
 
 #import <MapKit/MapKit.h>
 
+@class LocationRecord;
+@class StickerRecord;
+
+typedef enum {
+	LMSMapBoundary,
+    LMSMapOverlay,
+    LMSMapPins,
+    LMSMapCharacterLocation,
+    LMSMapRoute
+} LMSMapOption;
+
 @interface LMSMapView : MKMapView <MKMapViewDelegate>
 
 @property (nonatomic, strong)NSMutableArray *locationsRecordList;
+@property (nonatomic, strong)NSMutableArray *stickerRecordList;
 
-- (void)updateLocations;
+@property (nonatomic, strong)StickerRecord *currentStickerRecord;
+
+- (void)loadSelectedOptions;
 
 @end

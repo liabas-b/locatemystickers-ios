@@ -8,6 +8,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 
+static const int MINIMUM_DELTA_METERS = 10.0;
 extern NSString* const keyPathMeasurementArray;
 
 @interface LocationManager : CLLocationManager <CLLocationManagerDelegate>

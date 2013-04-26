@@ -28,6 +28,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, assign) BOOL isUpdatingLocation;
+@property (nonatomic, assign) CLLocationCoordinate2D startCoordinate;
 
 @end
 
@@ -36,7 +37,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 - (id)init
 {
     if (self = [super init]) {
-		self.measurementArray = [[NSMutableArray alloc] initWithArray:[LocationRecord findAll]];//[LocationRecord locationRecordsInManagedObjectContext:[AppDelegate appDelegate].managedObjectContext]];
+		self.measurementArray = [[NSMutableArray alloc] init];//WithArray:[LocationRecord findAll]];//[LocationRecord locationRecordsInManagedObjectContext:[AppDelegate appDelegate].managedObjectContext]];
     }
 	
     return self;
@@ -84,7 +85,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 - (void)reset {
     [self stop];
 	
-    [self.measurementArray removeAllObjects];
+    //[self.measurementArray removeAllObjects];
 }
 
 - (BOOL)isLocationServiceAvailable {
@@ -92,8 +93,8 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
         UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"You currently have all location services for this device disabled. If you proceed, you will be asked to confirm whether location services should be reenabled." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [servicesDisabledAlert show];
 		/*
-		[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled = NO;
-		[[AppDelegate appDelegate] saveContext];
+		 [AppDelegate appDelegate].optionsRecord.locatePhoneEnabled = NO;
+		 [[AppDelegate appDelegate] saveContext];
 		 */
 		//		return NO;
     }
@@ -101,8 +102,8 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
         UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"Location Services Not Authorized" message:@"You currently do not authorize this app to use the location service." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [servicesDisabledAlert show];
 		/*
-		[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled = NO;
-		[[AppDelegate appDelegate] saveContext];
+		 [AppDelegate appDelegate].optionsRecord.locatePhoneEnabled = NO;
+		 [[AppDelegate appDelegate] saveContext];
 		 */
 		//		return NO;
     }
@@ -111,78 +112,47 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+	static BOOL isStarted;
 	BOOL isInBackground = NO;
 	
-    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground)
-    {
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
         isInBackground = YES;
     }
 	
-	//TODO: check more
     for (CLLocation* location in locations) {
-#ifdef DEBUG
 		NSLog(@"<%@>", location);
-#endif
         NSTimeInterval locationAge = -[location.timestamp timeIntervalSinceNow];
-        if (locationAge > 5.0) return; //the location reading is too old
+        if (locationAge > 5.0) break; //the location reading is too old
 		
         // test that the horizontal accuracy does not indicate an invalid measurement
-        if (location.horizontalAccuracy < 0) return;
-		
-		//TODO: add location to the web service and add it to DB
-		
-		/*
-		 int idLocation = 0;
-		 if ([self.measurementArray count] > 0) {
-		 idLocation = [((LocationRecord*)[self.measurementArray lastObject]).idLocation intValue] + 1;
-		 }
-		 else {
-		 idLocation = 0;
-		 }
-		 */
-		//LocationRecord *locationRecord = [LocationRecord new];
-		
-		//		[self.measurementArray addObject:locationRecord];
-		
-		NSError *error;
-		LocationRecord *locationRecord = [LocationRecord createEntity];//[LocationRecord addUpdatelocationWithDictionary:nil managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+        if (location.horizontalAccuracy < 0) break;
 		
 		
-		locationRecord.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
-		locationRecord.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
-		locationRecord.createdAt = [NSDate date];
-		locationRecord.updatedAt = [NSDate date];
-
-		 [[NSManagedObjectContext defaultContext] saveNestedContexts];
-		
-		//locationRecord.idLocation = [NSNumber numberWithInt:idLocation];
-		/*
-		[MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext){
-			
-			LocationRecord *localLocationRecord = [locationRecord inContext:localContext];
-			
-			localLocationRecord.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
-			localLocationRecord.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
-			localLocationRecord.createdAt = [NSDate date];
-			localLocationRecord.updatedAt = [NSDate date];
-			
-		} completion:^{
-			NSLog(@"%s locationRecord saved", __PRETTY_FUNCTION__);
-		}];
-		*/
-/*		if (![[AppDelegate appDelegate].managedObjectContext save:&error])
-			NSLog(@"Saving error: %@", error);
-		*/
-		//[self.measurementArray addObject:locationRecord];
-		
-		[self performSelectorInBackground:@selector(addLocation:) withObject:locationRecord];
-		//		[self addLocation:locationRecord];
-		
-		
+		if (isStarted == NO) {
+			self.startCoordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
+			isStarted = YES;
+		}
+		else {
+			CLLocationDistance metersApart = MKMetersBetweenMapPoints(self.startCoordinate, location.coordinate);
+			if (metersApart > MINIMUM_DELTA_METERS) { //form a path overlay, add it to the map view
+				
+				LocationRecord *locationRecord = [LocationRecord createEntity];//[LocationRecord addUpdatelocationWithDictionary:nil managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
+				
+				locationRecord.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
+				locationRecord.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
+				locationRecord.createdAt = [NSDate date];
+				locationRecord.updatedAt = [NSDate date];
+				
+				[[NSManagedObjectContext defaultContext] saveNestedContexts];
+				
+				[self performSelectorInBackground:@selector(addLocation:) withObject:locationRecord];
+				
+				self.startCoordinate = location.coordinate;
+			}
+		}
     }
 	if (isInBackground) {
 		[self doUpdate];
-		//
 	}
 }
 
@@ -199,7 +169,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 		NSString *route = [NSString stringWithFormat:@"stickers/%d/locations", self.trackingStickerId];
 		NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
 		
-		[request setHTTPMethod:@"POST"];		
+		[request setHTTPMethod:@"POST"];
 		[request setHTTPBody:[[locationDictionary stringWithFormEncodedComponents] dataUsingEncoding:NSUTF8StringEncoding]];
 		
 		/*
@@ -210,6 +180,8 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 		[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
 			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+			[locationRecord deleteEntity];
+			[[NSManagedObjectContext defaultContext] saveNestedContexts];
 			[self didReceiveData:data];
 		}];
 	}
@@ -233,15 +205,17 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 			LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:dataDictionary];
 			[locationRecord debug];
 			
-			[[NSManagedObjectContext defaultContext] saveNestedContexts];
+			//[[NSManagedObjectContext defaultContext] saveNestedContexts];
 			
 			//INFO: insertion of location record in measurementArray and broadcast to subscribers
+			/*
 			NSInteger count = [self.measurementArray count];
 			[self willChange:NSKeyValueChangeInsertion
 			 valuesAtIndexes:[NSIndexSet indexSetWithIndex:count] forKey: @"measurementArray"];
 			[self.measurementArray insertObject:locationRecord atIndex:count];
 			[self didChange:NSKeyValueChangeInsertion
 			valuesAtIndexes:[NSIndexSet indexSetWithIndex:count] forKey: @"measurementArray"];
+			 */
 		}
 		
 	}
@@ -256,7 +230,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		
 		[self beginBackgroundUpdateTask];
-
+		
 		NSLog(@"doing Update");
 		NSURLResponse *response = nil;
 		NSError  *error = nil;
@@ -264,14 +238,14 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 #warning could kill you
 		//INFO: test
 		int stickerId = [AppDelegate appDelegate].stickerManager ;
-
+		
 		
 		NSMutableDictionary *locationDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
 												   @"3", @"id",
 												   @"42", @"location[latitude]",
 												   @"42", @"location[longitude]",
 												   nil];//[NSString stringWithFormat:@"%d", self.trackingStickerId]
-
+		
 		NSString *route = [NSString stringWithFormat:@"stickers/%d/locations", stickerId];
 		NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
 		

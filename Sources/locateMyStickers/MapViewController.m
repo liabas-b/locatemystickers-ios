@@ -42,17 +42,17 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 	
-	
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 
 	//INFO: depend if the selected sticker is My phone
-	[[AppDelegate appDelegate].locationManager addObserver:self forKeyPath:keyPathMeasurementArray options:NSKeyValueObservingOptionNew context:nil];
+	//[[AppDelegate appDelegate].locationManager addObserver:self forKeyPath:keyPathMeasurementArray options:NSKeyValueObservingOptionNew context:nil];
 
 	
 	//INFO: debug
+#warning DEBUG --> to remove
 	self.stickerRecord = [StickerRecord addUpdateStickerWithCode:@"3"];
 	
 	[self.stickerRecord debug];
@@ -60,20 +60,22 @@
 	//INFO: if sticker Record is set --> ask for all the location of the sticker
 	//TODO: set the view with the stickerRecord
 	if (self.stickerRecord != nil) {
-		[self parseData];
+		//[self parseData];
 	}
 	
 
 #warning Setting locations records (BAD)
-	self.mapView.locationsRecordList = [[NSMutableArray alloc] initWithArray:[LocationRecord findAll]];
+	NSArray *array = [LocationRecord findAllSortedBy:@"idLocation" ascending:YES];
+	self.mapView.locationsRecordList = [[NSMutableArray alloc] initWithArray:array];
 #warning Updating locations
-	[self.mapView updateLocations];
+	//[self.mapView updateLocations];
+	[self.mapView loadSelectedOptions];
 }
 
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
-	[[AppDelegate appDelegate].locationManager removeObserver:self forKeyPath:keyPathMeasurementArray];
+	//[[AppDelegate appDelegate].locationManager removeObserver:self forKeyPath:keyPathMeasurementArray];
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,80 +91,15 @@
 											andUnselected:@"world_white"];
 }
 
-#pragma mark - map
-
-/*
-- (void)updateLocations {
-	
-	
-//	MKCoordinateRegion region =  MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 50, 50);
-//	 
-//	 if (region.center.longitude == -180.00000000)
-//	 return;
-//	 
-//	 
-//	 [self.mapView setRegion:region animated:NO];
-	
- BOOL startExist = NO;
-	for (LocationRecord *locationRecord in self.locationsRecordList) {
-		CLLocationCoordinate2D startCoordinate;
-		CLLocationCoordinate2D endCoordinate;
-		
-		if (startExist == NO) {
-			startCoordinate = CLLocationCoordinate2DMake([locationRecord.longitude floatValue], [locationRecord.latitude floatValue]);
-			startExist = YES;
-		}
-		else {
-			endCoordinate = CLLocationCoordinate2DMake([locationRecord.longitude floatValue], [locationRecord.latitude floatValue]);;
-			
-			
-			MKMapPoint points[2] = {MKMapPointForCoordinate(startCoordinate), MKMapPointForCoordinate(endCoordinate)};
-			MKPolyline* polyline = [MKPolyline polylineWithPoints:points count:2];
-			[self.mapView addOverlay:polyline];
-			
-			startCoordinate = endCoordinate;
-			
-		}
-	}
-}
-
-- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
-{
-    if ([overlay isKindOfClass:[MKPolyline class]]) {
-        MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:(MKPolyline *)overlay];
-		
-        polylineView.lineWidth = 0;
-        polylineView.strokeColor = [[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0] colorWithAlphaComponent:1];
-        polylineView.lineJoin = kCGLineJoinRound;
-        polylineView.lineCap = kCGLineCapRound;
-		
-        return polylineView;
-    }
-    else {
-        return nil;
-    }
-}
-
-*/
 #pragma mark - data parsing
 
 - (void)parseData
-{
-	
-    // TODO: Create an Operation Queue [OK]
-	
-	
-	//	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://web-service.locatemystickers.com/users/1/stickers/460/locations.json"]];
-	
-	
+{	
 	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", self.stickerRecord.stickerId];
 	NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
 	
 	NSLog(@"%s request: %@", __PRETTY_FUNCTION__, [request description]);
 
-	
-//	NSString *requestString = [NSString stringWithFormat:@"http://192.168.1.100:3000/users/3/stickers/%@/locations.json", self.stickerRecord.stickerId];
-//	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	[request setHTTPMethod:@"GET"];
 	
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -186,7 +123,7 @@
 	if (data) {
 		//TODO: save file
 		if (self.mapView.locationsRecordList) {
-			[self.mapView.locationsRecordList removeAllObjects];
+			//[self.mapView.locationsRecordList removeAllObjects];
 		}
 		
 		self.mapView.locationsRecordList = [[NSMutableArray alloc] init];
@@ -197,15 +134,14 @@
 		
 		for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
 			//NSLog(@"%@", item);
-			LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:item];//[[LocationRecord alloc] initWithDictinary:item];
+			LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:item];
 			[self.mapView.locationsRecordList addObject:locationRecord];
 		}
 		//TODO: update map with locationsRecordList
 		
 #warning updating LOCATIONS
-		[self.mapView updateLocations];
-		//[self updateLocations];
-		
+		//[self.mapView updateLocations];
+		[self.mapView loadSelectedOptions];
 	}
 }
 
@@ -213,13 +149,12 @@
 {
     if ([keyPath isEqualToString:keyPathMeasurementArray]) {
         if ([change[NSKeyValueChangeKindKey] intValue] == NSKeyValueChangeInsertion) {
-			//TODO:[self.mapView addOverlay:polyline];
-			
-			//
+
+			/*
             NSIndexSet* insertedIndexSet = change[NSKeyValueChangeIndexesKey];
 			
             [insertedIndexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-				//INFO: experimental
+#warning TO CHECK
 				NSLog(@"observeValueForKeyPath: %@", [AppDelegate appDelegate].locationManager.measurementArray[idx]);
 				
 				CLLocation* location = [AppDelegate appDelegate].locationManager.measurementArray[idx];
@@ -227,6 +162,7 @@
 				[self.mapView addAnnotation:annotation];
 				
 			}];
+			 */
         }
     }
     else {

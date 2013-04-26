@@ -45,6 +45,8 @@
 		9053A0AC1720E05400FFC782 /* light-top_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9053A0AA1720E05400FFC782 /* light-top_bar@2x.png */; };
 		9053A0AF1720E25E00FFC782 /* cancel-top_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9053A0AD1720E25E00FFC782 /* cancel-top_bar.png */; };
 		9053A0B01720E25E00FFC782 /* cancel-top_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9053A0AE1720E25E00FFC782 /* cancel-top_bar@2x.png */; };
+		90588BBA1724D5FF0097735F /* LMSAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 90588BB71724D5FF0097735F /* LMSAnnotation.m */; };
+		90588BBB1724D5FF0097735F /* LMSAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90588BB91724D5FF0097735F /* LMSAnnotationView.m */; };
 		9059589616D3847B0055BBA8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9059589516D3847B0055BBA8 /* UIKit.framework */; };
 		9059589816D3847B0055BBA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9059589716D3847B0055BBA8 /* Foundation.framework */; };
 		9059589A16D3847B0055BBA8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9059589916D3847B0055BBA8 /* CoreGraphics.framework */; };
@@ -275,6 +277,10 @@
 		9053A0AA1720E05400FFC782 /* light-top_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-top_bar@2x.png"; sourceTree = "<group>"; };
 		9053A0AD1720E25E00FFC782 /* cancel-top_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel-top_bar.png"; sourceTree = "<group>"; };
 		9053A0AE1720E25E00FFC782 /* cancel-top_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel-top_bar@2x.png"; sourceTree = "<group>"; };
+		90588BB61724D5FF0097735F /* LMSAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSAnnotation.h; sourceTree = "<group>"; };
+		90588BB71724D5FF0097735F /* LMSAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSAnnotation.m; sourceTree = "<group>"; };
+		90588BB81724D5FF0097735F /* LMSAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSAnnotationView.h; sourceTree = "<group>"; };
+		90588BB91724D5FF0097735F /* LMSAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSAnnotationView.m; sourceTree = "<group>"; };
 		9059589116D3847B0055BBA8 /* LMS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LMS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9059589516D3847B0055BBA8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9059589716D3847B0055BBA8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -627,6 +633,17 @@
 			name = "Scan icon";
 			sourceTree = "<group>";
 		};
+		90588BB31724D5D40097735F /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				90588BB61724D5FF0097735F /* LMSAnnotation.h */,
+				90588BB71724D5FF0097735F /* LMSAnnotation.m */,
+				90588BB81724D5FF0097735F /* LMSAnnotationView.h */,
+				90588BB91724D5FF0097735F /* LMSAnnotationView.m */,
+			);
+			name = Annotations;
+			sourceTree = "<group>";
+		};
 		9059588616D3847B0055BBA8 = {
 			isa = PBXGroup;
 			children = (
@@ -727,6 +744,7 @@
 		90616E6F172486A700FF88DE /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				90588BB31724D5D40097735F /* Annotations */,
 				90616E72172486CA00FF88DE /* LMSMapView.h */,
 				90616E73172486CA00FF88DE /* LMSMapView.m */,
 			);
@@ -1486,6 +1504,8 @@
 				90710A7D171CD7040095D112 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				90710A7E171CD7040095D112 /* MagicalRecord.m in Sources */,
 				90616E74172486CA00FF88DE /* LMSMapView.m in Sources */,
+				90588BBA1724D5FF0097735F /* LMSAnnotation.m in Sources */,
+				90588BBB1724D5FF0097735F /* LMSAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
