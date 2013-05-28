@@ -54,8 +54,8 @@
 	//INFO: debug
 #warning DEBUG --> to remove
 	self.stickerRecord = [StickerRecord addUpdateStickerWithCode:@"3"];
-	
-	[self.stickerRecord debug];
+	if (self.stickerRecord)
+		[self.stickerRecord debug];
 	
 	//INFO: if sticker Record is set --> ask for all the location of the sticker
 	//TODO: set the view with the stickerRecord
@@ -65,11 +65,17 @@
 	
 
 #warning Setting locations records (BAD)
-	NSArray *array = [LocationRecord findAllSortedBy:@"idLocation" ascending:YES];
-	self.mapView.locationsRecordList = [[NSMutableArray alloc] initWithArray:array];
+	
 #warning Updating locations
 	//[self.mapView updateLocations];
+	[self performSelectorOnMainThread:@selector(setupMap) withObject:nil waitUntilDone:YES];
 	[self.mapView loadSelectedOptions];
+}
+
+- (void)setupMap {
+	NSArray *array = [LocationRecord findAllSortedBy:@"idLocation" ascending:YES];
+	NSLog(@"%s %@", __PRETTY_FUNCTION__, array);
+	self.mapView.locationsRecordList = [[NSMutableArray alloc] initWithArray:array];
 }
 
 
@@ -114,7 +120,7 @@
 	
 	if (data) {
 		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		NSLog(@"------ <%@>", dataString);
+		NSLog(@"%s ------ <%@>", __PRETTY_FUNCTION__, dataString);
 	}
 	else
 		NSLog(@"BAD");
@@ -135,7 +141,8 @@
 		for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
 			//NSLog(@"%@", item);
 			LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:item];
-			[self.mapView.locationsRecordList addObject:locationRecord];
+			if (locationRecord)
+				[self.mapView.locationsRecordList addObject:locationRecord];
 		}
 		//TODO: update map with locationsRecordList
 		

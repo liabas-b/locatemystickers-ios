@@ -194,7 +194,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQB-GO-MVm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1684" y="-211"/>
+            <point key="canvasLocation" x="1852" y="-227"/>
         </scene>
         <!--Map View Controller - Map-->
         <scene sceneID="e3r-JY-Wzm">
@@ -1155,14 +1155,129 @@
         <image name="settings-icon.png" width="64" height="64"/>
         <image name="share-icon.png" width="32" height="32"/>
     </resources>
+    <classes>
+        <class className="AccountViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="BButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BButton.h"/>
+        </class>
+        <class className="CustomCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomCell.h"/>
+        </class>
+        <class className="CustomTabBarViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomTabBarViewController.h"/>
+        </class>
+        <class className="LMSMapView" superclassName="MKMapView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LMSMapView.h"/>
+        </class>
+        <class className="LoginTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="loginButton:"/>
+                <relationship kind="outlet" name="loginAcivityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="loginTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="popupLoginView" candidateClass="PopUpLoginView"/>
+            </relationships>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="LMSMapView"/>
+            </relationships>
+        </class>
+        <class className="PopUpLoginView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PopUpLoginView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndocator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="ScanWidgetController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScanWidgetController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="countButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="SearchTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchTableViewController.h"/>
+        </class>
+        <class className="SettingsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="handleDisplayFollowedStickersEnabled:"/>
+                <relationship kind="action" name="handleLocatePhoneEnabled:"/>
+                <relationship kind="outlet" name="displayFollowedStickersEnabledSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="locatePhoneEnabledSwitch" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
+        <class className="StickerAddingTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StickerAddingTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="handleFinishedButton:"/>
+                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="finishedButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="isActiveSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="labelsTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="updateFrequencySlider" candidateClass="UISlider"/>
+            </relationships>
+        </class>
+        <class className="StickerCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StickerCell.h"/>
+            <relationships>
+                <relationship kind="action" name="handlerMapButton:"/>
+                <relationship kind="outlet" name="activatedImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="iconLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mapButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="StickerDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StickerDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activatedImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="createdAtLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="updatedAtLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="StickersTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StickersTableViewController.h"/>
+        </class>
+        <class className="UserCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="stickersNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="UserTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="sharringStickersLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="yourStickersLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fHp-7O-dbY"/>
         <segue reference="SkR-n6-tZh"/>
+        <segue reference="fHp-7O-dbY"/>
         <segue reference="pHZ-S0-Prj"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1,3 +1,3 @@
 Init Repos
 ----------------------------
-> write the read me.
+iOS repos for LMS

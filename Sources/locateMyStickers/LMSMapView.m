@@ -104,9 +104,10 @@
 
 - (void)addLMSPins {
 	
+	NSLog(@"%s", __PRETTY_FUNCTION__);
 	LocationRecord *locationRecord = [self.locationsRecordList lastObject];
-//    for (LocationRecord *locationRecord in self.locationsRecordList) {
-		
+	//    for (LocationRecord *locationRecord in self.locationsRecordList) {
+	if (locationRecord) {
 		[locationRecord debug];
 		
         LMSAnnotation *annotation = [[LMSAnnotation alloc] init];
@@ -116,14 +117,20 @@
         annotation.type = PVAttractionDefault;//[attraction[@"type"] integerValue];
         annotation.subtitle = [[locationRecord idLocation] description];//attraction[@"subtitle"];
         [self addAnnotation:annotation];
-//    }
+	}
+	//    }
 	
 }
 
 - (void)addRoute {
+	NSLog(@"%s", __PRETTY_FUNCTION__);
 	
-	[self initRegionWithStartLocationRecord:self.locationsRecordList[0] andEndLocationRecord:[self.locationsRecordList lastObject]];
+	LocationRecord *firstLocationRecord = self.locationsRecordList[0];
+	LocationRecord *lastLocationRecord = [self.locationsRecordList lastObject];
 	
+	if (firstLocationRecord && lastLocationRecord) {
+		[self initRegionWithStartLocationRecord:firstLocationRecord andEndLocationRecord:lastLocationRecord];
+	}
 	NSInteger pointsCount = [self.locationsRecordList count];
 	
     CLLocationCoordinate2D pointsToUse[pointsCount];
@@ -133,18 +140,22 @@
 		pointsToUse[i++] = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
 	}
     
-    MKPolyline *myPolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:pointsCount];
-    
-    [self addOverlay:myPolyline];
+	if (i > 0) {
+		MKPolyline *myPolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:pointsCount];
+		
+		[self addOverlay:myPolyline];
+	}
 }
 
 - (void)addBoundary {
+	NSLog(@"%s", __PRETTY_FUNCTION__);
 	//    MKPolygon *polygon = [MKPolygon polygonWithCoordinates:self.park.boundary
 	// count:self.park.boundaryPointsCount];
 	//    [self.mapView addOverlay:polygon];
 }
 
 - (void)addCharacterLocation {
+	NSLog(@"%s", __PRETTY_FUNCTION__);
 	/*
 	 NSString *batmanFilePath = [[NSBundle mainBundle] pathForResource:@"BatmanLocations" ofType:@"plist"];
 	 NSArray *batmanLocations = [NSArray arrayWithContentsOfFile:batmanFilePath];
@@ -174,12 +185,15 @@
 }
 
 - (void)loadSelectedOptions {
+	NSLog(@"%s", __PRETTY_FUNCTION__);
+	
     [self removeAnnotations:self.annotations];
     [self removeOverlays:self.overlays];
 	
 	
     for (NSNumber *option in self.selectedOptions) {
         switch ([option integerValue]) {
+				
             case LMSMapOverlay:
                 [self addOverlay];
                 break;
@@ -203,6 +217,7 @@
 }
 
 - (IBAction)mapTypeChanged:(id)sender {
+	NSLog(@"%s", __PRETTY_FUNCTION__);
 	/*
 	 switch (self.mapTypeSegmentedControl.selectedSegmentIndex) {
 	 case 0:

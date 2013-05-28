@@ -37,7 +37,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 - (id)init
 {
     if (self = [super init]) {
-		self.measurementArray = [[NSMutableArray alloc] init];//WithArray:[LocationRecord findAll]];//[LocationRecord locationRecordsInManagedObjectContext:[AppDelegate appDelegate].managedObjectContext]];
+		//self.measurementArray = [[NSMutableArray alloc] init];//WithArray:[LocationRecord findAll]];//[LocationRecord locationRecordsInManagedObjectContext:[AppDelegate appDelegate].managedObjectContext]];
     }
 	
     return self;
@@ -92,19 +92,11 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
     if ([CLLocationManager locationServicesEnabled] == NO) {
         UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"You currently have all location services for this device disabled. If you proceed, you will be asked to confirm whether location services should be reenabled." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [servicesDisabledAlert show];
-		/*
-		 [AppDelegate appDelegate].optionsRecord.locatePhoneEnabled = NO;
-		 [[AppDelegate appDelegate] saveContext];
-		 */
 		//		return NO;
     }
     else if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized) {
         UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"Location Services Not Authorized" message:@"You currently do not authorize this app to use the location service." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [servicesDisabledAlert show];
-		/*
-		 [AppDelegate appDelegate].optionsRecord.locatePhoneEnabled = NO;
-		 [[AppDelegate appDelegate] saveContext];
-		 */
 		//		return NO;
     }
 	//MAY be set to YES
@@ -136,16 +128,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 			CLLocationDistance metersApart = MKMetersBetweenMapPoints(self.startCoordinate, location.coordinate);
 			if (metersApart > MINIMUM_DELTA_METERS) { //form a path overlay, add it to the map view
 				
-				LocationRecord *locationRecord = [LocationRecord createEntity];//[LocationRecord addUpdatelocationWithDictionary:nil managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
-				
-				locationRecord.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
-				locationRecord.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
-				locationRecord.createdAt = [NSDate date];
-				locationRecord.updatedAt = [NSDate date];
-				
-				[[NSManagedObjectContext defaultContext] saveNestedContexts];
-				
-				[self performSelectorInBackground:@selector(addLocation:) withObject:locationRecord];
+				[self performSelectorOnMainThread:@selector(setupLocationRecord:) withObject:location waitUntilDone:YES];
 				
 				self.startCoordinate = location.coordinate;
 			}
@@ -154,6 +137,21 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 	if (isInBackground) {
 		[self doUpdate];
 	}
+}
+
+- (void)setupLocationRecord:(CLLocation *)location {
+	LocationRecord *locationRecord = [LocationRecord createEntity];
+	
+	locationRecord.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
+	locationRecord.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
+	locationRecord.createdAt = [NSDate date];
+	locationRecord.updatedAt = [NSDate date];
+	
+	[[NSManagedObjectContext defaultContext] saveNestedContexts];
+	
+	//[self performSelectorInBackground:@selector(addLocation:) withObject:locationRecord];
+	[locationRecord debug];
+	[self addLocation:locationRecord];
 }
 
 - (void)addLocation:(LocationRecord *)locationRecord {
@@ -178,10 +176,13 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 		 NSLog(@"BODY = %@", dataString);
 		 */
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-		[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
+		[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err) {
 			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-			[locationRecord deleteEntity];
-			[[NSManagedObjectContext defaultContext] saveNestedContexts];
+			if (locationRecord) {
+#warning BAD -- We have to delete/update this record
+//				[locationRecord deleteEntity];
+//				[[NSManagedObjectContext defaultContext] saveNestedContexts];
+			}
 			[self didReceiveData:data];
 		}];
 	}
@@ -191,7 +192,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 	
 	if (data) {
 		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		NSLog(@"------ <%@>", dataString);
+		NSLog(@"%s ------ <%@>", __PRETTY_FUNCTION__, @"DATA");//dataString);
 	}
 	else
 		NSLog(@"BAD");
@@ -200,7 +201,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 	if (data) {
 		
 		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
-		NSLog(@"dataDictionary: %@", dataDictionary);
+		NSLog(@"%s dataDictionary: %@", __PRETTY_FUNCTION__, dataDictionary);
 		if (dataDictionary != nil) {
 			LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:dataDictionary];
 			[locationRecord debug];

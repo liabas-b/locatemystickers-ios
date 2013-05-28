@@ -1608,8 +1608,8 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Adrien Guffens (LGYRFS87WG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adrien Guffens (LGYRFS87WG)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Adrien Guffens";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Adrien Guffens";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "locateMyStickers/LMS-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1619,8 +1619,8 @@
 				);
 				INFOPLIST_FILE = "locateMyStickers/LMS-Info.plist";
 				PRODUCT_NAME = LMS;
-				PROVISIONING_PROFILE = "DC9353EA-650C-4497-8095-7F87521DED5F";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DC9353EA-650C-4497-8095-7F87521DED5F";
+				PROVISIONING_PROFILE = "8A43C470-88BF-410B-8147-D2312A410BFC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8A43C470-88BF-410B-8147-D2312A410BFC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1630,8 +1630,8 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Adrien Guffens (LGYRFS87WG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adrien Guffens (LGYRFS87WG)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Adrien Guffens";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Adrien Guffens";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "locateMyStickers/LMS-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1641,8 +1641,8 @@
 				);
 				INFOPLIST_FILE = "locateMyStickers/LMS-Info.plist";
 				PRODUCT_NAME = LMS;
-				PROVISIONING_PROFILE = "DC9353EA-650C-4497-8095-7F87521DED5F";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DC9353EA-650C-4497-8095-7F87521DED5F";
+				PROVISIONING_PROFILE = "8A43C470-88BF-410B-8147-D2312A410BFC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8A43C470-88BF-410B-8147-D2312A410BFC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
