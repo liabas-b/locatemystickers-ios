@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3383" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="AccountRecord" representedClassName="AccountRecord" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -10,6 +10,7 @@
     <entity name="LocationRecord" representedClassName="LocationRecord" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="idLocation" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="idSticker" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -32,9 +33,9 @@
     </entity>
     <fetchRequest name="TestFetchRequest" entity="StickerRecord" predicateString="stickerTypeId == 0"/>
     <elements>
-        <element name="AccountRecord" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="LocationRecord" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="OptionsRecord" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="StickerRecord" positionX="160" positionY="192" width="128" height="180"/>
+        <element name="AccountRecord" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="LocationRecord" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="OptionsRecord" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="StickerRecord" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

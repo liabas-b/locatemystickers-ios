@@ -7,6 +7,7 @@
 //
 
 #import "LocationRecord+Manager.h"
+#import "MagicalRecord.h"
 
 static NSString *entityName = @"LocationRecord";
 
@@ -14,31 +15,49 @@ static NSString *entityName = @"LocationRecord";
 
 + (LocationRecord *)addUpdatelocationWithDictionary:(NSDictionary *)dictionary {
 
-	LocationRecord *locationRecord = nil;
+		LocationRecord *locationRecord = nil;
+		
+		if (dictionary == nil) {
+			locationRecord = [LocationRecord createEntity];
+			return locationRecord;
+		}
+		
+		if ([dictionary objectForKey:@"id"] != [NSNull null]) {
+			locationRecord = [LocationRecord findFirstByAttribute:@"idLocation" withValue:[dictionary objectForKey:@"id"]];
+		}
+		if (locationRecord == nil) {
+			locationRecord = [LocationRecord createEntity];
+		}
 	
-	if (dictionary == nil) {
-		locationRecord = [LocationRecord createEntity];
-		return locationRecord;
-	}
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 	
-	if ([dictionary objectForKey:@"id"] != [NSNull null]) {
-		locationRecord = [LocationRecord findFirstByAttribute:@"idLocation" withValue:[dictionary objectForKey:@"id"]];
-	}
-	if (locationRecord == nil) {
-		locationRecord = [LocationRecord createEntity];
-	}
+		[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+			locationRecord.idLocation = [NSNumber numberWithInt:[[dictionary objectForKey:@"id"] intValue]];
+			locationRecord.idSticker = @([[dictionary objectForKey:@"sticker_id"] intValue]);
+			
+			locationRecord.latitude = [NSNumber numberWithFloat:[[dictionary objectForKey:@"latitude"] floatValue]];
+			locationRecord.longitude = [NSNumber numberWithFloat:[[dictionary objectForKey:@"longitude"] floatValue]];
+#warning BAD date setting
+			locationRecord.createdAt = [NSDate date];//[dictionary objectForKey:@"created_at"];
+			locationRecord.updatedAt = [NSDate date];//[dictionary objectForKey:@"updated_at"];
+			
+		} completion:^(BOOL success, NSError *error) {
+			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+				[[NSManagedObjectContext defaultContext] save:nil];
+			}];
+		}];
+	});
 	
-	locationRecord.idLocation = [NSNumber numberWithInt:[[dictionary objectForKey:@"id"] intValue]];
-	locationRecord.latitude = [NSNumber numberWithFloat:[[dictionary objectForKey:@"latitude"] floatValue]];
-	locationRecord.longitude = [NSNumber numberWithFloat:[[dictionary objectForKey:@"longitude"] floatValue]];
-#warning BAD date setting 
-	locationRecord.createdAt = [NSDate date];//[dictionary objectForKey:@"created_at"];
-	locationRecord.updatedAt = [NSDate date];//[dictionary objectForKey:@"updated_at"];
-	
-	[[NSManagedObjectContext defaultContext] saveNestedContexts];
-	
+		
+
 	return locationRecord;
 	
 }
+
+//		} completion:^(BOOL success, NSError *error) {
+//			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//				[[NSManagedObjectContext defaultContext] save:nil];
+//			}];
+//		}];
 
 @end

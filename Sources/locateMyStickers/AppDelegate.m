@@ -37,7 +37,7 @@
 	[self cleanUpCach];
 	
 	
-
+	
 	
 	//TODO: finish to implement
 	[self commonLauchInitialization:launchOptions];
@@ -54,20 +54,20 @@
 		//[self managedObjectContext];
 		
 		/*
-		if ([[OptionsRecord optionsRecordsInManagedObjectContext:self.managedObjectContext] count] == 0) {
-			self.optionsRecord = [OptionsRecord addUpdateOptionsWithDictionary:nil managedObjectContext:self.managedObjectContext];
-		}
-		else {
-			self.optionsRecord = [[OptionsRecord optionsRecordsInManagedObjectContext:self.managedObjectContext] lastObject];
-		}
-		*/
+		 if ([[OptionsRecord optionsRecordsInManagedObjectContext:self.managedObjectContext] count] == 0) {
+		 self.optionsRecord = [OptionsRecord addUpdateOptionsWithDictionary:nil managedObjectContext:self.managedObjectContext];
+		 }
+		 else {
+		 self.optionsRecord = [[OptionsRecord optionsRecordsInManagedObjectContext:self.managedObjectContext] lastObject];
+		 }
+		 */
 		//		[self dbAlreadyExist];
 		[MagicalRecord setupCoreDataStackWithStoreNamed:@"LmsModel"];
 		
-//		if (self.isFirstLaunch == YES) {
-//			[self performSelectorOnMainThread:@selector(populateDefaultStore) withObject:nil waitUntilDone:NO];
-//		}
-//		else {
+		//		if (self.isFirstLaunch == YES) {
+		//			[self performSelectorOnMainThread:@selector(populateDefaultStore) withObject:nil waitUntilDone:NO];
+		//		}
+		//		else {
 		self.optionsRecord = [[OptionsRecord findAll] lastObject];//optionsRecordsInManagedObjectContext:self.managedObjectContext] lastObject];
 		if (self.optionsRecord == nil) {
 			self.optionsRecord = [OptionsRecord createEntity];
@@ -75,19 +75,20 @@
 			self.optionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:NO];
 			self.optionsRecord.displayFollowedStickersEnabled = [NSNumber numberWithBool:YES];
 			[[NSManagedObjectContext defaultContext] saveNestedContexts];
+
 		}
-//		}
+		//		}
 		
 		self.stickerManager = [StickerManager new];
 		
 		self.locationManager = [LocationManager new];
 		[self.locationManager setup];
 		
-//		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.104:3000"];
+		//		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.104:3000"];
 		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://web-service.locatemystickers.com"];
 		
 		self.connectionManager = [ConnectionManager new];
-
+		
 	});
 }
 
@@ -95,7 +96,7 @@
 	//INFO: populate if needed
 	
 	self.optionsRecord = [OptionsRecord createEntity];
-
+	
 	[MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext){
 		
 		OptionsRecord *optionsRecord = [self.optionsRecord MR_inContext:localContext];
@@ -123,20 +124,20 @@
 	return request;
 }
 /*
-- (void)saveContext
-{
-    NSError *error = nil;
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-    if (managedObjectContext != nil) {
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-			// Replace this implementation with code to handle the error appropriately.
-			// abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-    }
-}
-*/
+ - (void)saveContext
+ {
+ NSError *error = nil;
+ NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+ if (managedObjectContext != nil) {
+ if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+ // Replace this implementation with code to handle the error appropriately.
+ // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+ NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+ abort();
+ }
+ }
+ }
+ */
 - (void)applicationWillResignActive:(UIApplication *)application
 {
 	// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -191,64 +192,64 @@
 #pragma mark - Core Data stack
 
 /*
-
-// Returns the managed object context for the application.
-// If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
-- (NSManagedObjectContext *)managedObjectContext
-{
-    if (_managedObjectContext != nil) {
-        return _managedObjectContext;
-    }
-    
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-    }
-    return _managedObjectContext;
-}
-
-// Returns the managed object model for the application.
-// If the model doesn't already exist, it is created from the application's model.
-- (NSManagedObjectModel *)managedObjectModel
-{
-    if (_managedObjectModel != nil) {
-        return _managedObjectModel;
-    }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"LmsModel" withExtension:@"momd"];
-    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    return _managedObjectModel;
-}
-
-// Returns the persistent store coordinator for the application.
-// If the coordinator doesn't already exist, it is created and the application's store added to it.
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
-    if (_persistentStoreCoordinator != nil) {
-        return _persistentStoreCoordinator;
-    }
-    
-    NSURL *storeURL = [[AppDelegate applicationDocumentsDirectory] URLByAppendingPathComponent:@"LmsModel.sqlite"];
-    
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-	if (![fileManager fileExistsAtPath:[storeURL path]]) {
-		self.isFirstLaunch = YES;
-	}
-	else {
-		self.isFirstLaunch = NO;
-	}
-	
-    NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    
-    return _persistentStoreCoordinator;
-}
-*/
+ 
+ // Returns the managed object context for the application.
+ // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
+ - (NSManagedObjectContext *)managedObjectContext
+ {
+ if (_managedObjectContext != nil) {
+ return _managedObjectContext;
+ }
+ 
+ NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+ if (coordinator != nil) {
+ _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+ [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+ }
+ return _managedObjectContext;
+ }
+ 
+ // Returns the managed object model for the application.
+ // If the model doesn't already exist, it is created from the application's model.
+ - (NSManagedObjectModel *)managedObjectModel
+ {
+ if (_managedObjectModel != nil) {
+ return _managedObjectModel;
+ }
+ NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"LmsModel" withExtension:@"momd"];
+ _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+ return _managedObjectModel;
+ }
+ 
+ // Returns the persistent store coordinator for the application.
+ // If the coordinator doesn't already exist, it is created and the application's store added to it.
+ - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+ {
+ if (_persistentStoreCoordinator != nil) {
+ return _persistentStoreCoordinator;
+ }
+ 
+ NSURL *storeURL = [[AppDelegate applicationDocumentsDirectory] URLByAppendingPathComponent:@"LmsModel.sqlite"];
+ 
+ NSFileManager *fileManager = [NSFileManager defaultManager];
+ if (![fileManager fileExistsAtPath:[storeURL path]]) {
+ self.isFirstLaunch = YES;
+ }
+ else {
+ self.isFirstLaunch = NO;
+ }
+ 
+ NSError *error = nil;
+ _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+ if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+ 
+ NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+ abort();
+ }
+ 
+ return _persistentStoreCoordinator;
+ }
+ */
 #pragma mark - sticker Adding
 
 - (void)stickerAdding:(StickerRecord *)stickerRecord {
@@ -261,7 +262,7 @@
 	//		stickerAddingTableViewController.nameTextField
 	
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:stickerAddingTableViewController];
-	[self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];	
+	[self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (BOOL)dbAlreadyExist {
@@ -325,20 +326,25 @@
 #pragma mark - UIAppearances
 
 - (void)UIAppearances {
-	
+
     if ([[[UIDevice currentDevice] systemVersion] floatValue] > 4.9) {
+	
+		NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, nil];
+		[[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
+		
 		UIImage *navBarImage = [UIImage imageNamed:@"lms-navigation-bar"];//barre320x44
 		[[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
 		
 		//[[UIToolbar appearance] setColor:[UIColor redColor]];//setBackgroundImage:navBarImage];
-		
-		UIImage *backButtonImage = [[UIImage imageNamed:@"redBackButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 13, 0, 6)];
-		[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-		
-		//INFO: Change the appearance of other navigation button
-		UIImage *barButtonImage = [[UIImage imageNamed:@"redNormalButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 6)];
-		[[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-		
+		if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
+			
+			UIImage *backButtonImage = [[UIImage imageNamed:@"redBackButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 13, 0, 6)];
+			[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+			
+			//INFO: Change the appearance of other navigation button
+			UIImage *barButtonImage = [[UIImage imageNamed:@"redNormalButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 6)];
+			[[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+		}
     }
     else {
         //INFO: iOS 4.whatever and below

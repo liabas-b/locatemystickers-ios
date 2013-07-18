@@ -2,7 +2,7 @@
 //  LocationRecord.m
 //  LMS
 //
-//  Created by Adrien Guffens on 3/15/13.
+//  Created by Adrien Guffens on 7/17/13.
 //  Copyright (c) 2013 Adrien Guffens. All rights reserved.
 //
 
@@ -11,11 +11,12 @@
 
 @implementation LocationRecord
 
+@dynamic createdAt;
 @dynamic idLocation;
 @dynamic latitude;
 @dynamic longitude;
-@dynamic createdAt;
 @dynamic updatedAt;
+@dynamic idSticker;
 
 - (id)init {
 	self = [super init];
@@ -34,13 +35,14 @@
 			self.longitude = [NSNumber numberWithFloat:[[dictionary objectForKey:@"longitude"] floatValue]];
 			self.createdAt = [dictionary objectForKey:@"created_at"];
 			self.updatedAt = [dictionary objectForKey:@"updated_at"];
+			self.idSticker = @([[dictionary objectForKey:@"latitude"] intValue]);
 		}
 	}
 	return self;
 }
 
 - (void)debug {
-	NSLog(@"%d - %f - %f - %@ - %@", [self.idLocation intValue], [self.latitude floatValue], [self.longitude floatValue], self.createdAt, self.updatedAt);
+	NSLog(@"idLocation: %d - idSticker: %d - %f - %f - %@ - %@", [self.idLocation intValue], [self.idSticker intValue], [self.latitude floatValue], [self.longitude floatValue], self.createdAt, self.updatedAt);
 }
 
 @end

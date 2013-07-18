@@ -8,22 +8,29 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "LMSMapView.h"
 
 @class StickerRecord;
 
-@interface StickerDetailViewController : UITableViewController <MKMapViewDelegate>
+@interface StickerDetailViewController : UITableViewController <MKMapViewDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) StickerRecord *stickerRecord;
 
 //INFO: First row
 @property (strong, nonatomic) IBOutlet UIImageView *activatedImage;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UISwitch *enableSwitch;
 
 //INFO: Second row
+@property (strong, nonatomic) IBOutlet LMSMapView *mapView;
+
+//INFO: Third row
 @property (strong, nonatomic) IBOutlet UILabel *createdAtLabel;
 @property (strong, nonatomic) IBOutlet UILabel *updatedAtLabel;
 
 //INFO: Last row
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+
+@property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
+
 
 @end

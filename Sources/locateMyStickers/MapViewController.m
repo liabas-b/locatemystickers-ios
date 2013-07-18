@@ -14,8 +14,12 @@
 #import "StickerRecord.h"
 #import "StickerRecord+Manager.h"
 
+
+
 #import "LocAnnotation.h"
 #import "LocationManager.h"
+
+#import "AFJSONRequestOperation.h"
 
 #import "UCTabBarItem.h"
 #import "JsonTools.h"
@@ -46,10 +50,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-
+	
 	//INFO: depend if the selected sticker is My phone
 	//[[AppDelegate appDelegate].locationManager addObserver:self forKeyPath:keyPathMeasurementArray options:NSKeyValueObservingOptionNew context:nil];
-
+	
 	
 	//INFO: debug
 #warning DEBUG --> to remove
@@ -59,23 +63,54 @@
 	
 	//INFO: if sticker Record is set --> ask for all the location of the sticker
 	//TODO: set the view with the stickerRecord
+	/*
 	if (self.stickerRecord != nil) {
-		//[self parseData];
+		[self parseData];
 	}
+	*/
 	
-
 #warning Setting locations records (BAD)
 	
 #warning Updating locations
 	//[self.mapView updateLocations];
-	[self performSelectorOnMainThread:@selector(setupMap) withObject:nil waitUntilDone:YES];
-	[self.mapView loadSelectedOptions];
+	[self performSelectorInBackground:@selector(setupMap) withObject:nil];
 }
 
 - (void)setupMap {
-	NSArray *array = [LocationRecord findAllSortedBy:@"idLocation" ascending:YES];
+	NSManagedObjectContext *context = [[NSManagedObjectContext alloc] init];
+	[context setParentContext:[NSManagedObjectContext defaultContext]];
+	NSManagedObjectContext *unused __attribute__((unused)) = [NSManagedObjectContext MR_contextWithParent:[NSManagedObjectContext MR_defaultContext]];
+	
+	NSArray *array = [LocationRecord findAllSortedBy:@"updatedAt" ascending:NO inContext:[NSManagedObjectContext MR_contextWithParent:[NSManagedObjectContext MR_defaultContext]]];
 	NSLog(@"%s %@", __PRETTY_FUNCTION__, array);
-	self.mapView.locationsRecordList = [[NSMutableArray alloc] initWithArray:array];
+	if ([array count] > 0) {
+		self.mapView.locationsRecordList = [[NSMutableArray alloc] initWithArray:array];
+		
+		//	[self.mapView loadSelectedOptions];
+		[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
+	}
+	else {
+		[self updateLocationForSticker];
+	}
+}
+
+- (void)updateLocationForSticker {
+	
+	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", self.stickerRecord.stickerId];
+	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
+	
+	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+		NSLog(@"Result: %@", JSON);
+		for (NSDictionary *dic in [JSON objectForKey:@"data"]) {
+			NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, dic);
+			LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:dic];
+			NSLog(@" %s| locationRecord: %@", __PRETTY_FUNCTION__, locationRecord);
+		}
+
+	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		
+	}];
+	[operation start];
 }
 
 
@@ -100,12 +135,12 @@
 #pragma mark - data parsing
 
 - (void)parseData
-{	
+{
 	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", self.stickerRecord.stickerId];
 	NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
 	
 	NSLog(@"%s request: %@", __PRETTY_FUNCTION__, [request description]);
-
+	
 	[request setHTTPMethod:@"GET"];
 	
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -156,19 +191,19 @@
 {
     if ([keyPath isEqualToString:keyPathMeasurementArray]) {
         if ([change[NSKeyValueChangeKindKey] intValue] == NSKeyValueChangeInsertion) {
-
-			/*
-            NSIndexSet* insertedIndexSet = change[NSKeyValueChangeIndexesKey];
 			
-            [insertedIndexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-#warning TO CHECK
-				NSLog(@"observeValueForKeyPath: %@", [AppDelegate appDelegate].locationManager.measurementArray[idx]);
-				
-				CLLocation* location = [AppDelegate appDelegate].locationManager.measurementArray[idx];
-				LocAnnotation* annotation = [[LocAnnotation alloc] initWithCoordinate:location.coordinate];
-				[self.mapView addAnnotation:annotation];
-				
-			}];
+			/*
+			 NSIndexSet* insertedIndexSet = change[NSKeyValueChangeIndexesKey];
+			 
+			 [insertedIndexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+			 #warning TO CHECK
+			 NSLog(@"observeValueForKeyPath: %@", [AppDelegate appDelegate].locationManager.measurementArray[idx]);
+			 
+			 CLLocation* location = [AppDelegate appDelegate].locationManager.measurementArray[idx];
+			 LocAnnotation* annotation = [[LocAnnotation alloc] initWithCoordinate:location.coordinate];
+			 [self.mapView addAnnotation:annotation];
+			 
+			 }];
 			 */
         }
     }
