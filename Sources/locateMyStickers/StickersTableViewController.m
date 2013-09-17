@@ -75,22 +75,14 @@
 }
 
 - (void)setup {
-	
+	/*
 	UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]];
     [self.tableView setBackgroundView:backgroundView];
+	*/
 	
+	[self.view setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]];
 	
-	
-	//INFO: setup location manager
-	//INFO: options
-	/*
-	 self.optionsRecord = [[OptionsRecord optionsRecordsInManagedObjectContext:[AppDelegate appDelegate].managedObjectContext] lastObject];//[fetchedObjects lastObject];
-	 
-	 if ([self.optionsRecord.locatePhoneEnabled boolValue] == YES) {
-	 [[AppDelegate appDelegate].locationManager start];
-	 }
-	 */
 	[self fetchStickersList];
 }
 
@@ -178,6 +170,10 @@
 	
 	[stickerRecord debug];
 	cell.nameLabel.text = stickerRecord.name;
+	
+	
+	
+	
 	NSString *timeString = [ConventionTools getDiffTimeInStringFromDate:stickerRecord.createdAt];
 	NSLog(@"%s - <%@", __PRETTY_FUNCTION__, timeString);
 	timeString = [timeString length] > 0 ? timeString : @"new";
@@ -187,24 +183,24 @@
 		cell.activatedImage.backgroundColor = [UIColor greenColor];
 	else
 		cell.activatedImage.backgroundColor = [UIColor redColor];
+
 	
-	
-	/*
+
 	 UIView *backgroundView = [[UIView alloc] initWithFrame:cell.frame];
 	 
 	 backgroundView.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0];
 	 //backgroundView.backgroundColor = [UIColor colorWithRed:225.0/255.0 green:225.0/255.0 blue:225.0/255.0 alpha:1.0];
 	 
 	 cell.backgroundView = backgroundView;
-	 */
+
+
 	cell.iconLabel.font = [UIFont iconicFontOfSize:24];
 	if ([stickerRecord.stickerTypeId intValue] > StickerTypeSticker) {
-		
 		cell.iconLabel.text = [NSString stringFromAwesomeIcon:FAIconPhone];
 	}
 	else
 		cell.iconLabel.text = [NSString stringFromAwesomeIcon:FAIconQrcode];
-	
+
 	//
 	
 	

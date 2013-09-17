@@ -1684,12 +1684,15 @@
 				HEADER_SEARCH_PATHS = (
 					"/Users/adril/Desktop/dev/eip/sources/development/all/ios/Sources/zxing-2.0/iphone/ZXingWidget/Classes/**",
 					"/Users/adril/Desktop/dev/eip/sources/development/all/ios/Sources/zxing-2.0/cpp/core/src",
+					"/Users/adril/Desktop/work/ios/Sources/Utils/**",
 					"/Users/adril/Desktop/dev/eip/sources/development/all/ios/Sources/Utils/**",
+					"/Users/adril/Desktop/work/ios/Sources/zxing-2.0/iphone/ZXingWidget/Classes/**",
+					"/Users/adril/Desktop/work/ios/Sources/zxing-2.0/cpp/core/src",
 				);
 				INFOPLIST_FILE = "locateMyStickers/LMS-Info.plist";
 				PRODUCT_NAME = LMS;
-				PROVISIONING_PROFILE = "6D105EE2-6747-462F-B592-B9491F99591A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6D105EE2-6747-462F-B592-B9491F99591A";
+				PROVISIONING_PROFILE = "30DBD701-FC20-4C73-9D14-DD9A05570F52";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "30DBD701-FC20-4C73-9D14-DD9A05570F52";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1706,12 +1709,15 @@
 				HEADER_SEARCH_PATHS = (
 					"/Users/adril/Desktop/dev/eip/sources/development/all/ios/Sources/zxing-2.0/iphone/ZXingWidget/Classes/**",
 					"/Users/adril/Desktop/dev/eip/sources/development/all/ios/Sources/zxing-2.0/cpp/core/src",
+					"/Users/adril/Desktop/work/ios/Sources/Utils/**",
 					"/Users/adril/Desktop/dev/eip/sources/development/all/ios/Sources/Utils/**",
+					"/Users/adril/Desktop/work/ios/Sources/zxing-2.0/iphone/ZXingWidget/Classes/**",
+					"/Users/adril/Desktop/work/ios/Sources/zxing-2.0/cpp/core/src",
 				);
 				INFOPLIST_FILE = "locateMyStickers/LMS-Info.plist";
 				PRODUCT_NAME = LMS;
-				PROVISIONING_PROFILE = "6D105EE2-6747-462F-B592-B9491F99591A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6D105EE2-6747-462F-B592-B9491F99591A";
+				PROVISIONING_PROFILE = "30DBD701-FC20-4C73-9D14-DD9A05570F52";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "30DBD701-FC20-4C73-9D14-DD9A05570F52";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
