@@ -333,6 +333,7 @@
 		[[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
 		
 		UIImage *navBarImage = [UIImage imageNamed:@"lms-navigation-bar"];//barre320x44
+//		UIImage *navBarImage = [UIImage imageNamed:@"lms-white-navigation-bar@2x.png"];//barre320x44
 		[[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
 		
 		//[[UIToolbar appearance] setColor:[UIColor redColor]];//setBackgroundImage:navBarImage];
@@ -354,7 +355,8 @@
 	
 	//INFO: set tabBar
 	
-	UIImage *tabBarBackground = [UIImage imageNamed:@"tabBar"];
+	UIImage *tabBarBackground = [UIImage imageNamed:@"tabBarWhite"];
+//	UIImage *tabBarBackground = [UIImage imageNamed:@"tabBar"];
 	
     [[UITabBar appearance] setBackgroundImage:tabBarBackground];
 	

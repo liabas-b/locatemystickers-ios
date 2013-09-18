@@ -177,6 +177,7 @@ secondStateIconName:(NSString *)secondIconName
 	
 	//	self.translatesAutoresizingMaskIntoConstraints = NO;
     _colorIndicatorView = [[UIView alloc] initWithFrame:self.bounds];
+
     [_colorIndicatorView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
 	
 	[self.colorIndicatorView addConstraint:
@@ -288,6 +289,7 @@ secondStateIconName:(NSString *)secondIconName
     }
     else if (state == UIGestureRecognizerStateBegan || state == UIGestureRecognizerStateChanged) {
 		NSLog(@"%@", self.contentView.constraints);
+		[_colorIndicatorView setAlpha:1.0];
         CGPoint center = {self.contentView.center.x + translation.x, self.contentView.center.y};
         [self.contentView setCenter:center];
         [self animateWithOffset:CGRectGetMinX(self.contentView.frame)];
@@ -307,6 +309,7 @@ secondStateIconName:(NSString *)secondIconName
 			[self moveWithDuration:animationDuration andDirection:_direction];
 		else
 			[self bounceToOrigin];
+		
 		//else
 		//	[self notifyDelegate];
 		//  [self bounceToOrigin]; --> original
@@ -667,9 +670,13 @@ secondStateIconName:(NSString *)secondIconName
                          CGRect frame = self.contentView.frame;
                          frame.origin.x = -bounceDistance;
                          [self.contentView setFrame:frame];
+						 /*
                          [_slidingImageView setAlpha:0.0];
 						 [_slidingButton setAlpha:0];
 						 [self slideImageWithPercentage:0 imageName:_currentImageName isDragging:NO];
+						  */
+						  //
+						 [_colorIndicatorView setAlpha:0.0];
                      }
                      completion:^(BOOL finished1) {
 						 
@@ -684,7 +691,8 @@ secondStateIconName:(NSString *)secondIconName
                                           completion:^(BOOL finished2) {
 											  //											  [self notifyDelegate];
 											  self.direction = MCSwipeTableViewCellDirectionLeft;
-											  self.currentPercentage = 0;//fabs(self.currentPercentage);
+											  self.currentPercentage = fabs(self.currentPercentage);
+
                                           }];
                      }];
 	

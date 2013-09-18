@@ -22,6 +22,9 @@
 		903B9CE416DFABC00030471D /* adril.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 903B9CE316DFABC00030471D /* adril.jpg */; };
 		903B9CE816DFADAC0030471D /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903B9CE716DFADAC0030471D /* AccountViewController.m */; };
 		903B9CF016DFBB820030471D /* StickerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903B9CEF16DFBB820030471D /* StickerDetailViewController.m */; };
+		903C129917E8FBBB00CCD26D /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903C129817E8FBBB00CCD26D /* BaseTableViewController.m */; };
+		903C129C17E9269500CCD26D /* lms-white-navigation-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 903C129B17E9269500CCD26D /* lms-white-navigation-bar@2x.png */; };
+		903C12A017E9278800CCD26D /* tabBarWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 903C129F17E9278800CCD26D /* tabBarWhite@2x.png */; };
 		9045B910170F8B4F00436B2E /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B90B170F8B4F00436B2E /* FAImageView.m */; };
 		9045B911170F8B4F00436B2E /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B90D170F8B4F00436B2E /* NSString+FontAwesome.m */; };
 		9045B912170F8B4F00436B2E /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B90F170F8B4F00436B2E /* UIFont+FontAwesome.m */; };
@@ -252,6 +255,10 @@
 		903B9CE716DFADAC0030471D /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		903B9CEE16DFBB820030471D /* StickerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerDetailViewController.h; sourceTree = "<group>"; };
 		903B9CEF16DFBB820030471D /* StickerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerDetailViewController.m; sourceTree = "<group>"; };
+		903C129717E8FBBB00CCD26D /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		903C129817E8FBBB00CCD26D /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		903C129B17E9269500CCD26D /* lms-white-navigation-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lms-white-navigation-bar@2x.png"; sourceTree = "<group>"; };
+		903C129F17E9278800CCD26D /* tabBarWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBarWhite@2x.png"; sourceTree = "<group>"; };
 		9045B90A170F8B4F00436B2E /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
 		9045B90B170F8B4F00436B2E /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
 		9045B90C170F8B4F00436B2E /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
@@ -581,6 +588,26 @@
 			name = "Sticker Detail";
 			sourceTree = "<group>";
 		};
+		903C129417E8FB9A00CCD26D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				903C129717E8FBBB00CCD26D /* BaseTableViewController.h */,
+				903C129817E8FBBB00CCD26D /* BaseTableViewController.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		903C129A17E9267C00CCD26D /* red */ = {
+			isa = PBXGroup;
+			children = (
+				906B73441719F9810033A6D5 /* lms-navigation-bar.png */,
+				906B73471719F9810033A6D5 /* lms-navigation-bar@2x.png */,
+				906B73461719F9810033A6D5 /* lms-navigation-bar@~ipad.png */,
+				906B73481719F9810033A6D5 /* lms-navigation-bar@2x~ipad.png */,
+			);
+			name = red;
+			sourceTree = "<group>";
+		};
 		9045B907170F8B3900436B2E /* Font Awesome */ = {
 			isa = PBXGroup;
 			children = (
@@ -805,10 +832,8 @@
 		906B73431719F96B0033A6D5 /* Navigation bar */ = {
 			isa = PBXGroup;
 			children = (
-				906B73441719F9810033A6D5 /* lms-navigation-bar.png */,
-				906B73471719F9810033A6D5 /* lms-navigation-bar@2x.png */,
-				906B73461719F9810033A6D5 /* lms-navigation-bar@~ipad.png */,
-				906B73481719F9810033A6D5 /* lms-navigation-bar@2x~ipad.png */,
+				903C129B17E9269500CCD26D /* lms-white-navigation-bar@2x.png */,
+				903C129A17E9267C00CCD26D /* red */,
 			);
 			name = "Navigation bar";
 			sourceTree = "<group>";
@@ -953,6 +978,7 @@
 				906B73431719F96B0033A6D5 /* Navigation bar */,
 				9086ECD416DA356800965576 /* Button */,
 				9086ECCC16DA353400965576 /* header.png */,
+				903C129F17E9278800CCD26D /* tabBarWhite@2x.png */,
 				9086ECCD16DA353400965576 /* tabBar.png */,
 				9086ECCE16DA353400965576 /* tabBar@2x.png */,
 			);
@@ -1125,6 +1151,7 @@
 		90B80A6F16D6D966004CA608 /* View controller */ = {
 			isa = PBXGroup;
 			children = (
+				903C129417E8FB9A00CCD26D /* Base */,
 				906984EC16FC8B7700B8CD16 /* Scanner */,
 				90B80A7316D6D981004CA608 /* Login */,
 				9086ED0D16DA5DA100965576 /* Stickers Table */,
@@ -1337,6 +1364,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Adrien Guffens";
+				TargetAttributes = {
+					9059589016D3847B0055BBA8 = {
+						DevelopmentTeam = GPRDQTBPV3;
+					};
+				};
 			};
 			buildConfigurationList = 9059588B16D3847B0055BBA8 /* Build configuration list for PBXProject "LMS" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1405,6 +1437,7 @@
 				905958AF16D3847B0055BBA8 /* MainStoryboard_iPhone.storyboard in Resources */,
 				905958B216D3847B0055BBA8 /* MainStoryboard_iPad.storyboard in Resources */,
 				90B80A6B16D6D886004CA608 /* greyButton.png in Resources */,
+				903C129C17E9269500CCD26D /* lms-white-navigation-bar@2x.png in Resources */,
 				90B80A9516D6E05B004CA608 /* Default.png in Resources */,
 				90B80A9716D6E066004CA608 /* Default@2x.png in Resources */,
 				90B80A9916D6E06A004CA608 /* Default-568h@2x.png in Resources */,
@@ -1448,6 +1481,7 @@
 				903B9CDC16DFA1590030471D /* logout2-icon.png in Resources */,
 				903B9CDF16DFA4BA0030471D /* account-icon.png in Resources */,
 				903B9CE216DFA57C0030471D /* settings-icon.png in Resources */,
+				903C12A017E9278800CCD26D /* tabBarWhite@2x.png in Resources */,
 				903B9CE416DFABC00030471D /* adril.jpg in Resources */,
 				90A1788217014E3F008ABC03 /* lms-QRcode.png in Resources */,
 				9045B914170F8B9600436B2E /* FontAwesome.ttf in Resources */,
@@ -1525,6 +1559,7 @@
 				9045B912170F8B4F00436B2E /* UIFont+FontAwesome.m in Sources */,
 				90E05539179719AC00B20245 /* LocationRecord.m in Sources */,
 				9045B917170F9D4400436B2E /* StickerRecord+Manager.m in Sources */,
+				903C129917E8FBBB00CCD26D /* BaseTableViewController.m in Sources */,
 				9045B91A170FC6F100436B2E /* AccountRecord+Manager.m in Sources */,
 				9045B91D1710246600436B2E /* LocationRecord+Manager.m in Sources */,
 				9045B920171026ED00436B2E /* OptionsRecord+Manager.m in Sources */,
@@ -1641,7 +1676,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "6D105EE2-6747-462F-B592-B9491F99591A";
+				PROVISIONING_PROFILE = "30DBD701-FC20-4C73-9D14-DD9A05570F52";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1665,7 +1700,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "6D105EE2-6747-462F-B592-B9491F99591A";
+				PROVISIONING_PROFILE = "30DBD701-FC20-4C73-9D14-DD9A05570F52";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1677,8 +1712,8 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Adrien Guffens (LGYRFS87WG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adrien Guffens (LGYRFS87WG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "locateMyStickers/LMS-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1691,8 +1726,8 @@
 				);
 				INFOPLIST_FILE = "locateMyStickers/LMS-Info.plist";
 				PRODUCT_NAME = LMS;
-				PROVISIONING_PROFILE = "30DBD701-FC20-4C73-9D14-DD9A05570F52";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "30DBD701-FC20-4C73-9D14-DD9A05570F52";
+				PROVISIONING_PROFILE = "3F518ABB-3C10-4FF7-B453-79E44980BA4E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3F518ABB-3C10-4FF7-B453-79E44980BA4E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1702,8 +1737,8 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Adrien Guffens (LGYRFS87WG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adrien Guffens (LGYRFS87WG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "locateMyStickers/LMS-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1716,8 +1751,8 @@
 				);
 				INFOPLIST_FILE = "locateMyStickers/LMS-Info.plist";
 				PRODUCT_NAME = LMS;
-				PROVISIONING_PROFILE = "30DBD701-FC20-4C73-9D14-DD9A05570F52";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "30DBD701-FC20-4C73-9D14-DD9A05570F52";
+				PROVISIONING_PROFILE = "3F518ABB-3C10-4FF7-B453-79E44980BA4E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3F518ABB-3C10-4FF7-B453-79E44980BA4E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

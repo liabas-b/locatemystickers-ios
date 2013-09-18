@@ -268,6 +268,7 @@ secondStateIconName:(NSString *)secondIconName
         [self.contentView setCenter:center];
         [self animateWithOffset:CGRectGetMinX(self.contentView.frame)];
         [gesture setTranslation:CGPointZero inView:self];
+		[_colorIndicatorView setAlpha:1.0];
     }
     else if (state == UIGestureRecognizerStateEnded || state == UIGestureRecognizerStateCancelled) {
         _currentImageName = [self imageNameWithPercentage:percentage];
@@ -646,6 +647,7 @@ secondStateIconName:(NSString *)secondIconName
                          [_slidingImageView setAlpha:0.0];
 						 [_slidingButton setAlpha:0];
 						 [self slideImageWithPercentage:0 imageName:_currentImageName isDragging:NO];
+						 [_colorIndicatorView setAlpha:0.0];
                      }
                      completion:^(BOOL finished1) {
 						 

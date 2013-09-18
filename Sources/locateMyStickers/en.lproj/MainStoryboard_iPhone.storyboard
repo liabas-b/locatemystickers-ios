@@ -1000,54 +1000,25 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="UserCell" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserCell" rowHeight="80" id="TI5-WA-c8n" customClass="UserCell">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="UserCell" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserCell" rowHeight="80" id="jyR-NJ-ihW" customClass="UserCell">
                                 <rect key="frame" x="0.0" y="174" width="320" height="80"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TI5-WA-c8n" id="EaI-kN-qT5">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fct-He-tbX">
-                                            <rect key="frame" x="20" y="14" width="203" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="locateMyStickersRedLogo.png" id="mwK-9k-ThQ">
-                                            <rect key="frame" x="20" y="49" width="10" height="10"/>
-                                        </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BZD-gC-cr1">
-                                            <rect key="frame" x="40" y="43" width="80" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="stickersNumberLabel" destination="BZD-gC-cr1" id="Ww4-TO-zl7"/>
-                                    <outlet property="userNameLabel" destination="Fct-He-tbX" id="ZRh-Lv-Xsu"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="StickerCell" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StickerCell" rowHeight="80" id="jyR-NJ-ihW" customClass="StickerCell">
-                                <rect key="frame" x="0.0" y="254" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jyR-NJ-ihW" id="eFL-AO-4d3">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="BB6-1n-JHr">
-                                            <rect key="frame" x="20" y="49" width="10" height="10"/>
-                                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="lms.png" id="BB6-1n-JHr">
+                                            <rect key="frame" x="20" y="43" width="15" height="16"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5jA-aP-qZb">
-                                            <rect key="frame" x="20" y="14" width="260" height="21"/>
+                                            <rect key="frame" x="20" y="14" width="280" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zj2-t1-QV5">
-                                            <rect key="frame" x="38" y="43" width="174" height="21"/>
+                                            <rect key="frame" x="43" y="43" width="262" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1055,9 +1026,47 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="activatedImage" destination="BB6-1n-JHr" id="i8j-Bc-WUx"/>
-                                    <outlet property="nameLabel" destination="5jA-aP-qZb" id="C8u-4c-Mqn"/>
-                                    <outlet property="timeLabel" destination="Zj2-t1-QV5" id="lXZ-NB-uk7"/>
+                                    <outlet property="stickersNumberLabel" destination="Zj2-t1-QV5" id="lXK-pO-twW"/>
+                                    <outlet property="userNameLabel" destination="5jA-aP-qZb" id="ons-ri-s8I"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="StickerCell" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StickerCell" rowHeight="80" id="2Oc-e6-JSi" customClass="StickerCell">
+                                <rect key="frame" x="0.0" y="254" width="320" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Oc-e6-JSi" id="WXS-It-GbG">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="QqX-I7-7ah">
+                                            <rect key="frame" x="15" y="49" width="10" height="10"/>
+                                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uHJ-fO-f8Z">
+                                            <rect key="frame" x="38" y="14" width="282" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cgx-iT-4g2">
+                                            <rect key="frame" x="33" y="43" width="282" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hjt-G5-KAJ">
+                                            <rect key="frame" x="14" y="19" width="18" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="activatedImage" destination="QqX-I7-7ah" id="a4X-iL-shC"/>
+                                    <outlet property="iconLabel" destination="hjt-G5-KAJ" id="cQ8-AD-dci"/>
+                                    <outlet property="nameLabel" destination="uHJ-fO-f8Z" id="OfC-zC-a2K"/>
+                                    <outlet property="timeLabel" destination="cgx-iT-4g2" id="O4E-DN-RNT"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1147,6 +1156,7 @@
         <image name="account-icon.png" width="64" height="64"/>
         <image name="adril.jpg" width="180" height="144"/>
         <image name="lms-QRcode.png" width="216" height="216"/>
+        <image name="lms.png" width="32" height="32"/>
         <image name="locateMyStickersRedLogo.png" width="500" height="500"/>
         <image name="logout2-icon.png" width="64" height="64"/>
         <image name="settings-icon.png" width="64" height="64"/>
@@ -1159,8 +1169,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="sSk-yx-87v"/>
-        <segue reference="jSc-nL-Ukc"/>
-        <segue reference="ui6-b6-zGV"/>
+        <segue reference="fHp-7O-dbY"/>
+        <segue reference="SkR-n6-tZh"/>
+        <segue reference="pHZ-S0-Prj"/>
     </inferredMetricsTieBreakers>
 </document>

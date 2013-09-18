@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseTableViewController.h"
 #import "StickerCell.h"
 
 @class OptionsRecord;
 @class StickerRecord;
 
-@interface StickersTableViewController : UITableViewController <MCSwipeStickerTableViewCellDelegate>
+@interface StickersTableViewController : BaseTableViewController <MCSwipeStickerTableViewCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *stickersRecordList;
 @property (nonatomic, strong) NSMutableArray *myPhoneStickerRecordList;
