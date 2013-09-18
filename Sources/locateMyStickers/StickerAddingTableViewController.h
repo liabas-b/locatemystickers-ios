@@ -16,10 +16,10 @@
 @property (nonatomic, retain) StickerRecord *stickerRecord;
 
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
-@property (strong, nonatomic) IBOutlet UISwitch *isActiveSwitch;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (strong, nonatomic) IBOutlet UISlider *updateFrequencySlider;
+@property (strong, nonatomic) IBOutlet UILabel *updateFrequencyLabel;
 @property (strong, nonatomic) IBOutlet UITextField *labelsTextField;
 @property (strong, nonatomic) IBOutlet BButton *finishedButton;
 

@@ -102,8 +102,8 @@
 - (void)awakeFromNib {
 	[super awakeFromNib];
 	self.tabBarItem = [[UCTabBarItem alloc] initWithTitle:@"Stickers"
-											imageSelected:@"home_black"
-											andUnselected:@"home_white"];
+											imageSelected:@"home_white"
+											andUnselected:@"home_white"];//black
 }
 
 #pragma mark - Table view data source

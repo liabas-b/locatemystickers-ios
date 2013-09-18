@@ -53,10 +53,15 @@
 - (void)configure {
 	//INFO: notification
 
+	UIColor *lmsColor = [UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0];
 	
 	[self.finishedButton setType:BButtonTypeDefault];
-	[self.finishedButton setColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]];
+	[self.finishedButton setColor:lmsColor];
+	[self.nameTextField setTintColor:lmsColor];
 
+	[self.updateFrequencySlider setTintColor:lmsColor];
+	[self updateFrequencySliderChangedHandler:self.updateFrequencySlider];
+	
 	//INFO: hide keyboard
 	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
 	[self.tableView addGestureRecognizer:gestureRecognizer];
@@ -69,7 +74,7 @@
 - (void)bindView {
 	if (self.stickerRecord != nil) {
 		self.nameTextField.text = self.stickerRecord.name;
-		self.isActiveSwitch.on = [self.stickerRecord.isActive boolValue];
+
 		self.descriptionTextView.text = self.stickerRecord.text;
 		if ([self.stickerRecord.text length] > 0)
 			self.descriptionLabel.hidden = YES;
@@ -81,12 +86,24 @@
 - (void)unBindView {
 	if (self.stickerRecord != nil) {
 		self.stickerRecord.name = self.nameTextField.text;
-		self.stickerRecord.isActive = [NSNumber numberWithBool:self.isActiveSwitch.on];
+
 		self.stickerRecord.text = self.descriptionTextView.text;
 //		self.stickerRecord.labels = @"";
 //		self.stickerRecord.updateFrequency = self.updateFrequencySlider.value;
 	}
 }
+
+- (IBAction)updateFrequencySliderChangedHandler:(id)sender {
+	if ([sender isEqual:self.updateFrequencySlider]) {
+		NSString *updateFrequencyText = [NSString stringWithFormat:@"%0.f secondes", self.updateFrequencySlider.value * 60];
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			self.updateFrequencyLabel.text = updateFrequencyText;
+		});
+		
+	}
+}
+
 
 
 #warning TODO: configure the view methode

@@ -18,6 +18,7 @@
 	if (self) {
 		[self setHighlightedImage:[UIImage imageNamed:selected]];
 		[self setStandardImage:[UIImage imageNamed:unselected]];
+		[self setSelectedImage:[UIImage imageNamed:selected]];
 	}
 	return self;
 }

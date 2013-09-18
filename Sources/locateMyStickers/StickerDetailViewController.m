@@ -45,7 +45,7 @@
 	[super viewWillAppear:animated];
 	
 	//DEBUG: test
-	//[self performSelectorInBackground:@selector(setupMap) withObject:nil];
+	[self performSelectorInBackground:@selector(setupMap) withObject:nil];
 }
 
 - (void)didReceiveMemoryWarning
