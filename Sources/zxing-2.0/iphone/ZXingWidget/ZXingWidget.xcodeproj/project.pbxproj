@@ -140,6 +140,8 @@
 		3B81AACE120F08170022E5D4 /* HybridBinarizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B81AACC120F08170022E5D4 /* HybridBinarizer.h */; };
 		3B81AAF8120F0A7E0022E5D4 /* GreyscaleRotatedLuminanceSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B81AAF6120F0A7E0022E5D4 /* GreyscaleRotatedLuminanceSource.cpp */; };
 		3B81AAF9120F0A7E0022E5D4 /* GreyscaleRotatedLuminanceSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B81AAF7120F0A7E0022E5D4 /* GreyscaleRotatedLuminanceSource.h */; };
+		9008894A17EA26C700C9B64E /* HistoryRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 9008894817EA26C700C9B64E /* HistoryRecord.h */; };
+		9008894B17EA26C700C9B64E /* HistoryRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9008894917EA26C700C9B64E /* HistoryRecord.m */; };
 		AA747D9F0F9514B9006C5449 /* ZXingWidget_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ZXingWidget_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		E534594311987396000CB77F /* BarcodeFormat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E53458B511987396000CB77F /* BarcodeFormat.cpp */; };
@@ -422,6 +424,8 @@
 		3B81AACC120F08170022E5D4 /* HybridBinarizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HybridBinarizer.h; sourceTree = "<group>"; };
 		3B81AAF6120F0A7E0022E5D4 /* GreyscaleRotatedLuminanceSource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GreyscaleRotatedLuminanceSource.cpp; sourceTree = "<group>"; };
 		3B81AAF7120F0A7E0022E5D4 /* GreyscaleRotatedLuminanceSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreyscaleRotatedLuminanceSource.h; sourceTree = "<group>"; };
+		9008894817EA26C700C9B64E /* HistoryRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryRecord.h; sourceTree = "<group>"; };
+		9008894917EA26C700C9B64E /* HistoryRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryRecord.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* ZXingWidget_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXingWidget_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libZXingWidget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZXingWidget.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -602,6 +606,8 @@
 			isa = PBXGroup;
 			children = (
 				1D6038A113DF6FBF006F4B51 /* Tests */,
+				9008894817EA26C700C9B64E /* HistoryRecord.h */,
+				9008894917EA26C700C9B64E /* HistoryRecord.m */,
 				E53458B311987396000CB77F /* CoreSrc */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
@@ -1050,6 +1056,7 @@
 				E534595C11987396000CB77F /* GridSampler.h in Headers */,
 				E534595E11987396000CB77F /* IllegalArgumentException.h in Headers */,
 				E534596211987396000CB77F /* PerspectiveTransform.h in Headers */,
+				9008894A17EA26C700C9B64E /* HistoryRecord.h in Headers */,
 				E534596311987396000CB77F /* Point.h in Headers */,
 				E534596511987396000CB77F /* GF256.h in Headers */,
 				E534596711987396000CB77F /* GF256Poly.h in Headers */,
@@ -1330,6 +1337,7 @@
 				E53459AC11987396000CB77F /* AlignmentPatternFinder.cpp in Sources */,
 				E53459AE11987396000CB77F /* Detector.cpp in Sources */,
 				E53459B011987396000CB77F /* FinderPattern.cpp in Sources */,
+				9008894B17EA26C700C9B64E /* HistoryRecord.m in Sources */,
 				E53459B211987396000CB77F /* FinderPatternFinder.cpp in Sources */,
 				E53459B411987396000CB77F /* FinderPatternInfo.cpp in Sources */,
 				E53459B611987396000CB77F /* QREdgeDetector.cpp in Sources */,

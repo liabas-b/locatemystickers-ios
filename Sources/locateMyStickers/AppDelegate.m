@@ -336,11 +336,6 @@
 		//		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 //		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 		
-//		self.window.clipsToBounds =YES;
-		
-//		self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
-		//
-		
 		UIImage *navBarImage = [UIImage imageNamed:@"lms-navigation-bar@2x.png"];//barre320x44
 //		UIImage *navBarImage = [UIImage imageNamed:@"lms-white-navigation-bar@2x.png"];//barre320x44
 		[[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9008894717EA23F900C9B64E /* HistoryRecord+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9008894617EA23F900C9B64E /* HistoryRecord+Manager.m */; };
+		9008894E17EA271C00C9B64E /* HistoryRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9008894D17EA271C00C9B64E /* HistoryRecord.m */; };
+		9008895117EA2DA000C9B64E /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9008895017EA2DA000C9B64E /* HistoryCell.m */; };
 		9015FFCA16FC56AA00D87605 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9015FFC916FC56A900D87605 /* AVFoundation.framework */; };
 		9015FFCC16FC56BD00D87605 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9015FFCB16FC56BC00D87605 /* CoreMedia.framework */; };
 		9015FFCE16FC56C700D87605 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9015FFCD16FC56C700D87605 /* CoreVideo.framework */; };
@@ -25,6 +28,8 @@
 		903C129917E8FBBB00CCD26D /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903C129817E8FBBB00CCD26D /* BaseTableViewController.m */; };
 		903C129C17E9269500CCD26D /* lms-white-navigation-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 903C129B17E9269500CCD26D /* lms-white-navigation-bar@2x.png */; };
 		903C12A017E9278800CCD26D /* tabBarWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 903C129F17E9278800CCD26D /* tabBarWhite@2x.png */; };
+		903C12A717E9D60100CCD26D /* locateMyStickersWhiteSmallLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 903C12A617E9D60100CCD26D /* locateMyStickersWhiteSmallLogo.png */; };
+		903C12A917E9D80B00CCD26D /* locateMyStickersFushiaSmallLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 903C12A817E9D80B00CCD26D /* locateMyStickersFushiaSmallLogo.png */; };
 		9045B910170F8B4F00436B2E /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B90B170F8B4F00436B2E /* FAImageView.m */; };
 		9045B911170F8B4F00436B2E /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B90D170F8B4F00436B2E /* NSString+FontAwesome.m */; };
 		9045B912170F8B4F00436B2E /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B90F170F8B4F00436B2E /* UIFont+FontAwesome.m */; };
@@ -177,6 +182,7 @@
 		90BFDA8D171A8A27006E0490 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90BFDA8C171A8A27006E0490 /* CustomCell.m */; };
 		90C4894B16D7114400B72D4D /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 90C4894A16D7114400B72D4D /* Default-Landscape~ipad.png */; };
 		90C4894E16D7114E00B72D4D /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 90C4894D16D7114E00B72D4D /* Default-Landscape@2x~ipad.png */; };
+		90D55BD817EA19FF00855BF0 /* HistoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D55BD717EA19FF00855BF0 /* HistoriesViewController.m */; };
 		90E05539179719AC00B20245 /* LocationRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E055361797194F00B20245 /* LocationRecord.m */; };
 		90E0554E1797219500B20245 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E0553C1797219500B20245 /* AFHTTPClient.m */; };
 		90E0554F1797219500B20245 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E0553E1797219500B20245 /* AFHTTPRequestOperation.m */; };
@@ -235,6 +241,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9008894517EA23F900C9B64E /* HistoryRecord+Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HistoryRecord+Manager.h"; sourceTree = "<group>"; };
+		9008894617EA23F900C9B64E /* HistoryRecord+Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HistoryRecord+Manager.m"; sourceTree = "<group>"; };
+		9008894C17EA271C00C9B64E /* HistoryRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryRecord.h; sourceTree = "<group>"; };
+		9008894D17EA271C00C9B64E /* HistoryRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryRecord.m; sourceTree = "<group>"; };
+		9008894F17EA2DA000C9B64E /* HistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
+		9008895017EA2DA000C9B64E /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
 		9015FFC916FC56A900D87605 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9015FFCB16FC56BC00D87605 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		9015FFCD16FC56C700D87605 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -259,6 +271,8 @@
 		903C129817E8FBBB00CCD26D /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		903C129B17E9269500CCD26D /* lms-white-navigation-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lms-white-navigation-bar@2x.png"; sourceTree = "<group>"; };
 		903C129F17E9278800CCD26D /* tabBarWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBarWhite@2x.png"; sourceTree = "<group>"; };
+		903C12A617E9D60100CCD26D /* locateMyStickersWhiteSmallLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locateMyStickersWhiteSmallLogo.png; sourceTree = "<group>"; };
+		903C12A817E9D80B00CCD26D /* locateMyStickersFushiaSmallLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locateMyStickersFushiaSmallLogo.png; sourceTree = "<group>"; };
 		9045B90A170F8B4F00436B2E /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
 		9045B90B170F8B4F00436B2E /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
 		9045B90C170F8B4F00436B2E /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
@@ -488,6 +502,8 @@
 		90BFDA8C171A8A27006E0490 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		90C4894A16D7114400B72D4D /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		90C4894D16D7114E00B72D4D /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "../Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		90D55BD617EA19FF00855BF0 /* HistoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoriesViewController.h; sourceTree = "<group>"; };
+		90D55BD717EA19FF00855BF0 /* HistoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoriesViewController.m; sourceTree = "<group>"; };
 		90E055351797194F00B20245 /* LocationRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationRecord.h; sourceTree = "<group>"; };
 		90E055361797194F00B20245 /* LocationRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationRecord.m; sourceTree = "<group>"; };
 		90E0553B1797219500B20245 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -855,7 +871,11 @@
 				9070E9C416F3287400E3D409 /* OptionsRecord.m */,
 				9045B91E171026E600436B2E /* OptionsRecord+Manager.h */,
 				9045B91F171026EC00436B2E /* OptionsRecord+Manager.m */,
+				9008894C17EA271C00C9B64E /* HistoryRecord.h */,
+				9008894D17EA271C00C9B64E /* HistoryRecord.m */,
 				9070E9C016F3213A00E3D409 /* LmsModel.xcdatamodeld */,
+				9008894517EA23F900C9B64E /* HistoryRecord+Manager.h */,
+				9008894617EA23F900C9B64E /* HistoryRecord+Manager.m */,
 				90E055351797194F00B20245 /* LocationRecord.h */,
 				90E055361797194F00B20245 /* LocationRecord.m */,
 			);
@@ -1014,6 +1034,8 @@
 				9086ECE816DA501E00965576 /* search */,
 				9086ECE716DA500E00965576 /* user */,
 				9086ECE216DA4FD800965576 /* locateMyStickersWhiteLogo.png */,
+				903C12A817E9D80B00CCD26D /* locateMyStickersFushiaSmallLogo.png */,
+				903C12A617E9D60100CCD26D /* locateMyStickersWhiteSmallLogo.png */,
 				9086ED0B16DA5CE600965576 /* locateMyStickersRedLogo.png */,
 			);
 			name = Button;
@@ -1095,6 +1117,7 @@
 		9086ED1916DA5E7C00965576 /* User Table */ = {
 			isa = PBXGroup;
 			children = (
+				90D55BD517EA19E100855BF0 /* History */,
 				9086ED1A16DA5EA200965576 /* UserTableViewController.h */,
 				9086ED1B16DA5EA200965576 /* UserTableViewController.m */,
 				903B9CE916DFADEC0030471D /* Account */,
@@ -1289,6 +1312,17 @@
 			name = "Background White";
 			sourceTree = "<group>";
 		};
+		90D55BD517EA19E100855BF0 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				90D55BD617EA19FF00855BF0 /* HistoriesViewController.h */,
+				90D55BD717EA19FF00855BF0 /* HistoriesViewController.m */,
+				9008894F17EA2DA000C9B64E /* HistoryCell.h */,
+				9008895017EA2DA000C9B64E /* HistoryCell.m */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
 		90DC44A31719A9CC00AB0BAE /* Swipe icon user Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1467,6 +1501,7 @@
 				9086ECF516DA505D00965576 /* world_black.png in Resources */,
 				9086ECF616DA505D00965576 /* world_black@2x.png in Resources */,
 				9086ECF716DA505D00965576 /* world_white.png in Resources */,
+				903C12A917E9D80B00CCD26D /* locateMyStickersFushiaSmallLogo.png in Resources */,
 				9086ECF816DA505D00965576 /* world_white@2x.png in Resources */,
 				9086ECFD16DA507A00965576 /* search_black.png in Resources */,
 				9086ECFE16DA507A00965576 /* search_black@2x.png in Resources */,
@@ -1480,6 +1515,7 @@
 				903B9CDA16DF9F6C0030471D /* logout-icon.png in Resources */,
 				903B9CDC16DFA1590030471D /* logout2-icon.png in Resources */,
 				903B9CDF16DFA4BA0030471D /* account-icon.png in Resources */,
+				903C12A717E9D60100CCD26D /* locateMyStickersWhiteSmallLogo.png in Resources */,
 				903B9CE216DFA57C0030471D /* settings-icon.png in Resources */,
 				903C12A017E9278800CCD26D /* tabBarWhite@2x.png in Resources */,
 				903B9CE416DFABC00030471D /* adril.jpg in Resources */,
@@ -1531,6 +1567,7 @@
 				905958D016D3856C0055BBA8 /* LRURLRequestOperation.m in Sources */,
 				90B80A7216D6D97A004CA608 /* LoginTableViewController.m in Sources */,
 				90B80A7716D6DB44004CA608 /* LocationManager.m in Sources */,
+				9008895117EA2DA000C9B64E /* HistoryCell.m in Sources */,
 				90B80A7B16D6DB9D004CA608 /* SessionManager.m in Sources */,
 				90B80A8016D6DC58004CA608 /* Session.m in Sources */,
 				90B80A8416D6DCCD004CA608 /* ConnectionManager.m in Sources */,
@@ -1543,6 +1580,7 @@
 				9086ED1C16DA5EA200965576 /* UserTableViewController.m in Sources */,
 				9086ED2016DA5EC000965576 /* SearchTableViewController.m in Sources */,
 				9086ED2716DA80AB00965576 /* StickerCell.m in Sources */,
+				90D55BD817EA19FF00855BF0 /* HistoriesViewController.m in Sources */,
 				903B9CE816DFADAC0030471D /* AccountViewController.m in Sources */,
 				903B9CF016DFBB820030471D /* StickerDetailViewController.m in Sources */,
 				9029C71C16E240AE00047CF4 /* SettingsViewController.m in Sources */,
@@ -1601,10 +1639,12 @@
 				90710A7D171CD7040095D112 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				90710A7E171CD7040095D112 /* MagicalRecord.m in Sources */,
 				90616E74172486CA00FF88DE /* LMSMapView.m in Sources */,
+				9008894E17EA271C00C9B64E /* HistoryRecord.m in Sources */,
 				90588BBA1724D5FF0097735F /* LMSAnnotation.m in Sources */,
 				90E0554E1797219500B20245 /* AFHTTPClient.m in Sources */,
 				90E055511797219500B20245 /* AFJSONRequestOperation.m in Sources */,
 				90588BBB1724D5FF0097735F /* LMSAnnotationView.m in Sources */,
+				9008894717EA23F900C9B64E /* HistoryRecord+Manager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1726,8 +1766,8 @@
 				);
 				INFOPLIST_FILE = "locateMyStickers/LMS-Info.plist";
 				PRODUCT_NAME = LMS;
-				PROVISIONING_PROFILE = "2178CF07-D528-4B32-AC71-9A4F9F10A0EF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2178CF07-D528-4B32-AC71-9A4F9F10A0EF";
+				PROVISIONING_PROFILE = "B4234244-AA0C-4582-9D71-763C22BC8A48";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B4234244-AA0C-4582-9D71-763C22BC8A48";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1751,8 +1791,8 @@
 				);
 				INFOPLIST_FILE = "locateMyStickers/LMS-Info.plist";
 				PRODUCT_NAME = LMS;
-				PROVISIONING_PROFILE = "2178CF07-D528-4B32-AC71-9A4F9F10A0EF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2178CF07-D528-4B32-AC71-9A4F9F10A0EF";
+				PROVISIONING_PROFILE = "B4234244-AA0C-4582-9D71-763C22BC8A48";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B4234244-AA0C-4582-9D71-763C22BC8A48";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseTableViewController.h"
 
-@interface UserTableViewController : UITableViewController
+@interface UserTableViewController : BaseTableViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *yourStickersLabel;
 @property (strong, nonatomic) IBOutlet UILabel *sharringStickersLabel;

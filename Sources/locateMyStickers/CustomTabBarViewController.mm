@@ -45,8 +45,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 	
-	self.buttonImage = [UIImage imageNamed:@"locateMyStickersRedLogo"];
-	self.highlightImage = [UIImage imageNamed:@"locateMyStickersWhiteLogo"];
+	self.buttonImage = [UIImage imageNamed:@"locateMyStickersWhiteSmallLogo"];
+//	self.buttonImage = [UIImage imageNamed:@"locateMyStickersFushiaSmallLogo"];
+//	self.buttonImage = [UIImage imageNamed:@"locateMyStickersRedLogo"];
+//	self.highlightImage = [UIImage imageNamed:@"locateMyStickersWhiteLogo"];
+//	self.highlightImage = [UIImage imageNamed:@"locateMyStickersWhiteSmallLogo"];
+	self.highlightImage = [UIImage imageNamed:@"locateMyStickersFushiaSmallLogo"];
 	
 	
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

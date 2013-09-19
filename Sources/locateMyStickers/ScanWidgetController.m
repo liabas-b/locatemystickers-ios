@@ -98,6 +98,15 @@
 	[theOverLayView setDelegate:self];
 	self.overlayView = theOverLayView;
 	
+	//INFO: animation to hide status bar
+	CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
+	
+	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+	[UIView animateWithDuration:0.25 animations:^{
+		self.navigationController.navigationBar.frame = self.navigationController.navigationBar.bounds;
+		self.view.window.frame = CGRectMake(0, 0, appFrame.size.width, appFrame.size.height);
+	}];
+	
 	if (readingTimeOut <= 0)
 		readingTimeOut = 30;
 }

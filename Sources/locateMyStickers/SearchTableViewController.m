@@ -359,7 +359,7 @@
 		
 		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
 		if (dataDictionary) {
-			for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
+			for (NSDictionary *item in dataDictionary) {
 				NSLog(@"--|--%@--|--", item);
 				if (item != nil) {
 					StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:item];

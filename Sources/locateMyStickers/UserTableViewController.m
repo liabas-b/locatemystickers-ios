@@ -28,9 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-
-	[self setup];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,13 +57,6 @@
 	self.tabBarItem = [[UCTabBarItem alloc] initWithTitle:@"User"
 											imageSelected:@"account_black"
 											andUnselected:@"account_white"];
-}
-
-- (void)setup {
-	
-	UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
-    [self.tableView setBackgroundView:backgroundView];
 }
 
 #pragma mark - Table view data source

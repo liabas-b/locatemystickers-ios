@@ -138,12 +138,12 @@
 	
 	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 		NSLog(@"Result: %@", JSON);
-		for (NSDictionary *dic in [JSON objectForKey:@"data"]) {
+		for (NSDictionary *dic in JSON) {
 			NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, dic);
 			LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:dic];
 			NSLog(@" %s| locationRecord: %@", __PRETTY_FUNCTION__, locationRecord);
 		}
-		if ([[JSON objectForKey:@"data"] count] > 0)
+		if ([JSON count] > 0)
 			[self setupMap];
 		
 	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {

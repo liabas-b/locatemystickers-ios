@@ -101,7 +101,7 @@
 	
 	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 		NSLog(@"Result: %@", JSON);
-		for (NSDictionary *dic in [JSON objectForKey:@"data"]) {
+		for (NSDictionary *dic in JSON) {//[JSON objectForKey:@"data"]) {
 			NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, dic);
 			LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:dic];
 			NSLog(@" %s| locationRecord: %@", __PRETTY_FUNCTION__, locationRecord);

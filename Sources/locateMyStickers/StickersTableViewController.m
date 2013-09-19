@@ -273,7 +273,7 @@
 		
 		//NSLog(@"%@", [dataDictionary objectForKey:@"data"]);
 		
-		for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
+		for (NSDictionary *item in dataDictionary) {
 			StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:item];
 		}
 		[[NSManagedObjectContext defaultContext] saveNestedContexts];
