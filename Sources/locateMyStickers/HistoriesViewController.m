@@ -10,7 +10,13 @@
 #import "HistoryRecord+Manager.h"
 #import "HistoryCell.h"
 
+#import "ConventionTools.h"
+#import "AFJSONRequestOperation.h"
+#import "AppDelegate.h"
+
 @interface HistoriesViewController ()
+
+@property (nonatomic, strong) NSMutableArray *historyList;
 
 @end
 
@@ -29,19 +35,40 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	self.historyList = [[NSMutableArray alloc] init];
 	
-	//TODO: get history list & display it
+	[self updateHistories];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Web Service Histories request
+
+- (void)updateHistories {
+	
+	NSString *route = @"histories";
+	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
+	
+	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+		NSLog(@"Result: %@", JSON);
+		for (NSDictionary *dic in JSON) {
+			NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, dic);
+			HistoryRecord *historyRecord = [HistoryRecord addUpdateHistoryWithDictionary:dic];
+			NSLog(@" %s| historyRecord: %@", __PRETTY_FUNCTION__, historyRecord);
+			if (![self.historyList containsObject:historyRecord]) {
+				[self.historyList addObject:historyRecord];
+				[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:[self.historyList count] - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+			}
+		}
+		
+	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		
+	}];
+	[operation start];
 }
 
 #pragma mark - Table view data source
@@ -55,7 +82,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 3;
+    return [self.historyList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -63,52 +90,18 @@
     static NSString *CellIdentifier = @"HistoryCell";
     HistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 	
-	NSString *historyText = [NSString stringWithFormat:@""];
-	cell.historyLabel.text = historyText;
-    
-    // Configure the cell...
-    
+	
+	HistoryRecord *historyRecord = [self.historyList objectAtIndex:indexPath.row];
+	
+	NSString *historyText = [NSString stringWithFormat:@"%@ was %@", [historyRecord.subject capitalizedString], historyRecord.operation];
+
+	dispatch_async(dispatch_get_main_queue(), ^{
+		cell.historyLabel.text = historyText;
+		cell.dateLabel.text = [ConventionTools getDiffTimeInStringFromDate:historyRecord.updatedAt];
+    });
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation

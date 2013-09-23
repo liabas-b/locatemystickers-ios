@@ -10,6 +10,6 @@
 
 @interface AccountRecord (Manager)
 
-+ (AccountRecord *)addUpdateAccountWithDictionary:(NSDictionary *)dictionary;
++ (AccountRecord *)addUpdateWithDictionary:(NSDictionary *)dictionary;
 
 @end

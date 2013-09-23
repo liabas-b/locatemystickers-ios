@@ -13,7 +13,7 @@ static NSString *entityName = @"LocationRecord";
 
 @implementation LocationRecord (Manager)
 
-+ (LocationRecord *)addUpdatelocationWithDictionary:(NSDictionary *)dictionary {
++ (LocationRecord *)addUpdateWithDictionary:(NSDictionary *)dictionary {
 
 		LocationRecord *locationRecord = nil;
 		

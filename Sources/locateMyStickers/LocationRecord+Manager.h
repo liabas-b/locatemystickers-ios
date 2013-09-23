@@ -10,7 +10,7 @@
 
 @interface LocationRecord (Manager)
 
-+ (LocationRecord *)addUpdatelocationWithDictionary:(NSDictionary *)dictionary;
++ (LocationRecord *)addUpdateWithDictionary:(NSDictionary *)dictionary;
 
 
 @end

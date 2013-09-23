@@ -12,7 +12,7 @@ static NSString *entityName = @"AccountRecord";
 
 @implementation AccountRecord (Manager)
 
-+ (AccountRecord *)addUpdateAccountWithDictionary:(NSDictionary *)dictionary {
++ (AccountRecord *)addUpdateWithDictionary:(NSDictionary *)dictionary {
 
 	AccountRecord *accountRecord = [AccountRecord findFirstByAttribute:@"idAccount" withValue:[dictionary objectForKey:@"id"]];
 	if (accountRecord == nil) {

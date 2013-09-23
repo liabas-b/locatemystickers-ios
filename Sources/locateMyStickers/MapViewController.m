@@ -103,7 +103,7 @@
 		NSLog(@"Result: %@", JSON);
 		for (NSDictionary *dic in JSON) {//[JSON objectForKey:@"data"]) {
 			NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, dic);
-			LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:dic];
+			LocationRecord *locationRecord = [LocationRecord addUpdateWithDictionary:dic];
 			NSLog(@" %s| locationRecord: %@", __PRETTY_FUNCTION__, locationRecord);
 		}
 
@@ -175,7 +175,7 @@
 		
 		for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
 			//NSLog(@"%@", item);
-			LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:item];
+			LocationRecord *locationRecord = [LocationRecord addUpdateWithDictionary:item];
 			if (locationRecord)
 				[self.mapView.locationsRecordList addObject:locationRecord];
 		}

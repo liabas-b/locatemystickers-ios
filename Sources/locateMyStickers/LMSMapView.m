@@ -35,14 +35,44 @@
 	[super awakeFromNib];
 	
 	self.selectedOptions = [[NSMutableArray alloc] init];
+	self.locationsRecordList = [[NSMutableArray alloc] init];
+	
 	self.delegate = self;
 	[self setShowsUserLocation:YES];
 	
 	[self.selectedOptions addObject:[NSNumber numberWithInt:LMSMapRoute]];
 	[self.selectedOptions addObject:[NSNumber numberWithInt:LMSMapPins]];
+	
+	//
+	
+	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	[button addTarget:self
+			   action:@selector(aMethod:)
+	 forControlEvents:UIControlEventTouchDown];
+	[button setTitle:@"Close" forState:UIControlStateNormal];
+	button.frame = CGRectMake(10.0, 10.0, 40.0, 30.0);
+	[self addSubview:button];
 }
 
+- (void)aMethod:(UIButton*)button
+{
+	if ([self.mapViewDelegate respondsToSelector:@selector(closeMapButtonHandler)]) {
+		[self.mapViewDelegate closeMapButtonHandler];
+	}
+}
+
+
 - (void)initRegionWithStartLocationRecord:(LocationRecord *)startLocationRecord andEndLocationRecord:(LocationRecord *)endLocationRecord {
+
+	[startLocationRecord debug];
+	[endLocationRecord debug];
+	
+	CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake([endLocationRecord.latitude floatValue], [endLocationRecord.longitude floatValue]);
+	
+	[self setCenterCoordinate:centerCoordinate animated:YES];
+	
+	/*
+	
 	CLLocationDegrees latDelta = [startLocationRecord.latitude floatValue] - [endLocationRecord.latitude floatValue];//INFO: should be the top left and bottom right
     
     // think of a span as a tv size, measure from one corner to another
@@ -53,7 +83,7 @@
     MKCoordinateRegion region = MKCoordinateRegionMake(midCoordinate, span);
     
     self.region = region;
-	
+	*/
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
@@ -77,6 +107,7 @@
 	if ([annotation isKindOfClass:[LMSAnnotation class]]) {
 		LMSAnnotationView *annotationView = [[LMSAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Sticker"];
 		annotationView.canShowCallout = YES;
+		
 		return annotationView;
 	}
 	return nil;
@@ -123,10 +154,12 @@
 }
 
 - (void)addRoute {
-	NSLog(@"%s", __PRETTY_FUNCTION__);
+	NSLog(@"%s | %@", __PRETTY_FUNCTION__, self.locationsRecordList);
 	
 	LocationRecord *firstLocationRecord = self.locationsRecordList[0];
 	LocationRecord *lastLocationRecord = [self.locationsRecordList lastObject];
+	
+	
 	
 	if (firstLocationRecord && lastLocationRecord) {
 		[self initRegionWithStartLocationRecord:firstLocationRecord andEndLocationRecord:lastLocationRecord];

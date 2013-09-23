@@ -8,30 +8,43 @@
 
 #import "UserCell.h"
 #import "BButton.h"
+
+//@implementation UserCell
 /*
-@implementation UserCell
+ - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+ {
+ self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+ if (self) {
+ // Initialization code
+ 
+ //)awesomeButtonWithOnlyIcon:(FAIcon)icon color:(UIColor *)color
+ }
+ return self;
+ }
+ 
+ - (void)setSelected:(BOOL)selected animated:(BOOL)animated
+ {
+ [super setSelected:selected animated:animated];
+ 
+ // Configure the view for the selected state
+ //[self.mapButton //setType:BButtonTypeDefault];
+ //[self.mapButton //addAwesomeIcon:FAIconMapMarker beforeTitle:YES];
+ [self.mapButton setColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]];
+ 
+ UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
+ backgroundView.backgroundColor = [UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0];
+ self.selectedBackgroundView = backgroundView;
+ 
+ }
+ 
+ - (IBAction)handlerMapButton:(id)sender {
+ }
+ 
+ @end
+ */
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-	UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
-	backgroundView.backgroundColor = [UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0];
-	self.selectedBackgroundView = backgroundView;
-}
-
-@end
-*/
+//#import "MCSwipeTableViewCell.h"
 
 static CGFloat const kMCStop1 = 0.20; // Percentage limit to trigger the first action
 static CGFloat const kMCStop2 = 0.2; // Percentage limit to trigger the second action
@@ -162,6 +175,7 @@ secondStateIconName:(NSString *)secondIconName
 	
 	//	self.translatesAutoresizingMaskIntoConstraints = NO;
     _colorIndicatorView = [[UIView alloc] initWithFrame:self.bounds];
+	
     [_colorIndicatorView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
 	
 	[self.colorIndicatorView addConstraint:
@@ -178,30 +192,31 @@ secondStateIconName:(NSString *)secondIconName
 	 [_slidingImageView setContentMode:UIViewContentModeCenter];
 	 [_colorIndicatorView addSubview:_slidingImageView];
 	 */
+	
 	//INFO: buttons
 	_slidingButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	[_slidingButton setImage:[UIImage imageNamed:@"mathematic-multiply2-icon-white"] forState:UIControlStateNormal];
+	//	[_slidingButton setImage:[UIImage imageNamed:@"mathematic-multiply2-icon-white"] forState:UIControlStateNormal];
 	
 	[_slidingButton addTarget:self action:@selector(handlePressButton:) forControlEvents:UIControlEventTouchDown];
     [_slidingButton setContentMode:UIViewContentModeCenter];
     [_colorIndicatorView addSubview:_slidingButton];
 	
 	_slidingButton1 = [UIButton buttonWithType:UIButtonTypeCustom];
-	[_slidingButton1 setImage:[UIImage imageNamed:@"editing-delete-icon-white"] forState:UIControlStateNormal];
+	//	[_slidingButton1 setImage:[UIImage imageNamed:@"editing-delete-icon-white"] forState:UIControlStateNormal];
 	
 	[_slidingButton1 addTarget:self action:@selector(handlePressButton:) forControlEvents:UIControlEventTouchDown];
     [_slidingButton1 setContentMode:UIViewContentModeCenter];
     [_colorIndicatorView addSubview:_slidingButton1];
 	
 	_slidingButton2 = [UIButton buttonWithType:UIButtonTypeCustom];
-	[_slidingButton2 setImage:[UIImage imageNamed:@"lms-icon-white"] forState:UIControlStateNormal];
+	//	[_slidingButton2 setImage:[UIImage imageNamed:@"lms-icon-white"] forState:UIControlStateNormal];
 	
 	[_slidingButton2 addTarget:self action:@selector(handlePressButton:) forControlEvents:UIControlEventTouchDown];
     [_slidingButton2 setContentMode:UIViewContentModeCenter];
     [_colorIndicatorView addSubview:_slidingButton2];
 	
 	_slidingButton3 = [UIButton buttonWithType:UIButtonTypeCustom];
-	[_slidingButton3 setImage:[UIImage imageNamed:@"very-basic-globe-icon-white"] forState:UIControlStateNormal];
+	//	[_slidingButton3 setImage:[UIImage imageNamed:@"very-basic-globe-icon-white"] forState:UIControlStateNormal];
 	
 	
 	[_slidingButton3 addTarget:self action:@selector(handlePressButton:) forControlEvents:UIControlEventTouchDown];
@@ -209,14 +224,14 @@ secondStateIconName:(NSString *)secondIconName
     [_colorIndicatorView addSubview:_slidingButton3];
 	
 	
-	_slidingButton4 = [UIButton buttonWithType:UIButtonTypeCustom];
-	[_slidingButton4 setImage:[UIImage imageNamed:@"very-basic-refresh-icon-white"] forState:UIControlStateNormal];
+//	_slidingButton4 = [UIButton buttonWithType:UIButtonTypeCustom];
+	//	[_slidingButton4 setImage:[UIImage imageNamed:@"very-basic-refresh-icon-white"] forState:UIControlStateNormal];
 	
-	
+	/*
 	[_slidingButton4 addTarget:self action:@selector(handlePressButton:) forControlEvents:UIControlEventTouchDown];
     [_slidingButton4 setContentMode:UIViewContentModeCenter];
     [_colorIndicatorView addSubview:_slidingButton4];
-	
+	*/
 	//
 	
     _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGestureRecognizer:)];
@@ -224,6 +239,14 @@ secondStateIconName:(NSString *)secondIconName
     [_panGestureRecognizer setDelegate:self];
 	
 	self.isActif = NO;
+}
+
+- (void)loadImage {
+	[_slidingButton setImage:[UIImage imageNamed:_firstIconName] forState:UIControlStateNormal];
+	[_slidingButton1 setImage:[UIImage imageNamed:_secondIconName] forState:UIControlStateNormal];
+	[_slidingButton2 setImage:[UIImage imageNamed:_thirdIconName] forState:UIControlStateNormal];
+	[_slidingButton3 setImage:[UIImage imageNamed:_fourthIconName] forState:UIControlStateNormal];
+//	[_slidingButton4 setImage:[UIImage imageNamed:_fithIconName] forState:UIControlStateNormal];
 }
 
 #pragma mark - Handle Gestures
@@ -243,9 +266,9 @@ secondStateIconName:(NSString *)secondIconName
 		buttonState = MCSwipeTableViewButtonState3;
 	else if ([sender isEqual:_slidingButton3])
 		buttonState = MCSwipeTableViewButtonState4;
-	else if ([sender isEqual:_slidingButton4])
-		buttonState = MCSwipeTableViewButtonState5;
-	
+//	else if ([sender isEqual:_slidingButton4])
+//		buttonState = MCSwipeTableViewButtonState5;
+//	
 	
 	if ([self.delegate respondsToSelector:@selector(swipeUserTableViewCell:didTriggerButtonState:)]) {
 		[self.delegate swipeUserTableViewCell:self didTriggerButtonState:buttonState];
@@ -264,11 +287,11 @@ secondStateIconName:(NSString *)secondIconName
     }
     else if (state == UIGestureRecognizerStateBegan || state == UIGestureRecognizerStateChanged) {
 		NSLog(@"%@", self.contentView.constraints);
+		[_colorIndicatorView setAlpha:1.0];
         CGPoint center = {self.contentView.center.x + translation.x, self.contentView.center.y};
         [self.contentView setCenter:center];
         [self animateWithOffset:CGRectGetMinX(self.contentView.frame)];
         [gesture setTranslation:CGPointZero inView:self];
-		[_colorIndicatorView setAlpha:1.0];
     }
     else if (state == UIGestureRecognizerStateEnded || state == UIGestureRecognizerStateCancelled) {
         _currentImageName = [self imageNameWithPercentage:percentage];
@@ -284,6 +307,7 @@ secondStateIconName:(NSString *)secondIconName
 			[self moveWithDuration:animationDuration andDirection:_direction];
 		else
 			[self bounceToOrigin];
+		
 		//else
 		//	[self notifyDelegate];
 		//  [self bounceToOrigin]; --> original
@@ -483,7 +507,7 @@ secondStateIconName:(NSString *)secondIconName
 	[_slidingButton1 setAlpha:buttonAlpha];
 	[_slidingButton2 setAlpha:buttonAlpha];
 	[_slidingButton3 setAlpha:buttonAlpha];
-	[_slidingButton4 setAlpha:buttonAlpha];
+//	[_slidingButton4 setAlpha:buttonAlpha];
 	
     // Color
     UIColor *color = [self colorWithPercentage:percentage];
@@ -493,8 +517,8 @@ secondStateIconName:(NSString *)secondIconName
 }
 
 - (void)slideImageWithPercentage:(CGFloat)percentage imageName:(NSString *)imageName isDragging:(BOOL)isDragging {
-    UIImage *slidingImage = [UIImage imageNamed:imageName];
-    CGSize slidingImageSize = slidingImage.size;
+//    UIImage *slidingImage = [UIImage imageNamed:imageName];
+    CGSize slidingImageSize = CGSizeMake(80.0, 80.0);//slidingImage.size;
     CGRect slidingImageRect;
 	
     CGPoint position = CGPointZero;
@@ -517,6 +541,7 @@ secondStateIconName:(NSString *)secondIconName
             position.x = CGRectGetWidth(self.bounds) + [self offsetWithPercentage:percentage + (kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
         }
     }
+	
     else {
         if (_direction == MCSwipeTableViewCellDirectionRight) {
             position.x = [self offsetWithPercentage:percentage - (kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
@@ -561,10 +586,12 @@ secondStateIconName:(NSString *)secondIconName
     [_slidingButton3 setFrame:slidingButtonRect3];
 	//
 	//INFO: button
+	/*
 	CGRect slidingButtonRect4;
 	slidingButtonRect4 = [self buttonRectSizefromRect:slidingButtonRect3 andPosition:position];
     [_slidingButton4 setFrame:slidingButtonRect4];
-	//
+	 */
+	 //
 	
 }
 
@@ -644,9 +671,12 @@ secondStateIconName:(NSString *)secondIconName
                          CGRect frame = self.contentView.frame;
                          frame.origin.x = -bounceDistance;
                          [self.contentView setFrame:frame];
-                         [_slidingImageView setAlpha:0.0];
-						 [_slidingButton setAlpha:0];
-						 [self slideImageWithPercentage:0 imageName:_currentImageName isDragging:NO];
+						 /*
+						  [_slidingImageView setAlpha:0.0];
+						  [_slidingButton setAlpha:0];
+						  [self slideImageWithPercentage:0 imageName:_currentImageName isDragging:NO];
+						  */
+						 //
 						 [_colorIndicatorView setAlpha:0.0];
                      }
                      completion:^(BOOL finished1) {
@@ -662,7 +692,8 @@ secondStateIconName:(NSString *)secondIconName
                                           completion:^(BOOL finished2) {
 											  //											  [self notifyDelegate];
 											  self.direction = MCSwipeTableViewCellDirectionLeft;
-											  self.currentPercentage = 0;//fabs(self.currentPercentage);
+											  self.currentPercentage = fabs(self.currentPercentage);
+											  
                                           }];
                      }];
 	
@@ -694,11 +725,24 @@ secondStateIconName:(NSString *)secondIconName
     [self setSecondIconName:secondIconName];
     [self setThirdIconName:thirdIconName];
     [self setFourthIconName:fourthIconName];
+//	[self setFithIconName:fithIconName];
 	
     [self setFirstColor:firstColor];
     [self setSecondColor:secondColor];
     [self setThirdColor:thirdColor];
     [self setFourthColor:fourthColor];
+//	[self setFithColor:fithColor];
+	
+	[self loadImage];
+	
+	//	[_slidingButton setImage:[UIImage imageNamed:@"mathematic-multiply2-icon-white"] forState:UIControlStateNormal];
+	//	[_slidingButton1 setImage:[UIImage imageNamed:@"editing-delete-icon-white"] forState:UIControlStateNormal];
+	//	[_slidingButton2 setImage:[UIImage imageNamed:@"lms-icon-white"] forState:UIControlStateNormal];
+	//	[_slidingButton3 setImage:[UIImage imageNamed:@"very-basic-globe-icon-white"] forState:UIControlStateNormal];
+	//	[_slidingButton4 setImage:[UIImage imageNamed:@"very-basic-refresh-icon-white"] forState:UIControlStateNormal];
+	
+	
+	
 }
 
 @end

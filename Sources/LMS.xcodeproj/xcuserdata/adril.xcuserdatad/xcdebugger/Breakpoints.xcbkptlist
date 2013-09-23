@@ -143,8 +143,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "427"
          endingLineNumber = "427"
-         landmarkName = "-searchDisplayController:shouldReloadTableForSearchString:"
-         landmarkType = "5">
+         landmarkName = "@implementation SearchTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -156,7 +156,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "434"
          endingLineNumber = "434"
-         landmarkName = "-searchDisplayController:shouldReloadTableForSearchScope:"
+         landmarkName = "-searchDisplayController:shouldReloadTableForSearchString:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -169,7 +169,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "391"
          endingLineNumber = "391"
-         landmarkName = "-filterContentForSearchText:scope:"
+         landmarkName = "-didReceiveStickerData:forSearchText:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -182,7 +182,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "164"
          endingLineNumber = "164"
-         landmarkName = "-configureStickerCell:withStickerRecord:"
+         landmarkName = "-configureUserCell:withAccountRecord:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -195,8 +195,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "145"
          endingLineNumber = "145"
-         landmarkName = "-configureUserCell:withAccountRecord:"
-         landmarkType = "5">
+         landmarkName = "@implementation SearchTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -208,8 +208,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "122"
          endingLineNumber = "122"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
+         landmarkName = "@implementation SearchTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -273,7 +273,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "302"
          endingLineNumber = "302"
-         landmarkName = "-didReceiveAccountData:forSearchText:"
+         landmarkName = "-handleStartSearchStickers:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -286,7 +286,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "266"
          endingLineNumber = "266"
-         landmarkName = "-handleStartSearchUsers:"
+         landmarkName = "-searchBarShouldEndEditing:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -841,8 +841,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "254"
          endingLineNumber = "254"
-         landmarkName = "-searchBarShouldEndEditing:"
-         landmarkType = "5">
+         landmarkName = "@implementation SearchTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -971,7 +971,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "420"
          endingLineNumber = "420"
-         landmarkName = "-searchDisplayController:didLoadSearchResultsTableView:"
+         landmarkName = "-filterContentForSearchText:scope:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1502,8 +1502,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "525"
          endingLineNumber = "525"
-         landmarkName = "-swipeUserTableViewCell:didTriggerButtonState:"
-         landmarkType = "5">
+         landmarkName = "@implementation SearchTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"

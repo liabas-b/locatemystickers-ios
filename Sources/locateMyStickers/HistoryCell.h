@@ -11,5 +11,6 @@
 @interface HistoryCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *historyLabel;
+@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end

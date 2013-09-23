@@ -176,7 +176,6 @@
 	 UIView *backgroundView = [[UIView alloc] initWithFrame:cell.frame];
 	 
 	 backgroundView.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0];
-	 //backgroundView.backgroundColor = [UIColor colorWithRed:225.0/255.0 green:225.0/255.0 blue:225.0/255.0 alpha:1.0];
 	 
 	 cell.backgroundView = backgroundView;
 
@@ -242,10 +241,6 @@
 	NSString *route = [NSString stringWithFormat:@"stickers"];
 	NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
 
-	
-//	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
-//	NSString *requestString = [NSString stringWithFormat:@"%@/users/3/stickers.json", hostName];
-//	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	
 	[request setHTTPMethod:@"GET"];
 	
@@ -371,7 +366,12 @@
 			
 		}
 			break;
-		case MCSwipeTableViewButtonState5://INFO: share
+		case MCSwipeTableViewButtonState5://INFO: share with friends
+		{
+			[cell bounceToOrigin];
+			[self performSegueWithIdentifier:@"FriendsSegue" sender:self];
+
+		}
 			break;
 			
 		default:

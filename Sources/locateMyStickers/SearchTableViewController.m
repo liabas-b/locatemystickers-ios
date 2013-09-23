@@ -31,6 +31,9 @@
 #import "NSString+FontAwesome.h"
 #import "UIFont+FontAwesome.h"
 
+#import "UIImageView+AFNetworking.h"
+#import "CryptographyTools.h"
+
 #import "ConventionTools.h"
 
 @interface SearchTableViewController ()
@@ -149,12 +152,19 @@
 	
 	[cell setFirstStateIconName:@"mathematic-multiply2-icon-white"
                      firstColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]
-            secondStateIconName:@"editing-delete-icon-white"
+            secondStateIconName:@"user.png"
                     secondColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]//[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]
-                  thirdIconName:@"lms-icon-white"
+                  thirdIconName:@"userAddFriend"
                      thirdColor:[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]//[UIColor colorWithRed:254.0 / 255.0 green:217.0 / 255.0 blue:56.0 / 255.0 alpha:1.0]
-                 fourthIconName:@"very-basic-globe-icon-white"
+                 fourthIconName:@"message"
                     fourthColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]];//[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]];
+	
+	
+	NSString *hashGravatar = [CryptographyTools stringToMD5:accountRecord.email];
+	NSString *gravatarUrl = [NSString stringWithFormat:@"http://www.gravatar.com/avatar/%@", hashGravatar];
+	
+	[cell.profileImageView setImageWithURL:[NSURL URLWithString:gravatarUrl] placeholderImage:[UIImage imageNamed:@"locateMyStickersFushiaSmallLogo"]];
+
 	
     [cell.contentView setBackgroundColor:[UIColor whiteColor]];
 	
@@ -279,6 +289,7 @@
 - (void)handleStartSearchStickers:(NSString *)searchText {
 	
 	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
+	//INFO:user set in hard
 	NSString *requestString = [NSString stringWithFormat:@"%@/users/3/stickers.json?direction=asc&sort=id&search=%@&column=name", hostName, searchText];
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	
@@ -320,7 +331,7 @@
 		if (dataArray) {
 			for (NSDictionary *item in dataArray) {
 				NSLog(@"--|--%@--|--", item);
-				AccountRecord *accountRecord = [AccountRecord addUpdateAccountWithDictionary:item];
+				AccountRecord *accountRecord = [AccountRecord addUpdateWithDictionary:item];
 				if (accountRecord)
 					[self.searchRecordList addObject:accountRecord];
 			}

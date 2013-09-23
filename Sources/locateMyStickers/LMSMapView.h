@@ -7,6 +7,7 @@
 //
 
 #import <MapKit/MapKit.h>
+#import "LMSMapViewProtocol.h"
 
 @class LocationRecord;
 @class StickerRecord;
@@ -25,6 +26,8 @@ typedef enum {
 @property (nonatomic, strong)NSMutableArray *stickerRecordList;
 
 @property (nonatomic, strong)StickerRecord *currentStickerRecord;
+
+@property (nonatomic, strong)id<LMSMapViewProtocol> mapViewDelegate;
 
 - (void)loadSelectedOptions;
 

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseTableViewController.h"
 
-@interface AccountViewController : UITableViewController <UITextFieldDelegate>
+@interface AccountViewController : BaseTableViewController <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
 
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField;
+@property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
 
 @end

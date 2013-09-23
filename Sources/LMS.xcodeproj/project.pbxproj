@@ -15,8 +15,22 @@
 		9015FFCE16FC56C700D87605 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9015FFCD16FC56C700D87605 /* CoreVideo.framework */; };
 		9015FFD016FC56D100D87605 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9015FFCF16FC56D000D87605 /* ImageIO.framework */; };
 		9015FFD216FC56DA00D87605 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9015FFD116FC56DA00D87605 /* QuartzCore.framework */; };
+		901CC0DF17ECBA3700E654F9 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901CC0DE17ECBA3700E654F9 /* FriendsViewController.m */; };
+		901CC0E217ECC99500E654F9 /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 901CC0E117ECC99500E654F9 /* FriendCell.m */; };
+		901CC0EB17ED015500E654F9 /* empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 901CC0E317ED015500E654F9 /* empty.png */; };
+		901CC0EC17ED015500E654F9 /* empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 901CC0E417ED015500E654F9 /* empty@2x.png */; };
+		901CC0EE17ED015500E654F9 /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 901CC0E617ED015500E654F9 /* user@2x.png */; };
+		901CC0EF17ED015500E654F9 /* userAddFriend.png in Resources */ = {isa = PBXBuildFile; fileRef = 901CC0E717ED015500E654F9 /* userAddFriend.png */; };
+		901CC0F017ED015500E654F9 /* userAddFriend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 901CC0E817ED015500E654F9 /* userAddFriend@2x.png */; };
+		901CC0F117ED015500E654F9 /* userAlreadyFriend.png in Resources */ = {isa = PBXBuildFile; fileRef = 901CC0E917ED015500E654F9 /* userAlreadyFriend.png */; };
+		901CC0F217ED015500E654F9 /* userAlreadyFriend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 901CC0EA17ED015500E654F9 /* userAlreadyFriend@2x.png */; };
+		901CC0F517ED030A00E654F9 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 901CC0F317ED030A00E654F9 /* message.png */; };
+		901CC0F617ED030A00E654F9 /* message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 901CC0F417ED030A00E654F9 /* message@2x.png */; };
+		901CC0F817ED0D5300E654F9 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 901CC0F717ED0D5300E654F9 /* user.png */; };
 		9029C71C16E240AE00047CF4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9029C71B16E240AE00047CF4 /* SettingsViewController.m */; };
 		9029C71F16E246C600047CF4 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9029C71E16E246C600047CF4 /* UserCell.m */; };
+		902AD7E717EE50D700E2FC77 /* FollowedStickersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AD7E617EE50D700E2FC77 /* FollowedStickersViewController.m */; };
+		902AD7EA17EE519800E2FC77 /* FollowedStickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AD7E917EE519800E2FC77 /* FollowedStickerCell.m */; };
 		902FB85916FACA34006262FF /* StickerAddingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902FB85816FACA34006262FF /* StickerAddingTableViewController.m */; };
 		903B9CDA16DF9F6C0030471D /* logout-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 903B9CD916DF9F6C0030471D /* logout-icon.png */; };
 		903B9CDC16DFA1590030471D /* logout2-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 903B9CDB16DFA1590030471D /* logout2-icon.png */; };
@@ -252,10 +266,28 @@
 		9015FFCD16FC56C700D87605 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		9015FFCF16FC56D000D87605 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		9015FFD116FC56DA00D87605 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		901CC0DD17ECBA3700E654F9 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
+		901CC0DE17ECBA3700E654F9 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
+		901CC0E017ECC99500E654F9 /* FriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
+		901CC0E117ECC99500E654F9 /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
+		901CC0E317ED015500E654F9 /* empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty.png; sourceTree = "<group>"; };
+		901CC0E417ED015500E654F9 /* empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty@2x.png"; sourceTree = "<group>"; };
+		901CC0E617ED015500E654F9 /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
+		901CC0E717ED015500E654F9 /* userAddFriend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userAddFriend.png; sourceTree = "<group>"; };
+		901CC0E817ED015500E654F9 /* userAddFriend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userAddFriend@2x.png"; sourceTree = "<group>"; };
+		901CC0E917ED015500E654F9 /* userAlreadyFriend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userAlreadyFriend.png; sourceTree = "<group>"; };
+		901CC0EA17ED015500E654F9 /* userAlreadyFriend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userAlreadyFriend@2x.png"; sourceTree = "<group>"; };
+		901CC0F317ED030A00E654F9 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
+		901CC0F417ED030A00E654F9 /* message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message@2x.png"; sourceTree = "<group>"; };
+		901CC0F717ED0D5300E654F9 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		9029C71A16E240AE00047CF4 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		9029C71B16E240AE00047CF4 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		9029C71D16E246C600047CF4 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
 		9029C71E16E246C600047CF4 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
+		902AD7E517EE50D700E2FC77 /* FollowedStickersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowedStickersViewController.h; sourceTree = "<group>"; };
+		902AD7E617EE50D700E2FC77 /* FollowedStickersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowedStickersViewController.m; sourceTree = "<group>"; };
+		902AD7E817EE519800E2FC77 /* FollowedStickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowedStickerCell.h; sourceTree = "<group>"; };
+		902AD7E917EE519800E2FC77 /* FollowedStickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowedStickerCell.m; sourceTree = "<group>"; };
 		902FB85716FACA34006262FF /* StickerAddingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerAddingTableViewController.h; sourceTree = "<group>"; };
 		902FB85816FACA34006262FF /* StickerAddingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerAddingTableViewController.m; sourceTree = "<group>"; };
 		903B9CD916DF9F6C0030471D /* logout-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout-icon.png"; sourceTree = "<group>"; };
@@ -344,6 +376,7 @@
 		90616E73172486CA00FF88DE /* LMSMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSMapView.m; sourceTree = "<group>"; };
 		9065DE4C16D70E120098B16F /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		9065DE4F16D70F0C0098B16F /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "../Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		90676D9F17EF7C0900617611 /* LMSMapViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMSMapViewProtocol.h; sourceTree = "<group>"; };
 		906B73211719C42F0033A6D5 /* lms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lms.png; sourceTree = "<group>"; };
 		906B73221719C42F0033A6D5 /* lms@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lms@2x.png"; sourceTree = "<group>"; };
 		906B732B1719EB0D0033A6D5 /* editing-delete-icon-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editing-delete-icon-white.png"; sourceTree = "<group>"; };
@@ -556,6 +589,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		901CC0DA17ECBA1200E654F9 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				901CC0DD17ECBA3700E654F9 /* FriendsViewController.h */,
+				901CC0DE17ECBA3700E654F9 /* FriendsViewController.m */,
+				901CC0E017ECC99500E654F9 /* FriendCell.h */,
+				901CC0E117ECC99500E654F9 /* FriendCell.m */,
+			);
+			name = Friends;
+			sourceTree = "<group>";
+		};
 		9029C71916E23FC900047CF4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,6 +607,17 @@
 				9029C71B16E240AE00047CF4 /* SettingsViewController.m */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		902AD7E217EE50AF00E2FC77 /* Followed Stickers */ = {
+			isa = PBXGroup;
+			children = (
+				902AD7E517EE50D700E2FC77 /* FollowedStickersViewController.h */,
+				902AD7E617EE50D700E2FC77 /* FollowedStickersViewController.m */,
+				902AD7E817EE519800E2FC77 /* FollowedStickerCell.h */,
+				902AD7E917EE519800E2FC77 /* FollowedStickerCell.m */,
+			);
+			name = "Followed Stickers";
 			sourceTree = "<group>";
 		};
 		903B9CD816DF9F510030471D /* User icon */ = {
@@ -689,6 +744,16 @@
 		9053A0971720D46700FFC782 /* Swipe icon Account Menu */ = {
 			isa = PBXGroup;
 			children = (
+				901CC0E317ED015500E654F9 /* empty.png */,
+				901CC0E417ED015500E654F9 /* empty@2x.png */,
+				901CC0F717ED0D5300E654F9 /* user.png */,
+				901CC0E617ED015500E654F9 /* user@2x.png */,
+				901CC0E717ED015500E654F9 /* userAddFriend.png */,
+				901CC0E817ED015500E654F9 /* userAddFriend@2x.png */,
+				901CC0E917ED015500E654F9 /* userAlreadyFriend.png */,
+				901CC0EA17ED015500E654F9 /* userAlreadyFriend@2x.png */,
+				901CC0F317ED030A00E654F9 /* message.png */,
+				901CC0F417ED030A00E654F9 /* message@2x.png */,
 			);
 			name = "Swipe icon Account Menu";
 			sourceTree = "<group>";
@@ -819,6 +884,7 @@
 				90588BB31724D5D40097735F /* Annotations */,
 				90616E72172486CA00FF88DE /* LMSMapView.h */,
 				90616E73172486CA00FF88DE /* LMSMapView.m */,
+				90676D9F17EF7C0900617611 /* LMSMapViewProtocol.h */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -1117,6 +1183,7 @@
 		9086ED1916DA5E7C00965576 /* User Table */ = {
 			isa = PBXGroup;
 			children = (
+				902AD7E217EE50AF00E2FC77 /* Followed Stickers */,
 				90D55BD517EA19E100855BF0 /* History */,
 				9086ED1A16DA5EA200965576 /* UserTableViewController.h */,
 				9086ED1B16DA5EA200965576 /* UserTableViewController.m */,
@@ -1157,7 +1224,7 @@
 			children = (
 				9053A0981720D4AA00FFC782 /* Scan icon */,
 				9053A0971720D46700FFC782 /* Swipe icon Account Menu */,
-				90DC44A31719A9CC00AB0BAE /* Swipe icon user Menu */,
+				90DC44A31719A9CC00AB0BAE /* Swipe icon sticker Menu */,
 				90A1788117014E3F008ABC03 /* lms-QRcode.png */,
 				903B9CE516DFABC60030471D /* Test images */,
 				903B9CD816DF9F510030471D /* User icon */,
@@ -1174,6 +1241,7 @@
 		90B80A6F16D6D966004CA608 /* View controller */ = {
 			isa = PBXGroup;
 			children = (
+				901CC0DA17ECBA1200E654F9 /* Friends */,
 				903C129417E8FB9A00CCD26D /* Base */,
 				906984EC16FC8B7700B8CD16 /* Scanner */,
 				90B80A7316D6D981004CA608 /* Login */,
@@ -1323,7 +1391,7 @@
 			name = History;
 			sourceTree = "<group>";
 		};
-		90DC44A31719A9CC00AB0BAE /* Swipe icon user Menu */ = {
+		90DC44A31719A9CC00AB0BAE /* Swipe icon sticker Menu */ = {
 			isa = PBXGroup;
 			children = (
 				906B73351719F07C0033A6D5 /* mathematic-multiply2-icon-white.png */,
@@ -1339,7 +1407,7 @@
 				906B73211719C42F0033A6D5 /* lms.png */,
 				906B73221719C42F0033A6D5 /* lms@2x.png */,
 			);
-			name = "Swipe icon user Menu";
+			name = "Swipe icon sticker Menu";
 			sourceTree = "<group>";
 		};
 		90E0553A1797219500B20245 /* AFNetworking */ = {
@@ -1468,15 +1536,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				905958A016D3847B0055BBA8 /* InfoPlist.strings in Resources */,
+				901CC0EF17ED015500E654F9 /* userAddFriend.png in Resources */,
+				901CC0EE17ED015500E654F9 /* user@2x.png in Resources */,
 				905958AF16D3847B0055BBA8 /* MainStoryboard_iPhone.storyboard in Resources */,
+				901CC0EB17ED015500E654F9 /* empty.png in Resources */,
 				905958B216D3847B0055BBA8 /* MainStoryboard_iPad.storyboard in Resources */,
 				90B80A6B16D6D886004CA608 /* greyButton.png in Resources */,
+				901CC0F617ED030A00E654F9 /* message@2x.png in Resources */,
 				903C129C17E9269500CCD26D /* lms-white-navigation-bar@2x.png in Resources */,
 				90B80A9516D6E05B004CA608 /* Default.png in Resources */,
 				90B80A9716D6E066004CA608 /* Default@2x.png in Resources */,
+				901CC0EC17ED015500E654F9 /* empty@2x.png in Resources */,
 				90B80A9916D6E06A004CA608 /* Default-568h@2x.png in Resources */,
 				90B80A9E16D6E666004CA608 /* Background-568h@2x.png in Resources */,
 				90B80A9F16D6E666004CA608 /* Background.png in Resources */,
+				901CC0F117ED015500E654F9 /* userAlreadyFriend.png in Resources */,
 				90B80AA016D6E666004CA608 /* Background@2x.png in Resources */,
 				90B80AB116D6FAC0004CA608 /* BackgroundWhite@2x.png in Resources */,
 				90B80AB316D6FB5A004CA608 /* BackgroundWhite.png in Resources */,
@@ -1485,6 +1559,7 @@
 				90B80AB916D6FE1B004CA608 /* icon114.png in Resources */,
 				90B80ABB16D6FE27004CA608 /* icon72.png in Resources */,
 				90B80ABD16D6FE2D004CA608 /* icon144.png in Resources */,
+				901CC0F217ED015500E654F9 /* userAlreadyFriend@2x.png in Resources */,
 				9065DE4D16D70E120098B16F /* Default-Portrait~ipad.png in Resources */,
 				9065DE5016D70F0C0098B16F /* Default-Portrait@2x~ipad.png in Resources */,
 				90C4894B16D7114400B72D4D /* Default-Landscape~ipad.png in Resources */,
@@ -1501,6 +1576,7 @@
 				9086ECF516DA505D00965576 /* world_black.png in Resources */,
 				9086ECF616DA505D00965576 /* world_black@2x.png in Resources */,
 				9086ECF716DA505D00965576 /* world_white.png in Resources */,
+				901CC0F517ED030A00E654F9 /* message.png in Resources */,
 				903C12A917E9D80B00CCD26D /* locateMyStickersFushiaSmallLogo.png in Resources */,
 				9086ECF816DA505D00965576 /* world_white@2x.png in Resources */,
 				9086ECFD16DA507A00965576 /* search_black.png in Resources */,
@@ -1517,6 +1593,7 @@
 				903B9CDF16DFA4BA0030471D /* account-icon.png in Resources */,
 				903C12A717E9D60100CCD26D /* locateMyStickersWhiteSmallLogo.png in Resources */,
 				903B9CE216DFA57C0030471D /* settings-icon.png in Resources */,
+				901CC0F817ED0D5300E654F9 /* user.png in Resources */,
 				903C12A017E9278800CCD26D /* tabBarWhite@2x.png in Resources */,
 				903B9CE416DFABC00030471D /* adril.jpg in Resources */,
 				90A1788217014E3F008ABC03 /* lms-QRcode.png in Resources */,
@@ -1539,6 +1616,7 @@
 				906B734B1719F9810033A6D5 /* lms-navigation-bar@~ipad.png in Resources */,
 				906B734C1719F9810033A6D5 /* lms-navigation-bar@2x.png in Resources */,
 				906B734D1719F9810033A6D5 /* lms-navigation-bar@2x~ipad.png in Resources */,
+				901CC0F017ED015500E654F9 /* userAddFriend@2x.png in Resources */,
 				9053A0951720BEFC00FFC782 /* redBackButton.png in Resources */,
 				9053A0961720BEFC00FFC782 /* redBackButton@2x.png in Resources */,
 				9053A0AB1720E05400FFC782 /* light-top_bar.png in Resources */,
@@ -1560,6 +1638,7 @@
 				905958A216D3847B0055BBA8 /* main.m in Sources */,
 				905958A616D3847B0055BBA8 /* AppDelegate.m in Sources */,
 				905958C316D384E80055BBA8 /* NSDictionary+QueryString.m in Sources */,
+				902AD7EA17EE519800E2FC77 /* FollowedStickerCell.m in Sources */,
 				905958C416D384E80055BBA8 /* NSString+QueryString.m in Sources */,
 				905958C516D384E80055BBA8 /* NSURL+QueryInspector.m in Sources */,
 				905958CE16D3856C0055BBA8 /* LROAuth2AccessToken.m in Sources */,
@@ -1600,6 +1679,7 @@
 				903C129917E8FBBB00CCD26D /* BaseTableViewController.m in Sources */,
 				9045B91A170FC6F100436B2E /* AccountRecord+Manager.m in Sources */,
 				9045B91D1710246600436B2E /* LocationRecord+Manager.m in Sources */,
+				902AD7E717EE50D700E2FC77 /* FollowedStickersViewController.m in Sources */,
 				9045B920171026ED00436B2E /* OptionsRecord+Manager.m in Sources */,
 				9045B9231710364900436B2E /* LocAnnotation.m in Sources */,
 				9045B926171036AC00436B2E /* CLLocation (Strings).m in Sources */,
@@ -1613,6 +1693,7 @@
 				90710A66171CD7040095D112 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				90710A67171CD7040095D112 /* NSEntityDescription+MagicalDataImport.m in Sources */,
 				90710A68171CD7040095D112 /* NSNumber+MagicalDataImport.m in Sources */,
+				901CC0DF17ECBA3700E654F9 /* FriendsViewController.m in Sources */,
 				90710A69171CD7040095D112 /* NSObject+MagicalDataImport.m in Sources */,
 				90710A6A171CD7040095D112 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				90710A6B171CD7040095D112 /* NSString+MagicalDataImport.m in Sources */,
@@ -1645,6 +1726,7 @@
 				90E055511797219500B20245 /* AFJSONRequestOperation.m in Sources */,
 				90588BBB1724D5FF0097735F /* LMSAnnotationView.m in Sources */,
 				9008894717EA23F900C9B64E /* HistoryRecord+Manager.m in Sources */,
+				901CC0E217ECC99500E654F9 /* FriendCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

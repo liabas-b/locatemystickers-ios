@@ -12,12 +12,15 @@
 #import "AccountRecord+Manager.h"
 
 #import "JsonTools.h"
+#import "AFJSONRequestOperation.h"
+#import "UIImageView+AFNetworking.h"
 
+#import "CryptographyTools.h"
 #import "AppDelegate.h"
 
 @interface AccountViewController ()
 
-@property(nonatomic, strong)AccountRecord *accoutRecord;
+@property(nonatomic, strong)AccountRecord *accountRecord;
 
 @end
 
@@ -36,31 +39,37 @@
 {
     [super viewDidLoad];
 	
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-	
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	
 	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
 	[self.tableView addGestureRecognizer:gestureRecognizer];
-	
-	[self setup];
-	
-	[self parseData];
+
+	[self updateAccount];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setup {
+#pragma mark - Web Service User request
+
+- (void)updateAccount {
 	
-	UIView *backgroundView = [[UIView alloc] initWithFrame:self.view.frame];
-    [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]];
-    [self.tableView setBackgroundView:backgroundView];
+	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:nil];
+	
+	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+		NSLog(@"Result: %@", JSON);
+		
+		NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, JSON);
+		self.accountRecord = [AccountRecord addUpdateWithDictionary:JSON];
+		NSLog(@" %s| accountRecord: %@", __PRETTY_FUNCTION__, self.accountRecord);
+		
+		[self updateView];
+
+		
+	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		
+	}];
+	[operation start];
 }
 
 #pragma mark - Table view delegate
@@ -72,8 +81,15 @@
 #pragma mark - view
 
 - (void)updateView {
-	self.nameTextField.text = self.accoutRecord.name;
-	self.emailTextField.text = self.accoutRecord.email;
+	dispatch_async(dispatch_get_main_queue(), ^{
+		self.nameTextField.text = self.accountRecord.name;
+		self.emailTextField.text = self.accountRecord.email;
+		
+		NSString *hashGravatar = [CryptographyTools stringToMD5:self.accountRecord.email];
+		NSString *gravatarUrl = [NSString stringWithFormat:@"http://www.gravatar.com/avatar/%@", hashGravatar];
+
+		[self.profileImageView setImageWithURL:[NSURL URLWithString:gravatarUrl] placeholderImage:[UIImage imageNamed:@"locateMyStickersFushiaSmallLogo"]];
+	});
 }
 
 - (void)hideKeyboard:(NSNotification *)notification {
@@ -81,51 +97,9 @@
 		[self.nameTextField resignFirstResponder];
 	else if ([self.emailTextField isFirstResponder])
 		[self.emailTextField resignFirstResponder];
+	
 	[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:0 animated:YES];
 }
 
-
-#pragma mark - data parsing
-
-- (void)parseData
-{
-	
-    // TODO: Create an Operation Queue [OK]
-	
-	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
-	NSString *requestString = [NSString stringWithFormat:@"%@/users/3.json", hostName];
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
-
-	[request setHTTPMethod:@"GET"];
-	
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
-		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-		[self didReceiveData:data];
-	}];
-}
-
-- (void)didReceiveData:(NSData *)data {
-	//INFO: debug
-	
-	if (data) {
-		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		NSLog(@"------ <%@>", dataString);
-	}
-	else
-		NSLog(@"BAD");
-	
-	
-	if (data) {
-		//TODO: save file
-		
-		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
-		if (dataDictionary) {
-			self.accoutRecord = [AccountRecord addUpdateAccountWithDictionary:dataDictionary];//[[AccountRecord alloc] initWithDictinary:dataDictionary];
-			
-			[self updateView];
-		}
-	}
-}
 
 @end

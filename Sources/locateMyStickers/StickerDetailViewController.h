@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "LMSMapView.h"
+#import "BaseTableViewController.h"
+
+#import "LMSMapViewProtocol.h"
 
 @class StickerRecord;
 
-@interface StickerDetailViewController : UITableViewController <MKMapViewDelegate, UITextViewDelegate>
+@interface StickerDetailViewController : BaseTableViewController <MKMapViewDelegate, UITextViewDelegate, LMSMapViewProtocol>
 
 @property (nonatomic, strong) StickerRecord *stickerRecord;
 
@@ -32,5 +35,9 @@
 
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 
+- (IBAction)closeMapHandler:(id)sender;
+//
+
+@property (strong, nonatomic) IBOutlet UITableViewCell *mapCell;
 
 @end

@@ -203,7 +203,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
 		NSLog(@"%s dataDictionary: %@", __PRETTY_FUNCTION__, dataDictionary);
 		if (dataDictionary != nil) {
-			LocationRecord *locationRecord = [LocationRecord addUpdatelocationWithDictionary:dataDictionary];
+			LocationRecord *locationRecord = [LocationRecord addUpdateWithDictionary:dataDictionary];
 			[locationRecord debug];
 			
 			//[[NSManagedObjectContext defaultContext] saveNestedContexts];

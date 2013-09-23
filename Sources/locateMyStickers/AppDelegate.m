@@ -113,9 +113,15 @@
 
 + (NSMutableURLRequest *)requestForCurrentUserWithRoute:(NSString *)route {
 	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
-	int currentUserId = 3;
+	int currentUserId = 1;
 	
-	NSString *requestString = [NSString stringWithFormat:@"%@/users/%d/%@.json", hostName, currentUserId, route];//stickers/67/locations
+	NSString *requestString = nil;
+	if (route != nil) {
+	requestString = [NSString stringWithFormat:@"%@/users/%d/%@.json", hostName, currentUserId, route];//stickers/67/locations
+	}
+	else {
+		requestString = [NSString stringWithFormat:@"%@/users/%d.json", hostName, currentUserId];
+	}
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	
 	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];

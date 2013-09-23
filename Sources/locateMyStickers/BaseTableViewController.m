@@ -28,12 +28,6 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	
 	//INFO: iOS 7
 	[self.view setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
 	//INFO: iOS 6
@@ -43,15 +37,18 @@
 	 [self.tableView setBackgroundView:backgroundView];
 	 */
 	
-
-
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+/*
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//	[super tableView:tableView didSelectRowAtIndexPath:indexPath];
+	
+}
+*/
 /*
 #pragma mark - Navigation
 

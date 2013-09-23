@@ -24,6 +24,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *stickersNumberLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
 
 
 @property(nonatomic, assign) id <MCSwipeUserTableViewCellDelegate> delegate;
