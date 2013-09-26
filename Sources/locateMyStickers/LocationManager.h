@@ -15,11 +15,11 @@ extern NSString* const keyPathMeasurementArray;
 
 @property (nonatomic, strong) NSMutableArray* measurementArray;
 @property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundUpdateTask;
-@property (nonatomic, assign) int trackingStickerId;
+@property (nonatomic, assign) NSString *stickerCode;
 
 - (void)setup;
 - (void)start;
-- (void)startWithStickerTrackingId:(int)trackingStickerId;
+- (void)startWithStickerCode:(NSString *)code;
 - (void)stop;
 - (void)reset;
 

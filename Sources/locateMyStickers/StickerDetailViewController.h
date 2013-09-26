@@ -36,6 +36,7 @@
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 
 - (IBAction)closeMapHandler:(id)sender;
+- (void)updateLocationForSticker:(void (^)(void))block;
 //
 
 @property (strong, nonatomic) IBOutlet UITableViewCell *mapCell;

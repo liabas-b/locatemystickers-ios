@@ -14,7 +14,6 @@
 #import "StickerAddingTableViewController.h"
 
 #import "JsonTools.h"
-//#import "NSURL+QueryInspector.h"
 #import "NSDictionary+QueryString.h"
 
 #import "AppDelegate.h"
@@ -26,8 +25,7 @@
 
 @implementation SettingsViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
+- (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -35,21 +33,8 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	
-	/*
-	 NSError *error;
-	 NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	 NSEntityDescription *entity = [NSEntityDescription entityForName:@"OptionsRecord"
-	 inManagedObjectContext:[AppDelegate appDelegate].managedObjectContext];
-	 [fetchRequest setEntity:entity];
-	 [fetchRequest setReturnsObjectsAsFaults:NO];
-	 NSArray *fetchedObjects = [[AppDelegate appDelegate].managedObjectContext executeFetchRequest:fetchRequest error:&error];
-	 self.optionsRecord = [fetchedObjects lastObject];
-	 */
-	[self setup];
 	
 }
 
@@ -60,11 +45,6 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlerStickerAlreadyExistOnWebService:) name:keyStickerAlreadyExistOnWebService object:nil];
 	
 	[self bindView];
-	//	NSError *error;
-	//[[AppDelegate appDelegate] saveContext];
-	//
-	//	if (![[AppDelegate appDelegate].managedObjectContext save:&error])
-	//		NSLog(@"Error saving !! -> %@", error);
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -72,19 +52,12 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:keyStickerAlreadyExistOnWebService object:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setup {
-		
-	//INFO: configure view
-	UIView *backgroundView = [[UIView alloc] initWithFrame:self.view.frame];
-    [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]];
-    [self.tableView setBackgroundView:backgroundView];
-}
+#pragma mark - View Binding
 
 - (void)bindView {
 	NSLog(@"%s %d", __PRETTY_FUNCTION__, [[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled boolValue]);
@@ -102,112 +75,54 @@
 	[cell.contentView setBackgroundColor:[UIColor whiteColor]];
 }
 
-- (IBAction)handleDisplayFollowedStickersEnabled:(id)sender {
-	
-	[AppDelegate appDelegate].optionsRecord.displayFollowedStickersEnabled = [NSNumber numberWithBool:![self.optionsRecord.displayFollowedStickersEnabled boolValue]];
-}
-
-- (IBAction)handleLocatePhoneEnabled:(id)sender {
-	[self addMyPhone];
-}
-
 - (void)addMyPhone {
-	NSLog(@"%s addMyPhone !!!", __PRETTY_FUNCTION__);
-		
-	if (self.locatePhoneEnabledSwitch.on == YES) {//INFO: start location tracking
-		NSString *identifierForVendor = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-		bool stickerAlreadyExist = [[AppDelegate appDelegate].stickerManager stickerAlreadyExistOnPhoneWithCode:identifierForVendor];
-		NSLog(@"%s ret %d !!!", __PRETTY_FUNCTION__, stickerAlreadyExist);
+	NSLog(@"%s", __PRETTY_FUNCTION__);
+	
+	//INFO: start location tracking
+	if (self.locatePhoneEnabledSwitch.on == YES) {
+		NSString *identifier = [AppDelegate identifierForCurrentUser];
+		NSLog(@"%s | identifier: %@", __PRETTY_FUNCTION__, identifier);
+		bool stickerAlreadyExist = [[AppDelegate appDelegate].stickerManager stickerAlreadyExistOnPhoneWithCode:identifier];
 		
 		//INFO: sucess
 		if (stickerAlreadyExist == NO) {
-			[[AppDelegate appDelegate].stickerManager stickerAlreadyExistOnWebServiceWithCode:identifierForVendor];
-			
+			NSLog(@"%s | sticker does not exist in local record", __PRETTY_FUNCTION__);
+			[[AppDelegate appDelegate].stickerManager stickerAlreadyExistOnWebServiceWithCode:identifier];
 		}
 		else {
-			NSLog(@"%s sticker already exist !!!", __PRETTY_FUNCTION__);
-			[[AppDelegate appDelegate].locationManager startWithStickerTrackingId:identifierForVendor];
-
+			NSLog(@"%s | sticker already exist in local record", __PRETTY_FUNCTION__);
+			[[AppDelegate appDelegate].locationManager startWithStickerCode:identifier];
+			
 			[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:YES];
-			 [[NSManagedObjectContext defaultContext] saveNestedContexts];
-/*
-			[MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext) {
-				OptionsRecord *localOptionsRecord = [[AppDelegate appDelegate].optionsRecord inContext:localContext];
-				localOptionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:YES];
-			}completion:^{
-				NSLog(@"%s saved OptionsRecord", __PRETTY_FUNCTION__);
-			}];
-*/
-#warning TODO SAVE CONTEXT
+			[[NSManagedObjectContext defaultContext] saveNestedContexts];
 		}
 	}
-	else  {//INFO: stop location tracking
+	//INFO: stop location tracking
+	else  {
 		[[AppDelegate appDelegate].locationManager stop];
 		[AppDelegate appDelegate].optionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:NO];
 		[[NSManagedObjectContext defaultContext] saveNestedContexts];
-		/*
-		[MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext) {
-			OptionsRecord *localOptionsRecord = [[AppDelegate appDelegate].optionsRecord inContext:localContext];
-			localOptionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:NO];
-		}completion:^{
-			NSLog(@"%s saved OptionsRecord", __PRETTY_FUNCTION__);
-		}];
-		 */
 	}
 }
-/*
-- (void)didReceiveData:(NSData *)data {
-	
-	if (data) {
-		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		NSLog(@"------ <%@>", dataString);
-	}
-	else
-		NSLog(@"BAD");
-	
-	
-	if (data) {
-		
-		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
-		NSLog(@"%@", dataDictionary);
-		if (dataDictionary != nil) {
-			StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:dataDictionary managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
-			[stickerRecord debug];
-			self.optionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:YES];
-			[[AppDelegate appDelegate] saveContext];
-		}
-	}
-	
-}
-*/
+
+#pragma mark - Handler
+
 - (void)handlerStickerAlreadyExistOnWebService:(NSNotification *)notificaton {
-	NSLog(@"%s %d", __PRETTY_FUNCTION__, [[notificaton object] boolValue]);
+	NSLog(@"%s | %d", __PRETTY_FUNCTION__, [[notificaton object] boolValue]);
 	if ([[notificaton object] boolValue] == NO) {//INFO: Sticker not Already Exist On Web Service
-		NSLog(@"%s Sticker not already exist on web service", __PRETTY_FUNCTION__);
+		NSLog(@"%s | sticker not already exist on web service", __PRETTY_FUNCTION__);
 		NSString *identifierForVendor = [[[UIDevice currentDevice] identifierForVendor] UUIDString];//INFO: >= iOS 6
 																									//TODO: check if the phone is alredy added
 		
 		StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithCode:identifierForVendor];
-#warning MAY be background is bad
 		stickerRecord.name = @"My phone ;)";
 		stickerRecord.text = @"My phone was adding today";
 		stickerRecord.stickerTypeId = [NSNumber numberWithInt:StickerTypeIphone];
-		stickerRecord.code = identifierForVendor;
+		stickerRecord.code = [AppDelegate identifierForCurrentUser];
 		
-		 [[NSManagedObjectContext defaultContext] saveNestedContexts];
-
-		/*
-		[MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext) {
-			StickerRecord *localStickerRecord = [stickerRecord inContext:localContext];
-			localStickerRecord.name = @"My phone ;)";
-			localStickerRecord.text = @"My phone was adding today";
-			localStickerRecord.stickerTypeId = [NSNumber numberWithInt:StickerTypeIphone];
-			localStickerRecord.code = identifierForVendor;			
-		}completion:^{
-			NSLog(@"%s saved StickerRecord", __PRETTY_FUNCTION__);
-		}];
-		*/
-		[[AppDelegate appDelegate] performSelectorOnMainThread:@selector(stickerAdding:) withObject:stickerRecord waitUntilDone:NO];		
+		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		
+		[[AppDelegate appDelegate] performSelectorOnMainThread:@selector(stickerAdding:) withObject:stickerRecord waitUntilDone:NO];
 	}
 	else {
 		NSLog(@"%s Sticker already exist on web service", __PRETTY_FUNCTION__);
@@ -218,15 +133,24 @@
 											   cancelButtonTitle:@"OK"
 											   otherButtonTitles:nil];
         [alert show];
-
+		
 		[MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext) {
 			OptionsRecord *localOptionsRecord = [[AppDelegate appDelegate].optionsRecord inContext:localContext];
 			localOptionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:NO];
 		}completion:^{
 			NSLog(@"%s saved OptionsRecord", __PRETTY_FUNCTION__);
 		}];
-
+		
 	}
+}
+
+- (IBAction)handleDisplayFollowedStickersEnabled:(id)sender {
+	
+	[AppDelegate appDelegate].optionsRecord.displayFollowedStickersEnabled = [NSNumber numberWithBool:![self.optionsRecord.displayFollowedStickersEnabled boolValue]];
+}
+
+- (IBAction)handleLocatePhoneEnabled:(id)sender {
+	[self addMyPhone];
 }
 
 

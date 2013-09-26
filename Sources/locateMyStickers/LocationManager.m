@@ -16,6 +16,8 @@
 #import "NSString+QueryString.h"
 #import "NSDictionary+QueryString.h"
 
+#import "AFJSONRequestOperation.h"
+
 #import "StickerManager.h"
 
 #import "JsonTools.h"
@@ -64,8 +66,8 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 	NSLog(@"%s startUpdatingLocation", __PRETTY_FUNCTION__);
 }
 
-- (void)startWithStickerTrackingId:(int)trackingStickerId {
-	self.trackingStickerId = trackingStickerId;
+- (void)startWithStickerCode:(NSString *)code {
+	self.stickerCode = code;
 	[self start];
 }
 
@@ -131,12 +133,12 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 				[self performSelectorOnMainThread:@selector(setupLocationRecord:) withObject:location waitUntilDone:YES];
 				
 				self.startCoordinate = location.coordinate;
+				if (isInBackground) {
+					[self doUpdateWithLocation:location];
+				}
 			}
 		}
     }
-	if (isInBackground) {
-		[self doUpdate];
-	}
 }
 
 - (void)setupLocationRecord:(CLLocation *)location {
@@ -146,98 +148,115 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 	locationRecord.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
 	locationRecord.createdAt = [NSDate date];
 	locationRecord.updatedAt = [NSDate date];
+
 	
 	[[NSManagedObjectContext defaultContext] saveNestedContexts];
 	
-	//[self performSelectorInBackground:@selector(addLocation:) withObject:locationRecord];
 	[locationRecord debug];
 	[self addLocation:locationRecord];
 }
 
 - (void)addLocation:(LocationRecord *)locationRecord {
-	NSMutableDictionary *locationDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-											   @"3", @"id",
-											   [NSString stringWithFormat:@"%@", locationRecord.latitude], @"location[latitude]",
-											   [NSString stringWithFormat:@"%@", locationRecord.longitude], @"location[longitude]",
-											   nil];//[NSString stringWithFormat:@"%d", self.trackingStickerId]
+	[locationRecord debug];
 	
+	NSString *stickerIdentifier = [AppDelegate identifierForCurrentUser];
 	
-	{
-		//INFO: stickerId of the tracked phone
-		NSString *route = [NSString stringWithFormat:@"stickers/%d/locations", self.trackingStickerId];
-		NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
+	NSMutableURLRequest *request = [AppDelegate requestForCurrentStickersHost];
+	
+	[request setHTTPMethod:@"POST"];
+	
+	NSString *test = [NSString stringWithFormat:@"{\"latitude\":%@,\"longitude\":%@,\"sticker_code\":\"%@\"}", [locationRecord.latitude stringValue], [locationRecord.longitude stringValue], stickerIdentifier];
+	[request setHTTPBody:[test dataUsingEncoding:NSUTF8StringEncoding]];
+	
+	//
+	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 		
-		[request setHTTPMethod:@"POST"];
-		[request setHTTPBody:[[locationDictionary stringWithFormEncodedComponents] dataUsingEncoding:NSUTF8StringEncoding]];
-		
-		/*
-		 NSData *data = [[locationDictionary stringWithFormEncodedComponents] dataUsingEncoding:NSUTF8StringEncoding];
-		 NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		 NSLog(@"BODY = %@", dataString);
-		 */
-		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-		[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err) {
-			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-			if (locationRecord) {
-#warning BAD -- We have to delete/update this record
-//				[locationRecord deleteEntity];
-//				[[NSManagedObjectContext defaultContext] saveNestedContexts];
-			}
-			[self didReceiveData:data];
-		}];
-	}
-}
-
-- (void)didReceiveData:(NSData *)data {
-	
-	if (data) {
-		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		NSLog(@"%s ------ <%@>", __PRETTY_FUNCTION__, @"DATA");//dataString);
-	}
-	else
-		NSLog(@"BAD");
-	
-	
-	if (data) {
-		
-		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
-		NSLog(@"%s dataDictionary: %@", __PRETTY_FUNCTION__, dataDictionary);
-		if (dataDictionary != nil) {
-			LocationRecord *locationRecord = [LocationRecord addUpdateWithDictionary:dataDictionary];
+		//			NSLog(@"%s | HEADER SUCCESS = %@", __PRETTY_FUNCTION__, [request allHTTPHeaderFields]);
+		NSLog(@"%s | Request: %@", __PRETTY_FUNCTION__, [request description]);
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
+		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
+		//TDO: check the answer
+		if (JSON) {
+#warning TODO: do not save in local
+			LocationRecord *locationRecord = [LocationRecord addUpdateWithDictionary:JSON];
 			[locationRecord debug];
-			
-			//[[NSManagedObjectContext defaultContext] saveNestedContexts];
-			
-			//INFO: insertion of location record in measurementArray and broadcast to subscribers
-			/*
-			NSInteger count = [self.measurementArray count];
-			[self willChange:NSKeyValueChangeInsertion
-			 valuesAtIndexes:[NSIndexSet indexSetWithIndex:count] forKey: @"measurementArray"];
-			[self.measurementArray insertObject:locationRecord atIndex:count];
-			[self didChange:NSKeyValueChangeInsertion
-			valuesAtIndexes:[NSIndexSet indexSetWithIndex:count] forKey: @"measurementArray"];
-			 */
 		}
 		
-	}
+	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		
+		
+		NSLog(@"%s | HEADER FAILURE = %@", __PRETTY_FUNCTION__, [request allHTTPHeaderFields]);
+		NSLog(@"%s | Request: %@", __PRETTY_FUNCTION__, [request description]);
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
+		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
+		//TDO: check the answer
+		
+	}];
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+	[operation start];
 	
 }
+
+//- (void)didReceiveData:(NSData *)data {
+//
+//	if (data) {
+//		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//		NSLog(@"%s ------ <%@>", __PRETTY_FUNCTION__, @"DATA");//dataString);
+//	}
+//	else
+//		NSLog(@"BAD");
+//
+//
+//	if (data) {
+//
+//		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
+//		NSLog(@"%s dataDictionary: %@", __PRETTY_FUNCTION__, dataDictionary);
+//		if (dataDictionary != nil) {
+//			LocationRecord *locationRecord = [LocationRecord addUpdateWithDictionary:dataDictionary];
+//			[locationRecord debug];
+//
+//			//[[NSManagedObjectContext defaultContext] saveNestedContexts];
+//
+//			//INFO: insertion of location record in measurementArray and broadcast to subscribers
+//			/*
+//			NSInteger count = [self.measurementArray count];
+//			[self willChange:NSKeyValueChangeInsertion
+//			 valuesAtIndexes:[NSIndexSet indexSetWithIndex:count] forKey: @"measurementArray"];
+//			[self.measurementArray insertObject:locationRecord atIndex:count];
+//			[self didChange:NSKeyValueChangeInsertion
+//			valuesAtIndexes:[NSIndexSet indexSetWithIndex:count] forKey: @"measurementArray"];
+//			 */
+//		}
+//
+//	}
+//
+//}
 
 #pragma mark - Background task
 
-- (void)doUpdate
-{
+- (void)doUpdateWithLocation:(CLLocation *)location {
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		
 		[self beginBackgroundUpdateTask];
 		
+		
 		NSLog(@"doing Update");
+		[self setupLocationRecord:location];
+
+		
+		NSString *message = [NSString stringWithFormat:@"New location: latitude: %f - longitude:%f", location.coordinate.latitude, location.coordinate.longitude];
+		[self notifyBackgroundWithMessage:message];
+		NSLog(@"end Update");
+
+		/*
 		NSURLResponse *response = nil;
 		NSError  *error = nil;
 		
-#warning could kill you
 		//INFO: test
+
 		int stickerId = [AppDelegate appDelegate].stickerManager ;
 		
 		
@@ -257,9 +276,9 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 		
 		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:responseData];
 		NSLog(@"dataDictionary: %@", dataDictionary);
+		*/
 		//INFO: making an alert
 		
-		[self notifyBackgroundWithMessage:@"Can speak in background with the Web Service"];
 		
 		
 		// Do something with the result
@@ -271,7 +290,8 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 - (void)beginBackgroundUpdateTask
 {
     self.backgroundUpdateTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-		[self doUpdate];
+//		[self doUpdate];
+		[self notifyBackgroundWithMessage:@"FUCKED"];
         [self endBackgroundUpdateTask];
     }];
 }

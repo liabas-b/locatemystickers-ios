@@ -8,6 +8,7 @@
 
 #import "LocationRecord+Manager.h"
 #import "MagicalRecord.h"
+#import "ConventionTools.h"
 
 static NSString *entityName = @"LocationRecord";
 
@@ -29,24 +30,27 @@ static NSString *entityName = @"LocationRecord";
 			locationRecord = [LocationRecord createEntity];
 		}
 	
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 	
-		[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+//		[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
 			locationRecord.idLocation = [NSNumber numberWithInt:[[dictionary objectForKey:@"id"] intValue]];
 			locationRecord.idSticker = @([[dictionary objectForKey:@"sticker_id"] intValue]);
 			
 			locationRecord.latitude = [NSNumber numberWithFloat:[[dictionary objectForKey:@"latitude"] floatValue]];
 			locationRecord.longitude = [NSNumber numberWithFloat:[[dictionary objectForKey:@"longitude"] floatValue]];
-#warning BAD date setting
-			locationRecord.createdAt = [NSDate date];//[dictionary objectForKey:@"created_at"];
-			locationRecord.updatedAt = [NSDate date];//[dictionary objectForKey:@"updated_at"];
+			locationRecord.createdAt = [ConventionTools getDate:[dictionary objectForKey:@"created_at"] withFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+			locationRecord.updatedAt = [ConventionTools getDate:[dictionary objectForKey:@"updated_at"] withFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
 			
-		} completion:^(BOOL success, NSError *error) {
-			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-				[[NSManagedObjectContext defaultContext] save:nil];
-			}];
-		}];
-	});
+			
+			[locationRecord debug];
+			[[NSManagedObjectContext defaultContext] saveNestedContexts];
+	
+//		} completion:^(BOOL success, NSError *error) {
+//			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//				[[NSManagedObjectContext defaultContext] save:nil];
+//			}];
+//		}];
+//	});
 	
 		
 

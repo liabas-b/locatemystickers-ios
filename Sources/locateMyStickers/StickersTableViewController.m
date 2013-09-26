@@ -25,6 +25,8 @@
 #import "UCTabBarItem.h"
 #import "BButton.h"
 
+#import "AFJSONRequestOperation.h"
+
 #import "JsonTools.h"
 #import "ConventionTools.h"
 #import "AppDelegate.h"
@@ -47,21 +49,12 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+	self.refreshControlEnabled = YES;
     [super viewDidLoad];
-	
-	self.refreshControl = [[UIRefreshControl alloc] init];
-	
+		
 	self.myPhoneStickerRecordList = nil;
 	self.stickersRecordList = nil;
-	
-	//INFO: setting up refreshControl
-	[self.refreshControl addTarget:self action:@selector(refreshControlRequest)
-				  forControlEvents:UIControlEventValueChanged];
-	
-	//[RefreshControl setTintColor:[UIColor colorWithRed:0.000 green:0.000 blue:0.630 alpha:1.000]];
-	[self.tableView addSubview:self.refreshControl];
 	
 	[self fetchStickersList];
 	
@@ -72,7 +65,6 @@
 	[super viewWillAppear:animated];
 	
 	[self fetchStickersList];
-	//[self.tableView reloadData];
 }
 
 - (void)fetchStickersList {
@@ -93,8 +85,7 @@
 	 */
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -158,9 +149,6 @@
 	[stickerRecord debug];
 	cell.nameLabel.text = stickerRecord.name;
 	
-	
-	
-	
 	NSString *timeString = [ConventionTools getDiffTimeInStringFromDate:stickerRecord.createdAt];
 	NSLog(@"%s - <%@", __PRETTY_FUNCTION__, timeString);
 	timeString = [timeString length] > 0 ? timeString : @"new";
@@ -171,15 +159,6 @@
 	else
 		cell.activatedImage.backgroundColor = [UIColor redColor];
 
-	
-
-	 UIView *backgroundView = [[UIView alloc] initWithFrame:cell.frame];
-	 
-	 backgroundView.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0];
-	 
-	 cell.backgroundView = backgroundView;
-
-
 	cell.iconLabel.font = [UIFont iconicFontOfSize:24];
 	if ([stickerRecord.stickerTypeId intValue] > StickerTypeSticker) {
 		cell.iconLabel.text = [NSString stringFromAwesomeIcon:FAIconPhone];
@@ -187,11 +166,7 @@
 	else
 		cell.iconLabel.text = [NSString stringFromAwesomeIcon:FAIconQrcode];
 
-	//
-	
-	
 	[cell setDelegate:self];
-	
 	[cell setFirstStateIconName:@"mathematic-multiply2-icon-white"
                      firstColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]
             secondStateIconName:@"editing-delete-icon-white"
@@ -210,8 +185,7 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
@@ -238,19 +212,49 @@
 - (void)parseData
 {
 	
+//	NSString *route = [NSString stringWithFormat:@"stickers"];
+//	NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
+	
+//	[request setHTTPMethod:@"GET"];
+	
+//	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+//	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
+//		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//		[self didReceiveData:data];
+//	}];
+	//
+	
 	NSString *route = [NSString stringWithFormat:@"stickers"];
 	NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
-
+	
+	NSLog(@"%s | request = %@", __PRETTY_FUNCTION__, [request description]);
 	
 	[request setHTTPMethod:@"GET"];
 	
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
+	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-		[self didReceiveData:data];
+		
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
+		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
+		//TDO: check the answer
+		
+		for (NSDictionary *item in JSON) {
+			StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:item];
+		}
+		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		//TODO: check if we have to fetch for the new/update entry
+		[self.refreshControl endRefreshing];
+		[self fetchStickersList];
+		
+	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
+		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
+		[self.refreshControl endRefreshing];
 	}];
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+	[operation start];
 }
-
+/*
 - (void)didReceiveData:(NSData *)data {
 	//INFO: debug
 	
@@ -279,7 +283,7 @@
 	}
 	[self.refreshControl endRefreshing];
 }
-
+*/
 - (void)deleteRowAtIndexPath:(NSIndexPath *)indexPath forStickerCell:(StickerCell *)cell {
 	StickerRecord *stickerRecord = [self stickerRecordAtIndexPath:self.currentIndexPath];
 	if (stickerRecord != nil) {
@@ -310,7 +314,7 @@
 
 - (StickerRecord *)stickerRecordAtIndexPath:(NSIndexPath *)indexPath {
 	StickerRecord *stickerRecord = nil;
-	//NSIndexPath *indexPath = self.currentIndexPath;//[self.tableView indexPathForSelectedRow];
+
 	if (indexPath.section == 0 && [self.myPhoneStickerRecordList count] > 0)
 		stickerRecord = [self.myPhoneStickerRecordList objectAtIndex:indexPath.row];
 	else if (indexPath.section == 0 && [self.myPhoneStickerRecordList count] == 0)

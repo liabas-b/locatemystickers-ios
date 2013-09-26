@@ -10,4 +10,8 @@
 
 @interface BaseTableViewController : UITableViewController
 
+@property (nonatomic, assign) BOOL refreshControlEnabled;
+
+- (void)refreshControlRequest;
+
 @end

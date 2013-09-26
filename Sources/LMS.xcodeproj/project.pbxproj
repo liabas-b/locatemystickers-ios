@@ -54,6 +54,14 @@
 		9045B920171026ED00436B2E /* OptionsRecord+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B91F171026EC00436B2E /* OptionsRecord+Manager.m */; };
 		9045B9231710364900436B2E /* LocAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B9221710364900436B2E /* LocAnnotation.m */; };
 		9045B926171036AC00436B2E /* CLLocation (Strings).m in Sources */ = {isa = PBXBuildFile; fileRef = 9045B925171036AC00436B2E /* CLLocation (Strings).m */; };
+		904C594A17F36699003B00EA /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 904C593A17F36699003B00EA /* bitstream.c */; };
+		904C594B17F36699003B00EA /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = 904C593C17F36699003B00EA /* mask.c */; };
+		904C594C17F36699003B00EA /* qrenc.c in Sources */ = {isa = PBXBuildFile; fileRef = 904C593E17F36699003B00EA /* qrenc.c */; };
+		904C594D17F36699003B00EA /* qrencode.c in Sources */ = {isa = PBXBuildFile; fileRef = 904C594017F36699003B00EA /* qrencode.c */; };
+		904C594E17F36699003B00EA /* qrinput.c in Sources */ = {isa = PBXBuildFile; fileRef = 904C594217F36699003B00EA /* qrinput.c */; };
+		904C594F17F36699003B00EA /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 904C594417F36699003B00EA /* qrspec.c */; };
+		904C595017F36699003B00EA /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 904C594617F36699003B00EA /* rscode.c */; };
+		904C595117F36699003B00EA /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 904C594817F36699003B00EA /* split.c */; };
 		9050874816FDCB41007AF478 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9050874516FDCB08007AF478 /* libZXingWidget.a */; };
 		9050874A16FDCB5E007AF478 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9050874916FDCB5E007AF478 /* libiconv.dylib */; };
 		9050875216FDD1B6007AF478 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9050875116FDD1B6007AF478 /* CoreAudio.framework */; };
@@ -324,6 +332,23 @@
 		9045B9221710364900436B2E /* LocAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocAnnotation.m; sourceTree = "<group>"; };
 		9045B924171036AC00436B2E /* CLLocation (Strings).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation (Strings).h"; sourceTree = "<group>"; };
 		9045B925171036AC00436B2E /* CLLocation (Strings).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation (Strings).m"; sourceTree = "<group>"; };
+		904C593917F36699003B00EA /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		904C593A17F36699003B00EA /* bitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bitstream.c; sourceTree = "<group>"; };
+		904C593B17F36699003B00EA /* bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitstream.h; sourceTree = "<group>"; };
+		904C593C17F36699003B00EA /* mask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mask.c; sourceTree = "<group>"; };
+		904C593D17F36699003B00EA /* mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mask.h; sourceTree = "<group>"; };
+		904C593E17F36699003B00EA /* qrenc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrenc.c; sourceTree = "<group>"; };
+		904C593F17F36699003B00EA /* qrencode_inner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrencode_inner.h; sourceTree = "<group>"; };
+		904C594017F36699003B00EA /* qrencode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrencode.c; sourceTree = "<group>"; };
+		904C594117F36699003B00EA /* qrencode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrencode.h; sourceTree = "<group>"; };
+		904C594217F36699003B00EA /* qrinput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrinput.c; sourceTree = "<group>"; };
+		904C594317F36699003B00EA /* qrinput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrinput.h; sourceTree = "<group>"; };
+		904C594417F36699003B00EA /* qrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrspec.c; sourceTree = "<group>"; };
+		904C594517F36699003B00EA /* qrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrspec.h; sourceTree = "<group>"; };
+		904C594617F36699003B00EA /* rscode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rscode.c; sourceTree = "<group>"; };
+		904C594717F36699003B00EA /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
+		904C594817F36699003B00EA /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
+		904C594917F36699003B00EA /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
 		9050873F16FDCB08007AF478 /* ZXingWidget.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingWidget.xcodeproj; path = "zxing-2.0/iphone/ZXingWidget/ZXingWidget.xcodeproj"; sourceTree = "<group>"; };
 		9050874916FDCB5E007AF478 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		9050875116FDD1B6007AF478 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -693,6 +718,30 @@
 			name = "Font Awesome";
 			sourceTree = "<group>";
 		};
+		904C593617F36653003B00EA /* QR genrator */ = {
+			isa = PBXGroup;
+			children = (
+				904C593917F36699003B00EA /* config.h */,
+				904C593A17F36699003B00EA /* bitstream.c */,
+				904C593B17F36699003B00EA /* bitstream.h */,
+				904C593C17F36699003B00EA /* mask.c */,
+				904C593D17F36699003B00EA /* mask.h */,
+				904C593E17F36699003B00EA /* qrenc.c */,
+				904C593F17F36699003B00EA /* qrencode_inner.h */,
+				904C594017F36699003B00EA /* qrencode.c */,
+				904C594117F36699003B00EA /* qrencode.h */,
+				904C594217F36699003B00EA /* qrinput.c */,
+				904C594317F36699003B00EA /* qrinput.h */,
+				904C594417F36699003B00EA /* qrspec.c */,
+				904C594517F36699003B00EA /* qrspec.h */,
+				904C594617F36699003B00EA /* rscode.c */,
+				904C594717F36699003B00EA /* rscode.h */,
+				904C594817F36699003B00EA /* split.c */,
+				904C594917F36699003B00EA /* split.h */,
+			);
+			name = "QR genrator";
+			sourceTree = "<group>";
+		};
 		9050874016FDCB08007AF478 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -783,6 +832,7 @@
 		9059588616D3847B0055BBA8 = {
 			isa = PBXGroup;
 			children = (
+				904C593617F36653003B00EA /* QR genrator */,
 				90E0553A1797219500B20245 /* AFNetworking */,
 				90710A29171CD7040095D112 /* MagicalRecord */,
 				9084330F16FEE5A30064C84E /* LMS.entitlements */,
@@ -1636,6 +1686,7 @@
 				90E0554F1797219500B20245 /* AFHTTPRequestOperation.m in Sources */,
 				90E055561797219500B20245 /* UIImageView+AFNetworking.m in Sources */,
 				905958A216D3847B0055BBA8 /* main.m in Sources */,
+				904C594B17F36699003B00EA /* mask.c in Sources */,
 				905958A616D3847B0055BBA8 /* AppDelegate.m in Sources */,
 				905958C316D384E80055BBA8 /* NSDictionary+QueryString.m in Sources */,
 				902AD7EA17EE519800E2FC77 /* FollowedStickerCell.m in Sources */,
@@ -1652,6 +1703,7 @@
 				90B80A8416D6DCCD004CA608 /* ConnectionManager.m in Sources */,
 				90B80A9116D6DE47004CA608 /* UITextField+Extended.m in Sources */,
 				90B80A9216D6DF36004CA608 /* PopUpLoginView.m in Sources */,
+				904C595017F36699003B00EA /* rscode.c in Sources */,
 				90E055531797219500B20245 /* AFPropertyListRequestOperation.m in Sources */,
 				9086ECDB16DA46C100965576 /* CustomTabBarViewController.mm in Sources */,
 				9086ED1016DA5DD600965576 /* StickersTableViewController.m in Sources */,
@@ -1664,6 +1716,7 @@
 				903B9CF016DFBB820030471D /* StickerDetailViewController.m in Sources */,
 				9029C71C16E240AE00047CF4 /* SettingsViewController.m in Sources */,
 				9029C71F16E246C600047CF4 /* UserCell.m in Sources */,
+				904C594D17F36699003B00EA /* qrencode.c in Sources */,
 				9070E9C216F3213A00E3D409 /* LmsModel.xcdatamodeld in Sources */,
 				9070E9C516F3287400E3D409 /* OptionsRecord.m in Sources */,
 				9070E9C816F3287400E3D409 /* AccountRecord.m in Sources */,
@@ -1674,6 +1727,7 @@
 				9045B910170F8B4F00436B2E /* FAImageView.m in Sources */,
 				9045B911170F8B4F00436B2E /* NSString+FontAwesome.m in Sources */,
 				9045B912170F8B4F00436B2E /* UIFont+FontAwesome.m in Sources */,
+				904C594F17F36699003B00EA /* qrspec.c in Sources */,
 				90E05539179719AC00B20245 /* LocationRecord.m in Sources */,
 				9045B917170F9D4400436B2E /* StickerRecord+Manager.m in Sources */,
 				903C129917E8FBBB00CCD26D /* BaseTableViewController.m in Sources */,
@@ -1684,6 +1738,7 @@
 				9045B9231710364900436B2E /* LocAnnotation.m in Sources */,
 				9045B926171036AC00436B2E /* CLLocation (Strings).m in Sources */,
 				90AA675B17146CD300C17DD0 /* UIColor+BButton.m in Sources */,
+				904C594A17F36699003B00EA /* bitstream.c in Sources */,
 				90AA675E1714724E00C17DD0 /* BButton.m in Sources */,
 				90AA67611714726800C17DD0 /* BButton+FontAwesome.m in Sources */,
 				90BFDA8D171A8A27006E0490 /* CustomCell.m in Sources */,
@@ -1716,12 +1771,15 @@
 				90E055541797219500B20245 /* AFURLConnectionOperation.m in Sources */,
 				90710A7B171CD7040095D112 /* MagicalRecord+Options.m in Sources */,
 				90710A7C171CD7040095D112 /* MagicalRecord+Setup.m in Sources */,
+				904C594E17F36699003B00EA /* qrinput.c in Sources */,
 				90E055551797219500B20245 /* AFXMLRequestOperation.m in Sources */,
 				90710A7D171CD7040095D112 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				90710A7E171CD7040095D112 /* MagicalRecord.m in Sources */,
 				90616E74172486CA00FF88DE /* LMSMapView.m in Sources */,
+				904C594C17F36699003B00EA /* qrenc.c in Sources */,
 				9008894E17EA271C00C9B64E /* HistoryRecord.m in Sources */,
 				90588BBA1724D5FF0097735F /* LMSAnnotation.m in Sources */,
+				904C595117F36699003B00EA /* split.c in Sources */,
 				90E0554E1797219500B20245 /* AFHTTPClient.m in Sources */,
 				90E055511797219500B20245 /* AFJSONRequestOperation.m in Sources */,
 				90588BBB1724D5FF0097735F /* LMSAnnotationView.m in Sources */,
@@ -1798,7 +1856,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "30DBD701-FC20-4C73-9D14-DD9A05570F52";
+				PROVISIONING_PROFILE = "2178CF07-D528-4B32-AC71-9A4F9F10A0EF";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1822,7 +1880,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "30DBD701-FC20-4C73-9D14-DD9A05570F52";
+				PROVISIONING_PROFILE = "2178CF07-D528-4B32-AC71-9A4F9F10A0EF";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1836,6 +1894,7 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "locateMyStickers/LMS-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1847,9 +1906,12 @@
 					"/Users/adril/Desktop/work/ios/Sources/zxing-2.0/cpp/core/src",
 				);
 				INFOPLIST_FILE = "locateMyStickers/LMS-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
+				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_NAME = LMS;
-				PROVISIONING_PROFILE = "B4234244-AA0C-4582-9D71-763C22BC8A48";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B4234244-AA0C-4582-9D71-763C22BC8A48";
+				PROVISIONING_PROFILE = "D55E8230-CFDD-4E58-9579-24809ACB70A3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D55E8230-CFDD-4E58-9579-24809ACB70A3";
+				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1873,8 +1935,8 @@
 				);
 				INFOPLIST_FILE = "locateMyStickers/LMS-Info.plist";
 				PRODUCT_NAME = LMS;
-				PROVISIONING_PROFILE = "B4234244-AA0C-4582-9D71-763C22BC8A48";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B4234244-AA0C-4582-9D71-763C22BC8A48";
+				PROVISIONING_PROFILE = "D55E8230-CFDD-4E58-9579-24809ACB70A3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D55E8230-CFDD-4E58-9579-24809ACB70A3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

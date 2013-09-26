@@ -342,7 +342,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="share-icon.png" id="vty-Fc-8bE">
                                                     <rect key="frame" x="10" y="14" width="32" height="32"/>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sharring stickers ()" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m3r-5J-dRV">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Followed Stickers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m3r-5J-dRV">
                                                     <rect key="frame" x="52" y="20" width="228" height="21"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -383,7 +383,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="lms-QRcode.png" id="Gni-j4-8Ax">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="locateMyStickersFushiaSmallLogo.png" id="Gni-j4-8Ax">
                                                     <rect key="frame" x="120" y="10" width="60" height="60"/>
                                                 </imageView>
                                             </subviews>
@@ -473,6 +473,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="User" id="Mc4-F0-q9P"/>
                     <connections>
+                        <outlet property="qrCodeImageView" destination="Gni-j4-8Ax" id="X5x-5z-Mcz"/>
                         <outlet property="sharringStickersLabel" destination="m3r-5J-dRV" id="Uxt-LT-dAs"/>
                         <outlet property="yourStickersLabel" destination="iOa-0E-JMW" id="ISA-qO-jmD"/>
                     </connections>
@@ -557,6 +558,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="mrA-l4-qYU">
                                                     <rect key="frame" x="83" y="15" width="217" height="30"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="0.63529413940000001" green="0.1411764771" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" red="0.0" green="0.36445027372262773" blue="0.66950843978102192" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -580,6 +582,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="VAl-y7-pUR">
                                                     <rect key="frame" x="83" y="15" width="217" height="30"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="0.63529413940000001" green="0.1411764771" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" red="0.0" green="0.36445027369999999" blue="0.66950843979999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -1189,6 +1192,7 @@
                         <searchBar key="tableHeaderView" contentMode="redraw" showsScopeBar="YES" id="cPy-U6-VUs">
                             <rect key="frame" x="0.0" y="64" width="320" height="88"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="tintColor" red="0.63529413940000001" green="0.1411764771" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
                             <textInputTraits key="textInputTraits"/>
                             <scopeButtonTitles>
                                 <string>Everything</string>
@@ -1308,6 +1312,51 @@
             </objects>
             <point key="canvasLocation" x="1179" y="2115"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="9Z6-vL-U9e">
+            <objects>
+                <viewController id="a9Q-8m-A0Z" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tdo-F0-OJX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="68m-6P-gcd">
+                                <rect key="frame" x="0.0" y="200" width="320" height="368"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benoit Liabastre" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1w8-gd-8Mg">
+                                        <rect key="frame" x="127" y="39" width="203" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locateMyStickersFushiaSmallLogo.png" id="hVp-ki-3hX">
+                                        <rect key="frame" x="20" y="-35" width="87" height="96"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="Jyt-2Y-edJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="5Ia-rl-6Xi">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </mapView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="If4-v8-CYS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1684" y="2021"/>
+        </scene>
         <!--Navigation Controller - User-->
         <scene sceneID="2Uo-gw-0wX">
             <objects>
@@ -1367,7 +1416,6 @@
     </scenes>
     <resources>
         <image name="account-icon.png" width="64" height="64"/>
-        <image name="lms-QRcode.png" width="216" height="216"/>
         <image name="lms.png" width="32" height="32"/>
         <image name="locateMyStickersFushiaSmallLogo.png" width="128" height="139"/>
         <image name="locateMyStickersRedLogo.png" width="500" height="500"/>
@@ -1383,8 +1431,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jSc-nL-Ukc"/>
         <segue reference="pHZ-S0-Prj"/>
         <segue reference="5cT-UI-bqY"/>
+        <segue reference="fHp-7O-dbY"/>
     </inferredMetricsTieBreakers>
 </document>

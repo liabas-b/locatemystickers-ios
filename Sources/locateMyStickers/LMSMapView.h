@@ -16,6 +16,7 @@ typedef enum {
 	LMSMapBoundary,
     LMSMapOverlay,
     LMSMapPins,
+	LMSMapHistory,
     LMSMapCharacterLocation,
     LMSMapRoute
 } LMSMapOption;
@@ -30,5 +31,6 @@ typedef enum {
 @property (nonatomic, strong)id<LMSMapViewProtocol> mapViewDelegate;
 
 - (void)loadSelectedOptions;
+- (void)addCloseButton;
 
 @end

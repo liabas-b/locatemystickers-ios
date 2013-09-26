@@ -130,33 +130,19 @@
 }
 
 - (void)handleStickerAdding:(NSString *)result {
-	//TODO: check if the code is valid
-	//
-	//
-	
+	//INFO: call when sticker scaned
 	[self addStickerWithCode:result];
-	
-	
-	
-	//
-	/*	UIStoryboard *storyboard = [AppDelegate mainStoryBoard];
-	 
-	 StickerAddingTableViewController *stickerAddingTableViewController  = (StickerAddingTableViewController *)[storyboard instantiateViewControllerWithIdentifier:@"stickerAdding"];
-	 stickerAddingTableViewController.result = result;
-	 
-	 UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:stickerAddingTableViewController];
-	 [self presentViewController:navigationController animated:YES completion:nil];
-	 */
 }
 
 - (void)addStickerWithCode:(NSString *)code {
+	
 	bool stickerAlreadyExist = [[AppDelegate appDelegate].stickerManager stickerAlreadyExistOnPhoneWithCode:code];
 	NSLog(@"%s ret %d !!!", __PRETTY_FUNCTION__, stickerAlreadyExist);
 	
 	//TODO: waiting for the answer of the web service
 	
 	//INFO: sucess
-	if (stickerAlreadyExist == NO) {//&& get notif from WS
+	if (stickerAlreadyExist == NO) {
 		self.currentCode = code;
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlerStickerAlreadyExistOnWebService:) name:keyStickerAlreadyExistOnWebService object:nil];
 		[[AppDelegate appDelegate].stickerManager stickerAlreadyExistOnWebServiceWithCode:code];
@@ -169,17 +155,6 @@
 											   otherButtonTitles:nil];
         [alert show];		
 	}
-	/*
-	 {
-	 StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithCode:result managedObjectContext:[AppDelegate appDelegate].managedObjectContext];
-	 stickerRecord.name = @"New sticker ;)";
-	 stickerRecord.text = @"New Sticker from space =)";
-	 stickerRecord.stickerTypeId = [NSNumber numberWithInt:StickerTypeSticker];
-	 stickerRecord.code = result;
-	 [[AppDelegate appDelegate] performSelectorOnMainThread:@selector(stickerAdding:) withObject:stickerRecord waitUntilDone:NO];
-	 
-	 }
-	 */
 }
 
 - (void)zxingControllerDidCancel:(ScanWidgetController *)controller {
@@ -190,7 +165,7 @@
 - (void)handlerStickerAlreadyExistOnWebService:(NSNotification *)notificaton {
 	NSLog(@"%s %d", __PRETTY_FUNCTION__, [[notificaton object] boolValue]);
 	if ([[notificaton object] boolValue] == NO) {//INFO: Sticker not Already Exist On Web Service
-		NSLog(@"%s Sticker not already exist on web service", __PRETTY_FUNCTION__);
+		NSLog(@"%s | sticker does not already exist on web service", __PRETTY_FUNCTION__);
 		
 		StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithCode:self.currentCode];
 #warning MAY be background is bad
@@ -199,26 +174,15 @@
 		stickerRecord.name = @"New sticker ;)";
 		stickerRecord.text = @"New Sticker from space =)";
 		stickerRecord.stickerTypeId = [NSNumber numberWithInt:StickerTypeSticker];
-		stickerRecord.code = self.currentCode;
+		stickerRecord.code = self.currentCode;//[AppDelegate identifierForCurrentUser];//self.currentCode;
 		
 		[[NSManagedObjectContext defaultContext] saveNestedContexts];
-		/*
-		[MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext) {
-			StickerRecord *localStickerRecord = [stickerRecord inContext:localContext];
-			localStickerRecord.name = @"New sticker ;)";
-			localStickerRecord.text = @"New Sticker from space =)";
-			localStickerRecord.stickerTypeId = [NSNumber numberWithInt:StickerTypeSticker];
-			localStickerRecord.code = self.currentCode;
-		}completion:^{
-			NSLog(@"%s saved StickerRecord", __PRETTY_FUNCTION__);
-		}];
-		*/
 		
 		[[AppDelegate appDelegate] performSelectorOnMainThread:@selector(stickerAdding:) withObject:stickerRecord waitUntilDone:NO];
 		
 	}
 	else {
-		NSLog(@"%s Sticker already exist on web service", __PRETTY_FUNCTION__);
+		NSLog(@"%s | sticker already exist on web service", __PRETTY_FUNCTION__);
 		UIAlertView *alert =  [[UIAlertView alloc] initWithTitle:@"An error occurred."
 														 message:@"Sticker already exist on LocateMyStickers !"
 														delegate:nil

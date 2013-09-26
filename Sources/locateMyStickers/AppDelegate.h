@@ -26,6 +26,8 @@
 @property (nonatomic, strong) OptionsRecord *optionsRecord;
 @property (nonatomic, strong) StickerManager *stickerManager;
 
+//@property (nonatomic, assign) BOOL debug;
+
 /*
 @property(strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property(strong, nonatomic) NSManagedObjectModel *managedObjectModel;
@@ -33,9 +35,11 @@
 
 - (void)saveContext;
  */
-- (void)addMyPhone;
+//- (void)addMyPhone;
 
 + (NSMutableURLRequest *)requestForCurrentUserWithRoute:(NSString *)route;
++ (NSMutableURLRequest *)requestForCurrentHostWithRoute:(NSString *)route;
++ (NSMutableURLRequest *)requestForCurrentStickersHost;
 
 + (NSURL *)applicationDocumentsDirectory;
 + (AppDelegate *)appDelegate;
@@ -43,5 +47,7 @@
 + (UIStoryboard *)mainStoryBoard;
 + (BOOL)deviceIsIpad;
 + (BOOL)deviceIsIO6;
+
++ (NSString *)identifierForCurrentUser;
 
 @end

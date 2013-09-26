@@ -17,6 +17,7 @@
 #import "StickerRecord+Manager.h"
 
 #import "NSDictionary+QueryString.h"
+#import "CryptographyTools.h"
 
 
 #import "JsonTools.h"
@@ -129,6 +130,53 @@
 	
 	return request;
 }
+
++ (NSMutableURLRequest *)requestForCurrentHostWithRoute:(NSString *)route {
+	NSString *hostName = [AppDelegate appDelegate].sessionManager.session.hostName;
+	
+	NSString *requestString = nil;
+	if (route != nil) {
+		requestString = [NSString stringWithFormat:@"%@/%@", hostName, route];
+	}
+	else
+		requestString = [NSString stringWithFormat:@"%@/", hostName];
+
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
+	
+	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+	[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+	
+	return request;
+}
+
++ (NSMutableURLRequest *)requestForCurrentStickersHost {
+	
+	NSString *requestString = @"http://stickersserver.herokuapp.com/locations.json";
+	
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
+	
+	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+	[request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
+//	[request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
+	
+	return request;
+}
+
+#pragma mark - Unique ID
+
++ (NSString *)identifierForCurrentUser {
+	NSString *identifierForVendor = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+
+	NSString *identifierFinal = [NSString stringWithFormat:@"%@:%@", identifierForVendor, [AppDelegate appDelegate].sessionManager.session.login];
+	
+	NSLog(@"%s | %@", __PRETTY_FUNCTION__, identifierFinal);
+	NSString *encodedIdentifier = [CryptographyTools stringToMD5:identifierFinal];
+	NSLog(@"%s | %@", __PRETTY_FUNCTION__, encodedIdentifier);
+	
+	return encodedIdentifier;
+}
+
+
 /*
  - (void)saveContext
  {
@@ -195,67 +243,6 @@
 	 */
 }
 
-#pragma mark - Core Data stack
-
-/*
- 
- // Returns the managed object context for the application.
- // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
- - (NSManagedObjectContext *)managedObjectContext
- {
- if (_managedObjectContext != nil) {
- return _managedObjectContext;
- }
- 
- NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
- if (coordinator != nil) {
- _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
- [_managedObjectContext setPersistentStoreCoordinator:coordinator];
- }
- return _managedObjectContext;
- }
- 
- // Returns the managed object model for the application.
- // If the model doesn't already exist, it is created from the application's model.
- - (NSManagedObjectModel *)managedObjectModel
- {
- if (_managedObjectModel != nil) {
- return _managedObjectModel;
- }
- NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"LmsModel" withExtension:@"momd"];
- _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
- return _managedObjectModel;
- }
- 
- // Returns the persistent store coordinator for the application.
- // If the coordinator doesn't already exist, it is created and the application's store added to it.
- - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
- {
- if (_persistentStoreCoordinator != nil) {
- return _persistentStoreCoordinator;
- }
- 
- NSURL *storeURL = [[AppDelegate applicationDocumentsDirectory] URLByAppendingPathComponent:@"LmsModel.sqlite"];
- 
- NSFileManager *fileManager = [NSFileManager defaultManager];
- if (![fileManager fileExistsAtPath:[storeURL path]]) {
- self.isFirstLaunch = YES;
- }
- else {
- self.isFirstLaunch = NO;
- }
- 
- NSError *error = nil;
- _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
- if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
- 
- NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
- abort();
- }
- 
- return _persistentStoreCoordinator;
- }
- */
 #pragma mark - sticker Adding
 
 - (void)stickerAdding:(StickerRecord *)stickerRecord {
@@ -264,13 +251,14 @@
 	StickerAddingTableViewController *stickerAddingTableViewController  = (StickerAddingTableViewController *)[storyboard instantiateViewControllerWithIdentifier:@"stickerAdding"];
 	
 	stickerAddingTableViewController.stickerRecord = stickerRecord;
-	//stickerAddingTableViewController.result = identifierForVendor;//INFO: unique id for each phone
-	//		stickerAddingTableViewController.nameTextField
+	[stickerRecord debug];
 	
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:stickerAddingTableViewController];
 	[self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
+#pragma mark - Core Data
+/*
 - (BOOL)dbAlreadyExist {
 	NSURL *storeURL = [[AppDelegate applicationDocumentsDirectory] URLByAppendingPathComponent:@"LmsModel.sqlite"];
     
@@ -283,7 +271,7 @@
 	}
 	return self.isFirstLaunch;
 }
-
+*/
 #pragma mark - Application's Documents directory
 
 // Returns the URL to the application's Documents directory.

@@ -13,10 +13,12 @@
 #import "LMSAnnotationView.h"
 
 #import "LocAnnotation.h"
+#import "ConventionTools.h"
 
 @interface LMSMapView ()
 
 @property (nonatomic, strong) NSMutableArray *selectedOptions;
+@property (nonatomic, strong) UIButton *closeButton;
 
 @end
 
@@ -42,48 +44,74 @@
 	
 	[self.selectedOptions addObject:[NSNumber numberWithInt:LMSMapRoute]];
 	[self.selectedOptions addObject:[NSNumber numberWithInt:LMSMapPins]];
+//	[self.selectedOptions addObject:[NSNumber numberWithInt:LMSMapHistory]];
 	
 	//
 	
-	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[button addTarget:self
-			   action:@selector(aMethod:)
-	 forControlEvents:UIControlEventTouchDown];
-	[button setTitle:@"Close" forState:UIControlStateNormal];
-	button.frame = CGRectMake(10.0, 10.0, 40.0, 30.0);
-	[self addSubview:button];
+	self.closeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	[self.closeButton addTarget:self
+						 action:@selector(aMethod:)
+			   forControlEvents:UIControlEventTouchDown];
+	[self.closeButton setTitle:@"Close" forState:UIControlStateNormal];
+	self.closeButton.frame = CGRectMake(10.0, 10.0, 40.0, 30.0);
+	self.closeButton.alpha = 0;
+	self.closeButton.tintColor = [UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0];
+	
+	
+	
+	[self addSubview:self.closeButton];
+	
 }
 
-- (void)aMethod:(UIButton*)button
-{
+- (void)addCloseButton {
+
+	[UIView animateWithDuration:0.6
+                          delay:0
+                        options:(UIViewAnimationOptionCurveEaseIn)
+                     animations:^{
+						 self.closeButton.alpha = 1;
+                     }
+                     completion:^(BOOL finished1) {
+						 self.closeButton.hidden = NO;
+					 }];
+}
+
+- (void)removeCloseButton {
+	
+	[UIView animateWithDuration:0.3
+                          delay:0
+                        options:(UIViewAnimationOptionCurveEaseIn)
+                     animations:^{
+						 self.closeButton.alpha = 0;
+                     }
+                     completion:^(BOOL finished1) {
+						 self.closeButton.hidden = YES;
+					 }];
+}
+
+- (void)aMethod:(UIButton*)button {
 	if ([self.mapViewDelegate respondsToSelector:@selector(closeMapButtonHandler)]) {
+		[self removeCloseButton];
 		[self.mapViewDelegate closeMapButtonHandler];
 	}
 }
 
-
 - (void)initRegionWithStartLocationRecord:(LocationRecord *)startLocationRecord andEndLocationRecord:(LocationRecord *)endLocationRecord {
-
+	
 	[startLocationRecord debug];
 	[endLocationRecord debug];
 	
-	CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake([endLocationRecord.latitude floatValue], [endLocationRecord.longitude floatValue]);
+//	CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake([endLocationRecord.latitude floatValue], [endLocationRecord.longitude floatValue]);
 	
-	[self setCenterCoordinate:centerCoordinate animated:YES];
+//	[self setCenterCoordinate:centerCoordinate animated:YES];
 	
-	/*
-	
-	CLLocationDegrees latDelta = [startLocationRecord.latitude floatValue] - [endLocationRecord.latitude floatValue];//INFO: should be the top left and bottom right
-    
-    // think of a span as a tv size, measure from one corner to another
-    MKCoordinateSpan span = MKCoordinateSpanMake(fabsf(latDelta), 0.0);
-    
-	CLLocationCoordinate2D midCoordinate = CLLocationCoordinate2DMake([startLocationRecord.latitude floatValue], [startLocationRecord.longitude floatValue]);
-	
-    MKCoordinateRegion region = MKCoordinateRegionMake(midCoordinate, span);
-    
-    self.region = region;
-	*/
+	MKCoordinateRegion region = { {0.0, 0.0 }, { 0.0, 0.0 } };
+    region.center.latitude = [endLocationRecord.latitude floatValue];
+    region.center.longitude = [endLocationRecord.longitude floatValue];
+    region.span.longitudeDelta = 0.0015f;
+    region.span.latitudeDelta = 0.0015f;
+    [self setRegion:region animated:YES];
+
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
@@ -144,13 +172,32 @@
         LMSAnnotation *annotation = [[LMSAnnotation alloc] init];
 		
         annotation.coordinate = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
-        annotation.title = [[locationRecord latitude] description];//attraction[@"name"];
-        annotation.type = PVAttractionDefault;//[attraction[@"type"] integerValue];
-        annotation.subtitle = [[locationRecord idLocation] description];//attraction[@"subtitle"];
+        annotation.title = [NSString stringWithFormat:@"lat: %@ - long: %@", locationRecord.latitude, locationRecord.longitude];
+        annotation.type = PVAttractionDefault;
+        annotation.subtitle = [ConventionTools getDiffTimeInStringFromDate:locationRecord.updatedAt];
         [self addAnnotation:annotation];
 	}
-	//    }
 	
+}
+
+- (void)addHistory {
+	//INFO: all last position known by all the stickers
+	
+	NSLog(@"%s", __PRETTY_FUNCTION__);
+//	LocationRecord *locationRecord = [self.locationsRecordList lastObject];
+	for (LocationRecord *locationRecord in self.locationsRecordList) {
+		if (locationRecord) {
+			[locationRecord debug];
+			
+			LMSAnnotation *annotation = [[LMSAnnotation alloc] init];
+			
+			annotation.coordinate = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
+			annotation.title = [NSString stringWithFormat:@"lat: %@ - long: %@", locationRecord.latitude, locationRecord.longitude];
+			annotation.type = PVAttractionDefault;
+			annotation.subtitle = [ConventionTools getDiffTimeInStringFromDate:locationRecord.updatedAt];
+			[self addAnnotation:annotation];
+		}
+	}
 }
 
 - (void)addRoute {
@@ -235,6 +282,9 @@
                 break;
             case LMSMapRoute:
                 [self addRoute];
+                break;
+            case LMSMapHistory:
+                [self addHistory];
                 break;
             case LMSMapBoundary:
                 [self addBoundary];

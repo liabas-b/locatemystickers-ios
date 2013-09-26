@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "OptionsRecord.h"
+#import "BaseTableViewController.h"
 
-@interface SettingsViewController : UITableViewController
+@interface SettingsViewController : BaseTableViewController
 
 @property(nonatomic, strong) OptionsRecord *optionsRecord;
 

@@ -51,30 +51,34 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	//INFO: depend if the selected sticker is My phone
-	//[[AppDelegate appDelegate].locationManager addObserver:self forKeyPath:keyPathMeasurementArray options:NSKeyValueObservingOptionNew context:nil];
-	
-	
-	//INFO: debug
-#warning DEBUG --> to remove
-	self.stickerRecord = [StickerRecord addUpdateStickerWithCode:@"3"];
+	//TODO: Make it works
+	self.stickerRecord = [StickerRecord findFirstByAttribute:@"code" withValue:[AppDelegate identifierForCurrentUser]];
+	//[StickerRecord addUpdateStickerWithCode:@"3"];
 	if (self.stickerRecord)
 		[self.stickerRecord debug];
-	
-	//INFO: if sticker Record is set --> ask for all the location of the sticker
-	//TODO: set the view with the stickerRecord
-	/*
-	if (self.stickerRecord != nil) {
-		[self parseData];
-	}
-	*/
-	
-#warning Setting locations records (BAD)
-	
-#warning Updating locations
-	//[self.mapView updateLocations];
 	[self performSelectorInBackground:@selector(setupMap) withObject:nil];
 }
+/*
+- (void)setupMap {
+	NSArray *stickerList = [StickerRecord findAll];//findFirstOrderedByAttribute:@"stickerId" ascending:YES];
+
+	NSMutableArray *locationArray = [[NSMutableArray alloc] init];
+	for (StickerRecord *stickerRecord in stickerList) {
+		LocationRecord *locationRecord = [LocationRecord findFirstOrderedByAttribute:@"updatedAt" ascending:NO];
+		[locationArray addObject:locationRecord];
+		[locationRecord debug];
+	}
+	if ([locationArray count] > 0) {
+		self.mapView.locationsRecordList = locationArray;//[[NSMutableArray alloc] initWithArray:array];
+		
+		[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
+	}
+	else {
+		[self updateLocationForSticker];
+	}
+
+}
+*/
 
 - (void)setupMap {
 	NSManagedObjectContext *context = [[NSManagedObjectContext alloc] init];
@@ -86,7 +90,6 @@
 	if ([array count] > 0) {
 		self.mapView.locationsRecordList = [[NSMutableArray alloc] initWithArray:array];
 		
-		//	[self.mapView loadSelectedOptions];
 		[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
 	}
 	else {
@@ -96,19 +99,25 @@
 
 - (void)updateLocationForSticker {
 	
-	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", self.stickerRecord.stickerId];
+	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", self.stickerRecord.code];
 	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
 	
 	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-		NSLog(@"Result: %@", JSON);
-		for (NSDictionary *dic in JSON) {//[JSON objectForKey:@"data"]) {
+
+		NSLog(@"%s | Request: %@", __PRETTY_FUNCTION__, [request description]);
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
+		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
+
+		for (NSDictionary *dic in JSON) {
 			NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, dic);
 			LocationRecord *locationRecord = [LocationRecord addUpdateWithDictionary:dic];
 			NSLog(@" %s| locationRecord: %@", __PRETTY_FUNCTION__, locationRecord);
 		}
 
 	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-		
+		NSLog(@"%s | Request: %@", __PRETTY_FUNCTION__, [request description]);
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
+		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
 	}];
 	[operation start];
 }
@@ -133,7 +142,7 @@
 }
 
 #pragma mark - data parsing
-
+/*
 - (void)parseData
 {
 	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", self.stickerRecord.stickerId];
@@ -186,7 +195,7 @@
 		[self.mapView loadSelectedOptions];
 	}
 }
-
+*/
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([keyPath isEqualToString:keyPathMeasurementArray]) {

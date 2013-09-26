@@ -22,8 +22,6 @@ static NSString* const keyAddStickerRecord = @"addStickerRecord";
 - (void)stickerAlreadyExistOnWebServiceWithDictionary:(NSDictionary *)dictionary;
 - (void)stickerAlreadyExistOnWebService:(StickerRecord *)stickerRecord;
 
-//- (BOOL)codeIsValid:(NSString *)code;
-
 - (void)addStickerRecordWithDictionary:(NSDictionary *)dictionary;
 - (void)addStickerRecord:(StickerRecord *)stickerRecord;
 - (void)removeStickerRecordWithCode:(NSString *)code;

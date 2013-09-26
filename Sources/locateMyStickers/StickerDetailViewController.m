@@ -37,6 +37,7 @@
 
 - (void)viewDidLoad
 {
+	self.refreshControlEnabled = YES;
     [super viewDidLoad];
 	
 	self.mapView.mapViewDelegate = self;
@@ -44,7 +45,7 @@
 	[self updateView];
 
 	[self updateSticker];
-	[self updateLocationForSticker];
+	[self updateLocationForSticker:^{}];
 	
 	UITapGestureRecognizer *mapSingleFingerTap =
 	[[UITapGestureRecognizer alloc] initWithTarget:self
@@ -64,24 +65,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)t {
+- (void)zoomOnMapView {
 	// Get main window reference
 	UIWindow* mainWindow = (((AppDelegate *)[UIApplication sharedApplication].delegate).window);
+
+	CGRect rect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+	self.mapRect = self.mapView.frame;
+	[mainWindow addSubview:self.mapView];
 	
 	[UIView animateWithDuration:0.3
                           delay:0
-                        options:(UIViewAnimationOptionCurveEaseOut)
+                        options:(UIViewAnimationOptionCurveEaseIn)
                      animations:^{
-						 CGRect rect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
-						 //INFO: sav
-						 self.mapRect = self.mapView.frame;
+
 						 //INFO: set in full screen
 						 self.mapView.frame = rect;
-						 [mainWindow addSubview:self.mapView];
+
 
                      }
                      completion:^(BOOL finished1) {
-						 
+						 [self.mapView addCloseButton];
 					 }];
 
 }
@@ -120,8 +123,6 @@
 		StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:JSON];
 		if (stickerRecord) {
 			self.stickerRecord = stickerRecord;
-			
-//			[[NSManagedObjectContext defaultContext] saveNestedContexts];
 			NSLog(@" %s| stickerRecord: %@", __PRETTY_FUNCTION__, stickerRecord);
 			[self.stickerRecord debug];
 			[self updateView];
@@ -136,19 +137,19 @@
 }
 
 - (void)setupMap {
-	NSArray *array = [LocationRecord findByAttribute:@"idSticker" withValue:self.stickerRecord.stickerId andOrderBy:@"updatedAt" ascending:NO];//findAllSortedBy:@"idLocation" ascending:YES];
+	NSArray *array = [LocationRecord findByAttribute:@"idSticker" withValue:self.stickerRecord.stickerId andOrderBy:@"updatedAt" ascending:NO];
 	NSLog(@"%s %@", __PRETTY_FUNCTION__, array);
 	if ([array count] > 0) {
-		[self.mapView.locationsRecordList addObjectsFromArray:array];// = [[NSMutableArray alloc] initWithArray:array];
+		[self.mapView.locationsRecordList addObjectsFromArray:array];
 		
 		[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
 	}
 	else {
-		[self updateLocationForSticker];
+		[self updateLocationForSticker:^(){}];
 	}
 }
 
-- (void)updateLocationForSticker {
+- (void)updateLocationForSticker:(void (^)(void))block {
 	
 	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", self.stickerRecord.code];
 	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
@@ -157,16 +158,22 @@
 	
 	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 		NSLog(@"Result: %@", JSON);
+		
+		[self.mapView.locationsRecordList removeAllObjects];
+		
 		for (NSDictionary *dic in JSON) {
 			NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, dic);
 			LocationRecord *locationRecord = [LocationRecord addUpdateWithDictionary:dic];
 			NSLog(@" %s| locationRecord: %@", __PRETTY_FUNCTION__, locationRecord);
 		}
-		if ([JSON count] > 0)
+		if ([JSON count] > 0) {
+
 			[self setupMap];
+			block();
+		}
 		
 	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-		
+		block();
 	}];
 	[operation start];
 	
@@ -187,17 +194,15 @@
 #pragma mark - Map Handler
 
 - (void)mapSingleTapHandler:(UITapGestureRecognizer *)recognizer {
-	[self t];
+	[self zoomOnMapView];
 }
 
 - (IBAction)closeMapHandler:(id)sender {
-//	UIWindow* mainWindow = (((AppDelegate *)[UIApplication sharedApplication].delegate).window);
 	
 	[UIView animateWithDuration:0.3
                           delay:0
                         options:(UIViewAnimationOptionCurveEaseOut)
                      animations:^{
-//						 [mainWindow //addSubview:self.mapView];
 						 
 						 
                      }
@@ -216,4 +221,13 @@
 - (void)closeMapButtonHandler {
 	[self closeMapHandler:nil];
 }
+
+- (void)refreshControlRequest {
+	[self updateSticker];
+	
+	[self updateLocationForSticker:^{
+		[self.refreshControl endRefreshing];
+	}];
+}
+
 @end

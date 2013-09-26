@@ -104,8 +104,6 @@
 	}
 }
 
-
-
 #warning TODO: configure the view methode
 //TODO: configure the view methode
 
@@ -170,30 +168,20 @@
 }
 
 - (IBAction)handleFinishedButton:(id)sender {
-#warning To implement
-	//TODO: - add the sticker to DB (may be need id)
-	//      - POST to the web service
-	//      - GET the id
 	[self unBindView];
+	
 	if (self.stickerRecord != nil) {
 		[[AppDelegate appDelegate].stickerManager addStickerRecord:self.stickerRecord];
-#warning HARD DELETE of the current sticker
-		//[self.stickerRecord deleteEntity];
-		
-		//[[AppDelegate appDelegate].managedObjectContext deleteObject:self.stickerRecord];
 	}
 }
-
 
 - (void)handlerAddStickerRecord:(NSNotification *)notification {
 	if ([notification object] != nil) {
 		NSLog(@"%s", __PRETTY_FUNCTION__);
 
-//		[[AppDelegate appDelegate].managedObjectContext deleteObject:self.stickerRecord];
 		self.stickerRecord = [notification object];
 
 		[self.stickerRecord debug];
-		//[[AppDelegate appDelegate] saveContext];
 		if ([self.stickerRecord.stickerTypeId intValue] == StickerTypeIphone) {
 			NSLog(@"%s Location phone enable", __PRETTY_FUNCTION__);
 			[MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext) {
@@ -205,7 +193,7 @@
 			
 #warning SAVE CONTEXT may be
 			NSLog(@"%s Starting location manager", __PRETTY_FUNCTION__);
-			[[AppDelegate appDelegate].locationManager startWithStickerTrackingId:[self.stickerRecord.stickerId intValue]];
+			[[AppDelegate appDelegate].locationManager startWithStickerCode:self.stickerRecord.code];
 		}
 	}
 	[self dismissViewControllerAnimated:YES completion:nil];
