@@ -1,1 +1,10 @@
+PODS:
+  - UALogger (0.2.3)
+
+DEPENDENCIES:
+  - UALogger (~> 0.2.3)
+
+SPEC CHECKSUMS:
+  UALogger: abe2af53cf3a72fd8ed3625ee331c546c4c7bde9
+
 COCOAPODS: 0.26.2
