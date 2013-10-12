@@ -5,36 +5,56 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>063C0C2C-CAD9-4FB5-B5B4-B50AC3FC14F8</string>
+	<string>8E6E54F2-6A6C-4F75-9A79-91BD8C0B7AC5</string>
 	<key>IDESourceControlProjectName</key>
 	<string>LMS</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>FA50DE26-565F-42CE-9720-642DEAEFF0DF</key>
+		<key>BF594FD9-92EA-403F-90F6-1EF2B15FD48F</key>
 		<string>ssh://locatemystickers.com/development/ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Sources/LMS.xcodeproj/project.xcworkspace</string>
+	<string>LMS.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>FA50DE26-565F-42CE-9720-642DEAEFF0DF</key>
-		<string>../../..</string>
+		<key>8BD6BE65-4B78-4AE8-9ECB-ECAFA3CF734C</key>
+		<string>../Sources</string>
+		<key>8DD270A1-2389-49E2-BBAA-CFD926E5E375</key>
+		<string>../Sources/Utils</string>
+		<key>BF594FD9-92EA-403F-90F6-1EF2B15FD48F</key>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://locatemystickers.com/development/ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>FA50DE26-565F-42CE-9720-642DEAEFF0DF</string>
+	<string>BF594FD9-92EA-403F-90F6-1EF2B15FD48F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>FA50DE26-565F-42CE-9720-642DEAEFF0DF</string>
+			<string>BF594FD9-92EA-403F-90F6-1EF2B15FD48F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ios</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8BD6BE65-4B78-4AE8-9ECB-ECAFA3CF734C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Sources</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8DD270A1-2389-49E2-BBAA-CFD926E5E375</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Utils</string>
 		</dict>
 	</array>
 </dict>

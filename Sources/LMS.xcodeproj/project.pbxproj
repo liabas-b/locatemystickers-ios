@@ -1856,7 +1856,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "2178CF07-D528-4B32-AC71-9A4F9F10A0EF";
+				PROVISIONING_PROFILE = "1D151A40-E403-4F3E-9D83-2C57F2E1CA5E";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1880,7 +1880,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "2178CF07-D528-4B32-AC71-9A4F9F10A0EF";
+				PROVISIONING_PROFILE = "1D151A40-E403-4F3E-9D83-2C57F2E1CA5E";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1898,19 +1898,17 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "locateMyStickers/LMS-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"/Users/adril/Desktop/dev/eip/sources/development/all/ios/Sources/zxing-2.0/iphone/ZXingWidget/Classes/**",
-					"/Users/adril/Desktop/dev/eip/sources/development/all/ios/Sources/zxing-2.0/cpp/core/src",
-					"/Users/adril/Desktop/work/ios/Sources/Utils/**",
-					"/Users/adril/Desktop/dev/eip/sources/development/all/ios/Sources/Utils/**",
-					"/Users/adril/Desktop/work/ios/Sources/zxing-2.0/iphone/ZXingWidget/Classes/**",
-					"/Users/adril/Desktop/work/ios/Sources/zxing-2.0/cpp/core/src",
+					"$(SOURCE_ROOT)/zxing-2.0/cpp/core/src",
+					"$(SOURCE_ROOT)/zxing-2.0/iphone/ZXingWidget/Classes/**",
+					"$(SOURCE_ROOT)/Utils/**\n\n//:completeSettings",
 				);
 				INFOPLIST_FILE = "locateMyStickers/LMS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_NAME = LMS;
-				PROVISIONING_PROFILE = "D55E8230-CFDD-4E58-9579-24809ACB70A3";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D55E8230-CFDD-4E58-9579-24809ACB70A3";
+				PROVISIONING_PROFILE = "1D151A40-E403-4F3E-9D83-2C57F2E1CA5E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1D151A40-E403-4F3E-9D83-2C57F2E1CA5E";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1926,17 +1924,15 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "locateMyStickers/LMS-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"/Users/adril/Desktop/dev/eip/sources/development/all/ios/Sources/zxing-2.0/iphone/ZXingWidget/Classes/**",
-					"/Users/adril/Desktop/dev/eip/sources/development/all/ios/Sources/zxing-2.0/cpp/core/src",
-					"/Users/adril/Desktop/work/ios/Sources/Utils/**",
-					"/Users/adril/Desktop/dev/eip/sources/development/all/ios/Sources/Utils/**",
-					"/Users/adril/Desktop/work/ios/Sources/zxing-2.0/iphone/ZXingWidget/Classes/**",
-					"/Users/adril/Desktop/work/ios/Sources/zxing-2.0/cpp/core/src",
+					"$(SOURCE_ROOT)/zxing-2.0/cpp/core/src",
+					"$(SOURCE_ROOT)/zxing-2.0/iphone/ZXingWidget/Classes/**",
+					"$(SOURCE_ROOT)/Utils/**\n\n//:completeSettings",
 				);
 				INFOPLIST_FILE = "locateMyStickers/LMS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = LMS;
-				PROVISIONING_PROFILE = "D55E8230-CFDD-4E58-9579-24809ACB70A3";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D55E8230-CFDD-4E58-9579-24809ACB70A3";
+				PROVISIONING_PROFILE = "1D151A40-E403-4F3E-9D83-2C57F2E1CA5E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1D151A40-E403-4F3E-9D83-2C57F2E1CA5E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

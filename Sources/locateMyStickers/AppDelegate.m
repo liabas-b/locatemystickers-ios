@@ -85,8 +85,8 @@
 		self.locationManager = [LocationManager new];
 		[self.locationManager setup];
 		
-		//		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.104:3000"];
-		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://web-service.locatemystickers.com"];
+		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.2:3000"];
+//		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://web-service.locatemystickers.com"];
 		
 		self.connectionManager = [ConnectionManager new];
 		

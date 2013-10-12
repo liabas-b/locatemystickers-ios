@@ -119,17 +119,6 @@
 {
 	[textField resignFirstResponder];
 	return NO;
-	/*	UITextField *next = textField.nextTextField;
-	 if (next) {
-	 [next becomeFirstResponder];
-	 //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] atScrollPosition:0 animated:YES];
-	 } else {
-	 [textField resignFirstResponder];
-	 if (textField == self.passwordTextField)
-	 [self loginButton:nil];
-	 }
-	 //INFO: We do not want UITextField to insert line-breaks
-	 return NO;*/
 }
 
 #pragma mark - UITextViewDelegate
