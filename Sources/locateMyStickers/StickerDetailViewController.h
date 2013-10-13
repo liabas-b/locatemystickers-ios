@@ -33,7 +33,7 @@
 
 //INFO: Last row
 
-@property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (strong, nonatomic) IBOutlet UILabel *textLabel;
 
 - (IBAction)closeMapHandler:(id)sender;
 - (void)updateLocationForSticker:(void (^)(void))block;

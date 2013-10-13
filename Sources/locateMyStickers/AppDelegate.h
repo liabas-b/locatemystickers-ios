@@ -26,16 +26,7 @@
 @property (nonatomic, strong) OptionsRecord *optionsRecord;
 @property (nonatomic, strong) StickerManager *stickerManager;
 
-//@property (nonatomic, assign) BOOL debug;
 
-/*
-@property(strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property(strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property(strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-
-- (void)saveContext;
- */
-//- (void)addMyPhone;
 
 + (NSMutableURLRequest *)requestForCurrentUserWithRoute:(NSString *)route;
 + (NSMutableURLRequest *)requestForCurrentHostWithRoute:(NSString *)route;

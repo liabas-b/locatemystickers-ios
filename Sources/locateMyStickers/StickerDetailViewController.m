@@ -18,6 +18,12 @@
 #import "JsonTools.h"
 #import "AppDelegate.h"
 
+#import "UIFont+AppFont.h"
+#import "UIColor+AppColor.h"
+#import "UIViewController+Extension.h"
+
+static double kHeightWithoutLabel = 55.0;
+
 @interface StickerDetailViewController ()
 
 @property(nonatomic, assign) CGRect mapRect;
@@ -42,6 +48,7 @@
 	
 	self.mapView.mapViewDelegate = self;
 	
+	[self setupView];
 	[self updateView];
 
 	[self updateSticker];
@@ -63,6 +70,56 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - TableView delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGFloat heightForRow;
+    
+    switch (indexPath.row) {
+			case 0:
+			
+		{
+			heightForRow = 42.0;
+		}
+			break;
+		case 1:
+			
+		{
+			heightForRow = 195.0;
+		}
+			break;
+		case 2:
+			
+		{
+			heightForRow = 42.0;
+		}
+			break;
+		case 3:
+			
+		{
+			heightForRow = 42.0;
+		}
+			break;
+        case 4:
+        {
+           
+			NSString *text = _stickerRecord.text;
+            CGSize labelSize = [text sizeWithFont:[UIFont defaultFont] constrainedToSize:CGSizeMake(240, 20000) lineBreakMode:NSLineBreakByWordWrapping];
+            heightForRow = kHeightWithoutLabel + labelSize.height;//42 + 10
+        }
+            break;
+            
+        default:
+        {
+             heightForRow = 82.0;
+			
+        }
+            break;
+    }
+    return heightForRow;
 }
 
 - (void)zoomOnMapView {
@@ -91,6 +148,23 @@
 
 #pragma mark - view
 
+- (void)setupView {
+
+	[self configureMenuLeftButtonWithBackButon:YES];
+	
+	self.nameLabel.font = [UIFont defaultFont];
+	self.nameLabel.textColor = [UIColor defaultFontColor];
+	
+	self.textLabel.font = [UIFont defaultFont];
+	self.textLabel.textColor = [UIColor defaultFontColor];
+	
+	self.createdAtLabel.font = [UIFont defaultFont];
+	self.createdAtLabel.textColor = [UIColor defaultFontColor];
+
+	self.updatedAtLabel.font = [UIFont defaultFont];
+	self.updatedAtLabel.textColor = [UIColor defaultFontColor];
+}
+
 - (void)updateView {
 	self.enableSwitch.on = NO;
 	self.enableSwitch.hidden = YES;
@@ -102,7 +176,7 @@
 		self.nameLabel.text = self.stickerRecord.name;
 		self.createdAtLabel.text = [ConventionTools getDiffTimeInStringFromDate:self.stickerRecord.createdAt];
 		self.updatedAtLabel.text = @"Unknow";
-		self.descriptionTextView.text = self.stickerRecord.text;
+		self.textLabel.text = self.stickerRecord.text;
 		
 	}
 }

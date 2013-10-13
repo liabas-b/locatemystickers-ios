@@ -19,6 +19,8 @@
 #import "NSDictionary+QueryString.h"
 #import "CryptographyTools.h"
 
+#import "UIFont+AppFont.h"
+
 
 #import "JsonTools.h"
 
@@ -50,46 +52,27 @@
 {
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		//INFo: start loacation manager
-		//INFO: init database
-		//[self managedObjectContext];
 		
-		/*
-		 if ([[OptionsRecord optionsRecordsInManagedObjectContext:self.managedObjectContext] count] == 0) {
-		 self.optionsRecord = [OptionsRecord addUpdateOptionsWithDictionary:nil managedObjectContext:self.managedObjectContext];
-		 }
-		 else {
-		 self.optionsRecord = [[OptionsRecord optionsRecordsInManagedObjectContext:self.managedObjectContext] lastObject];
-		 }
-		 */
-		//		[self dbAlreadyExist];
 		[MagicalRecord setupCoreDataStackWithStoreNamed:@"LmsModel"];
 		
-		//		if (self.isFirstLaunch == YES) {
-		//			[self performSelectorOnMainThread:@selector(populateDefaultStore) withObject:nil waitUntilDone:NO];
-		//		}
-		//		else {
-		self.optionsRecord = [[OptionsRecord findAll] lastObject];//optionsRecordsInManagedObjectContext:self.managedObjectContext] lastObject];
+		self.optionsRecord = [[OptionsRecord findAll] lastObject];
 		if (self.optionsRecord == nil) {
 			self.optionsRecord = [OptionsRecord createEntity];
 			
 			self.optionsRecord.locatePhoneEnabled = [NSNumber numberWithBool:NO];
 			self.optionsRecord.displayFollowedStickersEnabled = [NSNumber numberWithBool:YES];
 			[[NSManagedObjectContext defaultContext] saveNestedContexts];
-
+			
 		}
-		//		}
-		
 		self.stickerManager = [StickerManager new];
 		
 		self.locationManager = [LocationManager new];
 		[self.locationManager setup];
 		
 		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.2:3000"];
-//		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://web-service.locatemystickers.com"];
+		//self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://web-service.locatemystickers.com"];
 		
 		self.connectionManager = [ConnectionManager new];
-		
 	});
 }
 
@@ -108,8 +91,6 @@
 	} completion:^{
 		self.optionsRecord = [[OptionsRecord findAll] lastObject];
 	}];
-	
-	//[self saveContext];
 }
 
 + (NSMutableURLRequest *)requestForCurrentUserWithRoute:(NSString *)route {
@@ -118,7 +99,7 @@
 	
 	NSString *requestString = nil;
 	if (route != nil) {
-	requestString = [NSString stringWithFormat:@"%@/users/%d/%@.json", hostName, currentUserId, route];//stickers/67/locations
+		requestString = [NSString stringWithFormat:@"%@/users/%d/%@.json", hostName, currentUserId, route];//stickers/67/locations
 	}
 	else {
 		requestString = [NSString stringWithFormat:@"%@/users/%d.json", hostName, currentUserId];
@@ -140,7 +121,7 @@
 	}
 	else
 		requestString = [NSString stringWithFormat:@"%@/", hostName];
-
+	
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestString]];
 	
 	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -157,7 +138,7 @@
 	
 	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 	[request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
-//	[request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
+	//	[request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
 	
 	return request;
 }
@@ -166,7 +147,7 @@
 
 + (NSString *)identifierForCurrentUser {
 	NSString *identifierForVendor = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-
+	
 	NSString *identifierFinal = [NSString stringWithFormat:@"%@:%@", identifierForVendor, [AppDelegate appDelegate].sessionManager.session.login];
 	
 	NSLog(@"%s | %@", __PRETTY_FUNCTION__, identifierFinal);
@@ -176,22 +157,6 @@
 	return encodedIdentifier;
 }
 
-
-/*
- - (void)saveContext
- {
- NSError *error = nil;
- NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
- if (managedObjectContext != nil) {
- if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
- // Replace this implementation with code to handle the error appropriately.
- // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
- NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
- abort();
- }
- }
- }
- */
 - (void)applicationWillResignActive:(UIApplication *)application
 {
 	// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -257,21 +222,6 @@
 	[self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
-#pragma mark - Core Data
-/*
-- (BOOL)dbAlreadyExist {
-	NSURL *storeURL = [[AppDelegate applicationDocumentsDirectory] URLByAppendingPathComponent:@"LmsModel.sqlite"];
-    
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-	if (![fileManager fileExistsAtPath:[storeURL path]]) {
-		self.isFirstLaunch = YES;
-	}
-	else {
-		self.isFirstLaunch = NO;
-	}
-	return self.isFirstLaunch;
-}
-*/
 #pragma mark - Application's Documents directory
 
 // Returns the URL to the application's Documents directory.
@@ -320,23 +270,23 @@
 #pragma mark - UIAppearances
 
 - (void)UIAppearances {
-
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] > 4.9) {
 	
-		NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, nil];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] > 4.9) {
+		
+		NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, [UIFont navBarFont], NSFontAttributeName, nil];
+		
+//		NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:21.0], NSFontAttributeName, nil];
+		
 		[[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
 		
 		//
-		//		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-//		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 		
-		UIImage *navBarImage = [UIImage imageNamed:@"lms-navigation-bar@2x.png"];//barre320x44
-//		UIImage *navBarImage = [UIImage imageNamed:@"lms-white-navigation-bar@2x.png"];//barre320x44
+		UIImage *navBarImage = [UIImage imageNamed:@"lms-navigation-bar@2x.png"];
+		
 		[[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
 		
-
-		
-		//[[UIToolbar appearance] setColor:[UIColor redColor]];//setBackgroundImage:navBarImage];
+	
 		if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
 			
 			UIImage *backButtonImage = [[UIImage imageNamed:@"redBackButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 13, 0, 6)];
@@ -356,7 +306,7 @@
 	//INFO: set tabBar
 	
 	UIImage *tabBarBackground = [UIImage imageNamed:@"tabBarWhite"];
-//	UIImage *tabBarBackground = [UIImage imageNamed:@"tabBar"];
+	//	UIImage *tabBarBackground = [UIImage imageNamed:@"tabBar"];
 	
     [[UITabBar appearance] setBackgroundImage:tabBarBackground];
 	
