@@ -14,6 +14,8 @@
 #import "AFJSONRequestOperation.h"
 #import "AppDelegate.h"
 
+#import "UIViewController+Extension.h"
+
 @interface HistoriesViewController ()
 
 @property (nonatomic, strong) NSMutableArray *historyList;
@@ -34,6 +36,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+	[self configureMenuLeftButtonWithBackButon:[self.navigationController.viewControllers count] > 1];
 
 	self.historyList = [[NSMutableArray alloc] init];
 	

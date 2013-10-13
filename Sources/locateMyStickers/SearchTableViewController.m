@@ -36,6 +36,8 @@
 
 #import "ConventionTools.h"
 
+#import "UIColor+Colours.h"
+
 @interface SearchTableViewController ()
 
 @property (nonatomic, strong)NSIndexPath *currentIndexPath;
@@ -203,6 +205,9 @@
 	else
 		cell.iconLabel.text = [NSString stringFromAwesomeIcon:FAIconQrcode];
 	
+	
+	cell.colorView.backgroundColor = [UIColor colorFromHexString:stickerRecord.color];
+
 	//
 	
 	

@@ -25,7 +25,7 @@
 
 - (BOOL)stickerAlreadyExistOnPhoneWithCode:(NSString *)code {
 	StickerRecord *stickerRecord = [StickerRecord findFirstByAttribute:@"code" withValue:code];
-	[stickerRecord debug];
+
 	return stickerRecord != nil;
 }
 
@@ -124,7 +124,6 @@
 		
 		StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:JSON];
 		
-		[stickerRecord debug];
 		
 		[[NSManagedObjectContext defaultContext] saveNestedContexts];
 		
@@ -144,7 +143,6 @@
 }
 
 - (void)addStickerRecord:(StickerRecord *)stickerRecord {
-	[stickerRecord debug];
 	NSMutableDictionary *stickerDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
 											  stickerRecord.code, @"sticker[code]",
 											  stickerRecord.stickerTypeId, @"sticker[sticker_type_id]",

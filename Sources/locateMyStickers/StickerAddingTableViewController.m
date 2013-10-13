@@ -14,6 +14,8 @@
 #import "StickerRecord.h"
 
 #import "StickerManager.h"
+#import "StickerRecord+Manager.h"
+
 #import "LocationManager.h"
 #import "AppDelegate.h"
 
@@ -170,7 +172,6 @@
 
 		self.stickerRecord = [notification object];
 
-		[self.stickerRecord debug];
 		if ([self.stickerRecord.stickerTypeId intValue] == StickerTypeIphone) {
 			NSLog(@"%s Location phone enable", __PRETTY_FUNCTION__);
 			[MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext) {

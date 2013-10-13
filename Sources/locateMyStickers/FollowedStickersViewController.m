@@ -19,6 +19,10 @@
 #import "AFJSONRequestOperation.h"
 #import "AppDelegate.h"
 
+#import "UIViewController+Extension.h"
+
+#import "UIColor+Colours.h"
+
 @interface FollowedStickersViewController ()
 
 @property (nonatomic, strong)NSMutableArray *followedStickersList;
@@ -40,6 +44,9 @@
     [super viewDidLoad];
 	
 	self.tableView.rowHeight = 80.0;
+	
+	[self configureMenuLeftButtonWithBackButon:[self.navigationController.viewControllers count] > 1];
+
 	
 	self.followedStickersList = [[NSMutableArray alloc] init];
 	[self updateFollowedStickers];
@@ -117,6 +124,8 @@
 	}
 	else
 		cell.iconLabel.text = [NSString stringFromAwesomeIcon:FAIconQrcode];
+	
+	cell.colorView.backgroundColor = [UIColor colorFromHexString:stickerRecord.color];
     
     return cell;
 }

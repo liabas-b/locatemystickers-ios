@@ -25,6 +25,8 @@
 #import "JsonTools.h"
 #import "AppDelegate.h"
 
+#import "UIViewController+Extension.h"
+
 @interface MapViewController ()
 
 @end
@@ -46,6 +48,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 	
+	[self configureMenuLeftButtonWithBackButon:YES];
+	self.title = @"Map";
+	
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -53,32 +58,9 @@
 	
 	//TODO: Make it works
 	self.stickerRecord = [StickerRecord findFirstByAttribute:@"code" withValue:[AppDelegate identifierForCurrentUser]];
-	//[StickerRecord addUpdateStickerWithCode:@"3"];
-	if (self.stickerRecord)
-		[self.stickerRecord debug];
+
 	[self performSelectorInBackground:@selector(setupMap) withObject:nil];
 }
-/*
-- (void)setupMap {
-	NSArray *stickerList = [StickerRecord findAll];//findFirstOrderedByAttribute:@"stickerId" ascending:YES];
-
-	NSMutableArray *locationArray = [[NSMutableArray alloc] init];
-	for (StickerRecord *stickerRecord in stickerList) {
-		LocationRecord *locationRecord = [LocationRecord findFirstOrderedByAttribute:@"updatedAt" ascending:NO];
-		[locationArray addObject:locationRecord];
-		[locationRecord debug];
-	}
-	if ([locationArray count] > 0) {
-		self.mapView.locationsRecordList = locationArray;//[[NSMutableArray alloc] initWithArray:array];
-		
-		[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
-	}
-	else {
-		[self updateLocationForSticker];
-	}
-
-}
-*/
 
 - (void)setupMap {
 	NSManagedObjectContext *context = [[NSManagedObjectContext alloc] init];

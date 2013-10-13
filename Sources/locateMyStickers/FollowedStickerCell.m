@@ -8,7 +8,22 @@
 
 #import "FollowedStickerCell.h"
 
+#import "UIFont+AppFont.h"
+#import "UIColor+AppColor.h"
+
 @implementation FollowedStickerCell
+
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	
+	
+	self.nameLabel.font = [UIFont defaultFont];
+	//	self.nameLabel.textColor = [UIColor defaultFontColor];
+	
+	
+	self.timeLabel.font = [UIFont mediumFont];
+	//	self.timeLabel.textColor = [UIColor defaultFontColor];
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

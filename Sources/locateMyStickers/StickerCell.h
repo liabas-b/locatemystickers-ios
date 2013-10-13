@@ -56,6 +56,7 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellMode){
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *activatedImage;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) IBOutlet UIView *colorView;
 @property (strong, nonatomic) IBOutlet BButton *mapButton;
 
 - (IBAction)handlerMapButton:(id)sender;

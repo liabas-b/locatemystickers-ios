@@ -13,6 +13,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="StickerCell" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StickerCell" rowHeight="80" id="8u5-Di-S5j" customClass="StickerCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="80"/>
@@ -26,7 +27,7 @@
                                             <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ooF-te-vQ9">
-                                            <rect key="frame" x="38" y="14" width="282" height="21"/>
+                                            <rect key="frame" x="38" y="19" width="282" height="21"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -44,10 +45,16 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" id="MkX-MS-Vac">
+                                            <rect key="frame" x="2" y="0.0" width="4" height="80"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.63529413940000001" green="0.1411764771" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="activatedImage" destination="vLV-IS-9H2" id="FKq-2U-LtK"/>
+                                    <outlet property="colorView" destination="MkX-MS-Vac" id="Ehb-0F-zMa"/>
                                     <outlet property="iconLabel" destination="34P-z8-RaT" id="HS9-nw-Msk"/>
                                     <outlet property="nameLabel" destination="ooF-te-vQ9" id="5hG-8V-Yu8"/>
                                     <outlet property="timeLabel" destination="W0u-vv-5Do" id="Y61-JQ-f7Z"/>
@@ -102,6 +109,11 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="5WI-YK-Rul">
                                                     <rect key="frame" x="258" y="5" width="51" height="31"/>
                                                 </switch>
+                                                <view contentMode="scaleToFill" id="DhM-Cg-MLf">
+                                                    <rect key="frame" x="2" y="0.0" width="4" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" red="0.63529413940000001" green="0.1411764771" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -115,9 +127,53 @@
                                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="XWV-03-Zwu" customClass="LMSMapView">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="194"/>
                                                     <connections>
+                                                        <outlet property="collectionView" destination="6Fe-P7-P6c" id="kGl-L6-A7C"/>
                                                         <outlet property="delegate" destination="m37-CU-Io7" id="CNB-xi-uKZ"/>
                                                     </connections>
                                                 </mapView>
+                                                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="6Fe-P7-P6c">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" red="0.63529413940000001" green="0.1411764771" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="1" id="Yor-dn-yGS">
+                                                        <size key="itemSize" width="130" height="50"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.84999999999999998" contentMode="center" reuseIdentifier="StickerCollection" id="8Cl-L5-jxH" customClass="LMSMapCollectionViewCell">
+                                                            <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hqH-rM-PR7">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="revers_triangle_icon.png" id="lab-F9-D2T">
+                                                                        <rect key="frame" x="57" y="33" width="16" height="12"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <size key="customSize" width="130" height="50"/>
+                                                            <connections>
+                                                                <outlet property="titleLabel" destination="hqH-rM-PR7" id="Zpq-hL-Y94"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="XWV-03-Zwu" id="ajG-K8-SKq"/>
+                                                        <outlet property="delegate" destination="XWV-03-Zwu" id="Db0-C3-k9u"/>
+                                                    </connections>
+                                                </collectionView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -202,6 +258,7 @@
                     <navigationItem key="navigationItem" title="Sticker Detail" id="MuC-Er-Wyh"/>
                     <connections>
                         <outlet property="activatedImage" destination="SNh-rp-53B" id="Kx3-xZ-twD"/>
+                        <outlet property="colorView" destination="DhM-Cg-MLf" id="7Iw-MF-nfs"/>
                         <outlet property="createdAtLabel" destination="b3r-9P-83f" id="s1M-aO-3GL"/>
                         <outlet property="enableSwitch" destination="5WI-YK-Rul" id="ZGd-Mk-bJA"/>
                         <outlet property="mapCell" destination="8p8-l8-pZw" id="YFJ-3L-Tbj"/>
@@ -223,6 +280,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" rowHeight="80" id="8w8-2f-LTx" customClass="FriendCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="80"/>
@@ -282,7 +340,53 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="3EC-u4-QPR" customClass="LMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="collectionView" destination="1C6-GE-Pxv" id="2CK-Ft-VTJ"/>
+                                </connections>
                             </mapView>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="1C6-GE-Pxv">
+                                <rect key="frame" x="0.0" y="17" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.63529413940000001" green="0.1411764771" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="1" id="opV-Wq-Ver">
+                                    <size key="itemSize" width="130" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.85000002384185791" contentMode="center" reuseIdentifier="StickerCollection" id="ELq-zS-iEw" customClass="LMSMapCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zNp-lu-G0c">
+                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="revers_triangle_icon.png" id="0AQ-GD-e0c">
+                                                    <rect key="frame" x="57" y="33" width="16" height="12"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <size key="customSize" width="130" height="50"/>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="zNp-lu-G0c" id="yHa-Z6-E0n"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="3EC-u4-QPR" id="Ser-Xm-H8F"/>
+                                    <outlet property="delegate" destination="3EC-u4-QPR" id="gui-6P-P4f"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -304,6 +408,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <sections>
                             <tableViewSection id="qbv-Q0-9UD">
                                 <cells>
@@ -470,7 +575,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="User" id="Mc4-F0-q9P"/>
                     <connections>
+                        <outlet property="accountInfoLabel" destination="NQe-So-vgL" id="Bvf-BV-Eky"/>
+                        <outlet property="historiesLabel" destination="pfv-nj-aNl" id="RnT-1P-AI5"/>
+                        <outlet property="logoutLabel" destination="9R5-tt-brW" id="jWK-KQ-zfb"/>
                         <outlet property="qrCodeImageView" destination="Gni-j4-8Ax" id="X5x-5z-Mcz"/>
+                        <outlet property="settingsLabel" destination="Xwk-eN-P4c" id="NAC-IM-5bH"/>
                         <outlet property="sharringStickersLabel" destination="m3r-5J-dRV" id="Uxt-LT-dAs"/>
                         <outlet property="yourStickersLabel" destination="iOa-0E-JMW" id="ISA-qO-jmD"/>
                     </connections>
@@ -487,6 +596,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="HistoryCell" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryCell" rowHeight="71" id="C2o-O1-fx2" customClass="HistoryCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="71"/>
@@ -536,6 +646,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <sections>
                             <tableViewSection id="Z4h-ly-ZlM">
                                 <cells>
@@ -641,6 +752,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="StickerCell" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowedStickerCell" rowHeight="80" id="8VP-uh-R7i" customClass="FollowedStickerCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="80"/>
@@ -672,10 +784,16 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" id="NuL-4J-Rbf">
+                                            <rect key="frame" x="2" y="0.0" width="4" height="80"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.63529413940000001" green="0.1411764771" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="activatedImage" destination="ibw-m2-G0B" id="UyM-6z-1mE"/>
+                                    <outlet property="colorView" destination="NuL-4J-Rbf" id="gOY-3l-QzM"/>
                                     <outlet property="iconLabel" destination="UBh-Vl-DZi" id="1am-EF-Jnk"/>
                                     <outlet property="nameLabel" destination="TbR-qO-ney" id="ekn-27-m6p"/>
                                     <outlet property="timeLabel" destination="Zl1-O4-Uce" id="PX1-b3-Ljy"/>
@@ -702,6 +820,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.92549020049999997" green="0.92549020049999997" blue="0.92549020049999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <sections>
                             <tableViewSection id="x4q-vz-q6c">
                                 <cells>
@@ -778,6 +897,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <sections>
                             <tableViewSection id="AQE-uL-kmg">
                                 <cells>
@@ -1186,6 +1306,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" showsScopeBar="YES" id="cPy-U6-VUs">
                             <rect key="frame" x="0.0" y="64" width="320" height="88"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -1248,7 +1369,7 @@
                                             <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uHJ-fO-f8Z">
-                                            <rect key="frame" x="38" y="14" width="282" height="21"/>
+                                            <rect key="frame" x="38" y="19" width="282" height="21"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1266,10 +1387,16 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" id="WnK-Xj-jNu">
+                                            <rect key="frame" x="2" y="0.0" width="4" height="80"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.63529413940000001" green="0.1411764771" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="activatedImage" destination="QqX-I7-7ah" id="a4X-iL-shC"/>
+                                    <outlet property="colorView" destination="WnK-Xj-jNu" id="igd-Cu-HOW"/>
                                     <outlet property="iconLabel" destination="hjt-G5-KAJ" id="cQ8-AD-dci"/>
                                     <outlet property="nameLabel" destination="uHJ-fO-f8Z" id="OfC-zC-a2K"/>
                                     <outlet property="timeLabel" destination="cgx-iT-4g2" id="O4E-DN-RNT"/>
@@ -1422,6 +1549,8 @@
         <image name="locateMyStickersFushiaSmallLogo.png" width="128" height="139"/>
         <image name="locateMyStickersRedLogo.png" width="500" height="500"/>
         <image name="logout2-icon.png" width="64" height="64"/>
+        <image name="revers_triangle_icon.png" width="16" height="12"/>
+        <image name="revers_triangle_icon.png" width="16" height="12"/>
         <image name="settings-icon.png" width="64" height="64"/>
         <image name="share-icon.png" width="32" height="32"/>
         <image name="world_black.png" width="32" height="32"/>
@@ -1433,8 +1562,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="fHp-7O-dbY"/>
+        <segue reference="SkR-n6-tZh"/>
         <segue reference="pHZ-S0-Prj"/>
-        <segue reference="jSc-nL-Ukc"/>
-        <segue reference="ui6-b6-zGV"/>
     </inferredMetricsTieBreakers>
 </document>

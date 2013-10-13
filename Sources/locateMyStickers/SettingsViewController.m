@@ -19,6 +19,8 @@
 #import "AppDelegate.h"
 #import "LocationManager.h"
 
+#import "UIViewController+Extension.h"
+
 @interface SettingsViewController ()
 
 @end
@@ -36,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	[self configureMenuLeftButtonWithBackButon:[self.navigationController.viewControllers count] > 1];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

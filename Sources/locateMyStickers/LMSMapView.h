@@ -21,7 +21,7 @@ typedef enum {
     LMSMapRoute
 } LMSMapOption;
 
-@interface LMSMapView : MKMapView <MKMapViewDelegate>
+@interface LMSMapView : MKMapView <MKMapViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong)NSMutableArray *locationsRecordList;
 @property (nonatomic, strong)NSMutableArray *stickerRecordList;
@@ -29,6 +29,8 @@ typedef enum {
 @property (nonatomic, strong)StickerRecord *currentStickerRecord;
 
 @property (nonatomic, strong)id<LMSMapViewProtocol> mapViewDelegate;
+
+@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 
 - (void)loadSelectedOptions;
 - (void)addCloseButton;

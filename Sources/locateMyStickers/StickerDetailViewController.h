@@ -20,6 +20,7 @@
 @property (nonatomic, strong) StickerRecord *stickerRecord;
 
 //INFO: First row
+@property (strong, nonatomic) IBOutlet UIView *colorView;
 @property (strong, nonatomic) IBOutlet UIImageView *activatedImage;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UISwitch *enableSwitch;

@@ -8,7 +8,22 @@
 
 #import "HistoryCell.h"
 
+#import "UIFont+AppFont.h"
+#import "UIColor+AppColor.h"
+
 @implementation HistoryCell
+
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	
+	
+	self.historyLabel.font = [UIFont defaultFont];
+	//	self.nameLabel.textColor = [UIColor defaultFontColor];
+	
+	
+	self.dateLabel.font = [UIFont mediumFont];
+	//	self.timeLabel.textColor = [UIColor defaultFontColor];
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

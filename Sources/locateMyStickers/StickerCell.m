@@ -9,42 +9,8 @@
 #import "StickerCell.h"
 #import "BButton.h"
 
-//@implementation StickerCell
-/*
- - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
- {
- self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
- if (self) {
- // Initialization code
- 
- //)awesomeButtonWithOnlyIcon:(FAIcon)icon color:(UIColor *)color
- }
- return self;
- }
- 
- - (void)setSelected:(BOOL)selected animated:(BOOL)animated
- {
- [super setSelected:selected animated:animated];
- 
- // Configure the view for the selected state
- //[self.mapButton //setType:BButtonTypeDefault];
- //[self.mapButton //addAwesomeIcon:FAIconMapMarker beforeTitle:YES];
- [self.mapButton setColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]];
- 
- UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
- backgroundView.backgroundColor = [UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0];
- self.selectedBackgroundView = backgroundView;
- 
- }
- 
- - (IBAction)handlerMapButton:(id)sender {
- }
- 
- @end
- */
-
-
-//#import "MCSwipeTableViewCell.h"
+#import "UIFont+AppFont.h"
+#import "UIColor+AppColor.h"
 
 static CGFloat const kMCStop1 = 0.20; // Percentage limit to trigger the first action
 static CGFloat const kMCStop2 = 0.2; // Percentage limit to trigger the second action
@@ -139,6 +105,18 @@ static NSTimeInterval const kMCDurationHightLimit = 0.1; // Highest duration whe
     }
 	
     return self;
+}
+
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	
+	
+	self.nameLabel.font = [UIFont defaultFont];
+//	self.nameLabel.textColor = [UIColor defaultFontColor];
+
+	
+	self.timeLabel.font = [UIFont mediumFont];
+//	self.timeLabel.textColor = [UIColor defaultFontColor];
 }
 
 #pragma mark Custom Initializer

@@ -11,6 +11,9 @@
 #import "UCTabBarItem.h"
 #import "AppDelegate.h"
 
+#import "UIColor+AppColor.h"
+#import "UIFont+AppFont.h"
+
 void freeRawData(void *info, const void *data, size_t size);
 
 @interface UserTableViewController ()
@@ -63,6 +66,12 @@ void freeRawData(void *info, const void *data, size_t size);
 	self.tabBarItem = [[UCTabBarItem alloc] initWithTitle:@"User"
 											imageSelected:@"account_black"
 											andUnselected:@"account_white"];
+	self.yourStickersLabel.font = [UIFont defaultFont];
+	self.sharringStickersLabel.font = [UIFont defaultFont];
+	_historiesLabel.font = [UIFont defaultFont];
+	_accountInfoLabel.font = [UIFont defaultFont];
+	_logoutLabel.font = [UIFont defaultFont];
+	_settingsLabel.font = [UIFont defaultFont];
 }
 
 #pragma mark - Table view data source

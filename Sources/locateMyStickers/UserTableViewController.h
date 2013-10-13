@@ -14,6 +14,10 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *yourStickersLabel;
 @property (strong, nonatomic) IBOutlet UILabel *sharringStickersLabel;
+@property (strong, nonatomic) IBOutlet UILabel *historiesLabel;
+@property (strong, nonatomic) IBOutlet UILabel *accountInfoLabel;
+@property (strong, nonatomic) IBOutlet UILabel *logoutLabel;
+@property (strong, nonatomic) IBOutlet UILabel *settingsLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *qrCodeImageView;
 
 @end

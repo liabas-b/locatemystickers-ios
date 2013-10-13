@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "StickerRecord.h"
 
+typedef enum {
+    StickerTypeDefault = 0,
+	StickerTypeSticker,
+    StickerTypeIphone,
+    StickerTypeAndroid
+} StickerTypeId;
+
 @interface StickerRecord (Manager)
 
 + (StickerRecord *)addUpdateStickerWithCode:(NSString *)code;

@@ -15,10 +15,13 @@
 #import "LocAnnotation.h"
 #import "ConventionTools.h"
 
+#import "LMSMapCollectionViewCell.h"
+
 @interface LMSMapView ()
 
 @property (nonatomic, strong) NSMutableArray *selectedOptions;
 @property (nonatomic, strong) UIButton *closeButton;
+@property (nonatomic, strong) NSIndexPath *currentIndexPath;
 
 @end
 
@@ -44,7 +47,7 @@
 	
 	[self.selectedOptions addObject:[NSNumber numberWithInt:LMSMapRoute]];
 	[self.selectedOptions addObject:[NSNumber numberWithInt:LMSMapPins]];
-//	[self.selectedOptions addObject:[NSNumber numberWithInt:LMSMapHistory]];
+	//	[self.selectedOptions addObject:[NSNumber numberWithInt:LMSMapHistory]];
 	
 	//
 	
@@ -61,10 +64,11 @@
 	
 	[self addSubview:self.closeButton];
 	
+	
 }
 
 - (void)addCloseButton {
-
+	
 	[UIView animateWithDuration:0.6
                           delay:0
                         options:(UIViewAnimationOptionCurveEaseIn)
@@ -101,9 +105,9 @@
 	[startLocationRecord debug];
 	[endLocationRecord debug];
 	
-//	CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake([endLocationRecord.latitude floatValue], [endLocationRecord.longitude floatValue]);
+	//	CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake([endLocationRecord.latitude floatValue], [endLocationRecord.longitude floatValue]);
 	
-//	[self setCenterCoordinate:centerCoordinate animated:YES];
+	//	[self setCenterCoordinate:centerCoordinate animated:YES];
 	
 	MKCoordinateRegion region = { {0.0, 0.0 }, { 0.0, 0.0 } };
     region.center.latitude = [endLocationRecord.latitude floatValue];
@@ -111,7 +115,7 @@
     region.span.longitudeDelta = 0.0015f;
     region.span.latitudeDelta = 0.0015f;
     [self setRegion:region animated:YES];
-
+	
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
@@ -184,7 +188,7 @@
 	//INFO: all last position known by all the stickers
 	
 	NSLog(@"%s", __PRETTY_FUNCTION__);
-//	LocationRecord *locationRecord = [self.locationsRecordList lastObject];
+	//	LocationRecord *locationRecord = [self.locationsRecordList lastObject];
 	for (LocationRecord *locationRecord in self.locationsRecordList) {
 		if (locationRecord) {
 			[locationRecord debug];
@@ -270,32 +274,36 @@
     [self removeAnnotations:self.annotations];
     [self removeOverlays:self.overlays];
 	
-	
-    for (NSNumber *option in self.selectedOptions) {
-        switch ([option integerValue]) {
-				
-            case LMSMapOverlay:
-                [self addOverlay];
-                break;
-            case LMSMapPins:
-                [self addLMSPins];
-                break;
-            case LMSMapRoute:
-                [self addRoute];
-                break;
-            case LMSMapHistory:
-                [self addHistory];
-                break;
-            case LMSMapBoundary:
-                [self addBoundary];
-                break;
-            case LMSMapCharacterLocation:
-                [self addCharacterLocation];
-                break;
-            default:
-                break;
-        }
-    }
+	//
+	[_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+	//
+	if ([self.locationsRecordList count] > 0) {
+		for (NSNumber *option in self.selectedOptions) {
+			switch ([option integerValue]) {
+					
+				case LMSMapOverlay:
+					[self addOverlay];
+					break;
+				case LMSMapPins:
+					[self addLMSPins];
+					break;
+				case LMSMapRoute:
+					[self addRoute];
+					break;
+				case LMSMapHistory:
+					[self addHistory];
+					break;
+				case LMSMapBoundary:
+					[self addBoundary];
+					break;
+				case LMSMapCharacterLocation:
+					[self addCharacterLocation];
+					break;
+				default:
+					break;
+			}
+		}
+	}
 	
 }
 
@@ -317,6 +325,58 @@
 	 }
 	 */
 }
+
+#pragma mark - UICollectionViewDelegate
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+	LMSMapCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StickerCollection" forIndexPath:indexPath];
+	
+	cell.titleLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
+	
+	return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+	NSLog(@"%s | indexPath.row: %d", __PRETTY_FUNCTION__, indexPath.row);
+	_currentIndexPath = indexPath;
+	[collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+}
+/*
+ -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+ {
+ //    UIImage *image;
+ //    int row = [indexPath row];
+ 
+ //	UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StickerCollection" forIndexPath:indexPath];
+ //	cell.backgroundColor = [UIColor darkGrayColor];
+ //    image = [UIImage imageNamed:_carImages[row]];
+ 
+ CGSize size;
+ BOOL isSelected = [self.currentIndexPath isEqual:indexPath];
+ 
+ if (isSelected == YES) {
+ size = CGSizeMake(90.0, 60.0);
+ }
+ else {
+ size = CGSizeMake(70.0, 40.0);
+ }
+ return size;//cell.frame.size;//image.size;
+ }
+ */
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // TODO: Deselect item
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+	return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+	return 42;
+}
+
+
+
 
 /*
  // Only override drawRect: if you perform custom drawing.

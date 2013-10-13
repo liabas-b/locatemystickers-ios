@@ -18,6 +18,8 @@
 #import "CryptographyTools.h"
 #import "AppDelegate.h"
 
+#import "UIViewController+Extension.h"
+
 @interface AccountViewController ()
 
 @property(nonatomic, strong)AccountRecord *accountRecord;
@@ -41,6 +43,8 @@
 	
 	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
 	[self.tableView addGestureRecognizer:gestureRecognizer];
+	
+	[self configureMenuLeftButtonWithBackButon:YES];
 
 	[self updateAccount];
 }

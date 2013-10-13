@@ -216,7 +216,6 @@
 	StickerAddingTableViewController *stickerAddingTableViewController  = (StickerAddingTableViewController *)[storyboard instantiateViewControllerWithIdentifier:@"stickerAdding"];
 	
 	stickerAddingTableViewController.stickerRecord = stickerRecord;
-	[stickerRecord debug];
 	
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:stickerAddingTableViewController];
 	[self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];

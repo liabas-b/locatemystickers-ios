@@ -9,6 +9,9 @@
 #import "UserCell.h"
 #import "BButton.h"
 
+#import "UIFont+AppFont.h"
+#import "UIColor+AppColor.h"
+
 //@implementation UserCell
 /*
  - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -139,6 +142,18 @@ static NSTimeInterval const kMCDurationHightLimit = 0.1; // Highest duration whe
     }
 	
     return self;
+}
+
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	
+	
+	self.userNameLabel.font = [UIFont defaultFont];
+	//	self.nameLabel.textColor = [UIColor defaultFontColor];
+	
+	
+	self.stickersNumberLabel.font = [UIFont mediumFont];
+	//	self.timeLabel.textColor = [UIColor defaultFontColor];
 }
 
 #pragma mark Custom Initializer

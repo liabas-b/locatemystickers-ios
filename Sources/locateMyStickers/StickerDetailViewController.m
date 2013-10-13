@@ -122,6 +122,8 @@ static double kHeightWithoutLabel = 55.0;
     return heightForRow;
 }
 
+//
+
 - (void)zoomOnMapView {
 	// Get main window reference
 	UIWindow* mainWindow = (((AppDelegate *)[UIApplication sharedApplication].delegate).window);
@@ -163,6 +165,8 @@ static double kHeightWithoutLabel = 55.0;
 
 	self.updatedAtLabel.font = [UIFont defaultFont];
 	self.updatedAtLabel.textColor = [UIColor defaultFontColor];
+	
+	self.colorView.backgroundColor = [UIColor colorFromHexString:_stickerRecord.color];
 }
 
 - (void)updateView {
@@ -198,7 +202,6 @@ static double kHeightWithoutLabel = 55.0;
 		if (stickerRecord) {
 			self.stickerRecord = stickerRecord;
 			NSLog(@" %s| stickerRecord: %@", __PRETTY_FUNCTION__, stickerRecord);
-			[self.stickerRecord debug];
 			[self updateView];
 		}
 		
@@ -212,15 +215,20 @@ static double kHeightWithoutLabel = 55.0;
 
 - (void)setupMap {
 	NSArray *array = [LocationRecord findByAttribute:@"idSticker" withValue:self.stickerRecord.stickerId andOrderBy:@"updatedAt" ascending:NO];
+
+	
 	NSLog(@"%s %@", __PRETTY_FUNCTION__, array);
 	if ([array count] > 0) {
 		[self.mapView.locationsRecordList addObjectsFromArray:array];
 		
-		[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
+		//		[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
 	}
 	else {
 		[self updateLocationForSticker:^(){}];
 	}
+	
+	[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
+
 }
 
 - (void)updateLocationForSticker:(void (^)(void))block {

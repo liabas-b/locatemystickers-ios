@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "395795961.706697"
+            timestampString = "403324936.914743"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "-initWithNibName:bundle:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401847102.213756"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "@implementation StickersTableViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "@implementation StickersTableViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401847102.213756"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "@implementation MapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401847102.213756"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "@implementation MapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
             landmarkName = "-searchDisplayController:shouldReloadTableForSearchString:"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "445"
-            endingLineNumber = "445"
+            startingLineNumber = "450"
+            endingLineNumber = "450"
             landmarkName = "-searchDisplayController:shouldReloadTableForSearchScope:"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
             landmarkName = "-filterContentForSearchText:scope:"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "-configureStickerCell:withStickerRecord:"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "-configureUserCell:withAccountRecord:"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/AccountViewController.m"
-            timestampString = "401387147.088841"
+            timestampString = "403324936.914743"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "-updateView"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
             landmarkName = "-didReceiveAccountData:forSearchText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "-handleStartSearchUsers:"
             landmarkType = "5">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401847102.213756"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "@implementation MapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -585,28 +585,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StickerRecord.m"
-            timestampString = "387743693.788789"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "-debug"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "-configureCell:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -618,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "-configureCell:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -633,28 +617,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StickerRecord.m"
-            timestampString = "387741013.88839"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "-initWithName:imageName:codeAnnotation:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
             landmarkName = "-deleteRowAtIndexPath:forStickerCell:"
             landmarkType = "5">
          </BreakpointContent>
@@ -665,40 +633,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "386886665.838348"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "387214566.377155"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "@implementation StickersTableViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -710,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -726,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "-deleteRowAtIndexPath:forStickerCell:"
             landmarkType = "5">
          </BreakpointContent>
@@ -742,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "-fetchStickersList"
             landmarkType = "5">
          </BreakpointContent>
@@ -758,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -774,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "@implementation StickersTableViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -790,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "-searchBarShouldEndEditing:"
             landmarkType = "5">
          </BreakpointContent>
@@ -806,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
             landmarkName = "-didReceiveStickerData:forSearchText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -822,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
             landmarkName = "-didReceiveAccountData:forSearchText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -838,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "423"
-            endingLineNumber = "423"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
             landmarkName = "-filterContentForSearchText:scope:"
             landmarkType = "5">
          </BreakpointContent>
@@ -854,23 +794,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "-tableView:numberOfRowsInSection:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
@@ -886,11 +810,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "locateMyStickers/SearchTableViewController.m"
+            timestampString = "403329871.991176"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "-handleStartSearchUsers:"
             landmarkType = "5">
          </BreakpointContent>
@@ -902,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "-handleStartSearchStickers:"
             landmarkType = "5">
          </BreakpointContent>
@@ -918,11 +858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
             landmarkName = "-didReceiveAccountData:forSearchText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -934,11 +874,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "389"
+            endingLineNumber = "389"
             landmarkName = "-didReceiveStickerData:forSearchText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -950,11 +890,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "431"
-            endingLineNumber = "431"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
             landmarkName = "-searchDisplayController:didLoadSearchResultsTableView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -998,25 +938,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "387216189.890862"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "387620699.55104"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "-initializer"
             landmarkType = "5">
          </BreakpointContent>
@@ -1028,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401148118.627513"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "-initializer"
             landmarkType = "5">
          </BreakpointContent>
@@ -1044,11 +970,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
+            startingLineNumber = "465"
+            endingLineNumber = "465"
             landmarkName = "-validateState:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1060,11 +986,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
             landmarkName = "-gestureRecognizerShouldBegin:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1076,11 +1002,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401148118.627513"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "-handlePanGestureRecognizer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1092,11 +1018,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "500"
-            endingLineNumber = "500"
+            startingLineNumber = "478"
+            endingLineNumber = "478"
             landmarkName = "-animateWithOffset:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1108,11 +1034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401148031.506596"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "-handlePanGestureRecognizer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1124,11 +1050,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "-handlePanGestureRecognizer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1140,11 +1066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401148031.506596"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
             landmarkName = "-handlePanGestureRecognizer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1156,11 +1082,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "-gestureRecognizerShouldBegin:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1172,11 +1098,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "694"
-            endingLineNumber = "694"
+            startingLineNumber = "672"
+            endingLineNumber = "672"
             landmarkName = "-bounceToOrigin"
             landmarkType = "5">
          </BreakpointContent>
@@ -1188,11 +1114,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401148118.627513"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "-handlePressButton:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1204,11 +1130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "663"
-            endingLineNumber = "663"
+            startingLineNumber = "641"
+            endingLineNumber = "641"
             landmarkName = "-bounceToOrigin"
             landmarkType = "5">
          </BreakpointContent>
@@ -1220,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "653"
-            endingLineNumber = "653"
+            startingLineNumber = "631"
+            endingLineNumber = "631"
             landmarkName = "-moveWithDuration:andDirection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1236,11 +1162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "-handlePanGestureRecognizer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1252,11 +1178,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "624"
-            endingLineNumber = "624"
+            startingLineNumber = "602"
+            endingLineNumber = "602"
             landmarkName = "-moveWithDuration:andDirection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1268,11 +1194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401148031.506596"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "-handlePanGestureRecognizer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1284,11 +1210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401148031.506596"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "-handlePanGestureRecognizer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1300,11 +1226,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "478"
-            endingLineNumber = "478"
+            startingLineNumber = "456"
+            endingLineNumber = "456"
             landmarkName = "-validateState:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1316,11 +1242,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "479"
-            endingLineNumber = "479"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
             landmarkName = "-validateState:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1332,11 +1258,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "473"
-            endingLineNumber = "473"
+            startingLineNumber = "451"
+            endingLineNumber = "451"
             landmarkName = "-validateState:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1348,11 +1274,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "467"
-            endingLineNumber = "467"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
             landmarkName = "-validateState:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1364,11 +1290,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "461"
-            endingLineNumber = "461"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "-validateState:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1380,11 +1306,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "455"
-            endingLineNumber = "455"
+            startingLineNumber = "433"
+            endingLineNumber = "433"
             landmarkName = "-validateState:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1396,11 +1322,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
             landmarkName = "-percentageWithOffset:relativeToWidth:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1412,11 +1338,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401148118.627513"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "-initializer"
             landmarkType = "5">
          </BreakpointContent>
@@ -1428,11 +1354,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401148118.627513"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "-handlePanGestureRecognizer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1444,11 +1370,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
             landmarkName = "-swipeStickerTableViewCell:didTriggerButtonState:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1460,11 +1386,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "664"
-            endingLineNumber = "664"
+            startingLineNumber = "642"
+            endingLineNumber = "642"
             landmarkName = "-bounceToOrigin"
             landmarkType = "5">
          </BreakpointContent>
@@ -1476,11 +1402,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "-stickerRecordAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1492,11 +1418,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "-stickerRecordAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1508,11 +1434,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "-configureCell:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1524,11 +1450,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "536"
-            endingLineNumber = "536"
+            startingLineNumber = "541"
+            endingLineNumber = "541"
             landmarkName = "-swipeUserTableViewCell:didTriggerButtonState:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1540,11 +1466,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-stickerRecordAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1556,11 +1482,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SettingsViewController.m"
-            timestampString = "401812066.537425"
+            timestampString = "403326791.082795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-addMyPhone"
             landmarkType = "5">
          </BreakpointContent>
@@ -1652,11 +1578,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
             landmarkName = "-deleteRowAtIndexPath:forStickerCell:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1668,11 +1594,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
             landmarkName = "-didReceiveStickerData:forSearchText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1700,11 +1626,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SettingsViewController.m"
-            timestampString = "401815102.723845"
+            timestampString = "403326791.082795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "-handlerStickerAlreadyExistOnWebService:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1716,11 +1642,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerAddingTableViewController.m"
-            timestampString = "403306841.463625"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "-handlerAddStickerRecord:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1732,11 +1658,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerAddingTableViewController.m"
-            timestampString = "387779755.980132"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "-configure"
             landmarkType = "5">
          </BreakpointContent>
@@ -1748,11 +1674,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerAddingTableViewController.m"
-            timestampString = "401189189.653884"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "-bindView"
             landmarkType = "5">
          </BreakpointContent>
@@ -1764,11 +1690,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerAddingTableViewController.m"
-            timestampString = "401189189.653884"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "-unBindView"
             landmarkType = "5">
          </BreakpointContent>
@@ -1780,11 +1706,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SettingsViewController.m"
-            timestampString = "401815102.723845"
+            timestampString = "403326791.082795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "-handlerStickerAlreadyExistOnWebService:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1796,11 +1722,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerManager.m"
-            timestampString = "401814801.33863"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-addStickerRecord:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1812,11 +1738,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerRecord+Manager.m"
-            timestampString = "388272231.18779"
+            timestampString = "403328285.985043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "+addUpdateStickerWithDictionary:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1828,11 +1754,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "5">
          </BreakpointContent>
@@ -1876,11 +1802,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
             landmarkName = "-didReceiveStickerData:forSearchText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1892,11 +1818,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
             landmarkName = "-didReceiveStickerData:forSearchText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1908,11 +1834,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "-didReceiveAccountData:forSearchText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1924,11 +1850,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SearchTableViewController.m"
-            timestampString = "401402658.724954"
+            timestampString = "403329871.991176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
             landmarkName = "-didReceiveAccountData:forSearchText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1988,11 +1914,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401814801.33863"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2004,11 +1930,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401814801.33863"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2020,11 +1946,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401846623.189906"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "-mapView:viewForOverlay:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2036,11 +1962,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401843050.761117"
+            timestampString = "403335916.860956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "-awakeFromNib"
             landmarkType = "5">
          </BreakpointContent>
@@ -2052,11 +1978,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401847102.213756"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "@implementation MapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -2100,11 +2026,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401846623.189906"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "-addRoute"
             landmarkType = "5">
          </BreakpointContent>
@@ -2116,11 +2042,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401846623.189906"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "-addRoute"
             landmarkType = "5">
          </BreakpointContent>
@@ -2132,11 +2058,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401846623.189906"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
             landmarkName = "-addRoute"
             landmarkType = "5">
          </BreakpointContent>
@@ -2148,11 +2074,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401846623.189906"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "-mapView:viewForAnnotation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2164,11 +2090,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401846623.189906"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "-mapView:viewForAnnotation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2196,11 +2122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401846623.189906"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "-addRoute"
             landmarkType = "5">
          </BreakpointContent>
@@ -2212,11 +2138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401846623.189906"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
             landmarkName = "-loadSelectedOptions"
             landmarkType = "5">
          </BreakpointContent>
@@ -2228,11 +2154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "395795961.706697"
+            timestampString = "403324989.2772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2244,11 +2170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "395795961.706697"
+            timestampString = "403324936.914743"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -2260,11 +2186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401846623.189906"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "-addRoute"
             landmarkType = "5">
          </BreakpointContent>
@@ -2276,11 +2202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerDetailViewController.m"
-            timestampString = "403318857.187109"
+            timestampString = "403338779.409354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "-updateLocationForSticker:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2292,11 +2218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401847102.213756"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "-updateLocationForSticker"
             landmarkType = "5">
             <Locations>
@@ -2338,11 +2264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401847102.213756"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-updateLocationForSticker"
             landmarkType = "5">
          </BreakpointContent>
@@ -2354,11 +2280,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401847102.213756"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "-updateLocationForSticker"
             landmarkType = "5">
          </BreakpointContent>
@@ -2370,11 +2296,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401847102.213756"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "@implementation MapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -2386,11 +2312,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401847102.213756"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "@implementation MapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -2402,11 +2328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401847102.213756"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "-setupMap"
             landmarkType = "5">
          </BreakpointContent>
@@ -2418,11 +2344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401847102.213756"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "-setupMap"
             landmarkType = "5">
          </BreakpointContent>
@@ -2434,11 +2360,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerDetailViewController.m"
-            timestampString = "403318857.187109"
+            timestampString = "403338779.409354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "-mapSingleTapHandler:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2450,11 +2376,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2466,11 +2392,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2514,11 +2440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "688"
-            endingLineNumber = "688"
+            startingLineNumber = "666"
+            endingLineNumber = "666"
             landmarkName = "-bounceToOrigin"
             landmarkType = "5">
          </BreakpointContent>
@@ -2530,11 +2456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerCell.m"
-            timestampString = "401149752.979873"
+            timestampString = "403323717.857136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "679"
-            endingLineNumber = "679"
+            startingLineNumber = "657"
+            endingLineNumber = "657"
             landmarkName = "-bounceToOrigin"
             landmarkType = "5">
          </BreakpointContent>
@@ -2546,11 +2472,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/AppDelegate.m"
-            timestampString = "403315431.325283"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "-UIAppearances"
             landmarkType = "5">
          </BreakpointContent>
@@ -2578,11 +2504,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/FriendsViewController.m"
-            timestampString = "401393571.027889"
+            timestampString = "403332050.462454"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2594,11 +2520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/FriendCell.m"
-            timestampString = "401395503.560636"
+            timestampString = "403326791.082795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "-setSelected:animated:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2610,11 +2536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/FriendsViewController.m"
-            timestampString = "401495821.603258"
+            timestampString = "403332050.462454"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2626,11 +2552,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerDetailViewController.m"
-            timestampString = "403318857.187109"
+            timestampString = "403338779.409354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "@implementation StickerDetailViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -2642,11 +2568,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401846623.189906"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "-addRoute"
             landmarkType = "5">
          </BreakpointContent>
@@ -2658,11 +2584,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401846623.189906"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "-addRoute"
             landmarkType = "5">
          </BreakpointContent>
@@ -2674,11 +2600,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401846623.189906"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "-addRoute"
             landmarkType = "5">
          </BreakpointContent>
@@ -2690,11 +2616,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerDetailViewController.m"
-            timestampString = "403318857.187109"
+            timestampString = "403338779.409354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "-updateLocationForSticker:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2706,11 +2632,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerDetailViewController.m"
-            timestampString = "403318857.187109"
+            timestampString = "403338779.409354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "-updateLocationForSticker:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2722,11 +2648,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401846623.189906"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-initRegionWithStartLocationRecord:andEndLocationRecord:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2738,11 +2664,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerDetailViewController.m"
-            timestampString = "403318857.187109"
+            timestampString = "403330850.957339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "-zoomOnMapView"
             landmarkType = "5">
          </BreakpointContent>
@@ -2770,28 +2696,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerAddingTableViewController.m"
-            timestampString = "403306841.463625"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "-handlerAddStickerRecord:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/StickerDetailViewController.m"
-            timestampString = "403318857.187109"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "-setupMap"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2818,23 +2728,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerDetailViewController.m"
-            timestampString = "403318857.187109"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
-            landmarkName = "-updateLocationForSticker:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/StickerDetailViewController.m"
-            timestampString = "403318857.187109"
+            timestampString = "403338779.409354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "241"
@@ -2849,12 +2743,28 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/SettingsViewController.m"
-            timestampString = "401815102.723845"
+            filePath = "locateMyStickers/StickerDetailViewController.m"
+            timestampString = "403338779.409354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "-updateLocationForSticker:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "locateMyStickers/SettingsViewController.m"
+            timestampString = "403326791.082795"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "-addMyPhone"
             landmarkType = "5">
          </BreakpointContent>
@@ -2866,11 +2776,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerManager.m"
-            timestampString = "401814801.33863"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "-removeStickerRecordWithCode:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2945,7 +2855,7 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403319898.350472"
+                  timestampString = "403340179.287606"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "193"
@@ -2959,7 +2869,7 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403319898.350695"
+                  timestampString = "403340179.287859"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "193"
@@ -2991,7 +2901,7 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403319898.351006"
+                  timestampString = "403340179.288083"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "166"
@@ -3005,7 +2915,7 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403319898.351244"
+                  timestampString = "403340179.288314"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "166"
@@ -3019,7 +2929,7 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403319898.351441"
+                  timestampString = "403340179.288512"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "166"
@@ -3036,11 +2946,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerManager.m"
-            timestampString = "401814801.33863"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-addStickerRecordWithDictionary:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3052,11 +2962,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerManager.m"
-            timestampString = "401814801.33863"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "-removeStickerRecordWithCode:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3068,11 +2978,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickersTableViewController.m"
-            timestampString = "401811113.886895"
+            timestampString = "403329160.87773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
             landmarkName = "-refreshControlRequest"
             landmarkType = "5">
          </BreakpointContent>
@@ -3084,11 +2994,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerManager.m"
-            timestampString = "401814801.33863"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "-removeStickerRecordWithCode:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3116,11 +3026,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerAddingTableViewController.m"
-            timestampString = "403306841.463625"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "-handlerAddStickerRecord:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3132,11 +3042,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/StickerAddingTableViewController.m"
-            timestampString = "403306841.463625"
+            timestampString = "403328098.963813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "-handleFinishedButton:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3148,11 +3058,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SettingsViewController.m"
-            timestampString = "401815102.723845"
+            timestampString = "403326791.082795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "-addMyPhone"
             landmarkType = "5">
          </BreakpointContent>
@@ -3243,7 +3153,7 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403319898.353164"
+                  timestampString = "403340179.290358"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "177"
@@ -3257,7 +3167,7 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403319898.353369"
+                  timestampString = "403340179.290546"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "177"
@@ -3289,7 +3199,7 @@
                   symbolName = "-[CustomTabBarViewController addStickerWithCode:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403319898.353596"
+                  timestampString = "403340179.290751"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
@@ -3303,7 +3213,7 @@
                   symbolName = "-[CustomTabBarViewController addStickerWithCode:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403319898.353798"
+                  timestampString = "403340179.290958"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
@@ -3317,7 +3227,7 @@
                   symbolName = "-[CustomTabBarViewController addStickerWithCode:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403319898.354005"
+                  timestampString = "403340179.291147"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
@@ -3331,7 +3241,7 @@
                   symbolName = "-[CustomTabBarViewController addStickerWithCode:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403319898.354206"
+                  timestampString = "403340179.291335"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
@@ -3363,7 +3273,7 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403319898.354433"
+                  timestampString = "403340179.291543"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
@@ -3377,7 +3287,7 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403319898.354623"
+                  timestampString = "403340179.291729"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
@@ -3410,11 +3320,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/SettingsViewController.m"
-            timestampString = "401817148.03563"
+            timestampString = "403326791.082795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "-handlerStickerAlreadyExistOnWebService:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3474,11 +3384,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401846623.189906"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "-addRoute"
             landmarkType = "5">
          </BreakpointContent>
@@ -3489,28 +3399,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "401847074.955368"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "@implementation MapViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401847087.925536"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "-loadSelectedOptions"
             landmarkType = "5">
          </BreakpointContent>
@@ -3522,11 +3416,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "401847157.95"
+            timestampString = "403338599.020923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "-addHistory"
             landmarkType = "5">
          </BreakpointContent>

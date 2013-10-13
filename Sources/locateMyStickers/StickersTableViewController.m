@@ -31,6 +31,10 @@
 #import "ConventionTools.h"
 #import "AppDelegate.h"
 
+#import "UIViewController+Extension.h"
+#import "UIColor+Colours.h"
+
+
 @interface StickersTableViewController ()
 
 @property (nonatomic, strong)NSIndexPath *currentIndexPath;
@@ -53,6 +57,8 @@
 	self.refreshControlEnabled = YES;
     [super viewDidLoad];
 		
+	[self configureMenuLeftButtonWithBackButon:[self.navigationController.viewControllers count] > 1];
+	
 	self.myPhoneStickerRecordList = nil;
 	self.stickersRecordList = nil;
 	
@@ -145,8 +151,6 @@
 	else if (indexPath.section == 1)
 		stickerRecord = [self.stickersRecordList objectAtIndex:indexPath.row];
 	
-	
-	[stickerRecord debug];
 	cell.nameLabel.text = stickerRecord.name;
 	
 	NSString *timeString = [ConventionTools getDiffTimeInStringFromDate:stickerRecord.createdAt];
@@ -165,6 +169,11 @@
 	}
 	else
 		cell.iconLabel.text = [NSString stringFromAwesomeIcon:FAIconQrcode];
+	
+	
+	NSLog(@"%s | %@", __PRETTY_FUNCTION__, stickerRecord.color);
+	
+	cell.colorView.backgroundColor = [UIColor colorFromHexString:stickerRecord.color];
 
 	[cell setDelegate:self];
 	[cell setFirstStateIconName:@"mathematic-multiply2-icon-white"
@@ -177,6 +186,8 @@
                     fourthColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]
 				   fithIconName:@"very-basic-refresh-icon-white"
 					  fithColor:[UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0]];//[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]];
+	
+	
 	
     [cell.contentView setBackgroundColor:[UIColor whiteColor]];
 	

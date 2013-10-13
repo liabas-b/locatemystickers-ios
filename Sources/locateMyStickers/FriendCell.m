@@ -8,7 +8,22 @@
 
 #import "FriendCell.h"
 
+#import "UIFont+AppFont.h"
+#import "UIColor+AppColor.h"
+
 @implementation FriendCell
+
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	
+	
+	self.userNameLabel.font = [UIFont defaultFont];
+	//	self.nameLabel.textColor = [UIColor defaultFontColor];
+	
+	
+	self.stickersNumberLabel.font = [UIFont mediumFont];
+	//	self.timeLabel.textColor = [UIColor defaultFontColor];
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

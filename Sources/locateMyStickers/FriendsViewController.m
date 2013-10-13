@@ -21,6 +21,8 @@
 #import "CryptographyTools.h"
 #import "AppDelegate.h"
 
+#import "UIViewController+Extension.h"
+
 @interface FriendsViewController ()
 
 @property (nonatomic, strong)NSMutableArray *friendList;
@@ -38,9 +40,12 @@
 }
 
 - (void)viewDidLoad {
+	self.refreshControlEnabled = YES;
     [super viewDidLoad];
 
 	self.tableView.rowHeight = 80.0;
+	
+	[self configureMenuLeftButtonWithBackButon:YES];
 	
 	self.friendList = [[NSMutableArray alloc] init];
 	[self updateFriendList];
@@ -63,6 +68,8 @@
 			NSLog(@" %s| accountRecord: %@", __PRETTY_FUNCTION__, accountRecord);
 			[self.friendList addObject:accountRecord];
 		}
+		
+		[self.refreshControl endRefreshing];
 		[self.tableView reloadData];
 		
 	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
@@ -125,6 +132,14 @@
 
 - (void)shareSticker {
 	//TODO: send request to share
+}
+
+- (void)refreshControlRequest {
+	[self updateFriendList];
+	
+//	[self updateLocationForSticker:^{
+
+//	}];
 }
 
 /*

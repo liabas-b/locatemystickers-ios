@@ -56,6 +56,7 @@ static NSString *entityName = @"StickerRecord";
 	stickerRecord.isActive = [NSNumber numberWithBool:[[dictionary objectForKey:@"is_active"] boolValue]];
 	stickerRecord.stickerTypeId = [NSNumber numberWithInt:[[dictionary objectForKey:@"sticker_type_id"] intValue]];
 	stickerRecord.text = [dictionary objectForKey:@"text"] != [NSNull null] ? [dictionary objectForKey:@"text"] : nil;
+	stickerRecord.color = [dictionary objectForKey:@"color"] != [NSNull null] ? [dictionary objectForKey:@"color"] : nil;
 	
 	[[NSManagedObjectContext defaultContext] saveNestedContexts];
 	
