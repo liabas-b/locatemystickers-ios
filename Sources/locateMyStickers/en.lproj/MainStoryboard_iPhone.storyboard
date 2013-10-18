@@ -1541,15 +1541,9 @@
     <resources>
         <image name="account-icon.png" width="64" height="64"/>
         <image name="lms.png" width="32" height="32"/>
-        <image name="lms.png" width="32" height="32"/>
-        <image name="locateMyStickersFushiaSmallLogo.png" width="128" height="139"/>
-        <image name="locateMyStickersFushiaSmallLogo.png" width="128" height="139"/>
-        <image name="locateMyStickersFushiaSmallLogo.png" width="128" height="139"/>
-        <image name="locateMyStickersFushiaSmallLogo.png" width="128" height="139"/>
         <image name="locateMyStickersFushiaSmallLogo.png" width="128" height="139"/>
         <image name="locateMyStickersRedLogo.png" width="500" height="500"/>
         <image name="logout2-icon.png" width="64" height="64"/>
-        <image name="revers_triangle_icon.png" width="16" height="12"/>
         <image name="revers_triangle_icon.png" width="16" height="12"/>
         <image name="settings-icon.png" width="64" height="64"/>
         <image name="share-icon.png" width="32" height="32"/>

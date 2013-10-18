@@ -2855,12 +2855,12 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403340179.287606"
+                  timestampString = "403748112.986008"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "193"
                   endingLineNumber = "193"
-                  offsetFromSymbolStart = "1088">
+                  offsetFromSymbolStart = "1440">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2869,12 +2869,12 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403340179.287859"
+                  timestampString = "403748112.98641"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "193"
                   endingLineNumber = "193"
-                  offsetFromSymbolStart = "1238">
+                  offsetFromSymbolStart = "1604">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2901,12 +2901,12 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403340179.288083"
+                  timestampString = "403748112.98672"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "166"
                   endingLineNumber = "166"
-                  offsetFromSymbolStart = "44">
+                  offsetFromSymbolStart = "58">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2915,26 +2915,12 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403340179.288314"
+                  timestampString = "403748112.987025"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "166"
                   endingLineNumber = "166"
-                  offsetFromSymbolStart = "1282">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
-                  moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403340179.288512"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "166"
-                  endingLineNumber = "166"
-                  offsetFromSymbolStart = "1458">
+                  offsetFromSymbolStart = "974">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -3153,12 +3139,12 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403340179.290358"
+                  timestampString = "403748112.99016"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "177"
                   endingLineNumber = "177"
-                  offsetFromSymbolStart = "616">
+                  offsetFromSymbolStart = "639">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -3167,12 +3153,12 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403340179.290546"
+                  timestampString = "403748112.99052"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "177"
                   endingLineNumber = "177"
-                  offsetFromSymbolStart = "1380">
+                  offsetFromSymbolStart = "1084">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -3199,12 +3185,12 @@
                   symbolName = "-[CustomTabBarViewController addStickerWithCode:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403340179.290751"
+                  timestampString = "403748112.990966"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
                   endingLineNumber = "139"
-                  offsetFromSymbolStart = "44">
+                  offsetFromSymbolStart = "58">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -3213,40 +3199,12 @@
                   symbolName = "-[CustomTabBarViewController addStickerWithCode:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403340179.290958"
+                  timestampString = "403748112.991298"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
                   endingLineNumber = "139"
-                  offsetFromSymbolStart = "596">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CustomTabBarViewController addStickerWithCode:]"
-                  moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403340179.291147"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "820">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CustomTabBarViewController addStickerWithCode:]"
-                  moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403340179.291335"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "912">
+                  offsetFromSymbolStart = "604">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -3273,12 +3231,12 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403340179.291543"
+                  timestampString = "403748112.991852"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
                   endingLineNumber = "181"
-                  offsetFromSymbolStart = "780">
+                  offsetFromSymbolStart = "828">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -3287,12 +3245,12 @@
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "403340179.291729"
+                  timestampString = "403748112.992473"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
                   endingLineNumber = "181"
-                  offsetFromSymbolStart = "1346">
+                  offsetFromSymbolStart = "1128">
                </Location>
             </Locations>
          </BreakpointContent>
