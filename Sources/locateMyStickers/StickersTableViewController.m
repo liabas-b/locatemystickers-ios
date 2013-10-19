@@ -17,7 +17,7 @@
 #import "StickerRecord.h"
 #import "StickerRecord+Manager.h"
 
-#import "StickerManager.h"
+#import "StickersManager.h"
 
 #import "NSString+FontAwesome.h"
 #import "UIFont+FontAwesome.h"
@@ -33,6 +33,8 @@
 
 #import "UIViewController+Extension.h"
 #import "UIColor+Colours.h"
+
+#import "StickerConfigurationRecord.h"
 
 
 @interface StickersTableViewController ()
@@ -158,7 +160,7 @@
 	timeString = [timeString length] > 0 ? timeString : @"new";
 	cell.timeLabel.text = timeString;
 	
-	if (stickerRecord.isActive)
+	if ([stickerRecord.stickerConfiguration.activate boolValue])
 		cell.activatedImage.backgroundColor = [UIColor greenColor];
 	else
 		cell.activatedImage.backgroundColor = [UIColor redColor];

@@ -7,7 +7,12 @@
 //
 
 #import "StickerRecord+Manager.h"
+#import "StickerConfigurationRecord.h"
+#import "StickerConfigurationRecord+Manager.h"
 #import "ConventionTools.h"
+#import "StickersManager.h"
+
+#import "AppDelegate.h"
 
 static NSString *entityName = @"StickerRecord";
 
@@ -53,10 +58,28 @@ static NSString *entityName = @"StickerRecord";
 	stickerRecord.stickerId = [NSNumber numberWithInt:[[dictionary objectForKey:@"id"] intValue]];
 	stickerRecord.createdAt = [ConventionTools getDate:[dictionary objectForKey:@"created_at"] withFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
 	stickerRecord.updatedAt = [ConventionTools getDate:[dictionary objectForKey:@"updated_at"] withFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
-	stickerRecord.isActive = [NSNumber numberWithBool:[[dictionary objectForKey:@"is_active"] boolValue]];
+	//	stickerRecord.isActive = [NSNumber numberWithBool:[[dictionary objectForKey:@"is_active"] boolValue]];
 	stickerRecord.stickerTypeId = [NSNumber numberWithInt:[[dictionary objectForKey:@"sticker_type_id"] intValue]];
 	stickerRecord.text = [dictionary objectForKey:@"text"] != [NSNull null] ? [dictionary objectForKey:@"text"] : nil;
 	stickerRecord.color = [dictionary objectForKey:@"color"] != [NSNull null] ? [dictionary objectForKey:@"color"] : nil;
+	//	stickerRecord.frenquencyUpdate = @([[dictionary objectForKey:@"frequency_update"] intValue]);
+	stickerRecord.lastLocation = [dictionary objectForKey:@"last_location"] != [NSNull null] ? [dictionary objectForKey:@"last_location"] : nil;
+	
+	StickerConfigurationRecord *stickerConfigurationRecord = [StickerConfigurationRecord findFirstByAttribute:@"configurationId" withValue:stickerRecord.stickerConfigurationId];
+	stickerRecord.stickerConfiguration = stickerConfigurationRecord;
+	
+	
+	if (stickerConfigurationRecord == nil) {
+		[[AppDelegate appDelegate].stickerManager getStickerConfigurationRecordWithStickerCode:stickerRecord.code success:^(NSMutableDictionary *JSON) {
+			NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
+			StickerConfigurationRecord *stickerConfigurationRecord = [StickerConfigurationRecord addUpdateWithDictionary:JSON];
+			stickerRecord.stickerConfiguration = stickerConfigurationRecord;
+			
+			[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		} failure:^(NSURLRequest *request, NSError *error) {
+			NSLog(@"%s | request: %@ - error: %@", __PRETTY_FUNCTION__, [request description], [error description]);
+		}];
+	}
 	
 	[[NSManagedObjectContext defaultContext] saveNestedContexts];
 	

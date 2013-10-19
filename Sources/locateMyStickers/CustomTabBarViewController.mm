@@ -16,7 +16,7 @@
 #import "StickerRecord.h"
 #import "StickerRecord+Manager.h"
 
-#import "StickerManager.h"
+#import "StickersManager.h"
 
 #import <QRCodeReader.h>
 #import "ScanWidgetController.h"

@@ -21,8 +21,12 @@
 #import "UIFont+AppFont.h"
 #import "UIColor+AppColor.h"
 #import "UIViewController+Extension.h"
+#import "StickerConfigurationRecord.h"
+
+#import "StickerEditingViewController.h"
 
 static double kHeightWithoutLabel = 55.0;
+static double kHeightLastLocationWithoutLabel = 25.0;
 
 @interface StickerDetailViewController ()
 
@@ -47,12 +51,13 @@ static double kHeightWithoutLabel = 55.0;
     [super viewDidLoad];
 	
 	self.mapView.mapViewDelegate = self;
+	self.mapView.isDisplayingStickerList = NO;
 	
 	[self setupView];
 	[self updateView];
-
+	
 	[self updateSticker];
-	[self updateLocationForSticker:^{}];
+//	[self updateLocationForSticker:^{}];
 	
 	UITapGestureRecognizer *mapSingleFingerTap =
 	[[UITapGestureRecognizer alloc] initWithTarget:self
@@ -79,7 +84,7 @@ static double kHeightWithoutLabel = 55.0;
     CGFloat heightForRow;
     
     switch (indexPath.row) {
-			case 0:
+		case 0:
 			
 		{
 			heightForRow = 42.0;
@@ -100,12 +105,13 @@ static double kHeightWithoutLabel = 55.0;
 		case 3:
 			
 		{
-			heightForRow = 42.0;
+			NSString *text = [self.stickerRecord.lastLocation stringByReplacingOccurrencesOfString:@"," withString:@"\n"];
+            CGSize labelSize = [text sizeWithFont:[UIFont defaultFont] constrainedToSize:CGSizeMake(160, 20000) lineBreakMode:NSLineBreakByWordWrapping];//180
+            heightForRow = kHeightLastLocationWithoutLabel + labelSize.height;//42 + 10
 		}
 			break;
         case 4:
         {
-           
 			NSString *text = _stickerRecord.text;
             CGSize labelSize = [text sizeWithFont:[UIFont defaultFont] constrainedToSize:CGSizeMake(240, 20000) lineBreakMode:NSLineBreakByWordWrapping];
             heightForRow = kHeightWithoutLabel + labelSize.height;//42 + 10
@@ -114,7 +120,7 @@ static double kHeightWithoutLabel = 55.0;
             
         default:
         {
-             heightForRow = 82.0;
+			heightForRow = 82.0;
 			
         }
             break;
@@ -127,7 +133,7 @@ static double kHeightWithoutLabel = 55.0;
 - (void)zoomOnMapView {
 	// Get main window reference
 	UIWindow* mainWindow = (((AppDelegate *)[UIApplication sharedApplication].delegate).window);
-
+	
 	CGRect rect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
 	self.mapRect = self.mapView.frame;
 	[mainWindow addSubview:self.mapView];
@@ -136,22 +142,22 @@ static double kHeightWithoutLabel = 55.0;
                           delay:0
                         options:(UIViewAnimationOptionCurveEaseIn)
                      animations:^{
-
+						 
 						 //INFO: set in full screen
 						 self.mapView.frame = rect;
-
-
+						 
+						 
                      }
                      completion:^(BOOL finished1) {
 						 [self.mapView addCloseButton];
 					 }];
-
+	
 }
 
 #pragma mark - view
 
 - (void)setupView {
-
+	//TODO: Last update date
 	[self configureMenuLeftButtonWithBackButon:YES];
 	
 	self.nameLabel.font = [UIFont defaultFont];
@@ -162,7 +168,7 @@ static double kHeightWithoutLabel = 55.0;
 	
 	self.createdAtLabel.font = [UIFont defaultFont];
 	self.createdAtLabel.textColor = [UIColor defaultFontColor];
-
+	
 	self.updatedAtLabel.font = [UIFont defaultFont];
 	self.updatedAtLabel.textColor = [UIColor defaultFontColor];
 	
@@ -173,13 +179,14 @@ static double kHeightWithoutLabel = 55.0;
 	self.enableSwitch.on = NO;
 	self.enableSwitch.hidden = YES;
 	if (self.stickerRecord) {
-		if (self.stickerRecord.isActive)
+		if ([self.stickerRecord.stickerConfiguration.activate boolValue])
 			self.activatedImage.backgroundColor = [UIColor greenColor];
 		else
 			self.activatedImage.backgroundColor = [UIColor redColor];
 		self.nameLabel.text = self.stickerRecord.name;
 		self.createdAtLabel.text = [ConventionTools getDiffTimeInStringFromDate:self.stickerRecord.createdAt];
-		self.updatedAtLabel.text = @"Unknow";
+		NSString *lastLocation = [self.stickerRecord.lastLocation stringByReplacingOccurrencesOfString:@"," withString:@"\n"];
+		self.updatedAtLabel.text = lastLocation;
 		self.textLabel.text = self.stickerRecord.text;
 		
 	}
@@ -214,21 +221,26 @@ static double kHeightWithoutLabel = 55.0;
 }
 
 - (void)setupMap {
-	NSArray *array = [LocationRecord findByAttribute:@"idSticker" withValue:self.stickerRecord.stickerId andOrderBy:@"updatedAt" ascending:NO];
-
+	//NSArray *array = [LocationRecord findByAttribute:@"idSticker" withValue:self.stickerRecord.stickerId andOrderBy:@"updatedAt" ascending:NO];
 	
-	NSLog(@"%s %@", __PRETTY_FUNCTION__, array);
-	if ([array count] > 0) {
-		[self.mapView.locationsRecordList addObjectsFromArray:array];
-		
-		//		[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
-	}
-	else {
-		[self updateLocationForSticker:^(){}];
-	}
 	
-	[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
-
+	//	NSLog(@"%s %@", __PRETTY_FUNCTION__, array);
+	//if ([array count] > 0) {
+	//[self.mapView.locationsRecordList addObjectsFromArray:array];
+	
+	[self.mapView loadSticker:self.stickerRecord];
+//	[self updateLocationForSticker:^(){
+		//[self.mapView loadSticker:self.stickerRecord];
+//	}];
+	
+	//[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
+	//	}
+	//	else {
+	//
+	//	}
+	
+	//[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
+	
 }
 
 - (void)updateLocationForSticker:(void (^)(void))block {
@@ -241,7 +253,7 @@ static double kHeightWithoutLabel = 55.0;
 	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 		NSLog(@"Result: %@", JSON);
 		
-		[self.mapView.locationsRecordList removeAllObjects];
+		//[self.mapView.locationsRecordList removeAllObjects];
 		
 		for (NSDictionary *dic in JSON) {
 			NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, dic);
@@ -249,9 +261,9 @@ static double kHeightWithoutLabel = 55.0;
 			NSLog(@" %s| locationRecord: %@", __PRETTY_FUNCTION__, locationRecord);
 		}
 		if ([JSON count] > 0) {
-
+			
 			[self setupMap];
-			block();
+			//block();
 		}
 		
 	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
@@ -293,9 +305,9 @@ static double kHeightWithoutLabel = 55.0;
 						 
 						 [self.mapView removeFromSuperview];
 						 [self.mapCell.contentView addSubview:self.mapView];
-
+						 
 					 }];
-
+	
 }
 
 #pragma mark - LMSMapViewProtocol
@@ -310,6 +322,17 @@ static double kHeightWithoutLabel = 55.0;
 	[self updateLocationForSticker:^{
 		[self.refreshControl endRefreshing];
 	}];
+}
+
+//EditStickerConfigurationSegue
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([[segue identifier] isEqualToString:@"EditStickerConfigurationSegue"]) {
+		StickerEditingViewController *stickerEditingViewController = [segue destinationViewController];
+		stickerEditingViewController.stickerConfigurationRecord = self.stickerRecord.stickerConfiguration;
+	}
 }
 
 @end

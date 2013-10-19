@@ -13,7 +13,7 @@
 #import "OptionsRecord.h"
 #import "StickerRecord.h"
 
-#import "StickerManager.h"
+#import "StickersManager.h"
 #import "StickerRecord+Manager.h"
 
 #import "LocationManager.h"
@@ -97,7 +97,7 @@
 
 - (IBAction)updateFrequencySliderChangedHandler:(id)sender {
 	if ([sender isEqual:self.updateFrequencySlider]) {
-		NSString *updateFrequencyText = [NSString stringWithFormat:@"%0.f secondes", self.updateFrequencySlider.value * 60];
+		NSString *updateFrequencyText = [NSString stringWithFormat:@"%0.f secondes", self.updateFrequencySlider.value];
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
 			self.updateFrequencyLabel.text = updateFrequencyText;

@@ -35,7 +35,7 @@
 			self.longitude = [NSNumber numberWithFloat:[[dictionary objectForKey:@"longitude"] floatValue]];
 			self.createdAt = [dictionary objectForKey:@"created_at"];
 			self.updatedAt = [dictionary objectForKey:@"updated_at"];
-			self.idSticker = @([[dictionary objectForKey:@"latitude"] intValue]);
+			self.idSticker = @([[dictionary objectForKey:@"sticker_id"] intValue]);
 		}
 	}
 	return self;

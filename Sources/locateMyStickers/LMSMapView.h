@@ -8,6 +8,7 @@
 
 #import <MapKit/MapKit.h>
 #import "LMSMapViewProtocol.h"
+#import "StickerSelectionCollectionView.h"
 
 @class LocationRecord;
 @class StickerRecord;
@@ -23,6 +24,9 @@ typedef enum {
 
 @interface LMSMapView : MKMapView <MKMapViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
+
+@property (nonatomic, assign)BOOL isDisplayingStickerList;
+//
 @property (nonatomic, strong)NSMutableArray *locationsRecordList;
 @property (nonatomic, strong)NSMutableArray *stickerRecordList;
 
@@ -30,9 +34,14 @@ typedef enum {
 
 @property (nonatomic, strong)id<LMSMapViewProtocol> mapViewDelegate;
 
-@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) IBOutlet StickerSelectionCollectionView *stickerSelectionCollectionView;
 
 - (void)loadSelectedOptions;
 - (void)addCloseButton;
+
+//
+
+- (void)loadStickerList:(NSArray *)stickerList;
+- (void)loadSticker:(StickerRecord *)stickerRecord;
 
 @end

@@ -38,6 +38,8 @@
 
 #import "UIColor+Colours.h"
 
+#import "StickerConfigurationRecord.h"
+
 @interface SearchTableViewController ()
 
 @property (nonatomic, strong)NSIndexPath *currentIndexPath;
@@ -175,18 +177,14 @@
 
 - (void)configureStickerCell:(StickerCell *)cell withStickerRecord:(StickerRecord*)stickerRecord {
 	cell.nameLabel.text = stickerRecord.name;
-	if (stickerRecord.isActive)
+
+	if ([stickerRecord.stickerConfiguration.activate boolValue])
 		cell.activatedImage.backgroundColor = [UIColor greenColor];
 	else
 		cell.activatedImage.backgroundColor = [UIColor redColor];
 	
 	
 	cell.timeLabel.text = [ConventionTools getDiffTimeInStringFromDate:stickerRecord.createdAt];//[stickerRecord.createdAt description];
-	
-	if (stickerRecord.isActive)
-		cell.activatedImage.backgroundColor = [UIColor greenColor];
-	else
-		cell.activatedImage.backgroundColor = [UIColor redColor];
 	
 	
 	/*

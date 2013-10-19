@@ -18,7 +18,7 @@
 
 #import "AFJSONRequestOperation.h"
 
-#import "StickerManager.h"
+#import "StickersManager.h"
 
 #import "JsonTools.h"
 

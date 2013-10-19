@@ -35,24 +35,35 @@
         <attribute name="idOptions" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="locatePhoneEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
+    <entity name="StickerConfigurationRecord" representedClassName="StickerConfigurationRecord" syncable="YES">
+        <attribute name="activate" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="configurationId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="frequencyUpdate" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="stickerCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
     <entity name="StickerRecord" representedClassName="StickerRecord" syncable="YES">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isActive" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lastLocation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stickerConfigurationId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="stickerId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="stickerTypeId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="stickerConfiguration" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StickerConfigurationRecord" syncable="YES"/>
     </entity>
     <fetchRequest name="TestFetchRequest" entity="StickerRecord" predicateString="stickerTypeId == 0"/>
     <elements>
-        <element name="AccountRecord" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="HistoryRecord" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="LocationRecord" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="OptionsRecord" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="StickerRecord" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="AccountRecord" positionX="-288" positionY="150" width="128" height="120"/>
+        <element name="StickerConfigurationRecord" positionX="-90" positionY="569" width="128" height="133"/>
+        <element name="HistoryRecord" positionX="-72" positionY="261" width="128" height="240"/>
+        <element name="LocationRecord" positionX="115" positionY="513" width="128" height="135"/>
+        <element name="OptionsRecord" positionX="-432" positionY="18" width="128" height="90"/>
+        <element name="StickerRecord" positionX="-387" positionY="420" width="128" height="223"/>
     </elements>
 </model>

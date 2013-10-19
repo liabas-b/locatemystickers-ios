@@ -12,7 +12,7 @@
 #import "LocationManager.h"
 #import "SessionManager.h"
 #import "ConnectionManager.h"
-#import "StickerManager.h"
+#import "StickersManager.h"
 
 @class OptionsRecord;
 
@@ -24,7 +24,7 @@
 @property (nonatomic, strong) SessionManager *sessionManager;
 @property (nonatomic, strong) ConnectionManager *connectionManager;
 @property (nonatomic, strong) OptionsRecord *optionsRecord;
-@property (nonatomic, strong) StickerManager *stickerManager;
+@property (nonatomic, strong) StickersManager *stickerManager;
 
 
 

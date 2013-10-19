@@ -57,9 +57,10 @@
 	[super viewWillAppear:animated];
 	
 	//TODO: Make it works
-	self.stickerRecord = [StickerRecord findFirstByAttribute:@"code" withValue:[AppDelegate identifierForCurrentUser]];
+	//self.stickerRecord = [StickerRecord findFirstByAttribute:@"code" withValue:[AppDelegate identifierForCurrentUser]];
 
-	[self performSelectorInBackground:@selector(setupMap) withObject:nil];
+//	[self performSelectorInBackground:@selector(setupMap) withObject:nil];
+	[self setupMap];
 }
 
 - (void)setupMap {
@@ -67,6 +68,17 @@
 	[context setParentContext:[NSManagedObjectContext defaultContext]];
 	NSManagedObjectContext *unused __attribute__((unused)) = [NSManagedObjectContext MR_contextWithParent:[NSManagedObjectContext MR_defaultContext]];
 	
+	
+	NSArray *stickerRecordList = [StickerRecord findAllSortedBy:@"createdAt" ascending:NO];
+	
+	self.stickerRecord = [stickerRecordList firstObject];
+//	[self updateLocationForSticker];
+	
+	
+	NSLog(@"%s | stickerRecordList: %@", __PRETTY_FUNCTION__, stickerRecordList);
+	self.mapView.isDisplayingStickerList = YES;
+	[self.mapView loadStickerList:stickerRecordList];
+	/*
 	NSArray *array = [LocationRecord findAllSortedBy:@"updatedAt" ascending:NO inContext:[NSManagedObjectContext MR_contextWithParent:[NSManagedObjectContext MR_defaultContext]]];
 	NSLog(@"%s %@", __PRETTY_FUNCTION__, array);
 	if ([array count] > 0) {
@@ -77,9 +89,12 @@
 	else {
 		[self updateLocationForSticker];
 	}
+	 */
 }
-
+/*
 - (void)updateLocationForSticker {
+	if (self.stickerRecord == nil)
+		return;
 	
 	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", self.stickerRecord.code];
 	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
@@ -95,7 +110,8 @@
 			LocationRecord *locationRecord = [LocationRecord addUpdateWithDictionary:dic];
 			NSLog(@" %s| locationRecord: %@", __PRETTY_FUNCTION__, locationRecord);
 		}
-
+		[self.mapView loadSticker:self.stickerRecord];
+		
 	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
 		NSLog(@"%s | Request: %@", __PRETTY_FUNCTION__, [request description]);
 		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
@@ -103,7 +119,7 @@
 	}];
 	[operation start];
 }
-
+*/
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];

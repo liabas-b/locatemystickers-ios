@@ -2,24 +2,27 @@
 //  StickerRecord.m
 //  LMS
 //
-//  Created by Adrien Guffens on 10/13/13.
+//  Created by Adrien Guffens on 10/19/13.
 //  Copyright (c) 2013 Adrien Guffens. All rights reserved.
 //
 
 #import "StickerRecord.h"
+#import "StickerConfigurationRecord.h"
 
 
 @implementation StickerRecord
 
 @dynamic code;
+@dynamic color;
 @dynamic createdAt;
 @dynamic imageName;
-@dynamic isActive;
+@dynamic lastLocation;
 @dynamic name;
+@dynamic stickerConfigurationId;
 @dynamic stickerId;
 @dynamic stickerTypeId;
 @dynamic text;
 @dynamic updatedAt;
-@dynamic color;
+@dynamic stickerConfiguration;
 
 @end
