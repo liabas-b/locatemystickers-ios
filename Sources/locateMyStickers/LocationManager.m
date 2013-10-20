@@ -250,7 +250,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 		
 		
 		NSString *message = [NSString stringWithFormat:@"New location: latitude: %f - longitude:%f", location.coordinate.latitude, location.coordinate.longitude];
-		[self notifyBackgroundWithMessage:message];
+		//[self notifyBackgroundWithMessage:message];
 		NSLog(@"end Update");
 		
 		/*
@@ -339,13 +339,11 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
 		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
 		success(JSON);
-		
 	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
 		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
 		failure(request, error, JSON);
 	}];
 	[operation start];
-	
 }
 
 

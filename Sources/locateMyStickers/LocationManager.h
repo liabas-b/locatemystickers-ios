@@ -8,6 +8,8 @@
 
 #import <CoreLocation/CoreLocation.h>
 
+//TODO: make it work with a StickerRecord object
+
 static const int MINIMUM_DELTA_METERS = 10.0;
 extern NSString* const keyPathMeasurementArray;
 

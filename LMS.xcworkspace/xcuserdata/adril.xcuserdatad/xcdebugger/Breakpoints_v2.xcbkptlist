@@ -771,7 +771,7 @@
                   symbolName = "-[StickerDetailViewController updateLocationRecords]"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/StickerDetailViewController.m"
-                  timestampString = "404001395.721675"
+                  timestampString = "404002125.079893"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "225"
@@ -785,7 +785,7 @@
                   symbolName = "__52-[StickerDetailViewController updateLocationRecords]_block_invoke"
                   moduleName = "LMS"
                   urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/StickerDetailViewController.m"
-                  timestampString = "404001395.721879"
+                  timestampString = "404002125.0801"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "225"
@@ -1034,7 +1034,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sources/locateMyStickers/LMSMapView.m"
@@ -1050,7 +1050,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sources/locateMyStickers/LMSMapView.m"
@@ -1066,7 +1066,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sources/locateMyStickers/LMSMapView.m"
@@ -1130,7 +1130,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sources/locateMyStickers/LMSMapView.m"
@@ -1146,7 +1146,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sources/locateMyStickers/LMSMapView.m"
@@ -1166,11 +1166,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sources/locateMyStickers/MapViewController.m"
-            timestampString = "403999210.452843"
+            timestampString = "404002069.270009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "-setupMap"
             landmarkType = "5">
          </BreakpointContent>

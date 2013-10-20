@@ -58,7 +58,16 @@
 	[super viewWillAppear:animated];
 	
 //	[self performSelectorInBackground:@selector(setupMap) withObject:nil];
+	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 	[self setupMap];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+	
+	//[[AppDelegate appDelegate].locationManager removeObserver:self forKeyPath:keyPathMeasurementArray];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -89,11 +98,6 @@
 	}];
 	
 	[self loadStickerList];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-	//[[AppDelegate appDelegate].locationManager removeObserver:self forKeyPath:keyPathMeasurementArray];
 }
 
 - (void)didReceiveMemoryWarning
