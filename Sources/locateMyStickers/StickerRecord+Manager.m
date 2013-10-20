@@ -70,7 +70,7 @@ static NSString *entityName = @"StickerRecord";
 	
 	
 	if (stickerConfigurationRecord == nil) {
-		[[AppDelegate appDelegate].stickerManager getStickerConfigurationRecordWithStickerCode:stickerRecord.code success:^(NSMutableDictionary *JSON) {
+		[[AppDelegate appDelegate].stickerManager getStickerConfigurationRecordWithStickerRecord:stickerRecord success:^(NSMutableDictionary *JSON) {
 			NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
 			StickerConfigurationRecord *stickerConfigurationRecord = [StickerConfigurationRecord addUpdateWithDictionary:JSON];
 			stickerRecord.stickerConfiguration = stickerConfigurationRecord;

@@ -80,4 +80,9 @@
     return [UIColor colorFromHexString:@"#7F8995"];
 }
 
++ (UIColor*)defaultSelectedFontColor
+{
+    return [UIColor colorFromHexString:@"#E0E0E0"];
+}
+
 @end

@@ -27,7 +27,7 @@
 }
 
 - (void)configureWithStickerList:(NSArray *)stickerList {
-	self.stickerList = stickerList;
+	//self.stickerList = stickerList;
 	
 	//self
 }

@@ -57,7 +57,7 @@ static double kHeightLastLocationWithoutLabel = 25.0;
 	[self updateView];
 	
 	[self updateSticker];
-//	[self updateLocationForSticker:^{}];
+	[self updateLocationRecords];
 	
 	UITapGestureRecognizer *mapSingleFingerTap =
 	[[UITapGestureRecognizer alloc] initWithTarget:self
@@ -69,7 +69,7 @@ static double kHeightLastLocationWithoutLabel = 25.0;
 	[super viewWillAppear:animated];
 	
 	//DEBUG: test
-	[self performSelectorInBackground:@selector(setupMap) withObject:nil];
+//	[self performSelectorInBackground:@selector(setupMap) withObject:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -107,7 +107,12 @@ static double kHeightLastLocationWithoutLabel = 25.0;
 		{
 			NSString *text = [self.stickerRecord.lastLocation stringByReplacingOccurrencesOfString:@"," withString:@"\n"];
             CGSize labelSize = [text sizeWithFont:[UIFont defaultFont] constrainedToSize:CGSizeMake(160, 20000) lineBreakMode:NSLineBreakByWordWrapping];//180
-            heightForRow = kHeightLastLocationWithoutLabel + labelSize.height;//42 + 10
+			NSLog(@"%s | self.stickerRecord.lastLocation: %@", __PRETTY_FUNCTION__, self.stickerRecord.lastLocation);
+			NSLog(@"%s | text: %@", __PRETTY_FUNCTION__, text);
+			if (labelSize.height == 0)
+				heightForRow = 0;
+			else
+				heightForRow = kHeightLastLocationWithoutLabel + labelSize.height;//42 + 10
 		}
 			break;
         case 4:
@@ -142,10 +147,8 @@ static double kHeightLastLocationWithoutLabel = 25.0;
                           delay:0
                         options:(UIViewAnimationOptionCurveEaseIn)
                      animations:^{
-						 
 						 //INFO: set in full screen
 						 self.mapView.frame = rect;
-						 
 						 
                      }
                      completion:^(BOOL finished1) {
@@ -179,15 +182,22 @@ static double kHeightLastLocationWithoutLabel = 25.0;
 	self.enableSwitch.on = NO;
 	self.enableSwitch.hidden = YES;
 	if (self.stickerRecord) {
+		
 		if ([self.stickerRecord.stickerConfiguration.activate boolValue])
 			self.activatedImage.backgroundColor = [UIColor greenColor];
 		else
 			self.activatedImage.backgroundColor = [UIColor redColor];
+		
 		self.nameLabel.text = self.stickerRecord.name;
+		
 		self.createdAtLabel.text = [ConventionTools getDiffTimeInStringFromDate:self.stickerRecord.createdAt];
+		
 		NSString *lastLocation = [self.stickerRecord.lastLocation stringByReplacingOccurrencesOfString:@"," withString:@"\n"];
 		self.updatedAtLabel.text = lastLocation;
+		
 		self.textLabel.text = self.stickerRecord.text;
+		
+		[self.mapView loadSticker:self.stickerRecord];
 		
 	}
 }
@@ -196,64 +206,24 @@ static double kHeightLastLocationWithoutLabel = 25.0;
 
 - (void)updateSticker {
 	
-	NSString *requestString = [NSString stringWithFormat:@"stickers/%@", self.stickerRecord.stickerId];
-	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:requestString];
-	
-	
-	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-		NSLog(@"Result: %@", JSON);
-		
-		NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, JSON);
+	[[AppDelegate appDelegate].stickerManager updateStickerRecordWithStickerRedord:self.stickerRecord success:^(NSMutableDictionary *JSON) {
+		NSLog(@"%s| JSON: %@", __PRETTY_FUNCTION__, JSON);
 		StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:JSON];
 		if (stickerRecord) {
 			self.stickerRecord = stickerRecord;
 			NSLog(@" %s| stickerRecord: %@", __PRETTY_FUNCTION__, stickerRecord);
 			[self updateView];
+			[self.refreshControl endRefreshing];
 		}
 		
-	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-		
+	} failure:^(NSURLRequest *request, NSError *error) {
+		[self.refreshControl endRefreshing];
 	}];
-	
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-	[operation start];
 }
 
-- (void)setupMap {
-	//NSArray *array = [LocationRecord findByAttribute:@"idSticker" withValue:self.stickerRecord.stickerId andOrderBy:@"updatedAt" ascending:NO];
-	
-	
-	//	NSLog(@"%s %@", __PRETTY_FUNCTION__, array);
-	//if ([array count] > 0) {
-	//[self.mapView.locationsRecordList addObjectsFromArray:array];
-	
-	[self.mapView loadSticker:self.stickerRecord];
-//	[self updateLocationForSticker:^(){
-		//[self.mapView loadSticker:self.stickerRecord];
-//	}];
-	
-	//[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
-	//	}
-	//	else {
-	//
-	//	}
-	
-	//[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
-	
-}
-
-- (void)updateLocationForSticker:(void (^)(void))block {
-	
-	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", self.stickerRecord.code];
-	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
-	
-	NSLog(@"%s | request: %@", __PRETTY_FUNCTION__, [request description]);
-	
-	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-		NSLog(@"Result: %@", JSON);
-		
-		//[self.mapView.locationsRecordList removeAllObjects];
+- (void)updateLocationRecords {
+	[[AppDelegate appDelegate].locationManager updateLocationRecordsForSticker:self.stickerRecord success:^(NSMutableDictionary *JSON) {
+		[self.refreshControl endRefreshing];
 		
 		for (NSDictionary *dic in JSON) {
 			NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, dic);
@@ -261,17 +231,14 @@ static double kHeightLastLocationWithoutLabel = 25.0;
 			NSLog(@" %s| locationRecord: %@", __PRETTY_FUNCTION__, locationRecord);
 		}
 		if ([JSON count] > 0) {
-			
-			[self setupMap];
-			//block();
+			[self.mapView loadSticker:self.stickerRecord];
 		}
-		
-	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-		block();
+
+	} failure:^(NSURLRequest *request, NSError *error, id JSON) {
+		[self.refreshControl endRefreshing];
 	}];
-	[operation start];
-	
 }
+
 
 #pragma mark - UITextViewDelegate
 
@@ -317,11 +284,11 @@ static double kHeightLastLocationWithoutLabel = 25.0;
 }
 
 - (void)refreshControlRequest {
-	[self updateSticker];
 	
-	[self updateLocationForSticker:^{
-		[self.refreshControl endRefreshing];
-	}];
+
+	
+	[self updateSticker];
+	[self updateLocationRecords];
 }
 
 //EditStickerConfigurationSegue

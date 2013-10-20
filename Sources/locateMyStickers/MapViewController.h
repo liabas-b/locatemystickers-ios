@@ -19,4 +19,5 @@
 @property (nonatomic, strong)StickerRecord *stickerRecord;
 //@property (nonatomic, strong)NSMutableArray *locationsRecordList;
 
+
 @end

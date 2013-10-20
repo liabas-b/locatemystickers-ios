@@ -37,7 +37,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *textLabel;
 
 - (IBAction)closeMapHandler:(id)sender;
-- (void)updateLocationForSticker:(void (^)(void))block;
+//- (void)updateLocationForSticker:(void (^)(void))block;
 //
 
 @property (strong, nonatomic) IBOutlet UITableViewCell *mapCell;

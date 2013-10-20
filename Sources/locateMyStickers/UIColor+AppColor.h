@@ -30,5 +30,6 @@
 + (UIColor*)buttonBackgroundColor;
 + (UIColor*)timelineBarColor;
 + (UIColor*)defaultFontColor;
++ (UIColor*)defaultSelectedFontColor;
 
 @end

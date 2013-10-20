@@ -43,7 +43,7 @@ static NSString *entityName = @"LocationRecord";
 			
 			
 			[locationRecord debug];
-			[[NSManagedObjectContext defaultContext] saveNestedContexts];
+//			[[NSManagedObjectContext defaultContext] saveNestedContexts];
 	
 //		} completion:^(BOOL success, NSError *error) {
 //			[[NSOperationQueue mainQueue] addOperationWithBlock:^{

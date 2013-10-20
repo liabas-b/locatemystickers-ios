@@ -11,6 +11,9 @@
 static const int MINIMUM_DELTA_METERS = 10.0;
 extern NSString* const keyPathMeasurementArray;
 
+@class LocationRecord;
+@class StickerRecord;
+
 @interface LocationManager : CLLocationManager <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSMutableArray* measurementArray;
@@ -22,5 +25,10 @@ extern NSString* const keyPathMeasurementArray;
 - (void)startWithStickerCode:(NSString *)code;
 - (void)stop;
 - (void)reset;
+
+- (void)addLocationRecordWithDictionary:(NSDictionary *)dictionary;
+- (void)addLocationRecord:(LocationRecord *)locationRecord;
+
+- (void)updateLocationRecordsForSticker:(StickerRecord *)stickerRecord success:(void (^)(NSMutableDictionary *JSON))success failure:(void (^)(NSURLRequest *request, NSError *error, id JSON))failure;
 
 @end

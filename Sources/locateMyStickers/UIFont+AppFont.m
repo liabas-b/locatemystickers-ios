@@ -17,6 +17,11 @@
     return [UIFont fontWithName:@"lato-regular" size:15.0];
 }
 
++ (UIFont*)defaultSelectedFont
+{
+    return [UIFont fontWithName:@"lato-light" size:17.0];
+}
+
 + (UIFont*)lightFont
 {
     return [UIFont fontWithName:@"lato-hairline" size:15.0];

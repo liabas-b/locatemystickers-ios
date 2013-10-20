@@ -13,6 +13,7 @@
 //INFO: Global
 
 + (UIFont*)defaultFont;
++ (UIFont*)defaultSelectedFont;
 + (UIFont*)lightFont;
 + (UIFont*)mediumFont;
 + (UIFont*)navBarFont;

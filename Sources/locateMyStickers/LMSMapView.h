@@ -14,12 +14,14 @@
 @class StickerRecord;
 
 typedef enum {
-	LMSMapBoundary,
-    LMSMapOverlay,
-    LMSMapPins,
-	LMSMapHistory,
-    LMSMapCharacterLocation,
-    LMSMapRoute
+	LMSMapBoundary = 1,
+    LMSMapOverlay = 2,
+    LMSMapPins = 3,
+	LMSMapHistory = 4,
+    LMSMapCharacterLocation = 5,
+    LMSMapRoute = 6,
+	LMSMapLastLocation = 7,
+	LMSMapLive = 8
 } LMSMapOption;
 
 @interface LMSMapView : MKMapView <MKMapViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
@@ -43,5 +45,13 @@ typedef enum {
 
 - (void)loadStickerList:(NSArray *)stickerList;
 - (void)loadSticker:(StickerRecord *)stickerRecord;
+
+@property (strong, nonatomic) IBOutlet UIButton *liveToogleButton;
+@property (strong, nonatomic) IBOutlet UIButton *historyToogleButton;
+@property (strong, nonatomic) IBOutlet UIButton *lastLocationToogleButton;
+
+- (IBAction)liveButtonHandler:(id)sender;
+- (IBAction)historyButtonHandler:(id)sender;
+- (IBAction)lastLocationButtonHandler:(id)sender;
 
 @end

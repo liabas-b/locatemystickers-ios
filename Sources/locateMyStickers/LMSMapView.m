@@ -23,6 +23,9 @@
 #import "AFJSONRequestOperation.h"
 #import "LocationRecord+Manager.h"
 
+#import "UIFont+AppFont.h"
+#import "UIColor+AppColor.h"
+
 @interface LMSMapView ()
 
 @property (nonatomic, strong) NSMutableArray *selectedOptions;
@@ -30,6 +33,8 @@
 @property (nonatomic, strong) NSIndexPath *currentIndexPath;
 
 @end
+
+static double kHeightStickerSelectionCollectionView = 60.0;
 
 @implementation LMSMapView
 
@@ -51,23 +56,57 @@
 	self.delegate = self;
 	[self setShowsUserLocation:YES];
 	
-	[self.selectedOptions addObject:[NSNumber numberWithInt:LMSMapRoute]];
-	[self.selectedOptions addObject:[NSNumber numberWithInt:LMSMapPins]];
-
-	//
+	[self.selectedOptions addObject:@(LMSMapHistory)];
+	[self.selectedOptions addObject:@(LMSMapLastLocation)];
 	
+	[self configureView];
+}
+
+- (void)configureView {
 	self.closeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	[self.closeButton addTarget:self
-						 action:@selector(aMethod:)
+						 action:@selector(closeMapButtonHandler:)
 			   forControlEvents:UIControlEventTouchDown];
 	[self.closeButton setTitle:@"Close" forState:UIControlStateNormal];
 	self.closeButton.frame = CGRectMake(10.0, 10.0, 40.0, 30.0);
 	self.closeButton.alpha = 0;
 	self.closeButton.tintColor = [UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0];
 	
-	
-	
 	[self addSubview:self.closeButton];
+	
+	[self updateToolBar];
+}
+
+- (void)updateToolBar {
+	[self.liveToogleButton setSelected:NO];
+	[self.historyToogleButton setSelected:NO];
+	[self.lastLocationToogleButton setSelected:NO];
+	
+	NSLog(@"%s | self.selectedOptions: %@", __PRETTY_FUNCTION__, self.selectedOptions);
+	
+	for (NSNumber *mapOption in self.selectedOptions) {
+		NSLog(@"%s | mapOption: %@", __PRETTY_FUNCTION__, mapOption);
+		switch ([mapOption intValue]) {
+				
+			case LMSMapLive:
+			{
+				[self.liveToogleButton setSelected:YES];
+			}
+				break;
+			case LMSMapLastLocation:
+			{
+				[self.lastLocationToogleButton setSelected:YES];
+			}
+				break;
+			case LMSMapHistory:
+			{
+				[self.historyToogleButton setSelected:YES];
+			}
+				break;
+			default:
+				break;
+		}
+	}
 }
 
 - (void)addCloseButton {
@@ -77,9 +116,10 @@
                         options:(UIViewAnimationOptionCurveEaseIn)
                      animations:^{
 						 self.closeButton.alpha = 1;
+						 self.closeButton.hidden = NO;
                      }
                      completion:^(BOOL finished1) {
-						 self.closeButton.hidden = NO;
+						 
 					 }];
 }
 
@@ -90,13 +130,14 @@
                         options:(UIViewAnimationOptionCurveEaseIn)
                      animations:^{
 						 self.closeButton.alpha = 0;
+						 self.closeButton.hidden = YES;
+						 
                      }
                      completion:^(BOOL finished1) {
-						 self.closeButton.hidden = YES;
 					 }];
 }
 
-- (void)aMethod:(UIButton*)button {
+- (void)closeMapButtonHandler:(UIButton*)button {
 	if ([self.mapViewDelegate respondsToSelector:@selector(closeMapButtonHandler)]) {
 		[self removeCloseButton];
 		[self.mapViewDelegate closeMapButtonHandler];
@@ -187,7 +228,8 @@
 	else {
 		//TODO: update location list
 		self.currentStickerRecord = stickerRecord;
-		[self updateLocationForCurrentSticker];
+		[self updateLocationRecords];
+		//		[self updateLocationForCurrentSticker];
 	}
 	
 }
@@ -204,6 +246,8 @@
 			[locationRecord debug];
 			
 			LMSAnnotation *annotation = [[LMSAnnotation alloc] init];
+			
+			NSLog(@"%s | lat: %@ - long: %@", __PRETTY_FUNCTION__, locationRecord.latitude, locationRecord.longitude);
 			
 			annotation.coordinate = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
 			annotation.title = [NSString stringWithFormat:@"lat: %@ - long: %@", locationRecord.latitude, locationRecord.longitude];
@@ -228,15 +272,28 @@
 	
 	
 	if (firstLocationRecord && lastLocationRecord) {
-		[self initRegionWithStartLocationRecord:firstLocationRecord andEndLocationRecord:lastLocationRecord];
+		if (!([firstLocationRecord.latitude isEqual:lastLocationRecord.latitude] && [firstLocationRecord.longitude isEqual:lastLocationRecord.latitude]))
+		{
+			[self initRegionWithStartLocationRecord:firstLocationRecord andEndLocationRecord:lastLocationRecord];
+		}
 	}
 	NSInteger pointsCount = [self.locationsRecordList count];
+	LocationRecord *savLocationRecord = nil;
 	
     CLLocationCoordinate2D pointsToUse[pointsCount];
 	int i = 0;
-	for (LocationRecord *locationRecord in self.locationsRecordList) {
+	for (LocationRecord *locationRecord in locationsRecordList) {
 		[locationRecord debug];
-		pointsToUse[i++] = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
+		/*		if (savLocationRecord == nil) {
+		 savLocationRecord = locationRecord;
+		 pointsToUse[i++] = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
+		 }
+		 else {
+		 */
+		if (!([locationRecord.latitude isEqual:savLocationRecord.latitude] && [locationRecord.longitude isEqual:savLocationRecord.latitude]))
+			pointsToUse[i++] = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
+		savLocationRecord = locationRecord;
+		//}
 	}
     
 	if (i > 0) {
@@ -298,7 +355,6 @@
 	
 	LocationRecord *firstLocationRecord = self.locationsRecordList[0];
 	LocationRecord *lastLocationRecord = [self.locationsRecordList lastObject];
-	
 	
 	
 	if (firstLocationRecord && lastLocationRecord) {
@@ -364,12 +420,35 @@
 		[self removeAnnotations:self.annotations];
 		[self removeOverlays:self.overlays];
 		self.stickerSelectionCollectionView.delegate = nil;
+		
 	}
-	
 	[self zoomToCurrentLocation:nil];
 	
-	[self addLMSPinForSticker:stickerRecord];
-	[self addRouteForSticker:stickerRecord];
+	//	[self zoomToLocation:stickerRecord.lastLocation];
+	
+	
+	for (NSNumber *mapOption in self.selectedOptions) {
+		
+		switch ([mapOption intValue]) {
+			case LMSMapLive:
+			{
+				
+			}
+				break;
+			case LMSMapLastLocation:
+			{
+				[self addLMSPinForSticker:stickerRecord];
+			}
+				break;
+			case LMSMapHistory:
+			{
+				[self addRouteForSticker:stickerRecord];
+			}
+				break;
+			default:
+				break;
+		}
+	}
 }
 
 - (void)loadStickerList:(NSArray *)stickerList {
@@ -377,7 +456,6 @@
 	[self removeAnnotations:self.annotations];
     [self removeOverlays:self.overlays];
 	
-//	[self.stickerSelectionCollectionView configureWithStickerList:stickerList];
 	self.stickerRecordList = [[NSMutableArray alloc] initWithArray:stickerList];
 	
 	NSLog(@"%s | %@", __PRETTY_FUNCTION__, stickerList);
@@ -385,50 +463,80 @@
 	
 	[self.stickerSelectionCollectionView reloadData];
 	
+	[self selectSticker];
+	
+	[self zoomToCurrentLocation:nil];
+	
 	for (StickerRecord *stickerRecord in stickerList) {
 		[self loadSticker:stickerRecord];
 	}
 }
 
+- (void)selectSticker {
+	if ([self.stickerRecordList count] > 1) {
+		
+		//
+		
+		//		[self.stickerSelectionCollectionView reloadData];
+		
+		//		NSIndexPath *selection = [NSIndexPath indexPathForItem:1 inSection:0];
+		//		[self.stickerSelectionCollectionView selectItemAtIndexPath:selection animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+		//
+		//
+		
+		[_stickerSelectionCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+		
+		//		LMSMapCollectionViewCell *selectedMapCollectionViewCell = (LMSMapCollectionViewCell *)[self collectionView:self.stickerSelectionCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+		
+		
+		//		[selectedMapCollectionViewCell setSelected:YES];
+		//		[self collectionView:self.stickerSelectionCollectionView didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+		
+	}
+	else {
+		[self collectionView:self.stickerSelectionCollectionView didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+		
+		[self.stickerSelectionCollectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+		[_stickerSelectionCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+	}
+}
+
 - (void)loadSelectedOptions {
 	NSLog(@"%s", __PRETTY_FUNCTION__);
-	
-    [self removeAnnotations:self.annotations];
-    [self removeOverlays:self.overlays];
-	
-	//	_stickerSelectionCollectionView con
-	
-	//
-	[_stickerSelectionCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-	//
-	if ([self.locationsRecordList count] > 0) {
-		for (NSNumber *option in self.selectedOptions) {
-			switch ([option integerValue]) {
-					
-				case LMSMapOverlay:
-					[self addOverlay];
-					break;
-				case LMSMapPins:
-					[self addLMSPinsForStickerList];
-					break;
-				case LMSMapRoute:
-					[self addRouteForStickerList];
-					break;
-				case LMSMapHistory:
-					[self addHistoryForStickerList];
-					break;
-				case LMSMapBoundary:
-					[self addBoundaryForStickerList];
-					break;
-				case LMSMapCharacterLocation:
-					[self addCharacterLocationForStickerList];
-					break;
-				default:
-					break;
-			}
-		}
-	}
-	
+	/*
+	 [self removeAnnotations:self.annotations];
+	 [self removeOverlays:self.overlays];
+	 
+	 [_stickerSelectionCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+	 //
+	 if ([self.locationsRecordList count] > 0) {
+	 for (NSNumber *option in self.selectedOptions) {
+	 switch ([option integerValue]) {
+	 
+	 case LMSMapOverlay:
+	 [self addOverlay];
+	 break;
+	 case LMSMapPins:
+	 [self addLMSPinsForStickerList];
+	 break;
+	 case LMSMapRoute:
+	 [self addRouteForStickerList];
+	 break;
+	 case LMSMapHistory:
+	 [self addHistoryForStickerList];
+	 break;
+	 case LMSMapBoundary:
+	 [self addBoundaryForStickerList];
+	 break;
+	 case LMSMapCharacterLocation:
+	 [self addCharacterLocationForStickerList];
+	 break;
+	 default:
+	 break;
+	 }
+	 }
+	 }
+	 */
 }
 
 - (IBAction)mapTypeChanged:(id)sender {
@@ -456,9 +564,9 @@
 	LMSMapCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StickerCollection" forIndexPath:indexPath];
 	StickerRecord *stickerRecord = [self.stickerRecordList objectAtIndex:indexPath.row];
 	
-	
 	cell.titleLabel.text = [NSString stringWithFormat:@"%@", stickerRecord.name];
-	
+	cell.defaultColor = [UIColor wheatColor];
+	cell.selectedColor = [UIColor colorFromHexString:stickerRecord.color];
 	return cell;
 }
 
@@ -466,39 +574,35 @@
 	NSLog(@"%s | indexPath.row: %d", __PRETTY_FUNCTION__, indexPath.row);
 	_currentIndexPath = indexPath;
 	[collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-
+	
 	StickerRecord *stickerRecord = [self.stickerRecordList objectAtIndex:indexPath.row];
 	
 	[self loadSticker:stickerRecord];
 }
-/*
- -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
- {
- //    UIImage *image;
- //    int row = [indexPath row];
- 
- //	UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StickerCollection" forIndexPath:indexPath];
- //	cell.backgroundColor = [UIColor darkGrayColor];
- //    image = [UIImage imageNamed:_carImages[row]];
- 
- CGSize size;
- BOOL isSelected = [self.currentIndexPath isEqual:indexPath];
- 
- if (isSelected == YES) {
- size = CGSizeMake(90.0, 60.0);
- }
- else {
- size = CGSizeMake(70.0, 40.0);
- }
- return size;//cell.frame.size;//image.size;
- }
- */
+
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     // TODO: Deselect item
 	
+	//StickerRecord *stickerRecord = [self.stickerRecordList objectAtIndex:indexPath.row];
+	
+	//[self loadSticker:stickerRecord];
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
 	StickerRecord *stickerRecord = [self.stickerRecordList objectAtIndex:indexPath.row];
 	
-	[self loadSticker:stickerRecord];
+	CGSize namelabelSize = [stickerRecord.name sizeWithFont:[UIFont defaultFont] constrainedToSize:CGSizeMake(20000, kHeightStickerSelectionCollectionView) lineBreakMode:NSLineBreakByWordWrapping];
+	
+	NSLog(@"%s | %f %f", __PRETTY_FUNCTION__, namelabelSize.width, namelabelSize.height);
+	if (namelabelSize.width == 0) {
+		//WARNING: may be do more job
+	}
+	else {
+		namelabelSize.height = kHeightStickerSelectionCollectionView;
+		namelabelSize.width += 40.0;
+	}
+	return namelabelSize;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -512,35 +616,31 @@
 //
 
 
-
-- (void)updateLocationForCurrentSticker {
+- (void)updateLocationRecords {
+	
 	if (self.currentStickerRecord == nil)
 		return;
 	
-	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", self.currentStickerRecord.code];
-	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
-	
-	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+	[[AppDelegate appDelegate].locationManager updateLocationRecordsForSticker:self.currentStickerRecord success:^(NSMutableDictionary *JSON) {
 		
-		NSLog(@"%s | Request: %@", __PRETTY_FUNCTION__, [request description]);
-		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
-		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
 		
 		for (NSDictionary *dic in JSON) {
 			NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, dic);
 			LocationRecord *locationRecord = [LocationRecord addUpdateWithDictionary:dic];
 			NSLog(@" %s| locationRecord: %@", __PRETTY_FUNCTION__, locationRecord);
 		}
-		[self loadSticker:self.currentStickerRecord];
+		if ([JSON count] > 0) {
+			[self loadSticker:self.currentStickerRecord];
+		}
 		
-	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+	} failure:^(NSURLRequest *request, NSError *error, id JSON) {
 		NSLog(@"%s | Request: %@", __PRETTY_FUNCTION__, [request description]);
-		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
+		//		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
 		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
+		
+		
 	}];
-	[operation start];
 }
-
 
 - (IBAction)zoomToCurrentLocation:(UIBarButtonItem *)sender {
     float spanX = 0.00725;
@@ -559,7 +659,7 @@
     float spanY = 0.00725;
     
     MKCoordinateRegion region;
-    region.center.latitude = [locationRecord.latitude doubleValue]; //self.userLocation.coordinate.latitude;
+    region.center.latitude = [locationRecord.latitude doubleValue];
     region.center.longitude = [locationRecord.longitude doubleValue];
     region.span.latitudeDelta = spanX;
     region.span.longitudeDelta = spanY;
@@ -568,13 +668,44 @@
 
 
 
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
+- (IBAction)liveButtonHandler:(id)sender {
+	
+	NSLog(@"%s | self.selectedOptions: %@", __PRETTY_FUNCTION__, self.selectedOptions);
+	
+	if ([self.selectedOptions containsObject:@(LMSMapLive)]) {
+		[self.selectedOptions removeObject:@(LMSMapLive)];
+	}
+	else {
+		[self.selectedOptions addObject:@(LMSMapLive)];
+	}
+	[self updateToolBar];
+	[self loadSticker:self.currentStickerRecord];
+}
+
+- (IBAction)historyButtonHandler:(id)sender {
+	NSLog(@"%s | self.selectedOptions: %@", __PRETTY_FUNCTION__, self.selectedOptions);
+	
+	if ([self.selectedOptions containsObject:@(LMSMapHistory)]) {
+		[self.selectedOptions removeObject:@(LMSMapHistory)];
+	}
+	else {
+		[self.selectedOptions addObject:@(LMSMapHistory)];
+	}
+	[self updateToolBar];
+	[self loadSticker:self.currentStickerRecord];
+}
+
+- (IBAction)lastLocationButtonHandler:(id)sender {
+	NSLog(@"%s | self.selectedOptions: %@", __PRETTY_FUNCTION__, self.selectedOptions);
+	if ([self.selectedOptions containsObject:@(LMSMapLastLocation)]) {
+		[self.selectedOptions removeObject:@(LMSMapLastLocation)];
+	}
+	else {
+		[self.selectedOptions addObject:@(LMSMapLastLocation)];
+	}
+	
+	[self updateToolBar];
+	[self loadSticker:self.currentStickerRecord];
+}
 
 @end

@@ -258,22 +258,63 @@
 	[self removeStickerRecordWithCode:stickerRecord.code != nil ? stickerRecord.code : [NSString stringWithFormat:@"%@", stickerRecord.stickerId]];
 }
 
+
+- (void)updateStickerRecordWithStickerRedord:(StickerRecord *)stickerRecord success:(void (^)(NSMutableDictionary *JSON))success failure:(void (^)(NSURLRequest *request, NSError *error))failure {
+	NSString *requestString = [NSString stringWithFormat:@"stickers/%@", stickerRecord.stickerId];
+	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:requestString];
+	
+	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		success(JSON);
+	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		failure(request, error);
+	}];
+	
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+	[operation start];
+}
+
 //
 
 #pragma mark - Update Sticker Configuration
 
 
-- (void)getStickerConfigurationRecordWithStickerCode:(NSString *)stickerCode success:(void (^)(NSMutableDictionary *JSON))success failure:(void (^)(NSURLRequest *request, NSError *error))failure {
-
-	NSString *route = [NSString stringWithFormat:@"stickers/%@/sticker_configurations", stickerCode];	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
+- (void)getStickerConfigurationRecordWithStickerRecord:(StickerRecord *)stickerRecord success:(void (^)(NSMutableDictionary *JSON))success failure:(void (^)(NSURLRequest *request, NSError *error))failure {
+	
+	NSString *route = [NSString stringWithFormat:@"stickers/%@/sticker_configurations", stickerRecord.stickerId];
+	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
 	
 	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		
 		NSLog(@"Result: %@", JSON);
 		NSMutableArray *array = (NSMutableArray *)JSON;
 		
 		success([array firstObject]);
 		
 	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		failure(request, error);
+	}];
+	[operation start];
+}
+
+- (void)getStickerConfigurationRecordWithStickerCode:(NSString *)stickerCode success:(void (^)(NSMutableDictionary *JSON))success failure:(void (^)(NSURLRequest *request, NSError *error))failure {
+
+	NSString *route = [NSString stringWithFormat:@"stickers/%@/sticker_configurations", stickerCode];
+	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
+	
+	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		
+		NSLog(@"Result: %@", JSON);
+		NSMutableArray *array = (NSMutableArray *)JSON;
+		
+		success([array firstObject]);
+		
+	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 		failure(request, error);
 	}];
 	[operation start];

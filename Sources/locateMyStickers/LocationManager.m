@@ -13,6 +13,8 @@
 #import "LocationRecord.h"
 #import "LocationRecord+Manager.h"
 
+#import "StickerRecord.h"
+
 #import "NSString+QueryString.h"
 #import "NSDictionary+QueryString.h"
 
@@ -146,9 +148,6 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 	
 	locationRecord.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
 	locationRecord.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
-	locationRecord.createdAt = [NSDate date];
-	locationRecord.updatedAt = [NSDate date];
-
 	
 	[[NSManagedObjectContext defaultContext] saveNestedContexts];
 	
@@ -162,6 +161,9 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 	NSString *stickerIdentifier = [AppDelegate identifierForCurrentUser];
 	
 	NSMutableURLRequest *request = [AppDelegate requestForCurrentStickersHost];
+	
+	
+	NSLog(@"%s | stickerIdentifier: %@", __PRETTY_FUNCTION__, stickerIdentifier);
 	
 	[request setHTTPMethod:@"POST"];
 	
@@ -245,38 +247,38 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 		
 		NSLog(@"doing Update");
 		[self setupLocationRecord:location];
-
+		
 		
 		NSString *message = [NSString stringWithFormat:@"New location: latitude: %f - longitude:%f", location.coordinate.latitude, location.coordinate.longitude];
 		[self notifyBackgroundWithMessage:message];
 		NSLog(@"end Update");
-
+		
 		/*
-		NSURLResponse *response = nil;
-		NSError  *error = nil;
-		
-		//INFO: test
-
-		int stickerId = [AppDelegate appDelegate].stickerManager ;
-		
-		
-		NSMutableDictionary *locationDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-												   @"3", @"id",
-												   @"42", @"location[latitude]",
-												   @"42", @"location[longitude]",
-												   nil];//[NSString stringWithFormat:@"%d", self.trackingStickerId]
-		
-		NSString *route = [NSString stringWithFormat:@"stickers/%d/locations", stickerId];
-		NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
-		
-		[request setHTTPMethod:@"POST"];
-		[request setHTTPBody:[[locationDictionary stringWithFormEncodedComponents] dataUsingEncoding:NSUTF8StringEncoding]];
-		
-		NSData * responseData = [NSURLConnection sendSynchronousRequest: request returningResponse: &response error: &error];
-		
-		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:responseData];
-		NSLog(@"dataDictionary: %@", dataDictionary);
-		*/
+		 NSURLResponse *response = nil;
+		 NSError  *error = nil;
+		 
+		 //INFO: test
+		 
+		 int stickerId = [AppDelegate appDelegate].stickerManager ;
+		 
+		 
+		 NSMutableDictionary *locationDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+		 @"3", @"id",
+		 @"42", @"location[latitude]",
+		 @"42", @"location[longitude]",
+		 nil];//[NSString stringWithFormat:@"%d", self.trackingStickerId]
+		 
+		 NSString *route = [NSString stringWithFormat:@"stickers/%d/locations", stickerId];
+		 NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
+		 
+		 [request setHTTPMethod:@"POST"];
+		 [request setHTTPBody:[[locationDictionary stringWithFormEncodedComponents] dataUsingEncoding:NSUTF8StringEncoding]];
+		 
+		 NSData * responseData = [NSURLConnection sendSynchronousRequest: request returningResponse: &response error: &error];
+		 
+		 NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:responseData];
+		 NSLog(@"dataDictionary: %@", dataDictionary);
+		 */
 		//INFO: making an alert
 		
 		
@@ -290,7 +292,7 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 - (void)beginBackgroundUpdateTask
 {
     self.backgroundUpdateTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-//		[self doUpdate];
+		//		[self doUpdate];
 		[self notifyBackgroundWithMessage:@"FUCKED"];
         [self endBackgroundUpdateTask];
     }];
@@ -315,5 +317,32 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
     localNotif.applicationIconBadgeNumber = 0;
     [[UIApplication sharedApplication]presentLocalNotificationNow:localNotif];
 }
+
+- (void)addLocationRecordWithDictionary:(NSDictionary *)dictionary {
+	
+}
+
+- (void)addLocationRecord:(LocationRecord *)locationRecord {
+	
+}
+
+- (void)updateLocationRecordsForSticker:(StickerRecord *)stickerRecord success:(void (^)(NSMutableDictionary *JSON))success failure:(void (^)(NSURLRequest *request, NSError *error, id JSON))failure {
+	
+	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", stickerRecord.stickerId];
+	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
+	
+	NSLog(@"%s | request: %@", __PRETTY_FUNCTION__, [request description]);
+	
+	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
+		success(JSON);
+		
+	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		failure(request, error, JSON);
+	}];
+	[operation start];
+	
+}
+
 
 @end

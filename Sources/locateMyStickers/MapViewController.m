@@ -50,7 +50,7 @@
 	
 	[self configureMenuLeftButtonWithBackButon:YES];
 	self.title = @"Map";
-	
+	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

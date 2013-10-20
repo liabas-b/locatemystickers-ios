@@ -7,6 +7,8 @@
 //
 
 #import "LMSMapCollectionViewCell.h"
+#import "UIFont+AppFont.h"
+#import "UIColor+AppColor.h"
 
 @implementation LMSMapCollectionViewCell
 
@@ -19,13 +21,58 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	
+	self.titleLabel.font = [UIFont defaultFont];
+	self.titleLabel.textColor = [UIColor defaultFontColor];
 }
-*/
+
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
+	
+    if (selected) {
+		
+		[UIView animateWithDuration:0.8
+							  delay:0
+							options:(UIViewAnimationOptionAllowUserInteraction)
+						 animations:^{
+							 self.titleLabel.font = [UIFont defaultSelectedFont];
+							 self.titleLabel.textColor = [UIColor defaultSelectedFontColor];
+							 self.selectedImageView.hidden = NO;
+							 
+							 self.backgroundColor = self.selectedColor;
+						 }
+						 completion:^(BOOL finished){
+							 
+						 }];
+    } else {
+
+		[UIView animateWithDuration:0.8
+							  delay:0
+							options:(UIViewAnimationOptionAllowUserInteraction)
+						 animations:^{
+							 self.titleLabel.font = [UIFont defaultFont];
+							 self.titleLabel.textColor = [UIColor defaultFontColor];
+							 self.selectedImageView.hidden = YES;
+							 
+							 self.backgroundColor = self.defaultColor;
+							 
+							 [self layoutIfNeeded];
+						 }
+						 completion:^(BOOL finished){
+							 
+						 }];
+    }
+}
+
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
 
 @end
