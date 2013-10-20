@@ -50,17 +50,19 @@
 	
 	[self configureMenuLeftButtonWithBackButon:YES];
 	self.title = @"Map";
-	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+	self.mapView.isDisplayingStickerList = YES;
+	
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	//TODO: Make it works
-	//self.stickerRecord = [StickerRecord findFirstByAttribute:@"code" withValue:[AppDelegate identifierForCurrentUser]];
-
 //	[self performSelectorInBackground:@selector(setupMap) withObject:nil];
 	[self setupMap];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 - (void)setupMap {
@@ -68,58 +70,26 @@
 	[context setParentContext:[NSManagedObjectContext defaultContext]];
 	NSManagedObjectContext *unused __attribute__((unused)) = [NSManagedObjectContext MR_contextWithParent:[NSManagedObjectContext MR_defaultContext]];
 	
-	
-	NSArray *stickerRecordList = [StickerRecord findAllSortedBy:@"createdAt" ascending:NO];
-	
-	self.stickerRecord = [stickerRecordList firstObject];
-//	[self updateLocationForSticker];
-	
-	
-	NSLog(@"%s | stickerRecordList: %@", __PRETTY_FUNCTION__, stickerRecordList);
-	self.mapView.isDisplayingStickerList = YES;
-	[self.mapView loadStickerList:stickerRecordList];
-	/*
-	NSArray *array = [LocationRecord findAllSortedBy:@"updatedAt" ascending:NO inContext:[NSManagedObjectContext MR_contextWithParent:[NSManagedObjectContext MR_defaultContext]]];
-	NSLog(@"%s %@", __PRETTY_FUNCTION__, array);
-	if ([array count] > 0) {
-		self.mapView.locationsRecordList = [[NSMutableArray alloc] initWithArray:array];
-		
-		[self.mapView performSelectorOnMainThread:@selector(loadSelectedOptions) withObject:nil waitUntilDone:YES];
-	}
-	else {
-		[self updateLocationForSticker];
-	}
-	 */
-}
-/*
-- (void)updateLocationForSticker {
-	if (self.stickerRecord == nil)
-		return;
-	
-	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", self.stickerRecord.code];
-	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
-	
-	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 
-		NSLog(@"%s | Request: %@", __PRETTY_FUNCTION__, [request description]);
-		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
+	//INFO: update sticker list
+	[[AppDelegate appDelegate].stickerManager getStickersRecordWithSuccess:^(NSMutableDictionary *JSON) {
 		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
-
-		for (NSDictionary *dic in JSON) {
-			NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, dic);
-			LocationRecord *locationRecord = [LocationRecord addUpdateWithDictionary:dic];
-			NSLog(@" %s| locationRecord: %@", __PRETTY_FUNCTION__, locationRecord);
-		}
-		[self.mapView loadSticker:self.stickerRecord];
 		
-	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-		NSLog(@"%s | Request: %@", __PRETTY_FUNCTION__, [request description]);
-		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
+		for (NSDictionary *item in JSON) {
+			StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:item];
+		}
+		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		
+		[self loadStickerList];
+
+	} failure:^(NSURLRequest *request, NSError *erro, id JSON) {
+		NSLog(@"%s | request: %@", __PRETTY_FUNCTION__, [request description]);
+		NSLog(@"%s | erro: %@", __PRETTY_FUNCTION__, [erro description]);
 		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
 	}];
-	[operation start];
+	
+	[self loadStickerList];
 }
-*/
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
@@ -139,61 +109,15 @@
 											andUnselected:@"world_white"];
 }
 
-#pragma mark - data parsing
-/*
-- (void)parseData
-{
-	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", self.stickerRecord.stickerId];
-	NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
+- (void)loadStickerList {
+	NSArray *stickerRecordList = [StickerRecord findAllSortedBy:@"createdAt" ascending:NO];
+	NSLog(@"%s | stickerRecordList: %@", __PRETTY_FUNCTION__, stickerRecordList);
 	
-	NSLog(@"%s request: %@", __PRETTY_FUNCTION__, [request description]);
-	
-	[request setHTTPMethod:@"GET"];
-	
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *res, NSData *data, NSError *err){
-		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-		[self didReceiveData:data];
-	}];
+	[self.mapView loadStickerList:stickerRecordList];
 }
 
-- (void)didReceiveData:(NSData *)data {
-	//INFO: debug
-	
-	if (data) {
-		NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		NSLog(@"%s ------ <%@>", __PRETTY_FUNCTION__, dataString);
-	}
-	else
-		NSLog(@"BAD");
-	
-	
-	if (data) {
-		//TODO: save file
-		if (self.mapView.locationsRecordList) {
-			//[self.mapView.locationsRecordList removeAllObjects];
-		}
-		
-		self.mapView.locationsRecordList = [[NSMutableArray alloc] init];
-		
-		NSDictionary *dataDictionary = [JsonTools getDictionaryFromData:data];
-		
-		//NSLog(@"%@", [dataDictionary objectForKey:@"data"]);
-		
-		for (NSDictionary *item in [dataDictionary objectForKey:@"data"]) {
-			//NSLog(@"%@", item);
-			LocationRecord *locationRecord = [LocationRecord addUpdateWithDictionary:item];
-			if (locationRecord)
-				[self.mapView.locationsRecordList addObject:locationRecord];
-		}
-		//TODO: update map with locationsRecordList
-		
-#warning updating LOCATIONS
-		//[self.mapView updateLocations];
-		[self.mapView loadSelectedOptions];
-	}
-}
-*/
+#pragma mark - data parsing
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([keyPath isEqualToString:keyPathMeasurementArray]) {

@@ -38,6 +38,7 @@ static NSString* const keyRemoveStickerConfigurationRecord = @"removeStickerConf
 - (void)removeStickerRecordWithCode:(NSString *)code;
 - (void)removeStickerRecord:(StickerRecord *)stickerRecord;
 - (void)updateStickerRecordWithStickerRedord:(StickerRecord *)stickerRecord success:(void (^)(NSMutableDictionary *JSON))success failure:(void (^)(NSURLRequest *request, NSError *error))failure;
+- (void)getStickersRecordWithSuccess:(void (^)(NSMutableDictionary *JSON))success failure:(void (^)(NSURLRequest *request, NSError *erro, id JSON))failure;
 
 //INFO: configuration
 - (void)getStickerConfigurationRecordWithStickerRecord:(StickerRecord *)stickerRecord success:(void (^)(NSMutableDictionary *JSON))success failure:(void (^)(NSURLRequest *request, NSError *error))failure;

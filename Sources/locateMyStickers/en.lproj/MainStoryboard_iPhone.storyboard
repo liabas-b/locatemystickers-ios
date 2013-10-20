@@ -488,7 +488,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="revers_triangle_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="0AQ-GD-e0c">
-                                                    <rect key="frame" x="72" y="58" width="16" height="12"/>
+                                                    <rect key="frame" x="72" y="42" width="16" height="12"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -497,7 +497,7 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="zNp-lu-G0c" firstAttribute="top" secondItem="ELq-zS-iEw" secondAttribute="top" id="Gak-qF-m8M"/>
-                                            <constraint firstItem="0AQ-GD-e0c" firstAttribute="top" secondItem="ELq-zS-iEw" secondAttribute="top" constant="58" id="P9C-Nh-tBa"/>
+                                            <constraint firstItem="0AQ-GD-e0c" firstAttribute="top" secondItem="ELq-zS-iEw" secondAttribute="top" constant="42" id="P9C-Nh-tBa"/>
                                             <constraint firstItem="0AQ-GD-e0c" firstAttribute="centerX" secondItem="zNp-lu-G0c" secondAttribute="centerX" id="VJL-DS-mt3"/>
                                             <constraint firstItem="zNp-lu-G0c" firstAttribute="leading" secondItem="ELq-zS-iEw" secondAttribute="leading" id="ftm-w2-Yyk"/>
                                             <constraint firstAttribute="bottom" secondItem="zNp-lu-G0c" secondAttribute="bottom" id="o3J-4b-ljh"/>

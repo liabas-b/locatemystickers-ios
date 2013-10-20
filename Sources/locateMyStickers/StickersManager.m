@@ -265,10 +265,32 @@
 	
 	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
 		success(JSON);
 	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
 		failure(request, error);
+	}];
+	
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+	[operation start];
+}
+
+- (void)getStickersRecordWithSuccess:(void (^)(NSMutableDictionary *JSON))success failure:(void (^)(NSURLRequest *request, NSError *erro, id JSON))failure {
+	
+	NSString *requestString = [NSString stringWithFormat:@"stickers"];
+	NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:requestString];
+	[request setHTTPMethod:@"GET"];
+	
+	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
+		success(JSON);
+	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
+		failure(request, error, JSON);
 	}];
 	
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -288,6 +310,7 @@
 	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 		
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
 		NSLog(@"Result: %@", JSON);
 		NSMutableArray *array = (NSMutableArray *)JSON;
 		
@@ -295,6 +318,7 @@
 		
 	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
 		failure(request, error);
 	}];
 	[operation start];
@@ -307,7 +331,8 @@
 	
 	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-		
+
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
 		NSLog(@"Result: %@", JSON);
 		NSMutableArray *array = (NSMutableArray *)JSON;
 		
@@ -315,6 +340,7 @@
 		
 	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
 		failure(request, error);
 	}];
 	[operation start];

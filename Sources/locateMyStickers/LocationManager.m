@@ -329,15 +329,19 @@ NSString* const keyPathMeasurementArray = @"measurementArray";
 - (void)updateLocationRecordsForSticker:(StickerRecord *)stickerRecord success:(void (^)(NSMutableDictionary *JSON))success failure:(void (^)(NSURLRequest *request, NSError *error, id JSON))failure {
 	
 	NSString *route = [NSString stringWithFormat:@"stickers/%@/locations", stickerRecord.stickerId];
-	NSURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
+	NSMutableURLRequest *request = [AppDelegate requestForCurrentUserWithRoute:route];
+	
+//	[request setHTTPMethod:@"POST"];
 	
 	NSLog(@"%s | request: %@", __PRETTY_FUNCTION__, [request description]);
 	
 	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
 		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
 		success(JSON);
 		
 	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
 		failure(request, error, JSON);
 	}];
 	[operation start];

@@ -456,6 +456,8 @@ static double kHeightStickerSelectionCollectionView = 60.0;
 	[self removeAnnotations:self.annotations];
     [self removeOverlays:self.overlays];
 	
+	[self.stickerRecordList removeAllObjects];
+	
 	self.stickerRecordList = [[NSMutableArray alloc] initWithArray:stickerList];
 	
 	NSLog(@"%s | %@", __PRETTY_FUNCTION__, stickerList);
