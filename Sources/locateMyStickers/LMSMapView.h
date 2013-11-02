@@ -29,12 +29,12 @@ typedef enum {
 
 @property (nonatomic, assign)BOOL isDisplayingStickerList;
 //
-@property (nonatomic, strong)NSMutableArray *locationsRecordList;
-@property (nonatomic, strong)NSMutableArray *stickerRecordList;
+@property (nonatomic, strong) NSMutableArray *locationsRecordList;
+@property (nonatomic, strong) NSMutableArray *stickerRecordList;
 
-@property (nonatomic, strong)StickerRecord *currentStickerRecord;
+@property (nonatomic, strong) StickerRecord *currentStickerRecord;
 
-@property (nonatomic, strong)id<LMSMapViewProtocol> mapViewDelegate;
+@property (nonatomic, strong) id<LMSMapViewProtocol> mapViewDelegate;
 
 @property (nonatomic, strong) IBOutlet StickerSelectionCollectionView *stickerSelectionCollectionView;
 

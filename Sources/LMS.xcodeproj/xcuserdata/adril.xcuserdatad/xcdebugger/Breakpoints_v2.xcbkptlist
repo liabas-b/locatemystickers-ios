@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/MapViewController.m"
-            timestampString = "404002069.270009"
+            timestampString = "405011251.834618"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "5">
          </BreakpointContent>
@@ -1706,11 +1706,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/AppDelegate.m"
-            timestampString = "403315088.006672"
+            timestampString = "405121068.082228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "-commonLauchInitialization:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1834,11 +1834,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403996854.652974"
+            timestampString = "405011100.520934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "-mapView:viewForOverlay:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1898,11 +1898,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403996854.652974"
+            timestampString = "405019311.073543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
+            landmarkName = "-addHistoryForStickerList"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "locateMyStickers/LMSMapView.m"
+            timestampString = "405019311.073543"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
             landmarkName = "-addRouteForStickerList"
             landmarkType = "5">
          </BreakpointContent>
@@ -1914,11 +1930,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403996854.652974"
+            timestampString = "405019311.073543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
             landmarkName = "-addRouteForStickerList"
             landmarkType = "5">
          </BreakpointContent>
@@ -1930,27 +1946,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403996854.652974"
+            timestampString = "405010535.201132"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
-            landmarkName = "-addRouteForStickerList"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403996854.652974"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "-mapView:viewForAnnotation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1962,11 +1962,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403996854.652974"
+            timestampString = "405011100.520934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "-mapView:viewForAnnotation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1994,28 +1994,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403996854.652974"
+            timestampString = "405019311.073543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
             landmarkName = "-addRouteForStickerList"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403999974.388659"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "506"
-            endingLineNumber = "506"
-            landmarkName = "-loadSelectedOptions"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2058,11 +2042,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403996854.652974"
+            timestampString = "405019311.073543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "-addRouteForStickerList"
             landmarkType = "5">
          </BreakpointContent>
@@ -2169,22 +2153,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/AppDelegate.m"
-            timestampString = "403856552.770037"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
-            landmarkName = "-UIAppearances"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "locateMyStickers/ScanWidgetController.m"
             timestampString = "401201819.906483"
             startingColumnNumber = "9223372036854775807"
@@ -2250,12 +2218,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403996854.652974"
+            timestampString = "405019311.073543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "-addRouteForStickerList"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "locateMyStickers/LMSMapView.m"
+            timestampString = "405019311.073543"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
+            landmarkName = "-addHistoryForStickerList"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2266,12 +2250,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403996854.652974"
+            timestampString = "405019311.073543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
-            landmarkName = "-addRouteForStickerList"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
+            landmarkName = "-addHistoryForStickerList"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2282,27 +2266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403996854.652974"
+            timestampString = "405010531.746244"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
-            landmarkName = "-addRouteForStickerList"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403996854.652974"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "-initRegionWithStartLocationRecord:andEndLocationRecord:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2472,13 +2440,13 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "404002125.084401"
+                  urlString = "file:///Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
+                  timestampString = "405121917.2729"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "193"
                   endingLineNumber = "193"
-                  offsetFromSymbolStart = "1088">
+                  offsetFromSymbolStart = "1440">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2486,13 +2454,13 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "404002125.084608"
+                  urlString = "file:///Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
+                  timestampString = "405121917.273144"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "193"
                   endingLineNumber = "193"
-                  offsetFromSymbolStart = "1238">
+                  offsetFromSymbolStart = "1604">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2518,13 +2486,13 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "404002125.084832"
+                  urlString = "file:///Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
+                  timestampString = "405121917.273408"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "166"
                   endingLineNumber = "166"
-                  offsetFromSymbolStart = "44">
+                  offsetFromSymbolStart = "58">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2532,27 +2500,13 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "404002125.085019"
+                  urlString = "file:///Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
+                  timestampString = "405121917.27361"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "166"
                   endingLineNumber = "166"
-                  offsetFromSymbolStart = "1282">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
-                  moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "404002125.085207"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "166"
-                  endingLineNumber = "166"
-                  offsetFromSymbolStart = "1458">
+                  offsetFromSymbolStart = "974">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2770,13 +2724,13 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "404002125.087044"
+                  urlString = "file:///Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
+                  timestampString = "405121917.275275"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "177"
                   endingLineNumber = "177"
-                  offsetFromSymbolStart = "616">
+                  offsetFromSymbolStart = "639">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2784,13 +2738,13 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "404002125.087287"
+                  urlString = "file:///Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
+                  timestampString = "405121917.275432"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "177"
                   endingLineNumber = "177"
-                  offsetFromSymbolStart = "1380">
+                  offsetFromSymbolStart = "1084">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2816,13 +2770,13 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[CustomTabBarViewController addStickerWithCode:]"
                   moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "404002125.087528"
+                  urlString = "file:///Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
+                  timestampString = "405121917.275614"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
                   endingLineNumber = "139"
-                  offsetFromSymbolStart = "44">
+                  offsetFromSymbolStart = "58">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2830,41 +2784,13 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[CustomTabBarViewController addStickerWithCode:]"
                   moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "404002125.08776"
+                  urlString = "file:///Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
+                  timestampString = "405121917.275798"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
                   endingLineNumber = "139"
-                  offsetFromSymbolStart = "596">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CustomTabBarViewController addStickerWithCode:]"
-                  moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "404002125.087986"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "820">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CustomTabBarViewController addStickerWithCode:]"
-                  moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "404002125.088176"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "912">
+                  offsetFromSymbolStart = "604">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2890,13 +2816,13 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "404002125.088405"
+                  urlString = "file:///Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
+                  timestampString = "405121917.275999"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
                   endingLineNumber = "181"
-                  offsetFromSymbolStart = "780">
+                  offsetFromSymbolStart = "828">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2904,13 +2830,13 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[CustomTabBarViewController handlerStickerAlreadyExistOnWebService:]"
                   moduleName = "LMS"
-                  urlString = "file://localhost/Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
-                  timestampString = "404002125.088604"
+                  urlString = "file:///Users/adril/Documents/Developement/Projects/eip/sources/development/all/ios/Sources/locateMyStickers/CustomTabBarViewController.mm"
+                  timestampString = "405121917.276167"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
                   endingLineNumber = "181"
-                  offsetFromSymbolStart = "1346">
+                  offsetFromSymbolStart = "1128">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2922,11 +2848,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/AppDelegate.m"
-            timestampString = "403856552.770037"
+            timestampString = "405121068.082228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "-stickerAdding:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3002,43 +2928,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403996854.652974"
+            timestampString = "405019311.073543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
-            landmarkName = "-addRouteForStickerList"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403999974.388659"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "507"
-            endingLineNumber = "507"
-            landmarkName = "-loadSelectedOptions"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/LMSMapView.m"
-            timestampString = "403996854.652974"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "-addHistoryForStickerList"
             landmarkType = "5">
          </BreakpointContent>
@@ -3049,12 +2943,28 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "locateMyStickers/AppDelegate.m"
-            timestampString = "403856552.770037"
+            filePath = "locateMyStickers/LMSMapView.m"
+            timestampString = "405019311.073543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
+            landmarkName = "-addLMSPinsForStickerList"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "locateMyStickers/AppDelegate.m"
+            timestampString = "405121068.082228"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "-stickerAdding:"
             landmarkType = "5">
          </BreakpointContent>

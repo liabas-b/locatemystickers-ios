@@ -86,6 +86,7 @@
 		
 		for (NSDictionary *item in JSON) {
 			StickerRecord *stickerRecord = [StickerRecord addUpdateStickerWithDictionary:item];
+			NSLog(@"%s | stickerRecord: %@", __PRETTY_FUNCTION__, stickerRecord);
 		}
 		[[NSManagedObjectContext defaultContext] saveNestedContexts];
 		

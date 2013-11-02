@@ -34,7 +34,7 @@
 
 @end
 
-static double kHeightStickerSelectionCollectionView = 60.0;
+static double kHeightStickerSelectionCollectionView = 50.0;
 
 @implementation LMSMapView
 
@@ -106,41 +106,6 @@ static double kHeightStickerSelectionCollectionView = 60.0;
 			default:
 				break;
 		}
-	}
-}
-
-- (void)addCloseButton {
-	
-	[UIView animateWithDuration:0.6
-                          delay:0
-                        options:(UIViewAnimationOptionCurveEaseIn)
-                     animations:^{
-						 self.closeButton.alpha = 1;
-						 self.closeButton.hidden = NO;
-                     }
-                     completion:^(BOOL finished1) {
-						 
-					 }];
-}
-
-- (void)removeCloseButton {
-	
-	[UIView animateWithDuration:0.3
-                          delay:0
-                        options:(UIViewAnimationOptionCurveEaseIn)
-                     animations:^{
-						 self.closeButton.alpha = 0;
-						 self.closeButton.hidden = YES;
-						 
-                     }
-                     completion:^(BOOL finished1) {
-					 }];
-}
-
-- (void)closeMapButtonHandler:(UIButton*)button {
-	if ([self.mapViewDelegate respondsToSelector:@selector(closeMapButtonHandler)]) {
-		[self removeCloseButton];
-		[self.mapViewDelegate closeMapButtonHandler];
 	}
 }
 
@@ -231,7 +196,6 @@ static double kHeightStickerSelectionCollectionView = 60.0;
 		[self updateLocationRecords];
 		//		[self updateLocationForCurrentSticker];
 	}
-	
 }
 
 - (void)addHistoryForSticker:(StickerRecord *)stickerRecord {
@@ -277,10 +241,20 @@ static double kHeightStickerSelectionCollectionView = 60.0;
 			[self initRegionWithStartLocationRecord:firstLocationRecord andEndLocationRecord:lastLocationRecord];
 		}
 	}
-	NSInteger pointsCount = [self.locationsRecordList count];
+	
+	//[[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+	
+	//Your code goes in here
+	NSLog(@"Main Thread Code");
+	
+	
 	LocationRecord *savLocationRecord = nil;
 	
-    CLLocationCoordinate2D pointsToUse[pointsCount];
+	NSLog(@"%s | pointsCount: %d", __PRETTY_FUNCTION__, [locationsRecordList count]);
+	
+	CLLocationCoordinate2D pointsToUse[[locationsRecordList count]];
+	//	NSMutableArray *pointToUse = [[NSMutableArray alloc] init];
+	
 	int i = 0;
 	for (LocationRecord *locationRecord in locationsRecordList) {
 		[locationRecord debug];
@@ -290,17 +264,22 @@ static double kHeightStickerSelectionCollectionView = 60.0;
 		 }
 		 else {
 		 */
-		if (!([locationRecord.latitude isEqual:savLocationRecord.latitude] && [locationRecord.longitude isEqual:savLocationRecord.latitude]))
+		if (!([locationRecord.latitude isEqual:savLocationRecord.latitude] && [locationRecord.longitude isEqual:savLocationRecord.latitude])) {
+			//			CLLocationCoordinate2D *location = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
+			//			[pointToUse addObject:location];
+			
 			pointsToUse[i++] = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
-		savLocationRecord = locationRecord;
-		//}
+			savLocationRecord = locationRecord;
+		}
 	}
-    
+	
 	if (i > 0) {
-		MKPolyline *myPolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:pointsCount];
+		MKPolyline *myPolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:[locationsRecordList count]];
 		
 		[self addOverlay:myPolyline];
 	}
+	//}];
+	
 }
 
 
@@ -427,6 +406,8 @@ static double kHeightStickerSelectionCollectionView = 60.0;
 	//	[self zoomToLocation:stickerRecord.lastLocation];
 	
 	
+	
+	
 	for (NSNumber *mapOption in self.selectedOptions) {
 		
 		switch ([mapOption intValue]) {
@@ -465,7 +446,16 @@ static double kHeightStickerSelectionCollectionView = 60.0;
 	
 	[self.stickerSelectionCollectionView reloadData];
 	
-	[self selectSticker];
+	//	[self performSelector:@selector(selectSticker) withObject:nil afterDelay:0.5];
+	NSIndexPath *indexPath = nil;
+	if ([self.stickerRecordList count] == 1) {
+		indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+	}
+	else if ([self.stickerRecordList count] > 1) {
+		indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+	}
+	
+	[self selectStickerAtIndexPath:indexPath];
 	
 	[self zoomToCurrentLocation:nil];
 	
@@ -474,33 +464,10 @@ static double kHeightStickerSelectionCollectionView = 60.0;
 	}
 }
 
-- (void)selectSticker {
-	if ([self.stickerRecordList count] > 1) {
-		
-		//
-		
-		//		[self.stickerSelectionCollectionView reloadData];
-		
-		//		NSIndexPath *selection = [NSIndexPath indexPathForItem:1 inSection:0];
-		//		[self.stickerSelectionCollectionView selectItemAtIndexPath:selection animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
-		//
-		//
-		
-		[_stickerSelectionCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-		
-		//		LMSMapCollectionViewCell *selectedMapCollectionViewCell = (LMSMapCollectionViewCell *)[self collectionView:self.stickerSelectionCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-		
-		
-		//		[selectedMapCollectionViewCell setSelected:YES];
-		//		[self collectionView:self.stickerSelectionCollectionView didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-		
-	}
-	else {
-		[self collectionView:self.stickerSelectionCollectionView didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-		
-		[self.stickerSelectionCollectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-		[_stickerSelectionCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-	}
+- (void)selectStickerAtIndexPath:(NSIndexPath *)indexPath {
+	
+	[self.stickerSelectionCollectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+	[self.stickerSelectionCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 
 - (void)loadSelectedOptions {
@@ -569,6 +536,7 @@ static double kHeightStickerSelectionCollectionView = 60.0;
 	cell.titleLabel.text = [NSString stringWithFormat:@"%@", stickerRecord.name];
 	cell.defaultColor = [UIColor wheatColor];
 	cell.selectedColor = [UIColor colorFromHexString:stickerRecord.color];
+	
 	return cell;
 }
 
@@ -708,6 +676,44 @@ static double kHeightStickerSelectionCollectionView = 60.0;
 	
 	[self updateToolBar];
 	[self loadSticker:self.currentStickerRecord];
+}
+
+
+#pragma mark - View Helper
+
+- (void)addCloseButton {
+	
+	[UIView animateWithDuration:0.6
+                          delay:0
+                        options:(UIViewAnimationOptionCurveEaseIn)
+                     animations:^{
+						 self.closeButton.alpha = 1;
+						 self.closeButton.hidden = NO;
+                     }
+                     completion:^(BOOL finished1) {
+						 
+					 }];
+}
+
+- (void)removeCloseButton {
+	
+	[UIView animateWithDuration:0.3
+                          delay:0
+                        options:(UIViewAnimationOptionCurveEaseIn)
+                     animations:^{
+						 self.closeButton.alpha = 0;
+						 self.closeButton.hidden = YES;
+						 
+                     }
+                     completion:^(BOOL finished1) {
+					 }];
+}
+
+- (void)closeMapButtonHandler:(UIButton*)button {
+	if ([self.mapViewDelegate respondsToSelector:@selector(closeMapButtonHandler)]) {
+		[self removeCloseButton];
+		[self.mapViewDelegate closeMapButtonHandler];
+	}
 }
 
 @end

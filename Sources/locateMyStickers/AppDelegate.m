@@ -24,6 +24,7 @@
 
 #import "JsonTools.h"
 
+
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:(v) options:NSNumericSearch] != NSOrderedAscending)
 
 @interface AppDelegate ()
@@ -36,11 +37,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	self.mainColor = [UIColor colorWithRed:142.0/255.0 green:20.0/255.0 blue:45.0/255.0 alpha:1.0];//[UIColor colorWithRed:172.0/255.0 green:10.0/255.0 blue:45.0/255.0 alpha:1.0]
 	[self UIAppearances];
 	[self cleanUpCach];
-	
-	
-	
 	
 	//TODO: finish to implement
 	[self commonLauchInitialization:launchOptions];
@@ -69,9 +68,9 @@
 		self.locationManager = [LocationManager new];
 		[self.locationManager setup];
 		
-//		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.2:3000"];
-//		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.2:3000"];
-//		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://web-service.locatemystickers.com"];
+		//		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.2:3000"];
+		//		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://192.168.1.2:3000"];
+		//		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://web-service.locatemystickers.com"];
 		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://locatemystickers-dev.herokuapp.com"];
 		
 		self.connectionManager = [ConnectionManager new];
@@ -272,48 +271,61 @@
 
 - (void)UIAppearances {
 	
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] > 4.9) {
+	float systemVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+	
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+	
+    if (systemVersion > 4.9 && systemVersion < 7.0) {
 		
 		NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, [UIFont navBarFont], NSFontAttributeName, nil];
-		
-//		NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:21.0], NSFontAttributeName, nil];
-		
 		[[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
 		
 		//
-		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-		
 		UIImage *navBarImage = [UIImage imageNamed:@"lms-navigation-bar@2x.png"];
-		
 		[[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
 		
-	
-		if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
-			
-			UIImage *backButtonImage = [[UIImage imageNamed:@"redBackButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 13, 0, 6)];
-			[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-			
-			//INFO: Change the appearance of other navigation button
-			UIImage *barButtonImage = [[UIImage imageNamed:@"redNormalButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 6)];
-			[[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-		}
-    }
-    else {
-        //INFO: iOS 4.whatever and below
-        //[self.tabBarController.tabBar insertSubview:imageView atIndex:0];
+		//INFO: Back button
+		UIImage *backButtonImage = [[UIImage imageNamed:@"redBackButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 13, 0, 6)];
+		[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 		
-    }
+		//INFO: Default button
+		UIImage *barButtonImage = [[UIImage imageNamed:@"redNormalButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 6)];
+		[[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+
+	}
+	else if (systemVersion >= 7.0) {
+		
+		[[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+		[[UINavigationBar appearance] setBarStyle:UIStatusBarStyleLightContent];
+		
+		NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, [UIFont navBarFont], NSFontAttributeName, nil];
+		
+		[[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
+		
+		//[[BButton appearance] setButtonCornerRadius:[NSNumber numberWithFloat:0.0f]];
+		
+		UIImage *backgroundImage = [AppDelegate imageWithColor:self.mainColor];
+		[[UINavigationBar appearance] setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
+		
+		
+		
+	}
+}
+
+
++ (UIImage *)imageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	//INFO: set tabBar
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
 	
-	UIImage *tabBarBackground = [UIImage imageNamed:@"tabBarWhite"];
-	//	UIImage *tabBarBackground = [UIImage imageNamed:@"tabBar"];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
 	
-    [[UITabBar appearance] setBackgroundImage:tabBarBackground];
-	
-	//[[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"selection-tab"]];
-	
-    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
+    return image;
 }
 
 @end

@@ -25,6 +25,7 @@
 @property (nonatomic, strong) ConnectionManager *connectionManager;
 @property (nonatomic, strong) OptionsRecord *optionsRecord;
 @property (nonatomic, strong) StickersManager *stickerManager;
+@property (nonatomic, strong) UIColor *mainColor;
 
 
 
