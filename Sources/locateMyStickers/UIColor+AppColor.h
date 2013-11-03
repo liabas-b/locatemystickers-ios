@@ -11,25 +11,29 @@
 
 @interface UIColor (AppColor)
 
+//INFO: Default
++ (UIColor *)defaultColor;
++ (UIColor *)defaultFontColor;
++ (UIColor *)defaultSelectedFontColor;
+
 //INFO: Global
-+ (UIColor*)navigationBar;
-+ (UIColor*)subNavigationBar;
-+ (UIColor*)iconColor;
-+ (UIColor*)buttonFontColor;
++ (UIColor *)applicationColor;
++ (UIColor *)navigationBar;
++ (UIColor *)subNavigationBar;
++ (UIColor *)iconColor;
++ (UIColor *)buttonFontColor;
 
 //INFO: Menu
-+ (UIColor*)menuBackGroundColor;
-+ (UIColor*)menuSeparatorColor;
-+ (UIColor*)menuCellSelectedColor;
-+ (UIColor*)generalCustomColor;
++ (UIColor *)menuBackGroundColor;
++ (UIColor *)menuSeparatorColor;
++ (UIColor *)menuCellSelectedColor;
++ (UIColor *)generalCustomColor;
 
 //INFO: Textfield Flat
-+ (UIColor*)textFieldBorderColor;
++ (UIColor *)textFieldBorderColor;
 
 //INFO: Button
-+ (UIColor*)buttonBackgroundColor;
-+ (UIColor*)timelineBarColor;
-+ (UIColor*)defaultFontColor;
-+ (UIColor*)defaultSelectedFontColor;
++ (UIColor *)buttonBackgroundColor;
++ (UIColor *)timelineBarColor;
 
 @end

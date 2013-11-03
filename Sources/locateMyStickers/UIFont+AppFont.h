@@ -14,6 +14,7 @@
 
 + (UIFont*)defaultFont;
 + (UIFont*)defaultSelectedFont;
++ (UIFont*)defaultTitleFont;
 + (UIFont*)lightFont;
 + (UIFont*)mediumFont;
 + (UIFont*)navBarFont;

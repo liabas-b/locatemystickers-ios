@@ -10,25 +10,47 @@
 
 @implementation UIColor (AppColor)
 
+
+//INFO: Default
+
++ (UIColor *)defaultColor
+{
+    return [UIColor colorFromHexString:@"#707070"];
+}
+
++ (UIColor *)defaultFontColor
+{
+    return [UIColor colorFromHexString:@"#7F8995"];
+}
+
++ (UIColor *)defaultSelectedFontColor
+{
+    return [UIColor colorFromHexString:@"#E0E0E0"];
+}
+
 //INFO: Global
 
-+ (UIColor*)navigationBar
++ (UIColor *)applicationColor {
+	return [UIColor colorFromHexString:@"#8E142D"];
+}
+
++ (UIColor *)navigationBar
 {
     return [UIColor colorFromHexString:@"#495762"];
 }
 
-+ (UIColor*)subNavigationBar
++ (UIColor *)subNavigationBar
 {
     return [UIColor colorFromHexString:@"#6f7985"];
 }
 
-+ (UIColor*)iconColor
++ (UIColor *)iconColor
 {
     //INFO: Couleur Typo et icones
     return [UIColor whiteColor];
 }
 
-+ (UIColor*)buttonFontColor
++ (UIColor *)buttonFontColor
 {
     //INFO: Couleur Typo et icones
     return [UIColor whiteColor];
@@ -36,53 +58,45 @@
 
 //INFO: Menu
 
-+ (UIColor*)menuBackGroundColor
++ (UIColor *)menuBackGroundColor
 {
     return [UIColor colorFromHexString:@"#51616d"];
 }
 
-+ (UIColor*)menuSeparatorColor //INFO:  & fonction - company
++ (UIColor *)menuSeparatorColor //INFO:  & fonction - company
 {
     return [UIColor colorFromHexString:@"#62717c"];
 }
 
-+ (UIColor*)menuCellSelectedColor
++ (UIColor *)menuCellSelectedColor
 {
     return [UIColor colorFromHexString:@"#495762"];
 }
 
-+ (UIColor*)generalCustomColor
++ (UIColor *)generalCustomColor
 {
     return [UIColor colorFromHexString:@"#FB642A"];
 }
 
 //INFO: Textfield Flat
 
-+ (UIColor*)textFieldBorderColor
++ (UIColor *)textFieldBorderColor
 {
     return [UIColor colorFromHexString:@"C8C9CB"];
 }
 
 //INFO: Button
 
-+ (UIColor*)buttonBackgroundColor
++ (UIColor *)buttonBackgroundColor
 {
     return [UIColor colorFromHexString:@"#FC6521"];
 }
 
-+ (UIColor*)timelineBarColor
++ (UIColor *)timelineBarColor
 {
     return [UIColor colorFromHexString:@"#E0E0E0"];
 }
 
-+ (UIColor*)defaultFontColor
-{
-    return [UIColor colorFromHexString:@"#7F8995"];
-}
 
-+ (UIColor*)defaultSelectedFontColor
-{
-    return [UIColor colorFromHexString:@"#E0E0E0"];
-}
 
 @end

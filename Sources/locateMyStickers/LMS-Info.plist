@@ -56,7 +56,7 @@
 		<string>location</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
-	<string>MainStoryboard_iPhone</string>
+	<string>MainStoryboard_2_iPhone</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>MainStoryboard_iPad</string>
 	<key>UIPrerenderedIcon</key>
@@ -78,11 +78,11 @@
 			<key>TintColor</key>
 			<dict>
 				<key>Blue</key>
-				<real>0.2274509803921569</real>
+				<real>0.22745098039215689</real>
 				<key>Green</key>
 				<real>0.1215686274509804</real>
 				<key>Red</key>
-				<real>0.7411764705882353</real>
+				<real>0.74117647058823533</real>
 			</dict>
 			<key>Translucent</key>
 			<false/>

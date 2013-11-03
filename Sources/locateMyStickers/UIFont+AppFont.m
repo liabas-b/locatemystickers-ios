@@ -19,7 +19,12 @@
 
 + (UIFont*)defaultSelectedFont
 {
-    return [UIFont fontWithName:@"lato-light" size:17.0];
+    return [UIFont fontWithName:@"lato-light" size:15.0];
+}
+
++ (UIFont*)defaultTitleFont
+{
+    return [UIFont fontWithName:@"lato-light" size:20.0];
 }
 
 + (UIFont*)lightFont

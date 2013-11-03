@@ -11,8 +11,11 @@
 #ifdef __OBJC__
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
+    #import "UIColor+AppColor.h"
+    #import "UIDevice+VersionCheck.h"
+    #import "UIFont+AppFont.h"
 #define MR_SHORTHAND
-#import "CoreData+MagicalRecord.h"
+    #import "CoreData+MagicalRecord.h"
 #endif
 
 

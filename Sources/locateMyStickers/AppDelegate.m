@@ -178,13 +178,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
 	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-	
-	//INFO: check if is tracking
-	//if (self.sessionManager.session isTracking)
-	{
-		//		[self.locationManager stopMonitoringSignificantLocationChanges];
-		//		[self.locationManager startUpdatingLocation];
-	}
+	//		[self.locationManager startUpdatingLocation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -248,7 +242,7 @@
 	}
 	else {
 		if ([AppDelegate deviceIsIO6]) {
-			mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];//6
+			mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_2_iPhone" bundle:nil];//6
 		} else {
 			mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone_iOS5" bundle:nil];//5
 		}
@@ -291,7 +285,7 @@
 		//INFO: Default button
 		UIImage *barButtonImage = [[UIImage imageNamed:@"redNormalButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 6)];
 		[[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-
+		
 	}
 	else if (systemVersion >= 7.0) {
 		
@@ -306,15 +300,11 @@
 		
 		UIImage *backgroundImage = [AppDelegate imageWithColor:self.mainColor];
 		[[UINavigationBar appearance] setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
-		
-		
-		
 	}
 }
 
 
-+ (UIImage *)imageWithColor:(UIColor *)color
-{
++ (UIImage *)imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();

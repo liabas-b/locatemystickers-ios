@@ -11,6 +11,20 @@
 		9008894717EA23F900C9B64E /* HistoryRecord+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9008894617EA23F900C9B64E /* HistoryRecord+Manager.m */; };
 		9008894E17EA271C00C9B64E /* HistoryRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9008894D17EA271C00C9B64E /* HistoryRecord.m */; };
 		9008895117EA2DA000C9B64E /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9008895017EA2DA000C9B64E /* HistoryCell.m */; };
+		900C2AB71825AD6500ED432F /* MainStoryboard_2_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 900C2AB61825AD6500ED432F /* MainStoryboard_2_iPhone.storyboard */; };
+		900C2ABC1825B0DD00ED432F /* LMSMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 900C2ABB1825B0DD00ED432F /* LMSMapViewController.m */; };
+		900C2AC01825B3CF00ED432F /* LMSHeaderMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 900C2ABF1825B3CF00ED432F /* LMSHeaderMapView.m */; };
+		900C2AC31825B59000ED432F /* LMSMapViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 900C2AC21825B59000ED432F /* LMSMapViewButton.m */; };
+		900C2AD91825C6EB00ED432F /* LMSMapBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 900C2AD81825C6EB00ED432F /* LMSMapBaseView.m */; };
+		900C2AE41825CFA600ED432F /* friend_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 900C2ADC1825CFA600ED432F /* friend_active.png */; };
+		900C2AE51825CFA600ED432F /* friend_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 900C2ADD1825CFA600ED432F /* friend_active@2x.png */; };
+		900C2AE81825CFA600ED432F /* pin_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 900C2AE01825CFA600ED432F /* pin_active.png */; };
+		900C2AE91825CFA600ED432F /* pin_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 900C2AE11825CFA600ED432F /* pin_active@2x.png */; };
+		900C2AEA1825CFA600ED432F /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 900C2AE21825CFA600ED432F /* pin.png */; };
+		900C2AEB1825CFA600ED432F /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 900C2AE31825CFA600ED432F /* pin@2x.png */; };
+		900C2AEE1825DB4700ED432F /* LMSMapImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 900C2AED1825DB4700ED432F /* LMSMapImageView.m */; };
+		900C2AF11825E72800ED432F /* friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 900C2AEF1825E72800ED432F /* friend.png */; };
+		900C2AF21825E72800ED432F /* friend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 900C2AF01825E72800ED432F /* friend@2x.png */; };
 		9015FFCA16FC56AA00D87605 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9015FFC916FC56A900D87605 /* AVFoundation.framework */; };
 		9015FFCC16FC56BD00D87605 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9015FFCB16FC56BC00D87605 /* CoreMedia.framework */; };
 		9015FFCE16FC56C700D87605 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9015FFCD16FC56C700D87605 /* CoreVideo.framework */; };
@@ -300,6 +314,25 @@
 		9008894D17EA271C00C9B64E /* HistoryRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryRecord.m; sourceTree = "<group>"; };
 		9008894F17EA2DA000C9B64E /* HistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
 		9008895017EA2DA000C9B64E /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
+		900C2AB61825AD6500ED432F /* MainStoryboard_2_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_2_iPhone.storyboard; sourceTree = "<group>"; };
+		900C2ABA1825B0DD00ED432F /* LMSMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSMapViewController.h; sourceTree = "<group>"; };
+		900C2ABB1825B0DD00ED432F /* LMSMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSMapViewController.m; sourceTree = "<group>"; };
+		900C2ABE1825B3CF00ED432F /* LMSHeaderMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSHeaderMapView.h; sourceTree = "<group>"; };
+		900C2ABF1825B3CF00ED432F /* LMSHeaderMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSHeaderMapView.m; sourceTree = "<group>"; };
+		900C2AC11825B59000ED432F /* LMSMapViewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSMapViewButton.h; sourceTree = "<group>"; };
+		900C2AC21825B59000ED432F /* LMSMapViewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSMapViewButton.m; sourceTree = "<group>"; };
+		900C2AD71825C6EB00ED432F /* LMSMapBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSMapBaseView.h; sourceTree = "<group>"; };
+		900C2AD81825C6EB00ED432F /* LMSMapBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSMapBaseView.m; sourceTree = "<group>"; };
+		900C2ADC1825CFA600ED432F /* friend_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friend_active.png; sourceTree = "<group>"; };
+		900C2ADD1825CFA600ED432F /* friend_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend_active@2x.png"; sourceTree = "<group>"; };
+		900C2AE01825CFA600ED432F /* pin_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_active.png; sourceTree = "<group>"; };
+		900C2AE11825CFA600ED432F /* pin_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin_active@2x.png"; sourceTree = "<group>"; };
+		900C2AE21825CFA600ED432F /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
+		900C2AE31825CFA600ED432F /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
+		900C2AEC1825DB4700ED432F /* LMSMapImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSMapImageView.h; sourceTree = "<group>"; };
+		900C2AED1825DB4700ED432F /* LMSMapImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSMapImageView.m; sourceTree = "<group>"; };
+		900C2AEF1825E72800ED432F /* friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friend.png; sourceTree = "<group>"; };
+		900C2AF01825E72800ED432F /* friend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend@2x.png"; sourceTree = "<group>"; };
 		9015FFC916FC56A900D87605 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9015FFCB16FC56BC00D87605 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		9015FFCD16FC56C700D87605 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -686,6 +719,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		900C2ABD1825B3A700ED432F /* MAP */ = {
+			isa = PBXGroup;
+			children = (
+				900C2AC41825BC6000ED432F /* Icons */,
+				900C2ABA1825B0DD00ED432F /* LMSMapViewController.h */,
+				900C2ABB1825B0DD00ED432F /* LMSMapViewController.m */,
+				900C2ABE1825B3CF00ED432F /* LMSHeaderMapView.h */,
+				900C2ABF1825B3CF00ED432F /* LMSHeaderMapView.m */,
+				900C2AC11825B59000ED432F /* LMSMapViewButton.h */,
+				900C2AC21825B59000ED432F /* LMSMapViewButton.m */,
+				900C2AD71825C6EB00ED432F /* LMSMapBaseView.h */,
+				900C2AD81825C6EB00ED432F /* LMSMapBaseView.m */,
+				900C2AEC1825DB4700ED432F /* LMSMapImageView.h */,
+				900C2AED1825DB4700ED432F /* LMSMapImageView.m */,
+			);
+			name = MAP;
+			sourceTree = "<group>";
+		};
+		900C2AC41825BC6000ED432F /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				900C2AEF1825E72800ED432F /* friend.png */,
+				900C2AF01825E72800ED432F /* friend@2x.png */,
+				900C2ADC1825CFA600ED432F /* friend_active.png */,
+				900C2ADD1825CFA600ED432F /* friend_active@2x.png */,
+				900C2AE01825CFA600ED432F /* pin_active.png */,
+				900C2AE11825CFA600ED432F /* pin_active@2x.png */,
+				900C2AE21825CFA600ED432F /* pin.png */,
+				900C2AE31825CFA600ED432F /* pin@2x.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		901CC0DA17ECBA1200E654F9 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
@@ -944,6 +1010,8 @@
 				905958BB16D384BC0055BBA8 /* OAuth2 */,
 				905958A416D3847B0055BBA8 /* AppDelegate.h */,
 				905958A516D3847B0055BBA8 /* AppDelegate.m */,
+				900C2ABD1825B3A700ED432F /* MAP */,
+				900C2AB61825AD6500ED432F /* MainStoryboard_2_iPhone.storyboard */,
 				905958AD16D3847B0055BBA8 /* MainStoryboard_iPhone.storyboard */,
 				905958B016D3847B0055BBA8 /* MainStoryboard_iPad.storyboard */,
 				90B80A6D16D6D88F004CA608 /* Assets */,
@@ -1767,7 +1835,9 @@
 			files = (
 				905958A016D3847B0055BBA8 /* InfoPlist.strings in Resources */,
 				901CC0EF17ED015500E654F9 /* userAddFriend.png in Resources */,
+				900C2AB71825AD6500ED432F /* MainStoryboard_2_iPhone.storyboard in Resources */,
 				901CC0EE17ED015500E654F9 /* user@2x.png in Resources */,
+				900C2AF21825E72800ED432F /* friend@2x.png in Resources */,
 				90C76E70180A23900047FFFB /* lato-hairline.ttf in Resources */,
 				905958AF16D3847B0055BBA8 /* MainStoryboard_iPhone.storyboard in Resources */,
 				901CC0EB17ED015500E654F9 /* empty.png in Resources */,
@@ -1781,9 +1851,11 @@
 				901CC0EC17ED015500E654F9 /* empty@2x.png in Resources */,
 				90B80A9916D6E06A004CA608 /* Default-568h@2x.png in Resources */,
 				90B80A9E16D6E666004CA608 /* Background-568h@2x.png in Resources */,
+				900C2AEA1825CFA600ED432F /* pin.png in Resources */,
 				90C76E6D180A23900047FFFB /* lato-blackitalic.ttf in Resources */,
 				90B80A9F16D6E666004CA608 /* Background.png in Resources */,
 				901CC0F117ED015500E654F9 /* userAlreadyFriend.png in Resources */,
+				900C2AE91825CFA600ED432F /* pin_active@2x.png in Resources */,
 				90B80AA016D6E666004CA608 /* Background@2x.png in Resources */,
 				90B80AB116D6FAC0004CA608 /* BackgroundWhite@2x.png in Resources */,
 				90B80AB316D6FB5A004CA608 /* BackgroundWhite.png in Resources */,
@@ -1793,17 +1865,20 @@
 				90B80ABB16D6FE27004CA608 /* icon72.png in Resources */,
 				90B80ABD16D6FE2D004CA608 /* icon144.png in Resources */,
 				901CC0F217ED015500E654F9 /* userAlreadyFriend@2x.png in Resources */,
+				900C2AE41825CFA600ED432F /* friend_active.png in Resources */,
 				9065DE4D16D70E120098B16F /* Default-Portrait~ipad.png in Resources */,
 				90C76E80180A276C0047FFFB /* back.png in Resources */,
 				90C76E6F180A23900047FFFB /* lato-bolditalic.ttf in Resources */,
 				9065DE5016D70F0C0098B16F /* Default-Portrait@2x~ipad.png in Resources */,
 				90C4894B16D7114400B72D4D /* Default-Landscape~ipad.png in Resources */,
+				900C2AF11825E72800ED432F /* friend.png in Resources */,
 				90C4894E16D7114E00B72D4D /* Default-Landscape@2x~ipad.png in Resources */,
 				9086ECD116DA353400965576 /* header.png in Resources */,
 				9086ECD216DA353400965576 /* tabBar.png in Resources */,
 				9086ECD316DA353400965576 /* tabBar@2x.png in Resources */,
 				9086ECD616DA36D500965576 /* redNormalButton.png in Resources */,
 				9086ECE416DA4FD800965576 /* locateMyStickersWhiteLogo.png in Resources */,
+				900C2AEB1825CFA600ED432F /* pin@2x.png in Resources */,
 				9086ECED16DA504900965576 /* home_black.png in Resources */,
 				9086ECEE16DA504900965576 /* home_black@2x.png in Resources */,
 				9086ECEF16DA504900965576 /* home_white.png in Resources */,
@@ -1837,6 +1912,7 @@
 				903B9CE416DFABC00030471D /* adril.jpg in Resources */,
 				90A1788217014E3F008ABC03 /* lms-QRcode.png in Resources */,
 				9045B914170F8B9600436B2E /* FontAwesome.ttf in Resources */,
+				900C2AE51825CFA600ED432F /* friend_active@2x.png in Resources */,
 				906B73231719C42F0033A6D5 /* lms.png in Resources */,
 				906B73241719C42F0033A6D5 /* lms@2x.png in Resources */,
 				906B732D1719EB0D0033A6D5 /* editing-delete-icon-white.png in Resources */,
@@ -1859,6 +1935,7 @@
 				906B734B1719F9810033A6D5 /* lms-navigation-bar@~ipad.png in Resources */,
 				90C76E94180A78550047FFFB /* revers_triangle_icon@2x.png in Resources */,
 				906B734C1719F9810033A6D5 /* lms-navigation-bar@2x.png in Resources */,
+				900C2AE81825CFA600ED432F /* pin_active.png in Resources */,
 				906B734D1719F9810033A6D5 /* lms-navigation-bar@2x~ipad.png in Resources */,
 				901CC0F017ED015500E654F9 /* userAddFriend@2x.png in Resources */,
 				9053A0951720BEFC00FFC782 /* redBackButton.png in Resources */,
@@ -1951,6 +2028,7 @@
 				9029C71C16E240AE00047CF4 /* SettingsViewController.m in Sources */,
 				906349D618120BA10072DC11 /* ConfigurationStickerRecord.m in Sources */,
 				9029C71F16E246C600047CF4 /* UserCell.m in Sources */,
+				900C2AD91825C6EB00ED432F /* LMSMapBaseView.m in Sources */,
 				90C76E7C180A27260047FFFB /* KGNoise.m in Sources */,
 				904C594D17F36699003B00EA /* qrencode.c in Sources */,
 				9070E9C216F3213A00E3D409 /* LmsModel.xcdatamodeld in Sources */,
@@ -1967,6 +2045,7 @@
 				904C594F17F36699003B00EA /* qrspec.c in Sources */,
 				90E05539179719AC00B20245 /* LocationRecord.m in Sources */,
 				9045B917170F9D4400436B2E /* StickerRecord+Manager.m in Sources */,
+				900C2AC31825B59000ED432F /* LMSMapViewButton.m in Sources */,
 				90C76E79180A27060047FFFB /* UIViewController+Extension.m in Sources */,
 				903C129917E8FBBB00CCD26D /* BaseTableViewController.m in Sources */,
 				9045B91A170FC6F100436B2E /* AccountRecord+Manager.m in Sources */,
@@ -1983,6 +2062,7 @@
 				90BFDA8D171A8A27006E0490 /* CustomCell.m in Sources */,
 				90807A5C171B04AD00BD8630 /* StickersManager.m in Sources */,
 				90E055501797219500B20245 /* AFImageRequestOperation.m in Sources */,
+				900C2AC01825B3CF00ED432F /* LMSHeaderMapView.m in Sources */,
 				90710A65171CD7040095D112 /* MagicalImportFunctions.m in Sources */,
 				90710A66171CD7040095D112 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				90710A67171CD7040095D112 /* NSEntityDescription+MagicalDataImport.m in Sources */,
@@ -2012,6 +2092,7 @@
 				90710A7B171CD7040095D112 /* MagicalRecord+Options.m in Sources */,
 				90710A7C171CD7040095D112 /* MagicalRecord+Setup.m in Sources */,
 				904C594E17F36699003B00EA /* qrinput.c in Sources */,
+				900C2AEE1825DB4700ED432F /* LMSMapImageView.m in Sources */,
 				90E055551797219500B20245 /* AFXMLRequestOperation.m in Sources */,
 				90710A7D171CD7040095D112 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				90710A7E171CD7040095D112 /* MagicalRecord.m in Sources */,
@@ -2026,6 +2107,7 @@
 				90588BBB1724D5FF0097735F /* LMSAnnotationView.m in Sources */,
 				9008894717EA23F900C9B64E /* HistoryRecord+Manager.m in Sources */,
 				901CC0E217ECC99500E654F9 /* FriendCell.m in Sources */,
+				900C2ABC1825B0DD00ED432F /* LMSMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
