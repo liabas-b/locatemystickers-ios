@@ -1206,6 +1206,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="52O-Zc-9fK" customClass="LMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Hx-iI-Et3" customClass="LMSHeaderMapView">
                                 <rect key="frame" x="-1" y="20" width="322" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1338,6 +1342,57 @@
                                     <outlet property="stickerMapViewButton" destination="7JO-BQ-JkK" id="hza-Hn-Yhu"/>
                                 </connections>
                             </view>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="axc-dn-iXD" customClass="StickerSelectionCollectionView">
+                                <rect key="frame" x="0.0" y="75" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.63529413940000001" green="0.1411764771" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="1" id="D8i-yY-4Yv">
+                                    <size key="itemSize" width="130" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.85000002384185791" contentMode="center" reuseIdentifier="StickerCollection" id="YVa-zD-XI1" customClass="LMSMapCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHy-Mc-8h7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="revers_triangle_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="QHc-7h-lGh">
+                                                    <rect key="frame" x="57" y="35" width="16" height="12"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="qHy-Mc-8h7" secondAttribute="bottom" id="BwL-Af-GWt"/>
+                                            <constraint firstAttribute="trailing" secondItem="qHy-Mc-8h7" secondAttribute="trailing" id="Yjw-rS-9jj"/>
+                                            <constraint firstItem="qHy-Mc-8h7" firstAttribute="top" secondItem="YVa-zD-XI1" secondAttribute="top" id="qn8-0V-Mvo"/>
+                                            <constraint firstItem="qHy-Mc-8h7" firstAttribute="leading" secondItem="YVa-zD-XI1" secondAttribute="leading" id="wTj-HP-RgJ"/>
+                                            <constraint firstItem="QHc-7h-lGh" firstAttribute="centerX" secondItem="qHy-Mc-8h7" secondAttribute="centerX" id="yvd-ng-CB5"/>
+                                            <constraint firstAttribute="bottom" secondItem="QHc-7h-lGh" secondAttribute="bottom" constant="3" id="zmI-rn-7wN"/>
+                                        </constraints>
+                                        <size key="customSize" width="130" height="50"/>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="qHy-Mc-8h7" id="m2o-Ec-qbf"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="52O-Zc-9fK" id="Sc7-07-i1c"/>
+                                    <outlet property="delegate" destination="52O-Zc-9fK" id="58Z-BB-b0v"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -1347,6 +1402,7 @@
                     </view>
                     <connections>
                         <outlet property="headerMapView" destination="2Hx-iI-Et3" id="Z1O-CO-w7Q"/>
+                        <outlet property="mapView" destination="52O-Zc-9fK" id="T10-du-R4C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xv1-dM-IWI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1845,9 +1901,16 @@
     <resources>
         <image name="account-icon.png" width="64" height="64"/>
         <image name="lms.png" width="32" height="32"/>
+        <image name="lms.png" width="32" height="32"/>
+        <image name="locateMyStickersFushiaSmallLogo.png" width="128" height="139"/>
+        <image name="locateMyStickersFushiaSmallLogo.png" width="128" height="139"/>
+        <image name="locateMyStickersFushiaSmallLogo.png" width="128" height="139"/>
+        <image name="locateMyStickersFushiaSmallLogo.png" width="128" height="139"/>
         <image name="locateMyStickersFushiaSmallLogo.png" width="128" height="139"/>
         <image name="locateMyStickersRedLogo.png" width="500" height="500"/>
         <image name="logout2-icon.png" width="64" height="64"/>
+        <image name="revers_triangle_icon.png" width="16" height="12"/>
+        <image name="revers_triangle_icon.png" width="16" height="12"/>
         <image name="revers_triangle_icon.png" width="16" height="12"/>
         <image name="settings-icon.png" width="64" height="64"/>
         <image name="share-icon.png" width="32" height="32"/>

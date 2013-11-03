@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class LMSHeaderMapView;
+@class LMSMapView;
 
 @interface LMSMapViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet LMSHeaderMapView *headerMapView;
+@property (strong, nonatomic) IBOutlet LMSMapView *mapView;
 
 @end

@@ -8,6 +8,8 @@
 
 #import "LMSMapViewController.h"
 #import "LMSHeaderMapView.h"
+#import "LMSMapView.h"
+#import "StickerRecord+Manager.h"
 
 @interface LMSMapViewController ()
 
@@ -43,6 +45,14 @@
 
 - (void)configure {
 //	[self.headerMapView setB]
+	[self loadStickerList];
+}
+
+- (void)loadStickerList {
+	NSArray *stickerRecordList = [StickerRecord findAllSortedBy:@"createdAt" ascending:NO];
+	NSLog(@"%s | stickerRecordList: %@", __PRETTY_FUNCTION__, stickerRecordList);
+	
+	[self.mapView loadStickerList:stickerRecordList];
 }
 
 @end

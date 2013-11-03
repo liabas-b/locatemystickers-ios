@@ -57,7 +57,6 @@
 	
 	[self.stickerMapViewButton setButtonImage:[UIImage imageNamed:@"pin.png"] withButtonValue:@"Stickers"];
 	[self.friendMapViewButton setButtonImage:[UIImage imageNamed:@"friend.png"] withButtonValue:@"Friends"];
-	self.friendMapViewButton.buttonImageView.layer.opacity = 0.6;
 }
 
 - (void)configureView {
