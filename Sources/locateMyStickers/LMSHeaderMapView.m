@@ -60,6 +60,18 @@
 }
 
 - (void)configureView {
+	
+	UITapGestureRecognizer *stickerSingleFingerTap =
+	[[UITapGestureRecognizer alloc] initWithTarget:self
+											action:@selector(handleStickerSingleTap:)];
+	[self.stickerMapViewButton addGestureRecognizer:stickerSingleFingerTap];
+
+	
+	UITapGestureRecognizer *friendSingleFingerTap =
+	[[UITapGestureRecognizer alloc] initWithTarget:self
+											action:@selector(handleFriendSingleTap:)];
+	[self.friendMapViewButton addGestureRecognizer:friendSingleFingerTap];
+
 	self.layer.borderWidth = 1.0;
     self.layer.borderColor = [UIColor colorFromHexString:@"#DFDFDF"].CGColor;
     
@@ -80,6 +92,18 @@
         self.layer.shadowRadius = 1.0f;
 		 */
     }
+}
+
+- (void)handleStickerSingleTap:(UITapGestureRecognizer *)recognizer {
+	CGPoint location = [recognizer locationInView:[recognizer.view superview]];
+
+	[self.delegate didToggleStickerButton:self.stickerMapViewButton];
+}
+
+- (void)handleFriendSingleTap:(UITapGestureRecognizer *)recognizer {
+	CGPoint location = [recognizer locationInView:[recognizer.view superview]];
+	
+	[self.delegate didToggleFriendButton:self.friendMapViewButton];
 }
 
 /*

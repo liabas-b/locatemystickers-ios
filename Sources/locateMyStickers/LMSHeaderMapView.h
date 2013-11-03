@@ -10,11 +10,12 @@
 #import "LMSMapViewButton.h"
 #import "LMSMapImageView.h"
 #import "LMSMapBaseView.h"
+#import "LMSHeaderMapViewDelegate.h"
 
 @interface LMSHeaderMapView : UIView
 
+@property (nonatomic, strong) IBOutlet id<LMSHeaderMapViewDelegate> delegate;
 //INFO: first box
-@property (nonatomic, strong) IBOutlet LMSMapBaseView *applicationView;
 @property (nonatomic, strong) IBOutlet UILabel *appName;
 
 //INFO: second box

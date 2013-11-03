@@ -333,6 +333,7 @@
 		900C2AED1825DB4700ED432F /* LMSMapImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSMapImageView.m; sourceTree = "<group>"; };
 		900C2AEF1825E72800ED432F /* friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friend.png; sourceTree = "<group>"; };
 		900C2AF01825E72800ED432F /* friend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend@2x.png"; sourceTree = "<group>"; };
+		900C2AF41825F3BB00ED432F /* LMSHeaderMapViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMSHeaderMapViewDelegate.h; sourceTree = "<group>"; };
 		9015FFC916FC56A900D87605 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9015FFCB16FC56BC00D87605 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		9015FFCD16FC56C700D87605 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -733,6 +734,7 @@
 				900C2AD81825C6EB00ED432F /* LMSMapBaseView.m */,
 				900C2AEC1825DB4700ED432F /* LMSMapImageView.h */,
 				900C2AED1825DB4700ED432F /* LMSMapImageView.m */,
+				900C2AF41825F3BB00ED432F /* LMSHeaderMapViewDelegate.h */,
 			);
 			name = MAP;
 			sourceTree = "<group>";

@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LMSHeaderMapViewDelegate.h"
 
 @class LMSHeaderMapView;
 @class LMSMapView;
 
-@interface LMSMapViewController : UIViewController
+@interface LMSMapViewController : UIViewController <LMSHeaderMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet LMSHeaderMapView *headerMapView;
 @property (strong, nonatomic) IBOutlet LMSMapView *mapView;
+@property (strong, nonatomic) IBOutlet UIView *stickerListContainer;
 
 @end
