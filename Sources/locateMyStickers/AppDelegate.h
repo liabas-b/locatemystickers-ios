@@ -13,6 +13,7 @@
 #import "SessionManager.h"
 #import "ConnectionManager.h"
 #import "StickersManager.h"
+#import "WebSocketManager.h"
 
 @class OptionsRecord;
 
@@ -25,6 +26,7 @@
 @property (nonatomic, strong) ConnectionManager *connectionManager;
 @property (nonatomic, strong) OptionsRecord *optionsRecord;
 @property (nonatomic, strong) StickersManager *stickerManager;
+@property (nonatomic, strong) WebSocketManager *websocketManager;
 @property (nonatomic, strong) UIColor *mainColor;
 
 

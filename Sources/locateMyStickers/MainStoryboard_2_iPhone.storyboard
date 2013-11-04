@@ -1206,39 +1206,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="52O-Zc-9fK" customClass="LMSMapView">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="52O-Zc-9fK" customClass="LMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </mapView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n3U-xu-Y1y">
-                                <rect key="frame" x="159" y="64" width="160" height="396"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rin-5R-3Ut">
+                                <rect key="frame" x="0.0" y="20" width="188" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3U-xu-Y1y">
+                                <rect key="frame" x="321" y="66" width="140" height="502"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="axc-dn-iXD" customClass="StickerSelectionCollectionView">
-                                        <rect key="frame" x="-1" y="0.0" width="161" height="396"/>
+                                    <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="axc-dn-iXD" customClass="StickerSelectionCollectionView">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="502"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.63529413940000001" green="0.1411764771" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="D8i-yY-4Yv">
-                                            <size key="itemSize" width="130" height="50"/>
+                                            <size key="itemSize" width="140" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.85000002384185791" contentMode="center" reuseIdentifier="StickerCollection" id="YVa-zD-XI1" customClass="LMSMapCollectionViewCell">
-                                                <rect key="frame" x="16" y="0.0" width="130" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="140" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHy-Mc-8h7">
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHy-Mc-8h7">
                                                             <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="revers_triangle_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="QHc-7h-lGh">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="revers_triangle_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="QHc-7h-lGh">
                                                             <rect key="frame" x="57" y="35" width="16" height="12"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
@@ -1254,25 +1259,25 @@
                                                     <constraint firstItem="QHc-7h-lGh" firstAttribute="centerX" secondItem="qHy-Mc-8h7" secondAttribute="centerX" id="yvd-ng-CB5"/>
                                                     <constraint firstAttribute="bottom" secondItem="QHc-7h-lGh" secondAttribute="bottom" constant="3" id="zmI-rn-7wN"/>
                                                 </constraints>
-                                                <size key="customSize" width="130" height="50"/>
+                                                <size key="customSize" width="140" height="50"/>
                                                 <connections>
                                                     <outlet property="titleLabel" destination="qHy-Mc-8h7" id="m2o-Ec-qbf"/>
                                                 </connections>
                                             </collectionViewCell>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.85000002384185791" contentMode="center" reuseIdentifier="StickerCollection" id="Apa-65-5mj" customClass="LMSMapCollectionViewCell">
-                                                <rect key="frame" x="16" y="50" width="130" height="50"/>
+                                                <rect key="frame" x="0.0" y="50" width="140" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTP-A4-9pW">
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTP-A4-9pW">
                                                             <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="revers_triangle_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="uFj-AN-w0Y">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="revers_triangle_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="uFj-AN-w0Y">
                                                             <rect key="frame" x="57" y="35" width="16" height="12"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
@@ -1288,7 +1293,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="FTP-A4-9pW" secondAttribute="bottom" id="dVW-gB-1Po"/>
                                                     <constraint firstItem="uFj-AN-w0Y" firstAttribute="centerX" secondItem="FTP-A4-9pW" secondAttribute="centerX" id="nfV-we-CgC"/>
                                                 </constraints>
-                                                <size key="customSize" width="130" height="50"/>
+                                                <size key="customSize" width="140" height="50"/>
                                                 <connections>
                                                     <outlet property="titleLabel" destination="FTP-A4-9pW" id="8HB-zh-3o1"/>
                                                 </connections>
@@ -1300,21 +1305,30 @@
                                         </connections>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="502" id="7ud-y0-mzc"/>
+                                    <constraint firstAttribute="width" constant="140" id="If3-pQ-bKP"/>
+                                    <constraint firstItem="axc-dn-iXD" firstAttribute="top" secondItem="n3U-xu-Y1y" secondAttribute="top" id="WTi-lr-zb4"/>
+                                    <constraint firstAttribute="trailing" secondItem="axc-dn-iXD" secondAttribute="trailing" id="X82-X4-neJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="axc-dn-iXD" secondAttribute="bottom" id="gf7-nw-RlV"/>
+                                    <constraint firstItem="axc-dn-iXD" firstAttribute="leading" secondItem="n3U-xu-Y1y" secondAttribute="leading" id="yy8-h5-g1M"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Hx-iI-Et3" customClass="LMSHeaderMapView">
-                                <rect key="frame" x="-1" y="20" width="322" height="50"/>
+                                <rect key="frame" x="-1" y="20" width="342" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="57U-q2-li8" customClass="LMSMapImageView">
-                                        <rect key="frame" x="0.0" y="0.0" width="52" height="50"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="57U-q2-li8" customClass="LMSMapImageView">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="O3B-TL-Dka"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SzP-3N-ViO" customClass="LMSMapBaseView">
-                                        <rect key="frame" x="290" y="0.0" width="30" height="50"/>
+                                        <rect key="frame" x="291" y="0.0" width="32" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ch4-d5-AbO">
@@ -1333,7 +1347,7 @@
                                             <constraint firstItem="Ch4-d5-AbO" firstAttribute="top" secondItem="SzP-3N-ViO" secondAttribute="top" constant="9" id="6Lh-EU-IVq"/>
                                             <constraint firstAttribute="bottom" secondItem="Ch4-d5-AbO" secondAttribute="bottom" constant="9" id="aH5-Kr-F4l"/>
                                             <constraint firstItem="Ch4-d5-AbO" firstAttribute="leading" secondItem="SzP-3N-ViO" secondAttribute="leading" id="izE-Qe-JQm"/>
-                                            <constraint firstAttribute="centerX" secondItem="Ch4-d5-AbO" secondAttribute="centerX" id="tba-UE-nGf"/>
+                                            <constraint firstAttribute="centerX" secondItem="Ch4-d5-AbO" secondAttribute="centerX" constant="1" id="tba-UE-nGf"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7JO-BQ-JkK" customClass="LMSMapViewButton">
@@ -1416,14 +1430,14 @@
                                     <constraint firstAttribute="bottom" secondItem="SzP-3N-ViO" secondAttribute="bottom" id="2ef-oh-kvc"/>
                                     <constraint firstItem="SzP-3N-ViO" firstAttribute="bottom" secondItem="7JO-BQ-JkK" secondAttribute="bottom" id="5sZ-7G-AqM"/>
                                     <constraint firstItem="7JO-BQ-JkK" firstAttribute="leading" secondItem="A7x-5W-Lv8" secondAttribute="trailing" id="Dzo-Oa-d5n"/>
-                                    <constraint firstAttribute="trailing" secondItem="SzP-3N-ViO" secondAttribute="trailing" constant="2" id="E62-hO-PMx"/>
+                                    <constraint firstAttribute="trailing" secondItem="SzP-3N-ViO" secondAttribute="trailing" constant="19" id="E62-hO-PMx"/>
                                     <constraint firstItem="SzP-3N-ViO" firstAttribute="top" secondItem="2Hx-iI-Et3" secondAttribute="top" id="Lkl-7P-nm1"/>
                                     <constraint firstAttribute="height" constant="50" id="QCi-uh-iXg"/>
                                     <constraint firstItem="SzP-3N-ViO" firstAttribute="top" secondItem="7JO-BQ-JkK" secondAttribute="top" id="cua-Dr-bms"/>
                                     <constraint firstItem="57U-q2-li8" firstAttribute="leading" secondItem="2Hx-iI-Et3" secondAttribute="leading" id="jEw-bN-vH7"/>
                                     <constraint firstItem="A7x-5W-Lv8" firstAttribute="top" secondItem="57U-q2-li8" secondAttribute="top" id="q1i-fu-A9y"/>
                                     <constraint firstItem="A7x-5W-Lv8" firstAttribute="bottom" secondItem="57U-q2-li8" secondAttribute="bottom" id="tQ1-Rw-HYM"/>
-                                    <constraint firstAttribute="trailing" secondItem="7JO-BQ-JkK" secondAttribute="trailing" constant="31" id="uVe-6w-TC7"/>
+                                    <constraint firstAttribute="trailing" secondItem="7JO-BQ-JkK" secondAttribute="trailing" constant="51" id="uVe-6w-TC7"/>
                                     <constraint firstItem="SzP-3N-ViO" firstAttribute="bottom" secondItem="57U-q2-li8" secondAttribute="bottom" id="xrW-i2-bwn"/>
                                 </constraints>
                                 <connections>
@@ -1437,11 +1451,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="n3U-xu-Y1y" firstAttribute="leading" secondItem="Rin-5R-3Ut" secondAttribute="leading" constant="321" id="0oQ-FP-mQV"/>
+                            <constraint firstItem="0D4-9y-Vq7" firstAttribute="top" secondItem="n3U-xu-Y1y" secondAttribute="bottom" id="5jW-qs-537"/>
+                            <constraint firstItem="52O-Zc-9fK" firstAttribute="leading" secondItem="nry-fg-vzS" secondAttribute="leading" id="5le-yx-r0u"/>
+                            <constraint firstItem="n3U-xu-Y1y" firstAttribute="top" secondItem="AHR-HN-qnk" secondAttribute="bottom" constant="46" id="8Vj-Mb-50Z"/>
+                            <constraint firstItem="n3U-xu-Y1y" firstAttribute="top" secondItem="nry-fg-vzS" secondAttribute="top" constant="66" id="FC6-eq-akR"/>
+                            <constraint firstItem="Rin-5R-3Ut" firstAttribute="bottom" secondItem="2Hx-iI-Et3" secondAttribute="bottom" id="VZS-9Y-BJV"/>
                             <constraint firstItem="2Hx-iI-Et3" firstAttribute="top" secondItem="nry-fg-vzS" secondAttribute="top" constant="20" symbolic="YES" id="aYK-wX-q9L"/>
+                            <constraint firstItem="Rin-5R-3Ut" firstAttribute="top" secondItem="2Hx-iI-Et3" secondAttribute="top" id="cNK-Ag-ABe"/>
+                            <constraint firstItem="52O-Zc-9fK" firstAttribute="top" secondItem="nry-fg-vzS" secondAttribute="top" id="dfb-7G-hzI"/>
+                            <constraint firstAttribute="trailing" secondItem="52O-Zc-9fK" secondAttribute="trailing" id="f6P-O9-1Bb"/>
+                            <constraint firstAttribute="trailing" secondItem="Rin-5R-3Ut" secondAttribute="trailing" constant="132" id="mJj-G5-8dN"/>
+                            <constraint firstItem="n3U-xu-Y1y" firstAttribute="bottom" secondItem="52O-Zc-9fK" secondAttribute="bottom" id="mMn-67-UL2"/>
+                            <constraint firstItem="52O-Zc-9fK" firstAttribute="leading" secondItem="Rin-5R-3Ut" secondAttribute="leading" id="ohu-eE-sJd"/>
                             <constraint firstItem="2Hx-iI-Et3" firstAttribute="leading" secondItem="nry-fg-vzS" secondAttribute="leading" constant="-1" id="q0C-2P-Y4s"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="friendListContainer" destination="Rin-5R-3Ut" id="h6y-5g-l87"/>
                         <outlet property="headerMapView" destination="2Hx-iI-Et3" id="Z1O-CO-w7Q"/>
                         <outlet property="mapView" destination="52O-Zc-9fK" id="T10-du-R4C"/>
                         <outlet property="stickerListContainer" destination="n3U-xu-Y1y" id="MUN-cw-dAa"/>

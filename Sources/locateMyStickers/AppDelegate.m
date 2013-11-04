@@ -74,6 +74,10 @@
 		self.sessionManager = [[SessionManager alloc] initWithHostName:@"http://locatemystickers-dev.herokuapp.com"];
 		
 		self.connectionManager = [ConnectionManager new];
+		
+		self.websocketManager = [[WebSocketManager alloc] initWithHostName:@"ws://12.12.12.7:4242"];
+//		self.websocketManager = [[WebSocketManager alloc] initWithHostName:@"ws://localhost:3000"];
+//		self.websocketManager = [[WebSocketManager alloc] initWithHostName:@"http://pousse-lms.heroku-app.com"];
 	});
 }
 

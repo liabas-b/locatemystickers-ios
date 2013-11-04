@@ -10,7 +10,7 @@
 
 @interface LMSMapViewButton ()
 
-@property (nonatomic, assign) BOOL isToggled;
+
 
 @end
 

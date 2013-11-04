@@ -11,6 +11,8 @@
 #import "LMSMapView.h"
 #import "StickerRecord+Manager.h"
 
+#import "WebSocketManager.h"
+
 @interface LMSMapViewController ()
 
 @end
@@ -34,12 +36,40 @@
 	[self configure];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(handleMessageWebSocket:)
+												 name:kMessageWebSocketReceived
+											   object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - WebSocket
+
+- (void)handleMessageWebSocket:(NSNotification *)notification {
+    NSString *message = (NSString *)[notification object];
+	
+	NSLog(@"%s | message: %@", __PRETTY_FUNCTION__, message);
+	
+    if (message != nil) {
+//        NSNumber *n = [theData objectForKey:@"isReachable"];
+//        BOOL isReachable = [n boolValue];
+//        NSLog(@"reachable: %d", isReachable);
+    }
+}
 
 #pragma mark - Main logic
 
@@ -49,7 +79,7 @@
 	//	[self.headerMapView.stickerMapViewButton addTarget:self action:@selector(myEvent:) forControlEvents:UIControlEventTouchDown];
 	
 	[self loadStickerList];
-//	[self animateView:self.view];//mapView.stickerSelectionCollectionView];
+	//	[self animateView:self.view];//mapView.stickerSelectionCollectionView];
 }
 
 - (void)loadStickerList {
@@ -59,7 +89,7 @@
 	[self.mapView loadStickerList:stickerRecordList];
 }
 
-- (void)animateView:(UIView *)view  {
+- (void)animateStickerView:(UIView *)view  {
 	
 	NSLog(@"%s | %@", __PRETTY_FUNCTION__, view);
 	
@@ -69,8 +99,13 @@
 					 animations:^
 	 {
 		 CGRect frame = view.frame;
-		 frame.origin.y = 0;
-		 frame.origin.x -= -100;
+		 frame.origin.y = view.frame.origin.y;
+		 if (self.headerMapView.stickerMapViewButton.isToggled == NO) {
+			 frame.origin.x += frame.size.width;
+		 }
+		 else {
+			 frame.origin.x -= frame.size.width;
+		 }
 		 view.frame = frame;
 	 }
 					 completion:^(BOOL finished)
@@ -78,7 +113,7 @@
 		 NSLog(@"Completed");
 		 
 	 }];
-	
+	/*
 	return;
 	CGRect rect = view.frame;
 	CGRect originalRect = rect;
@@ -103,20 +138,47 @@
 	[view.layer addAnimation:animation forKey:@"bounce"];
 	
 	view.transform = CGAffineTransformMakeScale(0.01, 0.01);
+	*/
+}
+
+- (void)animateFriendView:(UIView *)view  {
+	
+	NSLog(@"%s | %@", __PRETTY_FUNCTION__, view);
+	
+	[UIView animateWithDuration:0.5
+						  delay:0.1
+						options: UIViewAnimationCurveEaseOut
+					 animations:^
+	 {
+		 CGRect frame = view.frame;
+		 frame.origin.y = view.frame.origin.y;
+		 if (self.headerMapView.friendMapViewButton.isToggled == NO) {
+			 frame.origin.y -= frame.size.height;
+		 }
+		 else {
+			 frame.origin.y += frame.size.height;
+		 }
+		 view.frame = frame;
+	 }
+					 completion:^(BOOL finished)
+	 {
+		 NSLog(@"Completed");
+		 
+	 }];
 }
 
 #pragma mark - LMSHeaderMapViewDelegate
 
 - (void)didToggleStickerButton:(id)sender {
 	NSLog(@"%s | %@", __PRETTY_FUNCTION__, self.mapView.stickerSelectionCollectionView);
-	[self animateView:self.stickerListContainer];
+	[self animateStickerView:self.stickerListContainer];
 	
 }
 
 - (void)didToggleFriendButton:(id)sender {
 	//INFO: test for fun
 	NSLog(@"%s | %@", __PRETTY_FUNCTION__, self.mapView);
-	[self animateView:self.stickerListContainer];//.mapView.stickerSelectionCollectionView];
+	[self animateFriendView:self.friendListContainer];//.mapView.stickerSelectionCollectionView];
 }
 
 @end

@@ -25,6 +25,11 @@
 		900C2AEE1825DB4700ED432F /* LMSMapImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 900C2AED1825DB4700ED432F /* LMSMapImageView.m */; };
 		900C2AF11825E72800ED432F /* friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 900C2AEF1825E72800ED432F /* friend.png */; };
 		900C2AF21825E72800ED432F /* friend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 900C2AF01825E72800ED432F /* friend@2x.png */; };
+		900C2AF81826AFF900ED432F /* WebSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 900C2AF71826AFF900ED432F /* WebSocketManager.m */; };
+		900C2AFA1826B88E00ED432F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900C2AF91826B88E00ED432F /* MobileCoreServices.framework */; };
+		900C2AFC1826BA9D00ED432F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900C2AFB1826BA9D00ED432F /* CFNetwork.framework */; };
+		900C2AFE1826BAA700ED432F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900C2AFD1826BAA700ED432F /* Security.framework */; };
+		900C2B001826BB8600ED432F /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 900C2AFF1826BB8600ED432F /* libicucore.dylib */; };
 		9015FFCA16FC56AA00D87605 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9015FFC916FC56A900D87605 /* AVFoundation.framework */; };
 		9015FFCC16FC56BD00D87605 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9015FFCB16FC56BC00D87605 /* CoreMedia.framework */; };
 		9015FFCE16FC56C700D87605 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9015FFCD16FC56C700D87605 /* CoreVideo.framework */; };
@@ -334,6 +339,12 @@
 		900C2AEF1825E72800ED432F /* friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friend.png; sourceTree = "<group>"; };
 		900C2AF01825E72800ED432F /* friend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend@2x.png"; sourceTree = "<group>"; };
 		900C2AF41825F3BB00ED432F /* LMSHeaderMapViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMSHeaderMapViewDelegate.h; sourceTree = "<group>"; };
+		900C2AF61826AFF900ED432F /* WebSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocketManager.h; sourceTree = "<group>"; };
+		900C2AF71826AFF900ED432F /* WebSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocketManager.m; sourceTree = "<group>"; };
+		900C2AF91826B88E00ED432F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		900C2AFB1826BA9D00ED432F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		900C2AFD1826BAA700ED432F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		900C2AFF1826BB8600ED432F /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		9015FFC916FC56A900D87605 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9015FFCB16FC56BC00D87605 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		9015FFCD16FC56C700D87605 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -695,6 +706,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				900C2B001826BB8600ED432F /* libicucore.dylib in Frameworks */,
+				905958D216D391060055BBA8 /* SystemConfiguration.framework in Frameworks */,
+				900C2AFE1826BAA700ED432F /* Security.framework in Frameworks */,
+				900C2AFC1826BA9D00ED432F /* CFNetwork.framework in Frameworks */,
+				900C2AFA1826B88E00ED432F /* MobileCoreServices.framework in Frameworks */,
 				9050877716FDD650007AF478 /* libUtils.a in Frameworks */,
 				9050875416FDD1CC007AF478 /* AudioToolbox.framework in Frameworks */,
 				9050875216FDD1B6007AF478 /* CoreAudio.framework in Frameworks */,
@@ -709,7 +725,6 @@
 				905958D816D391190055BBA8 /* MapKit.framework in Frameworks */,
 				905958D616D391120055BBA8 /* CoreLocation.framework in Frameworks */,
 				905958D416D3910C0055BBA8 /* AddressBookUI.framework in Frameworks */,
-				905958D216D391060055BBA8 /* SystemConfiguration.framework in Frameworks */,
 				9059589616D3847B0055BBA8 /* UIKit.framework in Frameworks */,
 				9059589816D3847B0055BBA8 /* Foundation.framework in Frameworks */,
 				9059589A16D3847B0055BBA8 /* CoreGraphics.framework in Frameworks */,
@@ -752,6 +767,15 @@
 				900C2AE31825CFA600ED432F /* pin@2x.png */,
 			);
 			name = Icons;
+			sourceTree = "<group>";
+		};
+		900C2AF51826AFDD00ED432F /* Websocket */ = {
+			isa = PBXGroup;
+			children = (
+				900C2AF61826AFF900ED432F /* WebSocketManager.h */,
+				900C2AF71826AFF900ED432F /* WebSocketManager.m */,
+			);
+			name = Websocket;
 			sourceTree = "<group>";
 		};
 		901CC0DA17ECBA1200E654F9 /* Friends */ = {
@@ -996,6 +1020,10 @@
 		9059589416D3847B0055BBA8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				900C2AFF1826BB8600ED432F /* libicucore.dylib */,
+				900C2AFD1826BAA700ED432F /* Security.framework */,
+				900C2AFB1826BA9D00ED432F /* CFNetwork.framework */,
+				900C2AF91826B88E00ED432F /* MobileCoreServices.framework */,
 				9050877816FED78A007AF478 /* ZXing Frameworks */,
 				9050877916FED7BD007AF478 /* Utils */,
 				33C227774259408F818949E2 /* libPods.a */,
@@ -1494,6 +1522,7 @@
 		90B80A7416D6DB2D004CA608 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				900C2AF51826AFDD00ED432F /* Websocket */,
 				90807A57171B049300BD8630 /* Stickers */,
 				90B80A8516D6DCD4004CA608 /* Network */,
 				90B80A7C16D6DBA6004CA608 /* Session */,
@@ -2062,6 +2091,7 @@
 				90AA675E1714724E00C17DD0 /* BButton.m in Sources */,
 				90AA67611714726800C17DD0 /* BButton+FontAwesome.m in Sources */,
 				90BFDA8D171A8A27006E0490 /* CustomCell.m in Sources */,
+				900C2AF81826AFF900ED432F /* WebSocketManager.m in Sources */,
 				90807A5C171B04AD00BD8630 /* StickersManager.m in Sources */,
 				90E055501797219500B20245 /* AFImageRequestOperation.m in Sources */,
 				900C2AC01825B3CF00ED432F /* LMSHeaderMapView.m in Sources */,
@@ -2227,10 +2257,22 @@
 					"$(SOURCE_ROOT)/zxing-2.0/cpp/core/src",
 					"$(SOURCE_ROOT)/zxing-2.0/iphone/ZXingWidget/Classes/**",
 					"$(SOURCE_ROOT)/Utils/**\n\n//:completeSettings",
+					"\"${PODS_ROOT}/Headers/SocketRocket\"",
 				);
 				INFOPLIST_FILE = "locateMyStickers/LMS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-licucore",
+					"-framework",
+					CFNetwork,
+					"-framework",
+					ImageIO,
+					"-framework",
+					Security,
+					"-all_load",
+				);
 				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_NAME = LMS;
 				PROVISIONING_PROFILE = "DF55213A-2E89-4AD9-8E81-61D7225DE64E";
@@ -2254,9 +2296,22 @@
 					"$(SOURCE_ROOT)/zxing-2.0/cpp/core/src",
 					"$(SOURCE_ROOT)/zxing-2.0/iphone/ZXingWidget/Classes/**",
 					"$(SOURCE_ROOT)/Utils/**\n\n//:completeSettings",
+					"\"${PODS_ROOT}/Headers/SocketRocket\"",
 				);
 				INFOPLIST_FILE = "locateMyStickers/LMS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-licucore",
+					"-framework",
+					CFNetwork,
+					"-framework",
+					ImageIO,
+					"-framework",
+					Security,
+					"-all_load",
+				);
 				PRODUCT_NAME = LMS;
 				PROVISIONING_PROFILE = "DF55213A-2E89-4AD9-8E81-61D7225DE64E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DF55213A-2E89-4AD9-8E81-61D7225DE64E";

@@ -17,5 +17,6 @@
 @property (strong, nonatomic) IBOutlet LMSHeaderMapView *headerMapView;
 @property (strong, nonatomic) IBOutlet LMSMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIView *stickerListContainer;
+@property (strong, nonatomic) IBOutlet UIView *friendListContainer;
 
 @end

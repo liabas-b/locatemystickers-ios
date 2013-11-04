@@ -11,6 +11,8 @@
 
 @interface LMSMapViewButton : LMSMapBaseView
 
+@property (nonatomic, assign) BOOL isToggled;
+
 @property (nonatomic, strong) IBOutlet UIImageView *buttonImageView;
 @property (nonatomic, strong) IBOutlet UILabel *buttonLabel;
 
