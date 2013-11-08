@@ -45,5 +45,17 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FontAwesome.ttf</string>
+		<string>lato-black.ttf</string>
+		<string>lato-blackitalic.ttf</string>
+		<string>lato-hairline.ttf</string>
+		<string>lato-hairlineitalic.ttf</string>
+		<string>lato-italic.ttf</string>
+		<string>lato-light.ttf</string>
+		<string>lato-lightitalic.ttf</string>
+		<string>lato-regular.ttf</string>
+	</array>
 </dict>
 </plist>

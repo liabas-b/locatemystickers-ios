@@ -14,8 +14,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-	
-	AnalyticsManager *analyticsManager = [[AnalyticsManager alloc] init];
+
+//	self.apiManager = [LMSAP];
+	self.analyticsManager = [[AnalyticsManager alloc] init];
+
     return YES;
 }
 							

@@ -22,7 +22,7 @@
 		901E9453182BF7720048C761 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 901E9451182BF7720048C761 /* InfoPlist.strings */; };
 		901E9455182BF7720048C761 /* LMSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9454182BF7720048C761 /* LMSTests.m */; };
 		901E946A182BF9C30048C761 /* LMSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9461182BF9C30048C761 /* LMSHomeViewController.m */; };
-		901E946B182BF9C30048C761 /* LMSMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9463182BF9C30048C761 /* LMSMenuViewController.m */; };
+		901E946B182BF9C30048C761 /* LMSMenuViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 901E9463182BF9C30048C761 /* LMSMenuViewController.mm */; };
 		901E946C182BF9C30048C761 /* LMSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9465182BF9C30048C761 /* LMSNavigationController.m */; };
 		901E946D182BF9C30048C761 /* LMSRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9467182BF9C30048C761 /* LMSRootViewController.m */; };
 		901E946E182BF9C30048C761 /* LMSSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9469182BF9C30048C761 /* LMSSecondViewController.m */; };
@@ -82,6 +82,16 @@
 		901E9549182C9EEB0048C761 /* Pages.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9548182C9EEB0048C761 /* Pages.m */; };
 		901E954C182C9F9D0048C761 /* Descriptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E954B182C9F9D0048C761 /* Descriptions.m */; };
 		901E9550182C9FE00048C761 /* KeyWords.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E954F182C9FE00048C761 /* KeyWords.m */; };
+		90F4DDC5182D0B6B007CD66B /* lato-black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F4DDBB182D0B6B007CD66B /* lato-black.ttf */; };
+		90F4DDC6182D0B6B007CD66B /* lato-blackitalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F4DDBC182D0B6B007CD66B /* lato-blackitalic.ttf */; };
+		90F4DDC7182D0B6B007CD66B /* lato-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F4DDBD182D0B6B007CD66B /* lato-bold.ttf */; };
+		90F4DDC8182D0B6B007CD66B /* lato-bolditalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F4DDBE182D0B6B007CD66B /* lato-bolditalic.ttf */; };
+		90F4DDC9182D0B6B007CD66B /* lato-hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F4DDBF182D0B6B007CD66B /* lato-hairline.ttf */; };
+		90F4DDCA182D0B6B007CD66B /* lato-hairlineitalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F4DDC0182D0B6B007CD66B /* lato-hairlineitalic.ttf */; };
+		90F4DDCB182D0B6B007CD66B /* lato-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F4DDC1182D0B6B007CD66B /* lato-italic.ttf */; };
+		90F4DDCC182D0B6B007CD66B /* lato-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F4DDC2182D0B6B007CD66B /* lato-light.ttf */; };
+		90F4DDCD182D0B6B007CD66B /* lato-lightitalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F4DDC3182D0B6B007CD66B /* lato-lightitalic.ttf */; };
+		90F4DDCE182D0B6B007CD66B /* lato-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F4DDC4182D0B6B007CD66B /* lato-regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +125,7 @@
 		901E9460182BF9C30048C761 /* LMSHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSHomeViewController.h; sourceTree = "<group>"; };
 		901E9461182BF9C30048C761 /* LMSHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSHomeViewController.m; sourceTree = "<group>"; };
 		901E9462182BF9C30048C761 /* LMSMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSMenuViewController.h; sourceTree = "<group>"; };
-		901E9463182BF9C30048C761 /* LMSMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSMenuViewController.m; sourceTree = "<group>"; };
+		901E9463182BF9C30048C761 /* LMSMenuViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LMSMenuViewController.mm; sourceTree = "<group>"; };
 		901E9464182BF9C30048C761 /* LMSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSNavigationController.h; sourceTree = "<group>"; };
 		901E9465182BF9C30048C761 /* LMSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSNavigationController.m; sourceTree = "<group>"; };
 		901E9466182BF9C30048C761 /* LMSRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSRootViewController.h; sourceTree = "<group>"; };
@@ -233,6 +243,16 @@
 		901E954B182C9F9D0048C761 /* Descriptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Descriptions.m; sourceTree = "<group>"; };
 		901E954E182C9FE00048C761 /* KeyWords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWords.h; sourceTree = "<group>"; };
 		901E954F182C9FE00048C761 /* KeyWords.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWords.m; sourceTree = "<group>"; };
+		90F4DDBB182D0B6B007CD66B /* lato-black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-black.ttf"; sourceTree = "<group>"; };
+		90F4DDBC182D0B6B007CD66B /* lato-blackitalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-blackitalic.ttf"; sourceTree = "<group>"; };
+		90F4DDBD182D0B6B007CD66B /* lato-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-bold.ttf"; sourceTree = "<group>"; };
+		90F4DDBE182D0B6B007CD66B /* lato-bolditalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-bolditalic.ttf"; sourceTree = "<group>"; };
+		90F4DDBF182D0B6B007CD66B /* lato-hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-hairline.ttf"; sourceTree = "<group>"; };
+		90F4DDC0182D0B6B007CD66B /* lato-hairlineitalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-hairlineitalic.ttf"; sourceTree = "<group>"; };
+		90F4DDC1182D0B6B007CD66B /* lato-italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-italic.ttf"; sourceTree = "<group>"; };
+		90F4DDC2182D0B6B007CD66B /* lato-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-light.ttf"; sourceTree = "<group>"; };
+		90F4DDC3182D0B6B007CD66B /* lato-lightitalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-lightitalic.ttf"; sourceTree = "<group>"; };
+		90F4DDC4182D0B6B007CD66B /* lato-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-regular.ttf"; sourceTree = "<group>"; };
 		D0C681DE3E364AEF853C6553 /* Pods-LMS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LMS.xcconfig"; path = "Pods/Pods-LMS.xcconfig"; sourceTree = "<group>"; };
 		F7E78292728E4CE9BFE9B899 /* libPods-LMS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LMS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -365,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				901E946F182BFA2A0048C761 /* Images.xcassets */,
+				90F4DDBA182D0B5C007CD66B /* Fonts */,
 				901E9477182BFC430048C761 /* Demo */,
 			);
 			name = Ressources;
@@ -383,7 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				901E9462182BF9C30048C761 /* LMSMenuViewController.h */,
-				901E9463182BF9C30048C761 /* LMSMenuViewController.m */,
+				901E9463182BF9C30048C761 /* LMSMenuViewController.mm */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -768,6 +789,23 @@
 			name = Parameters;
 			sourceTree = "<group>";
 		};
+		90F4DDBA182D0B5C007CD66B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				90F4DDBB182D0B6B007CD66B /* lato-black.ttf */,
+				90F4DDBC182D0B6B007CD66B /* lato-blackitalic.ttf */,
+				90F4DDBD182D0B6B007CD66B /* lato-bold.ttf */,
+				90F4DDBE182D0B6B007CD66B /* lato-bolditalic.ttf */,
+				90F4DDBF182D0B6B007CD66B /* lato-hairline.ttf */,
+				90F4DDC0182D0B6B007CD66B /* lato-hairlineitalic.ttf */,
+				90F4DDC1182D0B6B007CD66B /* lato-italic.ttf */,
+				90F4DDC2182D0B6B007CD66B /* lato-light.ttf */,
+				90F4DDC3182D0B6B007CD66B /* lato-lightitalic.ttf */,
+				90F4DDC4182D0B6B007CD66B /* lato-regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -846,12 +884,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90F4DDCB182D0B6B007CD66B /* lato-italic.ttf in Resources */,
+				90F4DDCC182D0B6B007CD66B /* lato-light.ttf in Resources */,
+				90F4DDC6182D0B6B007CD66B /* lato-blackitalic.ttf in Resources */,
+				90F4DDC8182D0B6B007CD66B /* lato-bolditalic.ttf in Resources */,
+				90F4DDC9182D0B6B007CD66B /* lato-hairline.ttf in Resources */,
+				90F4DDC5182D0B6B007CD66B /* lato-black.ttf in Resources */,
 				901E943D182BF7710048C761 /* Main_iPad.storyboard in Resources */,
 				901E9470182BFA2A0048C761 /* Images.xcassets in Resources */,
+				90F4DDCA182D0B6B007CD66B /* lato-hairlineitalic.ttf in Resources */,
 				901E951A182C6D470048C761 /* lms.json in Resources */,
 				901E943A182BF7710048C761 /* Main_iPhone.storyboard in Resources */,
+				90F4DDCE182D0B6B007CD66B /* lato-regular.ttf in Resources */,
 				901E9476182BFC3E0048C761 /* avatar@2x.jpg in Resources */,
+				90F4DDC7182D0B6B007CD66B /* lato-bold.ttf in Resources */,
 				901E9431182BF7710048C761 /* InfoPlist.strings in Resources */,
+				90F4DDCD182D0B6B007CD66B /* lato-lightitalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,7 +982,7 @@
 				901E9524182C70820048C761 /* NSDictionary+QueryString.m in Sources */,
 				901E9539182C7D340048C761 /* OperationManager.m in Sources */,
 				901E9437182BF7710048C761 /* AppDelegate.m in Sources */,
-				901E946B182BF9C30048C761 /* LMSMenuViewController.m in Sources */,
+				901E946B182BF9C30048C761 /* LMSMenuViewController.mm in Sources */,
 				901E94A6182BFEC30048C761 /* UIFont+AppFont.m in Sources */,
 				901E9485182BFD2B0048C761 /* LMSMapImageView.m in Sources */,
 				901E94E4182C30A00048C761 /* StickersTableViewController.m in Sources */,

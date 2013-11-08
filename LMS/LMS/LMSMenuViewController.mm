@@ -12,6 +12,9 @@
 #import "LMSMapViewController.h"
 #import "UIViewController+REFrostedViewController.h"
 
+#import "UserTableViewController.h"
+#import "StickersTableViewController.h"
+
 @interface LMSMenuViewController ()
 
 @end
@@ -100,7 +103,22 @@
         LMSMapViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapController"];
         navigationController.viewControllers = @[mapViewController];
 
-    } else {
+    } else if (indexPath.section == 0 && indexPath.row == 1) {
+		//        LMSHomeViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
+		//        navigationController.viewControllers = @[homeViewController];
+        StickersTableViewController *stickersTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"stickerController"];
+        navigationController.viewControllers = @[stickersTableViewController];
+		
+    }
+	else if (indexPath.section == 0 && indexPath.row == 2) {
+		//        LMSHomeViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
+		//        navigationController.viewControllers = @[homeViewController];
+        UserTableViewController *userTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"userController"];
+        navigationController.viewControllers = @[userTableViewController];
+		
+    }
+
+	else {
         LMSSecondViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"secondController"];
         navigationController.viewControllers = @[secondViewController];
     }

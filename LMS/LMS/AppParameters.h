@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@class Parameters;
+#import "Parameters.h"
+//@class Parameters;
 
 typedef enum
 {
