@@ -45,6 +45,13 @@
 	}
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[self.navigationController setNavigationBarHidden:NO animated:NO];
+	
+	[super viewWillAppear:animated];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -40,7 +40,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 //	self.mainColor = [UIColor colorWithRed:142.0/255.0 green:20.0/255.0 blue:45.0/255.0 alpha:1.0];//[UIColor colorWithRed:172.0/255.0 green:10.0/255.0 blue:45.0/255.0 alpha:1.0]
-	[self UIAppearances];
 	[self cleanUpCach];
 	
 	//TODO: finish to implement
@@ -80,12 +79,14 @@
 		*/
 //		self.apiManager = [LMSAPIManager alloc] initWithHostName;
 		self.appParameters = [AppParameters defaultParameters];
+		sleep(1);
 		self.apiManager = [[LMSAPIManager alloc] initWithBaseURLString:self.appParameters.parameters.apiUrls.lmsApi];
 		self.websocketManager = [[WebSocketManager alloc] initWithHostName:self.appParameters.parameters.apiUrls.lmsLiveApi];
 		self.operationManager = [[OperationManager alloc] init];
 		self.analyticsManager = [[AnalyticsManager alloc] init];
 		//		self.websocketManager = [[WebSocketManager alloc] initWithHostName:@"ws://localhost:3000"];
 		//		self.websocketManager = [[WebSocketManager alloc] initWithHostName:@"http://pousse-lms.heroku-app.com"];
+		[self UIAppearances];
 	});
 	 
 }

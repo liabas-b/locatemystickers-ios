@@ -10,4 +10,14 @@
 
 @implementation Descriptions
 
++ (BOOL)propertyIsOptional:(NSString*)propertyName
+{
+	return YES;
+}
+
++ (JSONKeyMapper*)keyMapper
+{
+	return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+}
+
 @end

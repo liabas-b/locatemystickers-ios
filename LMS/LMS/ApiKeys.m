@@ -10,18 +10,6 @@
 
 @implementation ApiKeys
 
-- (id)initWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err {
-	return [super initWithDictionary:dict error:err];
-}
-
-- (id)initWithString:(NSString *)string error:(JSONModelError *__autoreleasing *)err {
-	return [super initWithString:string error:err];
-}
-
-- (id)initWithString:(NSString *)string usingEncoding:(NSStringEncoding)encoding error:(JSONModelError *__autoreleasing *)err {
-	return  [super initWithString:string usingEncoding:encoding error:err];
-}
-
 + (BOOL)propertyIsOptional:(NSString*)propertyName
 {
 	return YES;

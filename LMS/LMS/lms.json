@@ -12,7 +12,7 @@
 	{
 		"lms_api": "http://locatemystickers-dev.herokuapp.com",
 		"lms_stickers_api": "http://stickersserver.herokuapp.com",
-		"lms_live_api": "ws://12.12.12.7:4242"
+		"lms_live_api": "ws://89.84.24.72:4242"
 	},
 	"api_keys":
 	{
