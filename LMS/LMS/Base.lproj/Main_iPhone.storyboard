@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9ki-Si-obX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9ki-Si-obX">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
         <!--Root View Controller-->
@@ -94,11 +94,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AAf-Br-hQ8">
+                            <view opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AAf-Br-hQ8">
                                 <rect key="frame" x="321" y="66" width="140" height="502"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" restorationIdentifier="stickerCollection" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sC9-iU-7Pr" customClass="LMSStickerCollectionView">
+                                    <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="stickerCollection" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sC9-iU-7Pr" customClass="LMSStickerCollectionView">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="502"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.63529413940000001" green="0.1411764771" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -190,7 +190,6 @@
                                     <constraint firstAttribute="trailing" secondItem="sC9-iU-7Pr" secondAttribute="trailing" id="0bq-YW-6pI"/>
                                     <constraint firstAttribute="width" constant="140" id="8W3-Xd-fQj"/>
                                     <constraint firstAttribute="bottom" secondItem="sC9-iU-7Pr" secondAttribute="bottom" id="HsF-aP-18b"/>
-                                    <constraint firstAttribute="height" constant="502" id="JaH-q4-6cD"/>
                                     <constraint firstItem="sC9-iU-7Pr" firstAttribute="leading" secondItem="AAf-Br-hQ8" secondAttribute="leading" id="TVq-nr-GQu"/>
                                     <constraint firstItem="sC9-iU-7Pr" firstAttribute="top" secondItem="AAf-Br-hQ8" secondAttribute="top" id="q7z-cl-bct"/>
                                 </constraints>
@@ -333,7 +332,6 @@
                             <constraint firstItem="AAf-Br-hQ8" firstAttribute="bottom" secondItem="dnv-oI-Ex6" secondAttribute="bottom" id="2RE-lW-OhV"/>
                             <constraint firstAttribute="trailing" secondItem="dnv-oI-Ex6" secondAttribute="trailing" id="6fR-zF-6lf"/>
                             <constraint firstItem="AAf-Br-hQ8" firstAttribute="top" secondItem="Bnx-Ye-n2x" secondAttribute="bottom" constant="46" id="Jfm-Mk-Bzi"/>
-                            <constraint firstItem="AAf-Br-hQ8" firstAttribute="top" secondItem="Zxd-ap-hl3" secondAttribute="top" constant="66" id="NKf-d4-j9i"/>
                             <constraint firstAttribute="trailing" secondItem="Nxq-xR-JAS" secondAttribute="trailing" constant="132" id="YHA-f1-TAf"/>
                             <constraint firstItem="dnv-oI-Ex6" firstAttribute="top" secondItem="Zxd-ap-hl3" secondAttribute="top" id="ZrN-07-apw"/>
                             <constraint firstItem="dnv-oI-Ex6" firstAttribute="leading" secondItem="Zxd-ap-hl3" secondAttribute="leading" id="bnu-3N-Cuu"/>

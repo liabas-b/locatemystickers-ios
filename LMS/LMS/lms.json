@@ -8,7 +8,13 @@
 		"en": "2"
 	}
 	,
-	"network_keys":
+	"api_urls":
+	{
+		"lms_api": "http://locatemystickers-dev.herokuapp.com",
+		"lms_stickers_api": "http://stickersserver.herokuapp.com",
+		"lms_live_api": "ws://12.12.12.7:4242"
+	},
+	"api_keys":
 	{
 		"facebook_api_key": "key",
 		"facebook_app_secret": "secret",

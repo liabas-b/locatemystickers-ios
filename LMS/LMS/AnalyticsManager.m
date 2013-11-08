@@ -10,7 +10,7 @@
 #import "AppParameters.h"
 
 #import "Parameters.h"
-#import "NetworkKeys.h"
+//#import "NetworkKeys.h"
 
 @implementation AnalyticsManager
 
@@ -22,7 +22,7 @@
 		[GAI sharedInstance].dispatchInterval = 20;
 		// Optional: set Logger to VERBOSE for debug information.
 		[[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];		// Get a new tracker.
-		id<GAITracker> newTracker = [[GAI sharedInstance] trackerWithTrackingId:[AppParameters defaultParameters].parameters.networkKeys.googleAnalyticsApiKey];
+		id<GAITracker> newTracker = [[GAI sharedInstance] trackerWithTrackingId:[AppParameters defaultParameters].parameters.apiKeys.googleAnalyticsApiKey];
 		// Set the new tracker as the default tracker, globally.
 		[GAI sharedInstance].defaultTracker = newTracker;
 //		[[GAI sharedInstance].defaultTracker setAnonymize:YES];

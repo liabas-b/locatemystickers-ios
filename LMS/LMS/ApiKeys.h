@@ -1,5 +1,5 @@
 //
-//  NetworkKeys.h
+//  ApiKeys.h
 //  LMS
 //
 //  Created by Adrien Guffens on 08/11/13.
@@ -7,12 +7,12 @@
 //
 
 #import "JSONModel.h"
+//#import "LMSJSONModel.h"
 
-
-@protocol NetworkKeys
+@protocol ApiKeys
 @end
 
-@interface NetworkKeys : JSONModel
+@interface ApiKeys : JSONModel
 
 @property (strong, nonatomic) NSString *facebookApiKey;
 @property (strong, nonatomic) NSString *facebookAppSecret;

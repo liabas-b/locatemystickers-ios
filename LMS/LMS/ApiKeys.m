@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Team3000. All rights reserved.
 //
 
-#import "NetworkKeys.h"
+#import "ApiKeys.h"
 
-@implementation NetworkKeys
+@implementation ApiKeys
 
 - (id)initWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err {
 	return [super initWithDictionary:dict error:err];

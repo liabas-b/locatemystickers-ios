@@ -7,7 +7,8 @@
 //
 
 #import "JSONModel.h"
-#import "NetworkKeys.h"
+#import "ApiUrls.h"
+#import "ApiKeys.h"
 #import "Languages.h"
 #import "Pages.h"
 #import "Descriptions.h"
@@ -28,7 +29,8 @@
 @property (strong, nonatomic) NSString *color;
 @property (strong, nonatomic) Languages *languages;
 @property (strong, nonatomic) NSString *theme;
-@property (strong, nonatomic) NetworkKeys *networkKeys;
+@property (strong, nonatomic) ApiUrls *apiUrls;
+@property (strong, nonatomic) ApiKeys *apiKeys;
 @property (strong, nonatomic) Pages *pages;
 @property (strong, nonatomic) Descriptions *descriptions;
 @property (strong, nonatomic) KeyWords *keyWords;

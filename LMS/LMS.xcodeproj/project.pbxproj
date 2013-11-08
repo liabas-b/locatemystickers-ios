@@ -77,11 +77,12 @@
 		901E9535182C72370048C761 /* History+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9534182C72370048C761 /* History+Manager.m */; };
 		901E9539182C7D340048C761 /* OperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9538182C7D340048C761 /* OperationManager.m */; };
 		901E953D182C81180048C761 /* Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E953C182C81180048C761 /* Parameters.m */; };
-		901E9543182C90AE0048C761 /* NetworkKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9542182C90AE0048C761 /* NetworkKeys.m */; };
+		901E9543182C90AE0048C761 /* ApiKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9542182C90AE0048C761 /* ApiKeys.m */; };
 		901E9546182C9E170048C761 /* Languages.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9545182C9E170048C761 /* Languages.m */; };
 		901E9549182C9EEB0048C761 /* Pages.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9548182C9EEB0048C761 /* Pages.m */; };
 		901E954C182C9F9D0048C761 /* Descriptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E954B182C9F9D0048C761 /* Descriptions.m */; };
 		901E9550182C9FE00048C761 /* KeyWords.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E954F182C9FE00048C761 /* KeyWords.m */; };
+		90835D1D182D27FD00D0B25C /* ApiUrls.m in Sources */ = {isa = PBXBuildFile; fileRef = 90835D1C182D27FD00D0B25C /* ApiUrls.m */; };
 		90F4DDC5182D0B6B007CD66B /* lato-black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F4DDBB182D0B6B007CD66B /* lato-black.ttf */; };
 		90F4DDC6182D0B6B007CD66B /* lato-blackitalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F4DDBC182D0B6B007CD66B /* lato-blackitalic.ttf */; };
 		90F4DDC7182D0B6B007CD66B /* lato-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F4DDBD182D0B6B007CD66B /* lato-bold.ttf */; };
@@ -233,8 +234,8 @@
 		901E9538182C7D340048C761 /* OperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperationManager.m; sourceTree = "<group>"; };
 		901E953B182C81180048C761 /* Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parameters.h; sourceTree = "<group>"; };
 		901E953C182C81180048C761 /* Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parameters.m; sourceTree = "<group>"; };
-		901E9541182C90AE0048C761 /* NetworkKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkKeys.h; sourceTree = "<group>"; };
-		901E9542182C90AE0048C761 /* NetworkKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkKeys.m; sourceTree = "<group>"; };
+		901E9541182C90AE0048C761 /* ApiKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiKeys.h; sourceTree = "<group>"; };
+		901E9542182C90AE0048C761 /* ApiKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKeys.m; sourceTree = "<group>"; };
 		901E9544182C9E170048C761 /* Languages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Languages.h; sourceTree = "<group>"; };
 		901E9545182C9E170048C761 /* Languages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Languages.m; sourceTree = "<group>"; };
 		901E9547182C9EEB0048C761 /* Pages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pages.h; sourceTree = "<group>"; };
@@ -243,6 +244,8 @@
 		901E954B182C9F9D0048C761 /* Descriptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Descriptions.m; sourceTree = "<group>"; };
 		901E954E182C9FE00048C761 /* KeyWords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWords.h; sourceTree = "<group>"; };
 		901E954F182C9FE00048C761 /* KeyWords.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWords.m; sourceTree = "<group>"; };
+		90835D1B182D27FD00D0B25C /* ApiUrls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiUrls.h; sourceTree = "<group>"; };
+		90835D1C182D27FD00D0B25C /* ApiUrls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiUrls.m; sourceTree = "<group>"; };
 		90F4DDBB182D0B6B007CD66B /* lato-black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-black.ttf"; sourceTree = "<group>"; };
 		90F4DDBC182D0B6B007CD66B /* lato-blackitalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-blackitalic.ttf"; sourceTree = "<group>"; };
 		90F4DDBD182D0B6B007CD66B /* lato-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-bold.ttf"; sourceTree = "<group>"; };
@@ -775,8 +778,10 @@
 			children = (
 				901E953B182C81180048C761 /* Parameters.h */,
 				901E953C182C81180048C761 /* Parameters.m */,
-				901E9541182C90AE0048C761 /* NetworkKeys.h */,
-				901E9542182C90AE0048C761 /* NetworkKeys.m */,
+				901E9541182C90AE0048C761 /* ApiKeys.h */,
+				901E9542182C90AE0048C761 /* ApiKeys.m */,
+				90835D1B182D27FD00D0B25C /* ApiUrls.h */,
+				90835D1C182D27FD00D0B25C /* ApiUrls.m */,
 				901E9544182C9E170048C761 /* Languages.h */,
 				901E9545182C9E170048C761 /* Languages.m */,
 				901E9547182C9EEB0048C761 /* Pages.h */,
@@ -855,6 +860,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Team3000;
 				TargetAttributes = {
+					901E9422182BF7710048C761 = {
+						DevelopmentTeam = GPRDQTBPV3;
+					};
 					901E9446182BF7720048C761 = {
 						TestTargetID = 901E9422182BF7710048C761;
 					};
@@ -997,6 +1005,7 @@
 				901E94D1182C09110048C761 /* LMSLocation+Manager.m in Sources */,
 				901E950D182C37BF0048C761 /* CustomCell.m in Sources */,
 				901E94AC182BFFB60048C761 /* LMSStickerCollectionView.m in Sources */,
+				90835D1D182D27FD00D0B25C /* ApiUrls.m in Sources */,
 				901E9521182C6F9B0048C761 /* UITextField+Extended.m in Sources */,
 				901E94C3182C02290048C761 /* LMSAnnotation.m in Sources */,
 				901E9486182BFD2B0048C761 /* LMSMapViewButton.m in Sources */,
@@ -1009,7 +1018,7 @@
 				901E94BC182C00C20048C761 /* LMSSticker.m in Sources */,
 				901E94C8182C03070048C761 /* WebSocketManager.m in Sources */,
 				901E951E182C6E020048C761 /* AnalyticsManager.m in Sources */,
-				901E9543182C90AE0048C761 /* NetworkKeys.m in Sources */,
+				901E9543182C90AE0048C761 /* ApiKeys.m in Sources */,
 				901E94E8182C30C70048C761 /* StickerDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1148,10 +1157,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LMS/LMS-Prefix.pch";
 				INFOPLIST_FILE = "LMS/LMS-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1162,10 +1174,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LMS/LMS-Prefix.pch";
 				INFOPLIST_FILE = "LMS/LMS-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

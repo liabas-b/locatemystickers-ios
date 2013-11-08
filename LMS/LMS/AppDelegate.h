@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "LMSAPIManager.h"
+#import "AppParameters.h"
 #import "WebSocketManager.h"
 #import "OperationManager.h"
 #import "AnalyticsManager.h"
@@ -18,8 +19,12 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (nonatomic, strong) LMSAPIManager *apiManager;
+@property (nonatomic, strong) AppParameters *appParameters;
 @property (nonatomic, strong) WebSocketManager *websocketManager;
 @property (nonatomic, strong) OperationManager *operationManager;
 @property (nonatomic, strong) AnalyticsManager *analyticsManager;
+
++ (id)appDelegate;
+
 
 @end

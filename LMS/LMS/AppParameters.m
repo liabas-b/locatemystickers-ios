@@ -9,7 +9,9 @@
 #import "AppParameters.h"
 #import "Parameters.h"
 #import "OperationManager.h"
-#import "NetworkKeys.h"
+//#import "NetworkKeys.h"
+#import "ApiUrls.h"
+#import "ApiKeys.h"
 
 @implementation AppParameters
 
@@ -46,7 +48,7 @@
 			error = nil;
 			self.parameters = [[Parameters alloc] initWithDictionary:json error:&error];
 			
-			DLog(@"param.networkKeys.googleAnalyticsApiKey: %@", self.parameters.networkKeys.googleAnalyticsApiKey);
+			DLog(@"param.networkKeys.googleAnalyticsApiKey: %@", self.parameters.apiKeys.googleAnalyticsApiKey);
 
 			DLog(@"error: %@", error);
 			DLog(@"parameters: %@", self.parameters);
