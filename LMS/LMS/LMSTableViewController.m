@@ -23,19 +23,29 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	[self.view setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
+	//INFO: iOS 6
+	/*
+	 UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+	 [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];//[UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0]];
+	 [self.tableView setBackgroundView:backgroundView];
+	 */
+	if (self.refreshControlEnabled == YES) {
+		self.refreshControl = [[UIRefreshControl alloc] init];
+		//INFO: setting up refreshControl
+		[self.refreshControl addTarget:self action:@selector(refreshControlRequest)
+					  forControlEvents:UIControlEventValueChanged];
+		
+		//[self.refreshControl setTintColor:[UIColor colorWithRed:0.000 green:0.000 blue:0.630 alpha:1.000]];
+		[self.tableView addSubview:self.refreshControl];
+		
+	}
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -56,6 +66,15 @@
 
 - (void)setupView {
     DLog(@"");
+}
+
+#pragma mark - Refresh
+
+- (void)refreshControlRequest {
+	NSLog(@"%s | refresh table view", __PRETTY_FUNCTION__);
+	
+	//INFO: end
+	[self.refreshControl endRefreshing];
 }
 
 /*

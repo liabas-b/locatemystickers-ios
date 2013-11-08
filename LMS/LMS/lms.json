@@ -1,0 +1,41 @@
+{
+	"id" : "1",
+	"color": "#8F142F",
+	"theme": "2",
+	"languages":
+	{
+		"fr": "1",
+		"en": "2"
+	}
+	,
+	"network_keys":
+	{
+		"facebook_api_key": "key",
+		"facebook_app_secret": "secret",
+		"google_analytics_api_key": "UA-45542059-1",
+		"twitter_oauth_access_token": "token",
+		"twitter_oauth_access_token_secret": "token_secret",
+		"twitter_consumer_key": "key",
+		"twitter_consumer_secret": "consumer_secret"
+	},
+	"pages":
+	{
+		"map": "1",
+		"stickers": "2",
+		"users": "3",
+		"settings": "4",
+		"search": "5"
+	}
+	,
+	"descriptions":
+	{
+		"fr": "Locate My Sticker est un outil pour localiser des stickers",
+		"en": "Locate My Sticker is a tools to locate stickers"
+	}
+	,
+	"key_words":
+	{
+		"fr": "LMS, LocateMyStickers, Locate My Stickers, tracking, live, sticker",
+		"en": "LMS, LocateMyStickers, Locate My Stickers, tracking, live, sticker"
+	}
+}

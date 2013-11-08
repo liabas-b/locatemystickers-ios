@@ -4,10 +4,10 @@ This repos is dedicated to iOS developement for LocateMystickers.
 
 Dependencies:
 ----------------------------
-XCode: 5.0
-Pod: 0.26.2
-ZXing: 2.0
-Utils Library: 1.0
+- XCode: 5.0
+- Pod: 0.26.2
+- ZXing: 2.0
+
 
 -> SocketRocket (0.3.1-beta2)
    A conforming WebSocket (RFC 6455) client library.

@@ -10,6 +10,11 @@
 
 @interface LMSTableViewController : UITableViewController
 
+@property (nonatomic, assign) BOOL refreshControlEnabled;
+
+- (void)refreshControlRequest;
+
+//INFO: Main logic
 - (void)configureView;
 - (void)setupData;
 

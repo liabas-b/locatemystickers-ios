@@ -1,15 +1,19 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, "6.0"
+platform :ios, "6.0"
 
 target "LMS" do
        pod "AFNetworking", '~> 2.0.2'
-       pod 'UALogger', '~> 0.2.3'
        pod 'FlatUIKit', '~> 1.2'
        pod 'GoogleAnalytics-iOS-SDK', '~> 3.0.2'
        pod 'Colours', '~> 2.0'
        pod 'RSCategories', '~> 0.1'
        pod 'SocketRocket', '~> 0.3.1-beta2'
        pod 'REFrostedViewController', '~> 2.3'
+       pod 'QR-Code-Encoder-for-Objective-C', '~> 1.0.0'
+       pod 'BButton', '~> 2.0.0'
+       pod 'KGNoise', '~> 1.2.0'
+       pod 'EDQueue', '~> 0.7.0'
+       pod 'JSONModel'
 end
 
 target "LMSTests" do

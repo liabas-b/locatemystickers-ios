@@ -50,6 +50,38 @@
 		901E94D4182C0CCB0048C761 /* LMSStickerConfiguration+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E94D3182C0CCB0048C761 /* LMSStickerConfiguration+Manager.m */; };
 		901E94D7182C20660048C761 /* LMSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E94D6182C20660048C761 /* LMSViewController.m */; };
 		901E94DB182C21B40048C761 /* LMSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E94DA182C21B40048C761 /* LMSTableViewController.m */; };
+		901E94E3182C30A00048C761 /* StickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E94E0182C30A00048C761 /* StickerCell.m */; };
+		901E94E4182C30A00048C761 /* StickersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E94E2182C30A00048C761 /* StickersTableViewController.m */; };
+		901E94E8182C30C70048C761 /* StickerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E94E7182C30C70048C761 /* StickerDetailViewController.m */; };
+		901E94EC182C30F00048C761 /* StickerAddingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E94EB182C30F00048C761 /* StickerAddingTableViewController.m */; };
+		901E94F0182C31370048C761 /* StickerEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E94EF182C31370048C761 /* StickerEditingViewController.m */; };
+		901E94F7182C37070048C761 /* FollowedStickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E94F4182C37070048C761 /* FollowedStickerCell.m */; };
+		901E94F8182C37070048C761 /* FollowedStickersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E94F6182C37070048C761 /* FollowedStickersViewController.m */; };
+		901E94FE182C37290048C761 /* HistoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E94FB182C37290048C761 /* HistoriesViewController.m */; };
+		901E94FF182C37290048C761 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E94FD182C37290048C761 /* HistoryCell.m */; };
+		901E9502182C37430048C761 /* UserTableViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 901E9501182C37430048C761 /* UserTableViewController.mm */; };
+		901E9506182C376A0048C761 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9505182C376A0048C761 /* AccountViewController.m */; };
+		901E950A182C379E0048C761 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9509182C379E0048C761 /* SettingsViewController.m */; };
+		901E950D182C37BF0048C761 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E950C182C37BF0048C761 /* CustomCell.m */; };
+		901E9511182C67EF0048C761 /* LMSAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9510182C67EF0048C761 /* LMSAPIManager.m */; };
+		901E9514182C6B9D0048C761 /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9513182C6B9D0048C761 /* UIViewController+Extension.m */; };
+		901E9518182C6CD10048C761 /* AppParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9517182C6CD10048C761 /* AppParameters.m */; };
+		901E951A182C6D470048C761 /* lms.json in Resources */ = {isa = PBXBuildFile; fileRef = 901E9519182C6D470048C761 /* lms.json */; };
+		901E951E182C6E020048C761 /* AnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E951D182C6E020048C761 /* AnalyticsManager.m */; };
+		901E9521182C6F9B0048C761 /* UITextField+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9520182C6F9B0048C761 /* UITextField+Extended.m */; };
+		901E9524182C70820048C761 /* NSDictionary+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9523182C70820048C761 /* NSDictionary+QueryString.m */; };
+		901E9527182C71970048C761 /* NSString+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9526182C71970048C761 /* NSString+QueryString.m */; };
+		901E952C182C720D0048C761 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E952B182C720D0048C761 /* Account.m */; };
+		901E952F182C721C0048C761 /* Account+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E952E182C721C0048C761 /* Account+Manager.m */; };
+		901E9532182C722B0048C761 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9531182C722B0048C761 /* History.m */; };
+		901E9535182C72370048C761 /* History+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9534182C72370048C761 /* History+Manager.m */; };
+		901E9539182C7D340048C761 /* OperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9538182C7D340048C761 /* OperationManager.m */; };
+		901E953D182C81180048C761 /* Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E953C182C81180048C761 /* Parameters.m */; };
+		901E9543182C90AE0048C761 /* NetworkKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9542182C90AE0048C761 /* NetworkKeys.m */; };
+		901E9546182C9E170048C761 /* Languages.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9545182C9E170048C761 /* Languages.m */; };
+		901E9549182C9EEB0048C761 /* Pages.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E9548182C9EEB0048C761 /* Pages.m */; };
+		901E954C182C9F9D0048C761 /* Descriptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E954B182C9F9D0048C761 /* Descriptions.m */; };
+		901E9550182C9FE00048C761 /* KeyWords.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E954F182C9FE00048C761 /* KeyWords.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +170,69 @@
 		901E94D6182C20660048C761 /* LMSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSViewController.m; sourceTree = "<group>"; };
 		901E94D9182C21B40048C761 /* LMSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSTableViewController.h; sourceTree = "<group>"; };
 		901E94DA182C21B40048C761 /* LMSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSTableViewController.m; sourceTree = "<group>"; };
+		901E94DF182C30A00048C761 /* StickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerCell.h; sourceTree = "<group>"; };
+		901E94E0182C30A00048C761 /* StickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerCell.m; sourceTree = "<group>"; };
+		901E94E1182C30A00048C761 /* StickersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickersTableViewController.h; sourceTree = "<group>"; };
+		901E94E2182C30A00048C761 /* StickersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickersTableViewController.m; sourceTree = "<group>"; };
+		901E94E6182C30C70048C761 /* StickerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerDetailViewController.h; sourceTree = "<group>"; };
+		901E94E7182C30C70048C761 /* StickerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerDetailViewController.m; sourceTree = "<group>"; };
+		901E94EA182C30F00048C761 /* StickerAddingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerAddingTableViewController.h; sourceTree = "<group>"; };
+		901E94EB182C30F00048C761 /* StickerAddingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerAddingTableViewController.m; sourceTree = "<group>"; };
+		901E94EE182C31370048C761 /* StickerEditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerEditingViewController.h; sourceTree = "<group>"; };
+		901E94EF182C31370048C761 /* StickerEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerEditingViewController.m; sourceTree = "<group>"; };
+		901E94F3182C37070048C761 /* FollowedStickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowedStickerCell.h; sourceTree = "<group>"; };
+		901E94F4182C37070048C761 /* FollowedStickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowedStickerCell.m; sourceTree = "<group>"; };
+		901E94F5182C37070048C761 /* FollowedStickersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowedStickersViewController.h; sourceTree = "<group>"; };
+		901E94F6182C37070048C761 /* FollowedStickersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowedStickersViewController.m; sourceTree = "<group>"; };
+		901E94FA182C37290048C761 /* HistoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoriesViewController.h; sourceTree = "<group>"; };
+		901E94FB182C37290048C761 /* HistoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoriesViewController.m; sourceTree = "<group>"; };
+		901E94FC182C37290048C761 /* HistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
+		901E94FD182C37290048C761 /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
+		901E9500182C37430048C761 /* UserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTableViewController.h; sourceTree = "<group>"; };
+		901E9501182C37430048C761 /* UserTableViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UserTableViewController.mm; sourceTree = "<group>"; };
+		901E9504182C376A0048C761 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		901E9505182C376A0048C761 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		901E9508182C379E0048C761 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		901E9509182C379E0048C761 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		901E950B182C37BF0048C761 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		901E950C182C37BF0048C761 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		901E950F182C67EF0048C761 /* LMSAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSAPIManager.h; sourceTree = "<group>"; };
+		901E9510182C67EF0048C761 /* LMSAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSAPIManager.m; sourceTree = "<group>"; };
+		901E9512182C6B9D0048C761 /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
+		901E9513182C6B9D0048C761 /* UIViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
+		901E9516182C6CD10048C761 /* AppParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppParameters.h; sourceTree = "<group>"; };
+		901E9517182C6CD10048C761 /* AppParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppParameters.m; sourceTree = "<group>"; };
+		901E9519182C6D470048C761 /* lms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lms.json; sourceTree = "<group>"; };
+		901E951C182C6E020048C761 /* AnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsManager.h; sourceTree = "<group>"; };
+		901E951D182C6E020048C761 /* AnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsManager.m; sourceTree = "<group>"; };
+		901E951F182C6F9B0048C761 /* UITextField+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Extended.h"; sourceTree = "<group>"; };
+		901E9520182C6F9B0048C761 /* UITextField+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Extended.m"; sourceTree = "<group>"; };
+		901E9522182C70820048C761 /* NSDictionary+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+QueryString.h"; sourceTree = "<group>"; };
+		901E9523182C70820048C761 /* NSDictionary+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+QueryString.m"; sourceTree = "<group>"; };
+		901E9525182C71970048C761 /* NSString+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QueryString.h"; sourceTree = "<group>"; };
+		901E9526182C71970048C761 /* NSString+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QueryString.m"; sourceTree = "<group>"; };
+		901E952A182C720D0048C761 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		901E952B182C720D0048C761 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		901E952D182C721C0048C761 /* Account+Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Account+Manager.h"; sourceTree = "<group>"; };
+		901E952E182C721C0048C761 /* Account+Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Account+Manager.m"; sourceTree = "<group>"; };
+		901E9530182C722B0048C761 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
+		901E9531182C722B0048C761 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		901E9533182C72370048C761 /* History+Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "History+Manager.h"; sourceTree = "<group>"; };
+		901E9534182C72370048C761 /* History+Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "History+Manager.m"; sourceTree = "<group>"; };
+		901E9537182C7D340048C761 /* OperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperationManager.h; sourceTree = "<group>"; };
+		901E9538182C7D340048C761 /* OperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperationManager.m; sourceTree = "<group>"; };
+		901E953B182C81180048C761 /* Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parameters.h; sourceTree = "<group>"; };
+		901E953C182C81180048C761 /* Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parameters.m; sourceTree = "<group>"; };
+		901E9541182C90AE0048C761 /* NetworkKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkKeys.h; sourceTree = "<group>"; };
+		901E9542182C90AE0048C761 /* NetworkKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkKeys.m; sourceTree = "<group>"; };
+		901E9544182C9E170048C761 /* Languages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Languages.h; sourceTree = "<group>"; };
+		901E9545182C9E170048C761 /* Languages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Languages.m; sourceTree = "<group>"; };
+		901E9547182C9EEB0048C761 /* Pages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pages.h; sourceTree = "<group>"; };
+		901E9548182C9EEB0048C761 /* Pages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pages.m; sourceTree = "<group>"; };
+		901E954A182C9F9D0048C761 /* Descriptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Descriptions.h; sourceTree = "<group>"; };
+		901E954B182C9F9D0048C761 /* Descriptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Descriptions.m; sourceTree = "<group>"; };
+		901E954E182C9FE00048C761 /* KeyWords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWords.h; sourceTree = "<group>"; };
+		901E954F182C9FE00048C761 /* KeyWords.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWords.m; sourceTree = "<group>"; };
 		D0C681DE3E364AEF853C6553 /* Pods-LMS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LMS.xcconfig"; path = "Pods/Pods-LMS.xcconfig"; sourceTree = "<group>"; };
 		F7E78292728E4CE9BFE9B899 /* libPods-LMS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LMS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -203,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				901E945F182BF9900048C761 /* Ressources */,
+				901E9515182C6CAF0048C761 /* Parameters */,
 				901E94A3182BFEB60048C761 /* Extenssions */,
 				901E94B3182C00890048C761 /* Model */,
 				901E94C4182C02CC0048C761 /* Manager */,
@@ -248,6 +344,11 @@
 		901E945E182BF9840048C761 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				901E94F1182C36EA0048C761 /* User */,
+				901E94ED182C310F0048C761 /* Sticker Editing */,
+				901E94E9182C30DE0048C761 /* Sticker Adding */,
+				901E94DE182C308E0048C761 /* Sricker */,
+				901E94E5182C30B60048C761 /* Sticker Detail */,
 				901E94D8182C20AA0048C761 /* LMS - BASE */,
 				901E9499182BFD980048C761 /* Map */,
 				901E9473182BFBB80048C761 /* Navigation */,
@@ -379,6 +480,14 @@
 		901E94A3182BFEB60048C761 /* Extenssions */ = {
 			isa = PBXGroup;
 			children = (
+				901E9525182C71970048C761 /* NSString+QueryString.h */,
+				901E9526182C71970048C761 /* NSString+QueryString.m */,
+				901E9522182C70820048C761 /* NSDictionary+QueryString.h */,
+				901E9523182C70820048C761 /* NSDictionary+QueryString.m */,
+				901E951F182C6F9B0048C761 /* UITextField+Extended.h */,
+				901E9520182C6F9B0048C761 /* UITextField+Extended.m */,
+				901E9512182C6B9D0048C761 /* UIViewController+Extension.h */,
+				901E9513182C6B9D0048C761 /* UIViewController+Extension.m */,
 				901E94A7182BFEE20048C761 /* UIColor+AppColor.h */,
 				901E94A8182BFEE20048C761 /* UIColor+AppColor.m */,
 				901E94A4182BFEC30048C761 /* UIFont+AppFont.h */,
@@ -392,6 +501,9 @@
 		901E94B3182C00890048C761 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				901E953A182C80F90048C761 /* Parameters */,
+				901E9529182C71FF0048C761 /* History */,
+				901E9528182C71FA0048C761 /* Account */,
 				901E94BD182C00FB0048C761 /* StickerConfiguration */,
 				901E94B8182C00AA0048C761 /* Sticker */,
 				901E94B4182C008F0048C761 /* Location */,
@@ -435,6 +547,9 @@
 		901E94C4182C02CC0048C761 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				901E9536182C7D1A0048C761 /* Operation */,
+				901E950E182C679C0048C761 /* API Manager */,
+				901E951B182C6DCE0048C761 /* Analytics */,
 				901E94C5182C02F90048C761 /* Websocket */,
 			);
 			name = Manager;
@@ -480,6 +595,177 @@
 				901E94AB182BFFB60048C761 /* LMSStickerCollectionView.m */,
 			);
 			name = "Sticker Collection";
+			sourceTree = "<group>";
+		};
+		901E94DE182C308E0048C761 /* Sricker */ = {
+			isa = PBXGroup;
+			children = (
+				901E94DF182C30A00048C761 /* StickerCell.h */,
+				901E94E0182C30A00048C761 /* StickerCell.m */,
+				901E94E1182C30A00048C761 /* StickersTableViewController.h */,
+				901E94E2182C30A00048C761 /* StickersTableViewController.m */,
+			);
+			name = Sricker;
+			sourceTree = "<group>";
+		};
+		901E94E5182C30B60048C761 /* Sticker Detail */ = {
+			isa = PBXGroup;
+			children = (
+				901E94E6182C30C70048C761 /* StickerDetailViewController.h */,
+				901E94E7182C30C70048C761 /* StickerDetailViewController.m */,
+			);
+			name = "Sticker Detail";
+			sourceTree = "<group>";
+		};
+		901E94E9182C30DE0048C761 /* Sticker Adding */ = {
+			isa = PBXGroup;
+			children = (
+				901E94EA182C30F00048C761 /* StickerAddingTableViewController.h */,
+				901E94EB182C30F00048C761 /* StickerAddingTableViewController.m */,
+			);
+			name = "Sticker Adding";
+			sourceTree = "<group>";
+		};
+		901E94ED182C310F0048C761 /* Sticker Editing */ = {
+			isa = PBXGroup;
+			children = (
+				901E94EE182C31370048C761 /* StickerEditingViewController.h */,
+				901E94EF182C31370048C761 /* StickerEditingViewController.m */,
+			);
+			name = "Sticker Editing";
+			sourceTree = "<group>";
+		};
+		901E94F1182C36EA0048C761 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				901E9500182C37430048C761 /* UserTableViewController.h */,
+				901E9501182C37430048C761 /* UserTableViewController.mm */,
+				901E950B182C37BF0048C761 /* CustomCell.h */,
+				901E950C182C37BF0048C761 /* CustomCell.m */,
+				901E94F9182C37170048C761 /* History */,
+				901E94F2182C36F70048C761 /* Followed Stickers */,
+				901E9503182C37530048C761 /* Account */,
+				901E9507182C37890048C761 /* Settings */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		901E94F2182C36F70048C761 /* Followed Stickers */ = {
+			isa = PBXGroup;
+			children = (
+				901E94F3182C37070048C761 /* FollowedStickerCell.h */,
+				901E94F4182C37070048C761 /* FollowedStickerCell.m */,
+				901E94F5182C37070048C761 /* FollowedStickersViewController.h */,
+				901E94F6182C37070048C761 /* FollowedStickersViewController.m */,
+			);
+			name = "Followed Stickers";
+			sourceTree = "<group>";
+		};
+		901E94F9182C37170048C761 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				901E94FA182C37290048C761 /* HistoriesViewController.h */,
+				901E94FB182C37290048C761 /* HistoriesViewController.m */,
+				901E94FC182C37290048C761 /* HistoryCell.h */,
+				901E94FD182C37290048C761 /* HistoryCell.m */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
+		901E9503182C37530048C761 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				901E9504182C376A0048C761 /* AccountViewController.h */,
+				901E9505182C376A0048C761 /* AccountViewController.m */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		901E9507182C37890048C761 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				901E9508182C379E0048C761 /* SettingsViewController.h */,
+				901E9509182C379E0048C761 /* SettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		901E950E182C679C0048C761 /* API Manager */ = {
+			isa = PBXGroup;
+			children = (
+				901E950F182C67EF0048C761 /* LMSAPIManager.h */,
+				901E9510182C67EF0048C761 /* LMSAPIManager.m */,
+			);
+			name = "API Manager";
+			sourceTree = "<group>";
+		};
+		901E9515182C6CAF0048C761 /* Parameters */ = {
+			isa = PBXGroup;
+			children = (
+				901E9516182C6CD10048C761 /* AppParameters.h */,
+				901E9517182C6CD10048C761 /* AppParameters.m */,
+				901E9519182C6D470048C761 /* lms.json */,
+			);
+			name = Parameters;
+			sourceTree = "<group>";
+		};
+		901E951B182C6DCE0048C761 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				901E951C182C6E020048C761 /* AnalyticsManager.h */,
+				901E951D182C6E020048C761 /* AnalyticsManager.m */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		901E9528182C71FA0048C761 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				901E952A182C720D0048C761 /* Account.h */,
+				901E952B182C720D0048C761 /* Account.m */,
+				901E952D182C721C0048C761 /* Account+Manager.h */,
+				901E952E182C721C0048C761 /* Account+Manager.m */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		901E9529182C71FF0048C761 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				901E9530182C722B0048C761 /* History.h */,
+				901E9531182C722B0048C761 /* History.m */,
+				901E9533182C72370048C761 /* History+Manager.h */,
+				901E9534182C72370048C761 /* History+Manager.m */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
+		901E9536182C7D1A0048C761 /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				901E9537182C7D340048C761 /* OperationManager.h */,
+				901E9538182C7D340048C761 /* OperationManager.m */,
+			);
+			name = Operation;
+			sourceTree = "<group>";
+		};
+		901E953A182C80F90048C761 /* Parameters */ = {
+			isa = PBXGroup;
+			children = (
+				901E953B182C81180048C761 /* Parameters.h */,
+				901E953C182C81180048C761 /* Parameters.m */,
+				901E9541182C90AE0048C761 /* NetworkKeys.h */,
+				901E9542182C90AE0048C761 /* NetworkKeys.m */,
+				901E9544182C9E170048C761 /* Languages.h */,
+				901E9545182C9E170048C761 /* Languages.m */,
+				901E9547182C9EEB0048C761 /* Pages.h */,
+				901E9548182C9EEB0048C761 /* Pages.m */,
+				901E954A182C9F9D0048C761 /* Descriptions.h */,
+				901E954B182C9F9D0048C761 /* Descriptions.m */,
+				901E954E182C9FE00048C761 /* KeyWords.h */,
+				901E954F182C9FE00048C761 /* KeyWords.m */,
+			);
+			name = Parameters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -562,6 +848,7 @@
 			files = (
 				901E943D182BF7710048C761 /* Main_iPad.storyboard in Resources */,
 				901E9470182BFA2A0048C761 /* Images.xcassets in Resources */,
+				901E951A182C6D470048C761 /* lms.json in Resources */,
 				901E943A182BF7710048C761 /* Main_iPhone.storyboard in Resources */,
 				901E9476182BFC3E0048C761 /* avatar@2x.jpg in Resources */,
 				901E9431182BF7710048C761 /* InfoPlist.strings in Resources */,
@@ -618,33 +905,64 @@
 			files = (
 				901E94A2182BFE740048C761 /* LMSMapView.m in Sources */,
 				901E94B7182C00A50048C761 /* LMSLocation.m in Sources */,
+				901E952F182C721C0048C761 /* Account+Manager.m in Sources */,
+				901E94F7182C37070048C761 /* FollowedStickerCell.m in Sources */,
 				901E94CE182C08380048C761 /* NSDate+AppDate.m in Sources */,
 				901E94B2182C001D0048C761 /* LMSMapCollectionViewCell.m in Sources */,
 				901E9483182BFD2B0048C761 /* LMSHeaderMapView.m in Sources */,
+				901E94F0182C31370048C761 /* StickerEditingViewController.m in Sources */,
 				901E946C182BF9C30048C761 /* LMSNavigationController.m in Sources */,
+				901E9546182C9E170048C761 /* Languages.m in Sources */,
+				901E94FF182C37290048C761 /* HistoryCell.m in Sources */,
+				901E9502182C37430048C761 /* UserTableViewController.mm in Sources */,
+				901E9527182C71970048C761 /* NSString+QueryString.m in Sources */,
+				901E954C182C9F9D0048C761 /* Descriptions.m in Sources */,
 				901E94C0182C011E0048C761 /* LMSStickerConfiguration.m in Sources */,
+				901E94E3182C30A00048C761 /* StickerCell.m in Sources */,
+				901E94FE182C37290048C761 /* HistoriesViewController.m in Sources */,
+				901E953D182C81180048C761 /* Parameters.m in Sources */,
+				901E94EC182C30F00048C761 /* StickerAddingTableViewController.m in Sources */,
+				901E9506182C376A0048C761 /* AccountViewController.m in Sources */,
 				901E946A182BF9C30048C761 /* LMSHomeViewController.m in Sources */,
+				901E9532182C722B0048C761 /* History.m in Sources */,
 				901E94D4182C0CCB0048C761 /* LMSStickerConfiguration+Manager.m in Sources */,
+				901E9549182C9EEB0048C761 /* Pages.m in Sources */,
 				901E94A9182BFEE20048C761 /* UIColor+AppColor.m in Sources */,
+				901E950A182C379E0048C761 /* SettingsViewController.m in Sources */,
 				901E94D7182C20660048C761 /* LMSViewController.m in Sources */,
+				901E9535182C72370048C761 /* History+Manager.m in Sources */,
+				901E9524182C70820048C761 /* NSDictionary+QueryString.m in Sources */,
+				901E9539182C7D340048C761 /* OperationManager.m in Sources */,
 				901E9437182BF7710048C761 /* AppDelegate.m in Sources */,
 				901E946B182BF9C30048C761 /* LMSMenuViewController.m in Sources */,
 				901E94A6182BFEC30048C761 /* UIFont+AppFont.m in Sources */,
 				901E9485182BFD2B0048C761 /* LMSMapImageView.m in Sources */,
+				901E94E4182C30A00048C761 /* StickersTableViewController.m in Sources */,
 				901E94DB182C21B40048C761 /* LMSTableViewController.m in Sources */,
 				901E94AF182BFFE50048C761 /* LMSAnnotationView.m in Sources */,
+				901E9518182C6CD10048C761 /* AppParameters.m in Sources */,
 				901E946E182BF9C30048C761 /* LMSSecondViewController.m in Sources */,
 				901E9484182BFD2B0048C761 /* LMSMapBaseView.m in Sources */,
+				901E94F8182C37070048C761 /* FollowedStickersViewController.m in Sources */,
+				901E952C182C720D0048C761 /* Account.m in Sources */,
 				901E946D182BF9C30048C761 /* LMSRootViewController.m in Sources */,
 				901E94D1182C09110048C761 /* LMSLocation+Manager.m in Sources */,
+				901E950D182C37BF0048C761 /* CustomCell.m in Sources */,
 				901E94AC182BFFB60048C761 /* LMSStickerCollectionView.m in Sources */,
+				901E9521182C6F9B0048C761 /* UITextField+Extended.m in Sources */,
 				901E94C3182C02290048C761 /* LMSAnnotation.m in Sources */,
 				901E9486182BFD2B0048C761 /* LMSMapViewButton.m in Sources */,
+				901E9550182C9FE00048C761 /* KeyWords.m in Sources */,
+				901E9514182C6B9D0048C761 /* UIViewController+Extension.m in Sources */,
+				901E9511182C67EF0048C761 /* LMSAPIManager.m in Sources */,
 				901E94CB182C03420048C761 /* LMSSticker+Manager.m in Sources */,
 				901E9433182BF7710048C761 /* main.m in Sources */,
 				901E9487182BFD2B0048C761 /* LMSMapViewController.m in Sources */,
 				901E94BC182C00C20048C761 /* LMSSticker.m in Sources */,
 				901E94C8182C03070048C761 /* WebSocketManager.m in Sources */,
+				901E951E182C6E020048C761 /* AnalyticsManager.m in Sources */,
+				901E9543182C90AE0048C761 /* NetworkKeys.m in Sources */,
+				901E94E8182C30C70048C761 /* StickerDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

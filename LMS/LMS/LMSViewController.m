@@ -24,8 +24,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    [self setNeedsStatusBarAppearanceUpdate];
+	//INFO: Do any additional setup after loading the view.
+    
+	self.navigationController.navigationBar.translucent = NO;
+
+	//INFO: End
+	[self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)didReceiveMemoryWarning
