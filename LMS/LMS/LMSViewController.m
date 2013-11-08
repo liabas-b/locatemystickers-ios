@@ -21,6 +21,23 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	self = [super initWithCoder:aDecoder];
+	if (self) {
+		self.screenName = [[self class] description];
+	}
+	return self;
+}
+
+
+- (id)init {
+	self = [super init];
+	if (self) {
+		self.screenName = [[self class] description];
+	}
+	return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

@@ -19,9 +19,9 @@
 	if (self) {
 		// Optional: automatically send uncaught exceptions to Google Analytics.
 		[GAI sharedInstance].trackUncaughtExceptions = YES;
-		// Optional: set debug to YES for extra debugging information.
-		//[GAI sharedInstance].debug = YES;
-		// Get a new tracker.
+		[GAI sharedInstance].dispatchInterval = 20;
+		// Optional: set Logger to VERBOSE for debug information.
+		[[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];		// Get a new tracker.
 		id<GAITracker> newTracker = [[GAI sharedInstance] trackerWithTrackingId:[AppParameters defaultParameters].parameters.networkKeys.googleAnalyticsApiKey];
 		// Set the new tracker as the default tracker, globally.
 		[GAI sharedInstance].defaultTracker = newTracker;

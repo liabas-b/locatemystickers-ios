@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "LMSHeaderMapViewDelegate.h"
 #import <REFrostedViewController.h>
+#import "LMSViewController.h"
 
 
 @class LMSHeaderMapView;
 @class LMSMapView;
 
-@interface LMSMapViewController : UIViewController <LMSHeaderMapViewDelegate>
+@interface LMSMapViewController : LMSViewController <LMSHeaderMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet LMSHeaderMapView *headerMapView;
 @property (strong, nonatomic) IBOutlet LMSMapView *mapView;
