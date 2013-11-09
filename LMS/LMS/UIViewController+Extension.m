@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+Extension.h"
+#import <REFrostedViewController.h>
 #import "KGNoise.h"
 
 @implementation UIViewController (Extension)
@@ -92,15 +93,15 @@
     spaceItem.width = -15.0;
     
     //menu
-	/*
-    UIImage* menuImg = [UIImage imageNamed:@"navicone" ];
+	
+    UIImage* menuImg = [UIImage imageNamed:@"navicone"];
     CGRect frameimg = CGRectMake(0, 0, menuImg.size.width, menuImg.size.height);
     UIButton *menuButton = [[UIButton alloc] initWithFrame:frameimg];
     [menuButton setBackgroundImage:menuImg forState:UIControlStateHighlighted];
     [menuButton setBackgroundImage:[UIImage imageNamed:@"navicone"] forState:UIControlStateNormal];
-    [menuButton addTarget:self action:@selector(leftDrawerButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+    [menuButton addTarget:self action:@selector(leftBackButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *menuButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
-    */
+    
 
     if (backButttonEnabled == YES) {
         //back button
@@ -115,13 +116,17 @@
         self.navigationItem.leftBarButtonItems = @[spaceItem, backButtonItem];
     }
     else {
-//        self.navigationItem.leftBarButtonItems = @[menuButtonItem];
+        self.navigationItem.leftBarButtonItems = @[menuButtonItem];
     }
 }
 
-- (void)backButtonPress:(id)sender
-{
+- (void)backButtonPress:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)leftBackButtonPress:(id)sender {
+    [self.frostedViewController presentMenuViewController];
+}
+
 
 @end

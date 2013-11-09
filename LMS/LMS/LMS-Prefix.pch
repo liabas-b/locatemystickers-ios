@@ -16,6 +16,7 @@
     #import "UIFont+AppFont.h"
     #import "UIColor+AppColor.h"
     #import "NSString+Helpers.h"
+    #import "NSURL+Helpers.h"
 
 
     #ifdef DEBUG

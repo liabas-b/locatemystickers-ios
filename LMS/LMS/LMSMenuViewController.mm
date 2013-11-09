@@ -15,45 +15,110 @@
 #import "UserTableViewController.h"
 #import "StickersTableViewController.h"
 
+#import "LMSMenuCell.h"
+#import "AppDelegate.h"
+
+#import "LMSTableView.h"
+#import "LMSLabel.h"
+
+static NSString *menuCellIdentifier = @"MenuCell";
+
 @interface LMSMenuViewController ()
+
+@property (nonatomic, strong) NSMutableArray *menuList;
+@property (nonatomic, strong) NSMutableArray *sectionsList;
+
 
 @end
 
 @implementation LMSMenuViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
+#pragma mark - Configure
+
+- (void)configure {
+	[super configure];
+////	self.screenName = [[self class] description];
+	
+	[self configureView];
+	[self registerNibs];
+	[self setupData];
+	[self setupView];
+}
+
+#pragma mark - Base logic
+
+- (void)configureView {
+    [super configureView];
+	
+	self.tableView.separatorColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.opaque = NO;
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
-        imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        imageView.image = [UIImage imageNamed:@"avatar.jpg"];
-        imageView.layer.masksToBounds = YES;
-        imageView.layer.cornerRadius = 50.0;
-        imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        imageView.layer.borderWidth = 3.0f;
-        imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-        imageView.layer.shouldRasterize = YES;
-        imageView.clipsToBounds = YES;
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
-        label.text = @"Roman Efimov";
-        label.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
-        label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
-        [label sizeToFit];
-        label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        
-        [view addSubview:imageView];
-        [view addSubview:label];
-        view;
-    });
+}
+
+- (void)registerNibs {
+    [super registerNibs];
+}
+
+- (void)setupData {
+	[super setupData];
+	
+	DLog(@"self.appDelegate.appParameters.parameters.sectionsMenu: %@", self.appDelegate.appParameters.parameters.sectionsMenu);
+	
+	NSMutableArray *sectionsMenu = [[NSMutableArray alloc] initWithArray:self.appDelegate.appParameters.parameters.sectionsMenu];
+	
+	[sectionsMenu enumerateObjectsWithOptions:0 usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		SectionMenuItem *sectionMenu = (SectionMenuItem *)obj;
+		if (sectionMenu.section == -1)
+			[sectionsMenu removeObject:sectionMenu];
+	}];
+	
+	NSArray *sortedSectionsMenu = [sectionsMenu sortedArrayWithOptions:0 usingComparator:^NSComparisonResult(id obj1, id obj2) {
+		int section1 = ((SectionMenuItem *)obj1).section;
+		int section2 = ((SectionMenuItem *)obj2).section;
+		
+		if (section1 == section2) return NSOrderedSame;
+		return (section1 < section2) ? NSOrderedAscending : NSOrderedDescending;
+	}];
+	
+	DLog(@"sortedSectionsMenu:");
+	[sortedSectionsMenu enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		DLog(@"obj: %@ | idx: %d", obj, idx);
+	}];
+	
+	self.sectionsList = [[NSMutableArray alloc] initWithArray:sortedSectionsMenu];
+	
+	self.menuList = [[NSMutableArray alloc] init];
+	
+	for (SectionMenuItem *sectionMenuItem in sortedSectionsMenu) {
+		DLog(@"sectionMenuItem: %@", [sectionMenuItem description]);
+		NSMutableArray *rows = [[NSMutableArray alloc] init];
+		NSArray *menusItem = self.appDelegate.appParameters.parameters.menu;
+		for (MenuItem *menuItem in menusItem) {
+			if (menuItem.section == sectionMenuItem.section) {
+				DLog(@"add object: %@", menuItem);
+				[rows addObject:menuItem];
+			}
+		}
+		[self.menuList addObject:rows];
+	}
+	
+	DLog(@"sectionsMenuList: %@", self.menuList);
+	
+}
+
+- (void)setupView {
+	[super setupView];
+	
+	[self.tableView reloadData];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+//
+//	[self configure];
+//	[self.view setNeedsDisplay];
 }
 
 #pragma mark -
@@ -61,8 +126,8 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
-    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
+	//    cell.textLabel.textColor = //[UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
+	//    cell.textLabel.font = [UIfo];//[UIFont fontWithName:@"HelveticaNeue" size:17];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex
@@ -74,8 +139,8 @@
     view.backgroundColor = [UIColor colorWithRed:167/255.0f green:167/255.0f blue:167/255.0f alpha:0.6f];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 0, 0)];
-    label.text = @"Friends Online";
-    label.font = [UIFont systemFontOfSize:15];
+    label.text = @"Settings";
+    label.font = [UIFont defaultFont];
     label.textColor = [UIColor whiteColor];
     label.backgroundColor = [UIColor clearColor];
     [label sizeToFit];
@@ -84,83 +149,61 @@
     return view;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex
-{
-    if (sectionIndex == 0)
-        return 0;
-    
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex {
+	SectionMenuItem *sectionMenuItem = [self.sectionsList objectAtIndex:sectionIndex];
+	DLog(@"sectionMenuItem: %@", sectionMenuItem);
+	
+	if ([sectionMenuItem.name length] == 0)
+		return 0;
+	
     return 34;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
-    
-    if (indexPath.section == 0 && indexPath.row == 0) {
-//        LMSHomeViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
-//        navigationController.viewControllers = @[homeViewController];
-        LMSMapViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapController"];
-        navigationController.viewControllers = @[mapViewController];
+	
+	NSArray *currentMenuList = [self.menuList objectAtIndex:indexPath.section];
+	MenuItem *menuItem = [currentMenuList objectAtIndex:indexPath.row];
+	
+	if (menuItem && menuItem.controller && [menuItem .controller length]) {
+		//TODO: check if the identifer exist
+		DLog(@"menuItem: %@", menuItem);
+		NSString *controllerIdentifier = [NSString stringWithFormat:@"%@Controller", menuItem.controller];
+        navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:controllerIdentifier]];
+	}
 
-    } else if (indexPath.section == 0 && indexPath.row == 1) {
-		//        LMSHomeViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
-		//        navigationController.viewControllers = @[homeViewController];
-        StickersTableViewController *stickersTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"stickerController"];
-        navigationController.viewControllers = @[stickersTableViewController];
-		
-    }
-	else if (indexPath.section == 0 && indexPath.row == 2) {
-		//        LMSHomeViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
-		//        navigationController.viewControllers = @[homeViewController];
-        UserTableViewController *userTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"userController"];
-        navigationController.viewControllers = @[userTableViewController];
-		
-    }
-
-	else {
-        LMSSecondViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"secondController"];
-        navigationController.viewControllers = @[secondViewController];
-    }
-    
     [self.frostedViewController hideMenuViewController];
 }
 
 #pragma mark -
 #pragma mark UITableView Datasource
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 54;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 2;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.sectionsList count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
-{
-    return 3;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex {
+	NSArray *currentMenuList = [self.menuList objectAtIndex:sectionIndex];
+	
+	return [currentMenuList count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+    LMSMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:menuCellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[LMSMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:menuCellIdentifier];
     }
-    
-    if (indexPath.section == 0) {
-        NSArray *titles = @[@"Home", @"Profile", @"Chats"];
-        cell.textLabel.text = titles[indexPath.row];
-    } else {
-        NSArray *titles = @[@"John Appleseed", @"John Doe", @"Test User"];
-        cell.textLabel.text = titles[indexPath.row];
-    }
+	
+	NSArray *currentMenuList = [self.menuList objectAtIndex:indexPath.section];
+	MenuItem *menuItem = [currentMenuList objectAtIndex:indexPath.row];
+	cell.textLabel.text = [menuItem.controller capitalizedString];
     
     return cell;
 }

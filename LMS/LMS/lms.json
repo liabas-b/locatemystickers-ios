@@ -1,22 +1,26 @@
 {
 	"id" : "1",
+	"app_name" : "Locate My Stickers",
 	"color": "#8F142F",
-	"theme": "2",
-	"languages":
-	{
-		"fr": "1",
-		"en": "2"
-	}
-	,
-	"api_urls":
-	{
+	"background_color": "#ccc",
+	"theme": "1",
+	"languages": [{
+				  "id": "1",
+				  "language": "en",
+				  "name" : "English"
+				  },
+				  {
+				  "id": "2",
+				  "language": "fr",
+				  "name" : "France"
+				  }],
+	"api_urls": {
 		"lms_api": "http://locatemystickers-dev.herokuapp.com",
 		"lms_stickers_api": "http://stickersserver.herokuapp.com",
 		"lms_live_api": "ws://89.84.24.72:4242"
 	},
-	"api_keys":
-	{
-		"facebook_api_key": "key",
+	"api_keys": {
+		"facebook_api_key": "476403685809262",
 		"facebook_app_secret": "secret",
 		"google_analytics_api_key": "UA-45542059-1",
 		"twitter_oauth_access_token": "token",
@@ -24,24 +28,66 @@
 		"twitter_consumer_key": "key",
 		"twitter_consumer_secret": "consumer_secret"
 	},
-	"pages":
-	{
-		"map": "1",
-		"stickers": "2",
-		"users": "3",
-		"settings": "4",
-		"search": "5"
-	}
-	,
-	"descriptions":
-	{
-		"fr": "Locate My Sticker est un outil pour localiser des stickers",
-		"en": "Locate My Sticker is a tools to locate stickers"
-	}
-	,
-	"key_words":
-	{
-		"fr": "LMS, LocateMyStickers, Locate My Stickers, tracking, live, sticker",
-		"en": "LMS, LocateMyStickers, Locate My Stickers, tracking, live, sticker"
-	}
+	"sections_menu": [
+					  {
+					  "name": "Settings",
+					  "section": "2",
+					  "language": "en"
+					  },
+					  {
+					  "name": "",
+					  "section": "1",
+					  "language": "en"
+					  }],
+	"menu": [{
+			 "controller": "map",
+			 "section": "1",
+			 "row": "0",
+			 "language": "en"
+			 },
+			 {
+			 "controller": "stickers",
+			 "section": "1",
+			 "row": "2",
+			 "language": "en"
+			 },
+			 {
+			 "controller": "users",
+			 "section": "1",
+			 "row": "3",
+			 "language": "en"
+			 },
+			 {
+			 "controller": "search",
+			 "section": "1",
+			 "row": "4",
+			 "language": "en"
+			 },
+			 {
+			 "controller": "settings",
+			 "section": "2",
+			 "row": "0",
+			 "language": "en"
+			 },
+			 {
+			 "controller": "logout",
+			 "section": "2",
+			 "row": "1"
+			 }],
+	"descriptions": [{
+					 "language": "fr",
+					 "value": "Locate My Sticker est un outil pour localiser des stickers"
+					 },
+					 {
+					 "language": "en",
+					 "value": "Locate My Sticker is a tools to locate stickers"
+					 }],
+	"key_words": [{
+				  "language": "fr",
+				  "value": "LMS, LocateMyStickers, Locate My Stickers, tracking, live, sticker"
+				  },
+				  {
+				  "language": "en",
+				  "value": "LMS, LocateMyStickers, Locate My Stickers, tracking, live, sticker"
+				  }]
 }

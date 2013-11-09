@@ -13,6 +13,7 @@
 
 //INFO: Default
 + (UIColor *)defaultColor;
++ (UIColor *)defaultTitleColor;
 + (UIColor *)defaultFontColor;
 + (UIColor *)defaultSelectedFontColor;
 

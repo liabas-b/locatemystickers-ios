@@ -9,22 +9,27 @@
 #import "JSONModel.h"
 #import "ApiUrls.h"
 #import "ApiKeys.h"
-#import "Languages.h"
-#import "Pages.h"
-#import "Descriptions.h"
-#import "KeyWords.h"
+
+#import "MenuItem.h"
+#import "KeyWordItem.h"
+#import "DescriptionItem.h"
+#import "LanguageItem.h"
+#import "SectionMenuItem.h"
 
 
 @interface Parameters : JSONModel
 
 @property (assign, nonatomic) int id;
+@property (strong, nonatomic) NSString *appName;
 @property (strong, nonatomic) NSString *color;
-@property (strong, nonatomic) Languages *languages;
+@property (strong, nonatomic) NSString *backgroundColor;
+@property (strong, nonatomic) NSArray<LanguageItem> *languages;
 @property (strong, nonatomic) NSString *theme;
 @property (strong, nonatomic) ApiUrls *apiUrls;
 @property (strong, nonatomic) ApiKeys *apiKeys;
-@property (strong, nonatomic) Pages *pages;
-@property (strong, nonatomic) Descriptions *descriptions;
-@property (strong, nonatomic) KeyWords *keyWords;
+@property (strong, nonatomic) NSArray<SectionMenuItem> *sectionsMenu;
+@property (strong, nonatomic) NSArray<MenuItem> *menu;
+@property (strong, nonatomic) NSArray<DescriptionItem> *descriptions;
+@property (strong, nonatomic) NSArray<KeyWordItem> *keyWords;
 
 @end

@@ -8,12 +8,18 @@
 
 #import <GAITrackedViewController.h>
 
+@class AppDelegate;
+
 @interface LMSViewController : GAITrackedViewController
+
+- (void)configure;
 
 - (void)configureView;
 - (void)setupData;
 
 - (void)registerNibs;
 - (void)setupView;
+
+@property (nonatomic, strong) AppDelegate *appDelegate;
 
 @end

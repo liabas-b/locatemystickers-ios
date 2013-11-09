@@ -14,6 +14,7 @@ target "LMS" do
        pod 'KGNoise', '~> 1.2.0'
        pod 'EDQueue', '~> 0.7.0'
        pod 'JSONModel'
+       pod 'Facebook-iOS-SDK', '~> 3.9.0'
 end
 
 target "LMSTests" do

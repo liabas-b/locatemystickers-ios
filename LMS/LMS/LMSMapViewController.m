@@ -19,6 +19,40 @@
 
 @implementation LMSMapViewController
 
+
+#pragma mark - Configure
+
+- (void)configure {
+	[super configure];
+	
+	[self configureView];
+	[self registerNibs];
+	[self setupData];
+	[self setupView];
+}
+
+#pragma mark - Base logic
+
+- (void)configureView {
+	[super configureView];
+	self.headerMapView.delegate = self;
+}
+
+- (void)registerNibs {
+	[super registerNibs];
+}
+
+- (void)setupData {
+	[super setupData];
+	
+}
+
+- (void)setupView {
+	[super setupView];
+}
+
+//
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,19 +62,21 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 	
-	[self configure];
+	//[self configure];
 }
 
-- (IBAction)showMenu
-{
-    [self.frostedViewController presentMenuViewController];
-}
+//- (IBAction)showMenu {
+//    [self.frostedViewController presentMenuViewController];
+//
+//}
 
+//- (void)leftMenuButtonPress:(id)sender {
+//	[self.frostedViewController hideMenuViewController];
+//}
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
@@ -81,6 +117,7 @@
 
 #pragma mark - Main logic
 
+/*
 - (void)configure {
 	self.headerMapView.delegate = self;
 	
@@ -89,6 +126,7 @@
 	[self loadStickerList];
 	//	[self animateView:self.view];//mapView.stickerSelectionCollectionView];
 }
+ */
 
 - (void)loadStickerList {
 	NSArray *stickerRecordList = [[NSMutableArray alloc] init];//[StickerRecord findAllSortedBy:@"createdAt" ascending:NO];
@@ -183,7 +221,8 @@
 
 - (void)animateFriendView:(UIView *)view  {
 	
-	[self showMenu];
+//	[self showMenu];
+	[self.frostedViewController presentMenuViewController];
 	
 	NSLog(@"%s | %@", __PRETTY_FUNCTION__, view);
 	

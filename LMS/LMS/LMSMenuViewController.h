@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
+#import "LMSViewController.h"
 
-@interface LMSMenuViewController : UITableViewController
+@class LMSTableView;
+@class LMSLabel;
+@class TopMenuView;
+
+@interface LMSMenuViewController : LMSViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) IBOutlet LMSTableView *tableView;
 
 @end

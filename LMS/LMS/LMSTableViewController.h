@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class AppDelegate;
+
 @interface LMSTableViewController : UITableViewController
 
 @property (nonatomic, assign) BOOL refreshControlEnabled;
@@ -20,5 +22,7 @@
 
 - (void)registerNibs;
 - (void)setupView;
+
+@property (nonatomic, strong) AppDelegate *appDelegate;
 
 @end

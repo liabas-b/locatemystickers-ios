@@ -18,6 +18,12 @@
     return [UIColor colorFromHexString:@"#707070"];
 }
 
++ (UIColor *)defaultTitleColor
+{
+    return [UIColor colorFromHexString:@"#3E444B"];
+}
+
+
 + (UIColor *)defaultFontColor
 {
     return [UIColor colorFromHexString:@"#7F8995"];

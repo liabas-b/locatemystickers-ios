@@ -11,8 +11,10 @@
 //#import "UCTabBarItem.h"
 #import "AppDelegate.h"
 
-#import "UIColor+AppColor.h"
-#import "UIFont+AppFont.h"
+#import "UIViewController+Extension.h"
+
+//#import "UIColor+AppColor.h"
+//#import "UIFont+AppFont.h"
 
 void freeRawData(void *info, const void *data, size_t size);
 
@@ -35,6 +37,8 @@ void freeRawData(void *info, const void *data, size_t size);
 - (void)viewDidLoad {
 	self.refreshControlEnabled = NO;
     [super viewDidLoad];
+	
+	[self configureMenuLeftButtonWithBackButon:NO];
 	
 #warning Code is BADLY configured
 	DataMatrix *qrMatrix = [QREncoder encodeWithECLevel:QR_ECLEVEL_AUTO version:QR_VERSION_AUTO string:@"UID"];

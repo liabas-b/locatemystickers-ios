@@ -30,6 +30,9 @@
 		NSLog(@"[job objectForKey:@\"task\"]: %@", [job objectForKey:@"task"]);
 		NSLog(@"job: %@", job);
 		if ([[job objectForKey:@"task"] isEqualToString:@"success"]) {
+			
+			
+			
             block(EDQueueResultSuccess);
         } else if ([[job objectForKey:@"task"] isEqualToString:@"success1"]) {
             block(EDQueueResultSuccess);
