@@ -14,6 +14,7 @@
 @interface MenuItem : JSONModel
 
 @property (strong, nonatomic) NSString *controller;
+@property (strong, nonatomic) NSString *imageName;
 @property (assign, nonatomic) int section;
 @property (assign, nonatomic) int row;
 @property (strong, nonatomic) NSString *language;

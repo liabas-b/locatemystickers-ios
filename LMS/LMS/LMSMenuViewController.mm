@@ -175,7 +175,7 @@ static NSString *menuCellIdentifier = @"MenuCell";
 	NSArray *currentMenuList = [self.menuList objectAtIndex:indexPath.section];
 	MenuItem *menuItem = [currentMenuList objectAtIndex:indexPath.row];
 	
-	cell.menuImageView.image = [UIImage imageNamed:@"lms-300.png"];
+	cell.menuImageView.image = [UIImage imageNamed:menuItem.imageName ? menuItem.imageName : @"lms-300.png"];
 	cell.menuLabel.text = [menuItem.controller capitalizedString];
     
     return cell;

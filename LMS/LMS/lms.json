@@ -30,29 +30,41 @@
 	},
 	"sections_menu": [{
 					  "name": "",
+					  "image_name": "",
 					  "section": "1",
 					  "language": "en"
 					  }],
 	"menu": [{
 			 "controller": "map",
+			 "image_name": "map_red-icon.png",
 			 "section": "1",
 			 "row": "0",
 			 "language": "en"
 			 },
 			 {
 			 "controller": "stickers",
+			 "image_name": "sticker_red-icon.png",
 			 "section": "1",
 			 "row": "1",
 			 "language": "en"
 			 },
 			 {
 			 "controller": "user",
+			 "image_name": "user_red-icon.png",
+			 "section": "1",
+			 "row": "2",
+			 "language": "en"
+			 },
+			 {
+			 "controller": "friends",
+			 "image_name": "map_red-icon.png",
 			 "section": "1",
 			 "row": "2",
 			 "language": "en"
 			 },
 			 {
 			 "controller": "search",
+			 "image_name": "search_red-icon.png",
 			 "section": "1",
 			 "row": "3",
 			 "language": "en"

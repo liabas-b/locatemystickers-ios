@@ -28,6 +28,7 @@
 		9014CA86182F05B0006B5EFE /* parametres@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9014CA80182F05B0006B5EFE /* parametres@2x.png */; };
 		9014CA8A182F0AD7006B5EFE /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9014CA89182F0AD7006B5EFE /* HelpViewController.m */; };
 		9014CA8E182F1321006B5EFE /* LMSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9014CA8D182F1321006B5EFE /* LMSTextField.m */; };
+		9014CABB183009B6006B5EFE /* LMSMenuImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9014CABA183009B6006B5EFE /* LMSMenuImageView.m */; };
 		901E9427182BF7710048C761 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 901E9426182BF7710048C761 /* Foundation.framework */; };
 		901E9429182BF7710048C761 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 901E9428182BF7710048C761 /* CoreGraphics.framework */; };
 		901E942B182BF7710048C761 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 901E942A182BF7710048C761 /* UIKit.framework */; };
@@ -176,6 +177,8 @@
 		9014CA89182F0AD7006B5EFE /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		9014CA8C182F1321006B5EFE /* LMSTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSTextField.h; sourceTree = "<group>"; };
 		9014CA8D182F1321006B5EFE /* LMSTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSTextField.m; sourceTree = "<group>"; };
+		9014CAB9183009B6006B5EFE /* LMSMenuImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMSMenuImageView.h; path = "../../../locatemystickers-ios-sav/LMS/LMS/LMSMenuImageView.h"; sourceTree = "<group>"; };
+		9014CABA183009B6006B5EFE /* LMSMenuImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMSMenuImageView.m; path = "../../../locatemystickers-ios-sav/LMS/LMS/LMSMenuImageView.m"; sourceTree = "<group>"; };
 		901E9423182BF7710048C761 /* LMS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LMS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		901E9426182BF7710048C761 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		901E9428182BF7710048C761 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -444,6 +447,15 @@
 				9014CA8D182F1321006B5EFE /* LMSTextField.m */,
 			);
 			name = LMSTextField;
+			sourceTree = "<group>";
+		};
+		9014CAB81830099A006B5EFE /* LMSMenuImageView */ = {
+			isa = PBXGroup;
+			children = (
+				9014CAB9183009B6006B5EFE /* LMSMenuImageView.h */,
+				9014CABA183009B6006B5EFE /* LMSMenuImageView.m */,
+			);
+			name = LMSMenuImageView;
 			sourceTree = "<group>";
 		};
 		901E941A182BF7710048C761 = {
@@ -1016,6 +1028,7 @@
 		90835D37182D54B000D0B25C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				9014CAB81830099A006B5EFE /* LMSMenuImageView */,
 				9014CA8B182F12F4006B5EFE /* LMSTextField */,
 				90835D40182D54FA00D0B25C /* LMSTextView */,
 				90835D3C182D54D700D0B25C /* LMSLabel */,
@@ -1283,6 +1296,7 @@
 				901E94F7182C37070048C761 /* FollowedStickerCell.m in Sources */,
 				901E94CE182C08380048C761 /* NSDate+AppDate.m in Sources */,
 				901E94B2182C001D0048C761 /* LMSMapCollectionViewCell.m in Sources */,
+				9014CABB183009B6006B5EFE /* LMSMenuImageView.m in Sources */,
 				901E9483182BFD2B0048C761 /* LMSHeaderMapView.m in Sources */,
 				901E94F0182C31370048C761 /* StickerEditingViewController.m in Sources */,
 				901E946C182BF9C30048C761 /* LMSNavigationController.m in Sources */,

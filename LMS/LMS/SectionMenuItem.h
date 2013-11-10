@@ -14,6 +14,7 @@
 @interface SectionMenuItem : JSONModel
 
 @property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *imageName;
 @property (assign, nonatomic) int section;
 @property (strong, nonatomic) NSString *language;
 

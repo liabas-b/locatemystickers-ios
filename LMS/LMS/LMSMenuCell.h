@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "RoundedImageView.h"
+#import "LMSMenuImageView.h"
 #import "LMSLabel.h"
 
 @interface LMSMenuCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet RoundedImageView *menuImageView;
+@property (strong, nonatomic) IBOutlet LMSMenuImageView *menuImageView;
 @property (strong, nonatomic) IBOutlet LMSLabel *menuLabel;
 
 @end

@@ -10,4 +10,6 @@
 
 @interface LMSImageView : UIImageView
 
+- (void)test;
+
 @end

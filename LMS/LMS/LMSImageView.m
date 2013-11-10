@@ -10,6 +10,7 @@
 
 @implementation LMSImageView
 
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -17,6 +18,10 @@
         // Initialization code
     }
     return self;
+}
+
+- (void)test {
+	
 }
 
 /*

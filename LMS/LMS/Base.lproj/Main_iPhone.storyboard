@@ -73,19 +73,19 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="scaleToFill" restorationIdentifier="topMenuView" translatesAutoresizingMaskIntoConstraints="NO" id="eQJ-lV-XpW" customClass="TopMenuView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="174"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lms-300.png" translatesAutoresizingMaskIntoConstraints="NO" id="urh-Bt-pSZ" customClass="LMSImageView">
-                                        <rect key="frame" x="110" y="27" width="100" height="100"/>
+                                        <rect key="frame" x="135" y="22" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="k1M-69-ejU"/>
+                                            <constraint firstAttribute="width" constant="50" id="k1M-69-ejU"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jee-Jn-Kgb" customClass="LMSLabel">
-                                        <rect key="frame" x="24" y="136" width="272" height="29"/>
+                                        <rect key="frame" x="24" y="79" width="272" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -99,13 +99,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="jee-Jn-Kgb" firstAttribute="centerX" secondItem="eQJ-lV-XpW" secondAttribute="centerX" id="4uI-l0-9Ni"/>
-                                    <constraint firstAttribute="bottom" secondItem="jee-Jn-Kgb" secondAttribute="bottom" constant="9" id="4vs-se-16K"/>
+                                    <constraint firstAttribute="bottom" secondItem="jee-Jn-Kgb" secondAttribute="bottom" constant="6" id="4vs-se-16K"/>
                                     <constraint firstAttribute="trailing" secondItem="jee-Jn-Kgb" secondAttribute="trailing" constant="24" id="AUa-BJ-5Hd"/>
                                     <constraint firstItem="jee-Jn-Kgb" firstAttribute="leading" secondItem="eQJ-lV-XpW" secondAttribute="leading" constant="24" id="D6p-oy-cSl"/>
-                                    <constraint firstItem="urh-Bt-pSZ" firstAttribute="top" secondItem="eQJ-lV-XpW" secondAttribute="top" constant="27" id="Gs5-ED-zgA"/>
-                                    <constraint firstAttribute="height" constant="174" id="kfD-CR-i4H"/>
+                                    <constraint firstItem="urh-Bt-pSZ" firstAttribute="top" secondItem="eQJ-lV-XpW" secondAttribute="top" constant="22" id="Gs5-ED-zgA"/>
+                                    <constraint firstAttribute="height" constant="114" id="kfD-CR-i4H"/>
                                     <constraint firstItem="urh-Bt-pSZ" firstAttribute="centerX" secondItem="jee-Jn-Kgb" secondAttribute="centerX" id="kiV-Nb-ExZ"/>
-                                    <constraint firstItem="jee-Jn-Kgb" firstAttribute="top" secondItem="urh-Bt-pSZ" secondAttribute="bottom" constant="9" id="mhl-Yf-ghn"/>
+                                    <constraint firstItem="jee-Jn-Kgb" firstAttribute="top" secondItem="urh-Bt-pSZ" secondAttribute="bottom" constant="7" id="mhl-Yf-ghn"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="appImageView" destination="urh-Bt-pSZ" id="ndI-Lu-h6y"/>
@@ -113,7 +113,7 @@
                                 </connections>
                             </view>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SwH-Vz-rzL" customClass="LMSTableView">
-                                <rect key="frame" x="0.0" y="174" width="320" height="334"/>
+                                <rect key="frame" x="0.0" y="114" width="320" height="394"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -125,7 +125,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qf2-7L-rAi" customClass="RoundedImageView">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qf2-7L-rAi" customClass="LMSMenuImageView">
                                                     <rect key="frame" x="10" y="11" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
