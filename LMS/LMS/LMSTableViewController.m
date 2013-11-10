@@ -20,7 +20,6 @@
 - (id)init {
 	self = [super init];
 	if (self) {
-		[self configure];
 	}
 	return self;
 }
@@ -28,7 +27,6 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
 	self = [super initWithCoder:aDecoder];
 	if (self) {
-		[self configure];
 	}
 	return self;
 }
@@ -36,7 +34,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self) {
-		[self configure];
+
 	}
 	return self;
 }
@@ -45,7 +43,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-		[self configure];
+
     }
     return self;
 }
@@ -54,8 +52,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	[self configure];
 
-	[self.view setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
+//	[self.view setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
 	//INFO: iOS 6
 	/*
 	 UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];

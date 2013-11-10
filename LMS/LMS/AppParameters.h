@@ -23,15 +23,10 @@ typedef enum
 
 + (AppParameters *)defaultParameters;
 
-@property (atomic, strong, readonly) NSNumber       *eventID;
-@property (nonatomic, strong, readonly) NSString    *googleAnalyticsKey;
-@property (nonatomic, strong, readonly) NSArray     *menuItemOrder;
-@property (nonatomic, assign, readonly) NSInteger   loginType;
-@property (nonatomic, strong, readonly) NSString    *phoneLocalLanguage;
-
-@property (nonatomic, strong, readonly) NSString *color;
-@property (nonatomic, strong, readonly) NSNumber *liveMessagesEnable;
 
 @property (nonatomic, strong) Parameters *parameters;
+
+@property (nonatomic, strong) NSMutableArray *menuList;
+@property (nonatomic, strong) NSMutableArray *sectionsList;
 
 @end

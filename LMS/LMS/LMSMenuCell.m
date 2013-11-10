@@ -19,10 +19,63 @@
     return self;
 }
 
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	[super touchesBegan:touches withEvent:event];
+	
+	[self setSelected:YES animated:YES];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	[super touchesEnded:touches withEvent:event];
+	
+	[self setSelected:NO animated:YES];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+	
+    if (selected == YES) {
+		[UIView animateWithDuration:0.8
+							  delay:0
+							options:(UIViewAnimationOptionAllowUserInteraction)
+						 animations:^{
+							 
+							 //							 self.menuLabel.font = [UIFont defaultSelectedFont];
+							 self.menuLabel.textColor = [UIColor whiteColor];
+							 self.backgroundColor = [UIColor backgroundColor];
+							 
+							 //							 [self layoutIfNeeded];
+						 }
+						 completion:^(BOOL finished){
+							 [self layoutIfNeeded];
+							 
+							 //							 self.backgroundColor = [UIColor redColor];
+						 }];
+	}
+	else {
+		[UIView animateWithDuration:0.8
+							  delay:0
+							options:(UIViewAnimationOptionAllowUserInteraction)
+						 animations:^{
+							 //							 self.menuLabel.font = [UIFont defaultSelectedFont];
+							 self.menuLabel.textColor = [UIColor defaultFontColor];
+							 
+							 self.backgroundColor = [UIColor clearColor];
+						 }
+						 completion:^(BOOL finished){
+							 [self layoutIfNeeded];
+							 
+						 }];
+	}
+	
+	
+	
 }
 
 @end

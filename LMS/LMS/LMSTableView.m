@@ -19,6 +19,16 @@
     return self;
 }
 
+- (void)awakeFromNib {
+	[super awakeFromNib];
+
+	if ([self respondsToSelector:@selector(setSeparatorInset:)]) {
+		[self setSeparatorInset:UIEdgeInsetsZero];
+//		[self setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+	}
+}
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

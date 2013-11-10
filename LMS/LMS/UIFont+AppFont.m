@@ -15,6 +15,7 @@
 + (UIFont*)defaultFont
 {
     return [UIFont fontWithName:@"lato-regular" size:15.0];
+//	return [UIFont fontWithName:@"HelveticaNeue" size:15];
 }
 
 + (UIFont*)defaultSelectedFont
@@ -24,6 +25,7 @@
 
 + (UIFont*)defaultTitleFont
 {
+//	return [UIFont fontWithName:@"HelveticaNeue" size:20];
     return [UIFont fontWithName:@"lato-light" size:20.0];
 }
 

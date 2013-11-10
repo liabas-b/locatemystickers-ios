@@ -16,6 +16,8 @@
 
 - (void)refreshControlRequest;
 
+- (void)configure;
+
 //INFO: Main logic
 - (void)configureView;
 - (void)setupData;

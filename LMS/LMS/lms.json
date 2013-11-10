@@ -2,7 +2,7 @@
 	"id" : "1",
 	"app_name" : "Locate My Stickers",
 	"color": "#8F142F",
-	"background_color": "#ccc",
+	"background_color": "#8F142F",
 	"theme": "1",
 	"languages": [{
 				  "id": "1",
@@ -20,21 +20,15 @@
 		"lms_live_api": "ws://89.84.24.72:4242"
 	},
 	"api_keys": {
-		"facebook_api_key": "476403685809262",
-		"facebook_app_secret": "secret",
+		"facebook_api_key": "564198800317669",
+		"facebook_app_secret": "4ae4ab1cff621e385812ffba73b5d593",
 		"google_analytics_api_key": "UA-45542059-1",
 		"twitter_oauth_access_token": "token",
 		"twitter_oauth_access_token_secret": "token_secret",
 		"twitter_consumer_key": "key",
 		"twitter_consumer_secret": "consumer_secret"
 	},
-	"sections_menu": [
-					  {
-					  "name": "Settings",
-					  "section": "2",
-					  "language": "en"
-					  },
-					  {
+	"sections_menu": [{
 					  "name": "",
 					  "section": "1",
 					  "language": "en"
@@ -48,31 +42,20 @@
 			 {
 			 "controller": "stickers",
 			 "section": "1",
-			 "row": "2",
+			 "row": "1",
 			 "language": "en"
 			 },
 			 {
-			 "controller": "users",
+			 "controller": "user",
 			 "section": "1",
-			 "row": "3",
+			 "row": "2",
 			 "language": "en"
 			 },
 			 {
 			 "controller": "search",
 			 "section": "1",
-			 "row": "4",
+			 "row": "3",
 			 "language": "en"
-			 },
-			 {
-			 "controller": "settings",
-			 "section": "2",
-			 "row": "0",
-			 "language": "en"
-			 },
-			 {
-			 "controller": "logout",
-			 "section": "2",
-			 "row": "1"
 			 }],
 	"descriptions": [{
 					 "language": "fr",

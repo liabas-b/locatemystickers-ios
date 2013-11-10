@@ -1,14 +1,14 @@
 //
-//  LMSLabel.m
+//  LMSTextField.m
 //  LMS
 //
-//  Created by Adrien Guffens on 08/11/13.
+//  Created by Adrien Guffens on 10/11/13.
 //  Copyright (c) 2013 Team3000. All rights reserved.
 //
 
-#import "LMSLabel.h"
+#import "LMSTextField.h"
 
-@implementation LMSLabel
+@implementation LMSTextField
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -27,7 +27,7 @@
 
 - (void)configure {
 	self.font = [UIFont defaultFont];
-//	self.textColor = [UIColor defaultFontColor];
+	//	self.textColor = [UIColor defaultFontColor];
 }
 
 /*

@@ -19,6 +19,7 @@
 
 //INFO: Global
 + (UIColor *)applicationColor;
++ (UIColor *)backgroundColor;
 + (UIColor *)navigationBar;
 + (UIColor *)subNavigationBar;
 + (UIColor *)iconColor;

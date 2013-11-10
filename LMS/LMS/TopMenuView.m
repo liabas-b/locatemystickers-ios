@@ -18,9 +18,8 @@
 - (void)configure {
 	//INFO: do some stuff if needed
 	DLog(@"");
-	self.appName.font = [UIFont defaultTitleFont];
-	self.appName.textColor = [UIColor defaultTitleColor];
-	
+	self.appNameLabel.font = [UIFont defaultTitleFont];
+	self.appNameLabel.textColor = [UIColor defaultTitleColor];
 }
 
 

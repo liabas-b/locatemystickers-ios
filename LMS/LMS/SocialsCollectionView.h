@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SocialsCollectionView : UICollectionView
+@interface SocialsCollectionView : UICollectionView <UICollectionViewDataSource>
 
 @end

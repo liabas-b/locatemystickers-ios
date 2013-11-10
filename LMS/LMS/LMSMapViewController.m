@@ -11,6 +11,8 @@
 #import "LMSMapView.h"
 #import "LMSSticker+Manager.h"
 
+#import "UIView+Animations.h"
+
 #import "WebSocketManager.h"
 
 @interface LMSMapViewController ()
@@ -18,7 +20,6 @@
 @end
 
 @implementation LMSMapViewController
-
 
 #pragma mark - Configure
 
@@ -44,14 +45,15 @@
 
 - (void)setupData {
 	[super setupData];
-	
 }
 
 - (void)setupView {
 	[super setupView];
+	
+	[self loadStickerList];
 }
 
-//
+#pragma mark - View controller life cycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -65,18 +67,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-	
-	//[self configure];
 }
-
-//- (IBAction)showMenu {
-//    [self.frostedViewController presentMenuViewController];
-//
-//}
-
-//- (void)leftMenuButtonPress:(id)sender {
-//	[self.frostedViewController hideMenuViewController];
-//}
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
@@ -95,8 +86,7 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -107,6 +97,7 @@
     NSString *message = (NSString *)[notification object];
 	
 	NSLog(@"%s | message: %@", __PRETTY_FUNCTION__, message);
+	//TODO: do some stuff if the message is good
 	
     if (message != nil) {
 //        NSNumber *n = [theData objectForKey:@"isReachable"];
@@ -117,17 +108,6 @@
 
 #pragma mark - Main logic
 
-/*
-- (void)configure {
-	self.headerMapView.delegate = self;
-	
-	//	[self.headerMapView.stickerMapViewButton addTarget:self action:@selector(myEvent:) forControlEvents:UIControlEventTouchDown];
-	
-	[self loadStickerList];
-	//	[self animateView:self.view];//mapView.stickerSelectionCollectionView];
-}
- */
-
 - (void)loadStickerList {
 	NSArray *stickerRecordList = [[NSMutableArray alloc] init];//[StickerRecord findAllSortedBy:@"createdAt" ascending:NO];
 	NSLog(@"%s | stickerRecordList: %@", __PRETTY_FUNCTION__, stickerRecordList);
@@ -135,140 +115,22 @@
 	[self.mapView loadStickerList:stickerRecordList];
 }
 
-#pragma mark - View Helper - For test
-
-- (void)animateView:(UIView *)view withMargin:(CGFloat)margin andDirection:(BOOL)left  {
-	
-	NSLog(@"%s | %@", __PRETTY_FUNCTION__, view);
-	static int i;
-	
-	[UIView animateWithDuration:0.5
-						  delay:0.1
-						options: UIViewAnimationCurveEaseOut
-					 animations:^
-	 {
-		 CGRect frame = view.frame;
-		 frame.origin.y = view.frame.origin.y;
-		 if (left == YES) {
-			 frame.origin.x -= (frame.size.width - margin);
-		 }
-		 else {
-			 frame.origin.x += (frame.size.width - margin);
-		 }
-		 view.frame = frame;
-	 }
-					 completion:^(BOOL finished)
-	 {
-		 NSLog(@"Completed");
-		 
-	 }];
-	i++;
-}
-
-#pragma mark - View helpers
-
-- (void)animateStickerView:(UIView *)view  {
-	
-	NSLog(@"%s | %@", __PRETTY_FUNCTION__, view);
-	
-	[UIView animateWithDuration:0.5
-						  delay:0.1
-						options: UIViewAnimationCurveEaseOut
-					 animations:^
-	 {
-		 CGRect frame = view.frame;
-		 frame.origin.y = view.frame.origin.y;
-		 if (self.headerMapView.stickerMapViewButton.isToggled == NO) {
-			 frame.origin.x += frame.size.width;
-		 }
-		 else {
-			 frame.origin.x -= frame.size.width;
-		 }
-		 view.frame = frame;
-	 }
-					 completion:^(BOOL finished)
-	 {
-		 NSLog(@"Completed");
-		 
-	 }];
-	/*
-	return;
-	CGRect rect = view.frame;
-	CGRect originalRect = rect;
-	rect.origin.y = -rect.size.height;
-	view.frame = rect;
-	[UIView animateWithDuration:0.3
-					 animations:^{
-						 view.frame = originalRect;
-					 }
-					 completion:^(BOOL finished) {
-						 
-					 }];
-	return;
-	
-	CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
-	animation.values = @[@(1), @(1.2), @(0.01)];
-	animation.keyTimes = @[@(0), @(0.4), @(1)];
-	animation.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut], [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-	animation.duration = 0.35;
-	animation.delegate = self;
-	//	[animation setValue:completion forKey:@"handler"];
-	[view.layer addAnimation:animation forKey:@"bounce"];
-	
-	view.transform = CGAffineTransformMakeScale(0.01, 0.01);
-	*/
-}
-
-- (void)animateFriendView:(UIView *)view  {
-	
-//	[self showMenu];
-	[self.frostedViewController presentMenuViewController];
-	
-	NSLog(@"%s | %@", __PRETTY_FUNCTION__, view);
-	
-	[UIView animateWithDuration:0.5
-						  delay:0.1
-						options: UIViewAnimationCurveEaseOut
-					 animations:^
-	 {
-		 CGRect frame = view.frame;
-		 frame.origin.y = view.frame.origin.y;
-		 if (self.headerMapView.friendMapViewButton.isToggled == NO) {
-			 frame.origin.y -= frame.size.height;
-		 }
-		 else {
-			 frame.origin.y += frame.size.height;
-		 }
-		 view.frame = frame;
-	 }
-					 completion:^(BOOL finished)
-	 {
-		 NSLog(@"Completed");
-		 
-	 }];
-}
-
 #pragma mark - LMSHeaderMapViewDelegate
 
 - (void)didToggleStickerButton:(id)sender {
-	NSLog(@"%s | %@", __PRETTY_FUNCTION__, self.mapView.stickerSelectionCollectionView);
-	[self animateStickerView:self.stickerListContainer];
-/*
-	[self animateView:self.mapView withMargin:120 andDirection:NO];
-	[self animateView:self.headerMapView withMargin:50 andDirection:YES];
-
-*/
-//	[self animateView:self.mapView withMargin:200 andDirection:NO];
-//	[self animateView:self.headerMapView withMargin:50 andDirection:YES];
-
-	//	[self animateView:self.headerMapView];
+	DLog(@"");
 	
+	[self.frostedViewController presentMenuViewController];
+	
+	UIViewPosition position = self.headerMapView.stickerMapViewButton.isToggled == YES ? leftPosition : rightPosition;
+	[self.stickerListContainer animateFromPosition:position];
 }
 
 - (void)didToggleFriendButton:(id)sender {
-	//INFO: test for fun
-	NSLog(@"%s | %@", __PRETTY_FUNCTION__, self.mapView);
-	[self animateFriendView:self.friendListContainer];//.mapView.stickerSelectionCollectionView];
+	DLog(@"");
+	
+	UIViewPosition position = self.headerMapView.friendMapViewButton.isToggled == YES ? topPosition : bottomPosition;
+	[self.friendListContainer animateFromPosition:position];
 }
 
 @end

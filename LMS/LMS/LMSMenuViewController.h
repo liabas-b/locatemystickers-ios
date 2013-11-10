@@ -16,6 +16,11 @@
 
 @interface LMSMenuViewController : LMSViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) IBOutlet TopMenuView *topView;
 @property (nonatomic, strong) IBOutlet LMSTableView *tableView;
+
+- (IBAction)helpHandler:(id)sender;
+- (IBAction)settingsHandler:(id)sender;
+- (IBAction)logoutHandler:(id)sender;
 
 @end

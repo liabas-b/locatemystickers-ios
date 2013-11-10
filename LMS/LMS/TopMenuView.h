@@ -7,12 +7,12 @@
 //
 
 #import "LMSView.h"
-#import "RoundedImageView.h"
+#import "LMSImageView.h"
 #import "LMSLabel.h"
 
 @interface TopMenuView : LMSView
 
-@property (nonatomic, strong) IBOutlet RoundedImageView *appImageView;
-@property (nonatomic, strong) IBOutlet LMSLabel *appName;
+@property (nonatomic, strong) IBOutlet LMSImageView *appImageView;
+@property (nonatomic, strong) IBOutlet LMSLabel *appNameLabel;
 
 @end

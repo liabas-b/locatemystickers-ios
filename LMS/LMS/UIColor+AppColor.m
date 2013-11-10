@@ -7,6 +7,7 @@
 //
 
 #import "UIColor+AppColor.h"
+#import "AppDelegate.h"
 
 @implementation UIColor (AppColor)
 
@@ -37,7 +38,17 @@
 //INFO: Global
 
 + (UIColor *)applicationColor {
-	return [UIColor colorFromHexString:@"#8E142D"];
+	AppDelegate *appDelegate = (AppDelegate *)[AppDelegate appDelegate];
+	NSString *color = appDelegate.appParameters.parameters.color;
+
+	return [UIColor colorFromHexString:color];
+}
+
++ (UIColor *)backgroundColor {
+	AppDelegate *appDelegate = (AppDelegate *)[AppDelegate appDelegate];
+	NSString *color = appDelegate.appParameters.parameters.backgroundColor;
+	
+	return [UIColor colorFromHexString:color];
 }
 
 + (UIColor *)navigationBar
@@ -102,7 +113,5 @@
 {
     return [UIColor colorFromHexString:@"#E0E0E0"];
 }
-
-
 
 @end
