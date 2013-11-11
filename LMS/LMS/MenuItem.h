@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSString *controller;
 @property (strong, nonatomic) NSString *imageName;
+@property (strong, nonatomic) NSString *name;
 @property (assign, nonatomic) int section;
 @property (assign, nonatomic) int row;
 @property (strong, nonatomic) NSString *language;

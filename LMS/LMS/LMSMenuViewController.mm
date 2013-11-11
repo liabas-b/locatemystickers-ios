@@ -139,8 +139,10 @@ static NSString *menuCellIdentifier = @"MenuCell";
 	if (menuItem && menuItem.controller && [menuItem .controller length]) {
 		//TODO: check if the identifer exist
 		DLog(@"menuItem: %@", menuItem);
-		NSString *controllerIdentifier = [NSString stringWithFormat:@"%@Controller", menuItem.controller];
-        navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:controllerIdentifier]];
+		UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:menuItem.controller];
+		viewController.title = NSLocalizedString(menuItem.name, @"Title");
+		
+        navigationController.viewControllers = @[viewController];
 	}
 	
     [self.frostedViewController hideMenuViewController];
@@ -176,10 +178,12 @@ static NSString *menuCellIdentifier = @"MenuCell";
 	MenuItem *menuItem = [currentMenuList objectAtIndex:indexPath.row];
 	
 	cell.menuImageView.image = [UIImage imageNamed:menuItem.imageName ? menuItem.imageName : @"lms-300.png"];
-	cell.menuLabel.text = [menuItem.controller capitalizedString];
+	cell.menuLabel.text = NSLocalizedString(menuItem.name, @"Title");
     
     return cell;
 }
+
+#pragma mark - Bottom Menu
 
 - (IBAction)helpHandler:(id)sender {
 	

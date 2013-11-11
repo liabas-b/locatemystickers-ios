@@ -1,0 +1,159 @@
+
+/* Class = "IBUILabel"; text = "20 days"; ObjectID = "4nM-Hk-cGw"; */
+"4nM-Hk-cGw.text" = "20 days";
+
+/* Class = "IBUILabel"; text = "Your stickers ()"; ObjectID = "5w7-7J-6T8"; */
+"5w7-7J-6T8.text" = "Your stickers ()";
+
+/* Class = "IBUILabel"; text = "Or login with your favorite service"; ObjectID = "ATs-Pv-FHE"; */
+"ATs-Pv-FHE.text" = "Or login with your favorite service";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "BoK-Cz-jwp"; */
+"BoK-Cz-jwp.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Update Frenquency"; ObjectID = "C5s-xd-dM3"; */
+"C5s-xd-dM3.text" = "Update Frenquency";
+
+/* Class = "IBUILabel"; text = "Active:"; ObjectID = "Cf6-Yn-JXJ"; */
+"Cf6-Yn-JXJ.text" = "Active:";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "Dxq-Bg-nza"; */
+"Dxq-Bg-nza.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Display the stickers I follow with my own stickers"; ObjectID = "EZv-to-wwd"; */
+"EZv-to-wwd.text" = "Display the stickers I follow with my own stickers";
+
+/* Class = "IBUITextField"; placeholder = "Login"; ObjectID = "Gy2-F2-WXU"; */
+"Gy2-F2-WXU.placeholder" = "Login";
+
+/* Class = "IBUITextField"; text = "adril.gu@gmail.com"; ObjectID = "Gy2-F2-WXU"; */
+"Gy2-F2-WXU.text" = "adril.gu@gmail.com";
+
+/* Class = "IBUILabel"; text = "Locate My phone"; ObjectID = "HMP-QN-qAC"; */
+"HMP-QN-qAC.text" = "Locate My phone";
+
+/* Class = "IBUILabel"; text = "Stickers"; ObjectID = "Hz6-cs-vgr"; */
+"Hz6-cs-vgr.text" = "Stickers";
+
+/* Class = "IBUILabel"; text = "Activated"; ObjectID = "I1k-54-2IJ"; */
+"I1k-54-2IJ.text" = "Activated";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "I3h-dA-Y4w"; */
+"I3h-dA-Y4w.text" = "Label";
+
+/* Class = "IBUIButton"; normalTitle = "Login"; ObjectID = "IPc-2L-P4A"; */
+"IPc-2L-P4A.normalTitle" = "Login";
+
+/* Class = "IBUITextField"; placeholder = "Password"; ObjectID = "JO7-Br-5J4"; */
+"JO7-Br-5J4.placeholder" = "Password";
+
+/* Class = "IBUITextField"; text = "adri24"; ObjectID = "JO7-Br-5J4"; */
+"JO7-Br-5J4.text" = "adri24";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "Jy0-5Z-ZSx"; */
+"Jy0-5Z-ZSx.text" = "Label";
+
+/* Class = "IBUINavigationItem"; title = "User"; ObjectID = "K37-ti-fey"; */
+"K37-ti-fey.title" = "User";
+
+/* Class = "IBUILabel"; text = "Smile! Add a photo or image to your profile :)"; ObjectID = "KoV-Je-ekN"; */
+"KoV-Je-ekN.text" = "Smile! Add a photo or image to your profile :)";
+
+/* Class = "IBUILabel"; text = "You have registered a sticker"; ObjectID = "Mcu-pC-Nck"; */
+"Mcu-pC-Nck.text" = "You have registered a sticker";
+
+/* Class = "IBUINavigationItem"; title = "Friends"; ObjectID = "O0M-bX-K0D"; */
+"O0M-bX-K0D.title" = "Friends";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "Rkx-Ru-OVn"; */
+"Rkx-Ru-OVn.text" = "Label";
+
+/* Class = "IBUILabel"; text = "30 secondes"; ObjectID = "S5d-FB-CS1"; */
+"S5d-FB-CS1.text" = "30 secondes";
+
+/* Class = "IBUINavigationItem"; title = "Followed Stickers"; ObjectID = "SsG-5d-FRq"; */
+"SsG-5d-FRq.title" = "Followed Stickers";
+
+/* Class = "IBUINavigationItem"; title = "Edition Sticker"; ObjectID = "THu-2k-U7G"; */
+"THu-2k-U7G.title" = "Edition Sticker";
+
+/* Class = "IBUINavigationItem"; title = "Authorize Access"; ObjectID = "Uuo-kf-ga9"; */
+"Uuo-kf-ga9.title" = "Authorize Access";
+
+/* Class = "IBUILabel"; text = "Email"; ObjectID = "VfQ-e0-Yvg"; */
+"VfQ-e0-Yvg.text" = "Email";
+
+/* Class = "IBUILabel"; text = "X"; ObjectID = "W0g-t7-NoZ"; */
+"W0g-t7-NoZ.text" = "X";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "WAC-xp-FeW"; */
+"WAC-xp-FeW.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "WLa-Xy-IIx"; */
+"WLa-Xy-IIx.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Histories"; ObjectID = "WXG-WQ-B36"; */
+"WXG-WQ-B36.text" = "Histories";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "Yur-6R-B9S"; */
+"Yur-6R-B9S.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Description:"; ObjectID = "ZYm-2I-l1a"; */
+"ZYm-2I-l1a.text" = "Description:";
+
+/* Class = "IBUINavigationItem"; title = "Account Info"; ObjectID = "aSK-5J-MA3"; */
+"aSK-5J-MA3.title" = "Account Info";
+
+/* Class = "IBUILabel"; text = "Followed Stickers"; ObjectID = "cVp-zS-vxR"; */
+"cVp-zS-vxR.text" = "Followed Stickers";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "cXB-Z0-slB"; */
+"cXB-Z0-slB.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "d8A-tF-c3b"; */
+"d8A-tF-c3b.text" = "Name";
+
+/* Class = "IBUILabel"; text = "You have registered a sticker"; ObjectID = "dJf-qi-ZfW"; */
+"dJf-qi-ZfW.text" = "You have registered a sticker";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "dq7-bm-Rmk"; */
+"dq7-bm-Rmk.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "enB-VA-JkV"; */
+"enB-VA-JkV.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "jee-Jn-Kgb"; */
+"jee-Jn-Kgb.text" = "Label";
+
+/* Class = "IBUINavigationItem"; title = "Histories"; ObjectID = "jhS-IM-ZSH"; */
+"jhS-IM-ZSH.title" = "Histories";
+
+/* Class = "IBUILabel"; text = "Account info"; ObjectID = "l5n-g0-czx"; */
+"l5n-g0-czx.text" = "Account info";
+
+/* Class = "IBUILabel"; text = "X"; ObjectID = "oKE-E4-CtS"; */
+"oKE-E4-CtS.text" = "X";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "oq7-6e-abg"; */
+"oq7-6e-abg.text" = "Label";
+
+/* Class = "IBUINavigationItem"; title = "Sticker Detail"; ObjectID = "rdT-f9-jnM"; */
+"rdT-f9-jnM.title" = "Sticker Detail";
+
+/* Class = "IBUINavigationItem"; title = "Settings"; ObjectID = "vYi-Ls-BCa"; */
+"vYi-Ls-BCa.title" = "Settings";
+
+/* Class = "IBUIButton"; normalTitle = "Finished"; ObjectID = "wM5-Mh-8tl"; */
+"wM5-Mh-8tl.normalTitle" = "Finished";
+
+/* Class = "IBUITableViewController"; title = "Notifications"; ObjectID = "x9W-k3-n2y"; */
+"x9W-k3-n2y.title" = "Notifications";
+
+/* Class = "IBUILabel"; text = "Last location:"; ObjectID = "xiX-xN-wwx"; */
+"xiX-xN-wwx.text" = "Last location:";
+
+/* Class = "IBUILabel"; text = "Stickers"; ObjectID = "xjE-r4-85J"; */
+"xjE-r4-85J.text" = "Stickers";
+
+/* Class = "IBUILabel"; text = "42"; ObjectID = "zAd-Wf-AsG"; */
+"zAd-Wf-AsG.text" = "42";
