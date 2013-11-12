@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 #import "Parameters.h"
-//@class Parameters;
 
 typedef enum
 {
@@ -17,12 +16,11 @@ typedef enum
     classicLogin,
     interestLogin
     
-}   LoginTypeValue;
+}   LoginType;
 
 @interface AppParameters : NSObject
 
 + (AppParameters *)defaultParameters;
-
 
 @property (nonatomic, strong) Parameters *parameters;
 

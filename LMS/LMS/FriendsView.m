@@ -1,14 +1,14 @@
 //
-//  LMSLabel.m
+//  FriendsView.m
 //  LMS
 //
-//  Created by Adrien Guffens on 08/11/13.
+//  Created by Adrien Guffens on 11/11/13.
 //  Copyright (c) 2013 Team3000. All rights reserved.
 //
 
-#import "LMSLabel.h"
+#import "FriendsView.h"
 
-@implementation LMSLabel
+@implementation FriendsView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -19,6 +19,7 @@
     return self;
 }
 
+
 - (void)awakeFromNib {
 	[super awakeFromNib];
 	
@@ -26,8 +27,12 @@
 }
 
 - (void)configure {
-//	self.font = [UIFont defaultFont];
-//	self.textColor = [UIColor defaultFontColor];
+	self.friendsLabel.font = [UIFont defaultTitleFont];
+	self.friendsLabel.textColor = [UIColor defaultFontColor];
+}
+
+- (void)configureWithFriendList:(NSArray *)friendList {
+	[self.friendsCollectionView configureWithFriendList:friendList];
 }
 
 /*

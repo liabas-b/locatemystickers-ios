@@ -8,8 +8,13 @@
 
 /* MENU */
 
-"Map" = "Map";
+"Map" = "Plan";
 "Stickers" = "Stickers";
 "User" = "User";
-"Friends" = "Friends";
-"Search" = "Search";
+"Friends" = "Amis";
+"Search" = "Recherche";
+
+/* Title */
+
+"Following" = "Suivants";
+"Followers" = "Suiveurs";

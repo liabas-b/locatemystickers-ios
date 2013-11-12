@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LMSCollectionViewCell.h"
 #import "LMSImageView.h"
 
-@interface SocialCollectionViewCell : UICollectionViewCell
+@interface SocialCollectionViewCell : LMSCollectionViewCell
 
 @property (strong, nonatomic) IBOutlet LMSImageView *socialImageView;
 

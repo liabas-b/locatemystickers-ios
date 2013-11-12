@@ -17,4 +17,14 @@
 @dynamic stickerCode;
 @dynamic updatedAt;
 
++ (BOOL)propertyIsOptional:(NSString*)propertyName
+{
+	return YES;
+}
+
++ (JSONKeyMapper*)keyMapper
+{
+	return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+}
+
 @end

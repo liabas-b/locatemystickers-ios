@@ -15,6 +15,19 @@
 
 #import "WebSocketManager.h"
 
+#import "PusherManager.h"
+#import <PTPusherChannel.h>
+#import <PTPusherEvent.h>
+
+
+#import "LMSLocation.h"
+#import "LMSLocation+Manager.h"
+
+#import "LMSSticker.h"
+#import "LMSSticker+Manager.h"
+
+#import "AppDelegate.h"
+
 @interface LMSMapViewController ()
 
 @end
@@ -30,6 +43,9 @@
 	[self registerNibs];
 	[self setupData];
 	[self setupView];
+	
+	[self handleMessagePusher];
+//	[self.appDelegate.pusherManager.pusher sendEventNamed:@"my_event" data:@"Hello World 42 42" channel:@"test_channel"];
 }
 
 #pragma mark - Base logic
@@ -115,6 +131,24 @@
 	[self.mapView loadStickerList:stickerRecordList];
 }
 
+#pragma mark - Pusher Manger
+
+- (void)handleMessagePusher {
+	NSString *channelName = [NSString stringWithFormat:@"%d_locations_channel", 1];
+	PTPusherChannel *channel = [self.appDelegate.pusherManager subscribeToChannelName:channelName];
+		
+	[channel bindToEventNamed:@"my_event" handleWithBlock:^(PTPusherEvent *channelEvent) {
+		DLog(@"channelEvent: %@", channelEvent);
+		DLog(@"channelEvent.data: %@", [channelEvent.data objectForKey:@"message"]);
+		//NEW STICKER:
+
+//		LMSSticker *sticker = [LMSSticker addUpdateWithDictionary:nil];
+		
+		//NEW LOCATION:
+		
+	}];
+}
+
 #pragma mark - LMSHeaderMapViewDelegate
 
 - (void)didToggleStickerButton:(id)sender {
@@ -128,6 +162,7 @@
 
 - (void)didToggleFriendButton:(id)sender {
 	DLog(@"");
+//	[self.appDelegate.pusherManager.pusher sendEventNamed:@"my_event" data:@"{\"message\":\"hello 4242424242\"}" channel:@"test_channel"];
 	
 	UIViewPosition position = self.headerMapView.friendMapViewButton.isToggled == YES ? topPosition : bottomPosition;
 	[self.friendListContainer animateFromPosition:position];

@@ -8,7 +8,6 @@
 
 #import "LMSMenuViewController.h"
 #import "LMSHomeViewController.h"
-#import "LMSSecondViewController.h"
 #import "LMSMapViewController.h"
 #import "UIViewController+REFrostedViewController.h"
 
@@ -190,26 +189,23 @@ static NSString *menuCellIdentifier = @"MenuCell";
 	[self.frostedViewController hideMenuViewController];
 	
 	UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
-	[navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"helpController"] animated:YES];
-
+	[navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"HelpController"] animated:YES];
 }
 
 - (IBAction)settingsHandler:(id)sender {
 	[self.frostedViewController hideMenuViewController];
 	
 	UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
-	[navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"settingsController"] animated:YES];
-	
+	[navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"SettingsController"] animated:YES];
 }
 
 - (IBAction)logoutHandler:(id)sender {
 	[self.frostedViewController hideMenuViewController];
 	
 	UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
-	[navigationController presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"loginController"] animated:YES completion:^{
+	[navigationController presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"LoginController"] animated:YES completion:^{
 		DLog(@"logout");
 	}];
-	
 }
 
 @end

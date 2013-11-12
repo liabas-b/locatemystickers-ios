@@ -17,8 +17,15 @@ typedef enum {
 
 @interface LMSSticker (Manager)
 
-+ (LMSSticker *)addUpdateWithCode:(NSString *)code;
+
 + (LMSSticker *)addUpdateWithDictionary:(NSDictionary *)dictionary;
++ (LMSSticker *)addUpdateWithUser:(LMSSticker *)sticker;
++ (LMSSticker *)addUpdateWithJSON:(NSString *)JSON;
+//
+
+
++ (LMSSticker *)addUpdateWithCode:(NSString *)code;
+//+ (LMSSticker *)addUpdateWithDictionary:(NSDictionary *)dictionary;
 
 + (BOOL)stickerIsAlreadyAddedWithCode:(NSString *)code;
 + (NSArray *)stickerOfStickerTypeId:(int)stickerTypeId;

@@ -31,9 +31,12 @@
 	
 	dispatch_once(&onceToken, ^{
 		self.appParameters = [AppParameters defaultParameters];
+		self.appSession = [AppSession defaultSession];
+
 		self.apiManager = [[LMSAPIManager alloc] initWithBaseURLString:self.appParameters.parameters.apiUrls.lmsApi];
 		self.websocketManager = [[WebSocketManager alloc] initWithHostName:self.appParameters.parameters.apiUrls.lmsLiveApi];
-//		self.operationManager = [[OperationManager alloc] init];
+		self.pusherManager = [[PusherManager alloc] initWithAPIKey:self.appParameters.parameters.apiKeys.pusherApiKey];
+		//		self.operationManager = [[OperationManager alloc] init];
 		self.analyticsManager = [[AnalyticsManager alloc] init];
 		
 		[self UIAppearances];

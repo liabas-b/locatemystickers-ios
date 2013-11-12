@@ -14,10 +14,13 @@
 
 + (UIFont*)defaultFont;
 + (UIFont*)defaultSelectedFont;
++ (UIFont*)defaultSmallFont;
 + (UIFont*)defaultTitleFont;
++ (UIFont*)defaultSubtitleFont;
 + (UIFont*)lightFont;
 + (UIFont*)mediumFont;
 + (UIFont*)navBarFont;
 + (UIFont*)buttonFont;
+
 
 @end

@@ -13,3 +13,8 @@
 "User" = "User";
 "Friends" = "Friends";
 "Search" = "Search";
+
+/* Title */
+
+"Following" = "Following";
+"Followers" = "Followers";

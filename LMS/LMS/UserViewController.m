@@ -13,7 +13,21 @@
 #import "FriendsCell.h"
 #import "ToolsCell.h"
 
+//INFO: MODEL
+#import "User.h"
+#import "User+Manager.h"
+#import "Friends.h"
+#import "Friends+Manager.h"
+
+#import <REFrostedViewController.h>
+
+#import "UserToolsView.h"
+
 static double kDefaultCellHeight = 80;
+
+static double kToolsCellHeight = 60;
+static double kQRCellHeight = 80;
+static double kFriendsCellHeight = 166;
 
 static NSString *lmsCellIdentifier = @"LMSCell";
 static NSString *toolsCellIdentifier = @"ToolsCell";
@@ -22,6 +36,8 @@ static NSString *friendsCellIdentifier = @"FriendsCell";
 
 @interface UserViewController ()
 
+@property (nonatomic, strong) User *user;
+@property (nonatomic, strong) Friends *friends;
 @property (nonatomic, strong) NSMutableArray *menuList;
 @property (nonatomic, strong) NSMutableArray *friendList;
 
@@ -37,8 +53,7 @@ static NSString *friendsCellIdentifier = @"FriendsCell";
 	[self configureView];
 	[self registerNibs];
 	[self setupData];
-	[self setupView];
-	
+	[self setupView];	
 }
 
 #pragma mark - Base logic
@@ -48,7 +63,6 @@ static NSString *friendsCellIdentifier = @"FriendsCell";
 	
 	[self configureMenuLeftButtonWithBackButon:[self.navigationController.viewControllers count] > 1];
 	
-	
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.opaque = NO;
@@ -56,10 +70,9 @@ static NSString *friendsCellIdentifier = @"FriendsCell";
 	self.tableView.allowsSelection = YES;
 	
 	self.menuList = [[NSMutableArray alloc] init];
-	[self.menuList addObject:@"World"];
-	[self.menuList addObject:@"World"];
-	[self.menuList addObject:@"World"];
-	
+	[self.menuList addObject:@"tools"];
+	[self.menuList addObject:@"qr"];
+	[self.menuList addObject:@"friend"];
 }
 
 - (void)registerNibs {
@@ -70,10 +83,55 @@ static NSString *friendsCellIdentifier = @"FriendsCell";
 	[super setupData];
 	
 	self.friendList = [[NSMutableArray alloc] init];
+	if (self.user == nil) {
+		self.user = [[User alloc] init];
+#warning TO IMPLEMENT
+		//TODO: get the default id from the session manager
+		self.user.id = 1;
+	}
 	
-	[self.friendList addObject:@"Hello"];
-	[self.friendList addObject:@"Hello"];
-	[self.friendList addObject:@"Hello"];
+	[self.user update:^(id object) {
+		if (object) {
+			self.user = (User *)object;
+			DLog(@"user: %@", self.user);
+			[self.topView configureWithUser:self.user];
+			
+			//INFO: Friends
+			self.friends = [[Friends alloc] init];
+			
+			[self.friends updateWithUser:self.user andBlock:^(id object) {
+				DLog(@"object: %@", object);
+				if (object) {
+					Friends *friends = (Friends *)object;
+					DLog(@"friends.friends: %@", friends.friends);
+					self.friendList = [[NSMutableArray alloc] initWithArray:friends.friends];
+					//WARNING: bad -> reload only the targeted cell
+					[self.tableView reloadData];
+				}
+			}];
+
+		}
+	}];
+	
+	
+	
+	
+	
+	
+	
+
+	
+
+/*
+	[self.friendList addObject:@"adril"];
+	[self.friendList addObject:@"ben"];
+	[self.friendList addObject:@"hermes"];
+	
+	[self.friendList addObject:@"denis"];
+	[self.friendList addObject:@"sylvain"];
+	[self.friendList addObject:@"yann"];
+	[self.friendList addObject:@"irfane"];
+ */
 }
 
 - (void)setupView {
@@ -115,18 +173,18 @@ static NSString *friendsCellIdentifier = @"FriendsCell";
 	switch (row) {
 		case 0:
 		{
-			result = 60;
+			result = kToolsCellHeight;
 		}
 			break;
 			
 		case 1:
 		{
-			result = 80;
+			result = kQRCellHeight;
 		}
 			break;
 		case 2:
 		{
-			result = 166;
+			result = kFriendsCellHeight;
 		}
 			break;
 		default:
@@ -159,6 +217,30 @@ static NSString *friendsCellIdentifier = @"FriendsCell";
 			if (cell == nil) {
 				cell = [[ToolsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:toolsCellIdentifier];
 			}
+			cell.userToolsView.userToolsCollectionView.touchHandler = ^(NSString *identifier) {
+				DLog(@"identifier: %@", identifier);
+
+				UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
+
+				UIViewController *viewController = nil;
+				
+				if ([identifier isEqualToString:@"following"]) {
+					viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"StickersController"];
+					viewController.title = NSLocalizedString(@"Following", @"Title");
+				} else if ([identifier isEqualToString:@"followers"]) {
+					viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"StickersController"];
+					viewController.title = NSLocalizedString(@"Followers", @"Title");
+				}  else if ([identifier isEqualToString:@"stickers"]) {
+					viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"StickersController"];
+					viewController.title = NSLocalizedString(@"Stickers", @"Title");
+				}
+				
+				if (navigationController && viewController) {
+					[navigationController pushViewController:viewController animated:YES];
+				}
+			};
+			//
+			[self addDividerToView:cell.contentView atLocation:0.0];
 			//
 			return cell;
 			
@@ -173,6 +255,9 @@ static NSString *friendsCellIdentifier = @"FriendsCell";
 				cell = [[QRCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:qrCellIdentifier];
 			}
 			//
+			[cell configureQrCodeWithValue:@"LMS"];
+			[self addDividerToView:cell.contentView atLocation:0.0];
+			//
 			return cell;
 			
 		}
@@ -184,6 +269,22 @@ static NSString *friendsCellIdentifier = @"FriendsCell";
 			if (cell == nil) {
 				cell = [[FriendsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:friendsCellIdentifier];
 			}
+			//
+			[cell configureWithFriendList:self.friendList];
+			cell.friendsCollectionView.touchHandler = ^(id object) {
+				DLog(@"object: %@", object);
+				if (object) {
+					User *friend = (User *)object;
+					UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
+					UserViewController *friendViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UserController"];
+					friendViewController.title = NSLocalizedString(@"Friends", @"Title");
+					friendViewController.user = friend;
+					[navigationController pushViewController:friendViewController animated:YES];
+
+				}
+				};
+
+			[self addDividerToView:cell.contentView atLocation:0.0];
 			//
 			return cell;
 			
@@ -197,26 +298,14 @@ static NSString *friendsCellIdentifier = @"FriendsCell";
 				cell = [[LMSCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:lmsCellIdentifier];
 			}
 			//
+			[self addDividerToView:cell.contentView atLocation:0.0];
+			//
 			return cell;
 		}
 			break;
 	}
 	
-	return nil;
-	/*
-	 StickerCell *cell = [tableView dequeueReusableCellWithIdentifier:stickerCellIdentifier];
-	 
-	 if (cell == nil) {
-	 cell = [[StickerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:stickerCellIdentifier];
-	 }
-	 */
-	//	NSArray *currentMenuList = [self.menuList objectAtIndex:indexPath.section];
-	//	MenuItem *menuItem = [currentMenuList objectAtIndex:indexPath.row];
-	//	/
-	//	cell.menuImageView.image = [UIImage imageNamed:menuItem.imageName ? menuItem.imageName : @"lms-300.png"];
-	//	cell.menuLabel.text = [menuItem.controller capitalizedString];
-    
-	//    return [[UITableViewCell alloc] initWithStyle]
+	return [tableView dequeueReusableCellWithIdentifier:lmsCellIdentifier];
 }
 
 #pragma mark -

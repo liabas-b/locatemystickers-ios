@@ -13,6 +13,31 @@
 
 @implementation LMSSticker (Manager)
 
++ (LMSSticker *)addUpdateWithDictionary:(NSDictionary *)dictionary {
+#warning NOT IMPLEMENTED
+	return nil;
+}
+
++ (LMSSticker *)addUpdateWithUser:(LMSSticker *)sticker {
+#warning NOT IMPLEMENTED
+	//TODO: add user to db if does not exist / update the user
+	
+	return nil;
+}
+
++ (LMSSticker *)addUpdateWithJSON:(NSString *)JSON {
+	NSError *error = nil;
+	
+	NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[JSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+	
+	LMSSticker *sticker = [[LMSSticker alloc] initWithDictionary:json error:&error];
+	
+	//	user = [User addUpdateWithUser:user];
+	
+	return sticker;
+}
+
+
 + (LMSSticker *)addUpdateWithCode:(NSString *)code {//managedObjectContext:(NSManagedObjectContext *)moc {
 	LMSSticker *sticker = nil;//[LMSSticker findFirstByAttribute:@"code" withValue:code];
 	/*
@@ -29,7 +54,7 @@
 	return sticker;
 }
 
-+ (LMSSticker *)addUpdateWithDictionary:(NSDictionary *)dictionary {
++ (LMSSticker *)addUpdateWithDictionaryOLD:(NSDictionary *)dictionary {
 	LMSSticker *sticker = nil;
 	
 	/*

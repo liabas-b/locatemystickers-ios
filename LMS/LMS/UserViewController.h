@@ -8,9 +8,11 @@
 
 #import "LMSViewController.h"
 #import "LMSTableView.h"
+#import "UserTopView.h"
 
 @interface UserViewController : LMSViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UserTopView *topView;
 @property (strong, nonatomic) IBOutlet LMSTableView *tableView;
 
 @end

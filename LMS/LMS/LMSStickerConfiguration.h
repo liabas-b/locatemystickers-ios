@@ -7,14 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <JSONModel.h>
 
-@interface LMSStickerConfiguration : NSObject
+@interface LMSStickerConfiguration : JSONModel
 
-@property (nonatomic, retain) NSNumber * activate;
-@property (nonatomic, retain) NSNumber * configurationId;
-@property (nonatomic, retain) NSDate * createdAt;
-@property (nonatomic, retain) NSNumber * frequencyUpdate;
-@property (nonatomic, retain) NSString * stickerCode;
-@property (nonatomic, retain) NSDate * updatedAt;
+@property (nonatomic, retain) NSNumber *activate;
+@property (nonatomic, retain) NSNumber *configurationId;
+@property (nonatomic, retain) NSDate *createdAt;
+@property (nonatomic, retain) NSNumber *frequencyUpdate;
+@property (nonatomic, retain) NSString *stickerCode;
+@property (nonatomic, retain) NSDate *updatedAt;
 
 @end

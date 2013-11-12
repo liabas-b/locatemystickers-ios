@@ -6,9 +6,13 @@
 //  Copyright (c) 2013 Team3000. All rights reserved.
 //
 
-//#import <UIKit/UIKit.h>
 #import "LMSCell.h"
+#import "LMSImageView.h"
 
 @interface QRCell : LMSCell
+
+@property (strong, nonatomic) IBOutlet LMSImageView *qrImageView;
+
+- (void)configureQrCodeWithValue:(NSString *)value;
 
 @end

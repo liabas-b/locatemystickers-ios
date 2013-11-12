@@ -7,6 +7,7 @@
 //
 
 #import "QRCell.h"
+#import <QREncoder.h>
 
 @implementation QRCell
 
@@ -24,6 +25,14 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+
+- (void)configureQrCodeWithValue:(NSString *)value {
+	DataMatrix *qrMatrix = [QREncoder encodeWithECLevel:QR_ECLEVEL_AUTO version:QR_VERSION_AUTO string:value];
+    UIImage *qrcodeImage = [QREncoder renderDataMatrix:qrMatrix imageDimension:182];
+    
+	self.qrImageView.image = qrcodeImage;
 }
 
 @end

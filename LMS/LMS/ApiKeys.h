@@ -20,5 +20,6 @@
 @property (strong, nonatomic) NSString *twitterOauthAccessTokenSecret;
 @property (strong, nonatomic) NSString *twitterConsumerKey;
 @property (strong, nonatomic) NSString *twitterConsumerSecret;
+@property (strong, nonatomic) NSString *pusherApiKey;
 
 @end

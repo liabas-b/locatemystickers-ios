@@ -7,7 +7,12 @@
 //
 
 #import "LMSCell.h"
+#import "FriendsCollectionView.h"
 
 @interface FriendsCell : LMSCell
+
+@property (strong, nonatomic) IBOutlet FriendsCollectionView *friendsCollectionView;
+
+- (void)configureWithFriendList:(NSArray *)friendList;
 
 @end

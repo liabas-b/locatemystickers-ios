@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "LMSStickerConfiguration.h"
+#import <JSONModel.h>
 
-@interface LMSSticker : NSObject
+@interface LMSSticker : JSONModel
 
 @property (nonatomic, retain) NSString * code;
 @property (nonatomic, retain) NSString * color;

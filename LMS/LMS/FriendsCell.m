@@ -10,6 +10,10 @@
 
 @implementation FriendsCell
 
+- (void)configureWithFriendList:(NSArray *)friendList {
+	[self.friendsCollectionView configureWithFriendList:friendList];
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -25,5 +29,6 @@
 
     // Configure the view for the selected state
 }
+
 
 @end

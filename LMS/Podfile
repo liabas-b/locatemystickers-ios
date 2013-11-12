@@ -15,6 +15,7 @@ target "LMS" do
        pod 'EDQueue', '~> 0.7.0'
        pod 'JSONModel'
        pod 'Facebook-iOS-SDK', '~> 3.9.0'
+       pod 'libPusher', '~> 1.4'
 end
 
 target "LMSTests" do

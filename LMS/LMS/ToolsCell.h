@@ -7,7 +7,10 @@
 //
 
 #import "LMSCell.h"
+#import "UserToolsView.h"
 
 @interface ToolsCell : LMSCell
+
+@property (strong, nonatomic) IBOutlet UserToolsView *userToolsView;
 
 @end

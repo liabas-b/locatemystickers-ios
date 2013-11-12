@@ -23,10 +23,20 @@
     return [UIFont fontWithName:@"lato-light" size:15.0];
 }
 
++ (UIFont*)defaultSmallFont
+{
+	return [UIFont fontWithName:@"lato-hairline" size:13.0];
+}
+
 + (UIFont*)defaultTitleFont
 {
 //	return [UIFont fontWithName:@"HelveticaNeue" size:20];
     return [UIFont fontWithName:@"lato-light" size:20.0];
+}
+
++ (UIFont*)defaultSubtitleFont
+{
+	return [UIFont lightFont];
 }
 
 + (UIFont*)lightFont

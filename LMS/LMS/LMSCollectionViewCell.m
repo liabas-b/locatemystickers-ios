@@ -1,14 +1,14 @@
 //
-//  LMSLabel.m
+//  LMSCollectionViewCell.m
 //  LMS
 //
-//  Created by Adrien Guffens on 08/11/13.
+//  Created by Adrien Guffens on 11/11/13.
 //  Copyright (c) 2013 Team3000. All rights reserved.
 //
 
-#import "LMSLabel.h"
+#import "LMSCollectionViewCell.h"
 
-@implementation LMSLabel
+@implementation LMSCollectionViewCell
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -17,17 +17,6 @@
         // Initialization code
     }
     return self;
-}
-
-- (void)awakeFromNib {
-	[super awakeFromNib];
-	
-	[self configure];
-}
-
-- (void)configure {
-//	self.font = [UIFont defaultFont];
-//	self.textColor = [UIColor defaultFontColor];
 }
 
 /*
