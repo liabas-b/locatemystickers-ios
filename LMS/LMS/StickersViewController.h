@@ -8,8 +8,9 @@
 
 #import "LMSViewController.h"
 #import "LMSTableView.h"
+#import "StickerCell.h"
 
-@interface StickersViewController : LMSViewController <UITableViewDataSource, UITableViewDelegate>
+@interface StickersViewController : LMSViewController <UITableViewDataSource, UITableViewDelegate, MCSwipeStickerTableViewCellDelegate>
 
 @property (strong, nonatomic) IBOutlet LMSTableView *tableView;
 

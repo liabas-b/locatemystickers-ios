@@ -9,6 +9,9 @@
 #import "JSONModel.h"
 #import "User.h"
 
+@protocol Friends
+@end
+
 @interface Friends : JSONModel
 
 @property (strong, nonatomic) NSArray<User> *friends;

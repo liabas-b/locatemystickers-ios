@@ -7,6 +7,7 @@
 //
 
 #import "SearchViewController.h"
+#import "UIViewController+Extension.h"
 
 @interface SearchViewController ()
 
@@ -29,6 +30,8 @@
 
 - (void)configureView {
 	[super configureView];
+	
+	[self configureMenuLeftButtonWithBackButon:[self.navigationController.viewControllers count] > 1];
 }
 
 - (void)registerNibs {

@@ -174,11 +174,12 @@
 	NSLog(@"%s - <%@", __PRETTY_FUNCTION__, timeString);
 	timeString = [timeString length] > 0 ? timeString : @"new";
 	cell.timeLabel.text = timeString;
-	
+	/*
 	if ([sticker.stickerConfiguration.activate boolValue])
 		cell.activatedImage.backgroundColor = [UIColor greenColor];
 	else
 		cell.activatedImage.backgroundColor = [UIColor redColor];
+	 */
 /*
 	cell.iconLabel.font = [UIFont iconicFontOfSize:24];
 	if ([sticker.stickerTypeId intValue] > StickerTypeSticker) {

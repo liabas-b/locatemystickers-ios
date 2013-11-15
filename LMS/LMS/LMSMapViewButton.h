@@ -17,5 +17,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *buttonLabel;
 
 - (void)setButtonImage:(UIImage *)image withButtonValue:(NSString *)buttonValue;
+- (void)deselect;
 
 @end

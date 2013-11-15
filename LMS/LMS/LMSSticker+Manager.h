@@ -7,6 +7,7 @@
 //
 
 #import "LMSSticker.h"
+#import "Locations+Manager.h"
 
 typedef enum {
     StickerTypeDefault = 0,
@@ -16,6 +17,11 @@ typedef enum {
 } StickerTypeId;
 
 @interface LMSSticker (Manager)
+
+
+- (void)updateLocationsWithBlock:(LocationsManagerHandler)completion;
+
+//
 
 
 + (LMSSticker *)addUpdateWithDictionary:(NSDictionary *)dictionary;

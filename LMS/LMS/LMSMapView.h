@@ -26,6 +26,10 @@ typedef enum {
 
 @interface LMSMapView : MKMapView <MKMapViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
+- (void)addLiveLocation:(LMSLocation *)location;
+- (BOOL)addPinWithLocation:(LMSLocation *)location;
+- (BOOL)addLocation:(LMSLocation *)location;
+
 
 @property (nonatomic, assign)BOOL isDisplayingStickerList;
 //

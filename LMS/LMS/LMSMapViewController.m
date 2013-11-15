@@ -26,9 +26,18 @@
 #import "LMSSticker.h"
 #import "LMSSticker+Manager.h"
 
+#import "User.h"
+#import "User+Manager.h"
+#import "Stickers.h"
+#import "Stickers+Manager.h"
+
 #import "AppDelegate.h"
 
 @interface LMSMapViewController ()
+
+@property (nonatomic, strong) User *user;
+@property (nonatomic, strong) Stickers *stickers;
+@property (nonatomic, strong) NSMutableArray *stickerList;
 
 @end
 
@@ -61,6 +70,39 @@
 
 - (void)setupData {
 	[super setupData];
+	
+	if (self.user == nil) {
+		self.user = [[User alloc] init];
+#warning TO IMPLEMENT
+		//TODO: get the default id from the session manager
+		self.user.id = 1;
+	}
+	
+	[self.user update:^(id object) {
+		if (object) {
+			self.user = (User *)object;
+			DLog(@"user: %@", self.user);
+			
+			self.stickers = [[Stickers alloc] init];
+			[self.stickers updateWithUser:self.user andBlock:^(id object) {
+				DLog(@"object: %@", object);
+				if (object) {
+					Stickers *stickers = (Stickers *)object;
+					DLog(@"stickers.stickers: %@", stickers.stickers);
+					self.stickerList = [[NSMutableArray alloc] initWithArray:stickers.stickers];
+					
+					
+					[self.mapView loadStickerList:self.stickerList];
+					
+					//WARNING: bad -> reload only the targeted cell
+//					[self.tableView reloadData];
+				}
+			}];
+		}
+	}];
+			
+
+	
 }
 
 - (void)setupView {
@@ -94,6 +136,16 @@
 											 selector:@selector(handleMessageWebSocket:)
 												 name:kMessageWebSocketReceived
 											   object:nil];
+
+	
+//	UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
+//											 initWithTarget:self action:@selector(respondToTapGesture:)];
+	
+	// Specify that the gesture must be a single tap
+//	tapRecognizer.numberOfTapsRequired = 1;
+	
+	// Add the tap gesture recognizer to the view
+//	[self.mapView addGestureRecognizer:tapRecognizer];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -134,18 +186,16 @@
 #pragma mark - Pusher Manger
 
 - (void)handleMessagePusher {
-	NSString *channelName = [NSString stringWithFormat:@"%d_locations_channel", 1];
+//	NSString *channelName = [NSString stringWithFormat:@"%d_locations_channel", 1];
+	NSString *channelName = @"locations_channel";
 	PTPusherChannel *channel = [self.appDelegate.pusherManager subscribeToChannelName:channelName];
 		
-	[channel bindToEventNamed:@"my_event" handleWithBlock:^(PTPusherEvent *channelEvent) {
+	[channel bindToEventNamed:@"new_location" handleWithBlock:^(PTPusherEvent *channelEvent) {
 		DLog(@"channelEvent: %@", channelEvent);
-		DLog(@"channelEvent.data: %@", [channelEvent.data objectForKey:@"message"]);
-		//NEW STICKER:
+		DLog(@"channelEvent.data: %@", [channelEvent.data objectForKey:@"location"]);
 
-//		LMSSticker *sticker = [LMSSticker addUpdateWithDictionary:nil];
-		
-		//NEW LOCATION:
-		
+		LMSLocation *location = [[LMSLocation alloc] initWithDictionary:[channelEvent.data objectForKey:@"location"] error:nil];
+		[self.mapView addLiveLocation:location];
 	}];
 }
 
@@ -154,7 +204,7 @@
 - (void)didToggleStickerButton:(id)sender {
 	DLog(@"");
 	
-	[self.frostedViewController presentMenuViewController];
+	//[self.frostedViewController presentMenuViewController];
 	
 	UIViewPosition position = self.headerMapView.stickerMapViewButton.isToggled == YES ? leftPosition : rightPosition;
 	[self.stickerListContainer animateFromPosition:position];
@@ -166,6 +216,17 @@
 	
 	UIViewPosition position = self.headerMapView.friendMapViewButton.isToggled == YES ? topPosition : bottomPosition;
 	[self.friendListContainer animateFromPosition:position];
+}
+
+- (void)didToggleMenuButton:(id)sender {
+	[self.frostedViewController presentMenuViewController];
+}
+
+#pragma mark - Basic Handlers
+
+- (void)respondToTapGesture:(UIGestureRecognizer *)gr {
+	DLog(@"TAP TAP");
+	DLog(@"TAP TAP");
 }
 
 @end

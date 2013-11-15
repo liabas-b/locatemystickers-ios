@@ -26,7 +26,7 @@
 }
 
 - (void)configure {
-	self.nameLabel.font = [UIFont defaultSubtitleFont];
+	self.nameLabel.font = [UIFont defaultSmallFont];
 	self.quantityLabel.font = [UIFont defaultSubtitleFont];
 
 	[self unselected];

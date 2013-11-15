@@ -10,11 +10,21 @@
 
 @implementation LMSLocation
 
-@dynamic createdAt;
-@dynamic idLocation;
-@dynamic latitude;
-@dynamic longitude;
-@dynamic updatedAt;
-@dynamic idSticker;
+//@dynamic createdAt;
+//@dynamic idLocation;
+//@dynamic latitude;
+//@dynamic longitude;
+//@dynamic updatedAt;
+//@dynamic idSticker;
+
++ (BOOL)propertyIsOptional:(NSString*)propertyName
+{
+	return YES;
+}
+
++ (JSONKeyMapper*)keyMapper
+{
+	return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+}
 
 @end

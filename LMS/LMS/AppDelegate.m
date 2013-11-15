@@ -34,7 +34,7 @@
 		self.appSession = [AppSession defaultSession];
 
 		self.apiManager = [[LMSAPIManager alloc] initWithBaseURLString:self.appParameters.parameters.apiUrls.lmsApi];
-		self.websocketManager = [[WebSocketManager alloc] initWithHostName:self.appParameters.parameters.apiUrls.lmsLiveApi];
+//		self.websocketManager = [[WebSocketManager alloc] initWithHostName:self.appParameters.parameters.apiUrls.lmsLiveApi];
 		self.pusherManager = [[PusherManager alloc] initWithAPIKey:self.appParameters.parameters.apiKeys.pusherApiKey];
 		//		self.operationManager = [[OperationManager alloc] init];
 		self.analyticsManager = [[AnalyticsManager alloc] init];

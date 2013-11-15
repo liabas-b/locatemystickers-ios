@@ -15,6 +15,7 @@
 @interface LMSHeaderMapView : UIView
 
 @property (nonatomic, strong) IBOutlet id<LMSHeaderMapViewDelegate> delegate;
+
 //INFO: first box
 @property (nonatomic, strong) IBOutlet UILabel *appName;
 
@@ -22,11 +23,14 @@
 @property (nonatomic, strong) IBOutlet LMSMapImageView *profileImageView;
 
 //INFO: button boxes
+@property (nonatomic, strong) IBOutlet LMSMapViewButton *menuMapViewButton;
 @property (nonatomic, strong) IBOutlet LMSMapViewButton *stickerMapViewButton;
 @property (nonatomic, strong) IBOutlet LMSMapViewButton *friendMapViewButton;
 
 //INFO: notification
 @property (nonatomic, strong) IBOutlet LMSMapBaseView *notificationView;
 @property (nonatomic, strong) IBOutlet UILabel *notificationCountLabel;
+
+
 
 @end

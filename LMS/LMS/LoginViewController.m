@@ -89,7 +89,7 @@ static NSString* const keyLoginResult = @"loginResult";
 	
 	//
 	
-	
+	/*
 	FBLoginView *loginview = [[FBLoginView alloc] init];
 	
 	
@@ -117,7 +117,7 @@ static NSString* const keyLoginResult = @"loginResult";
 //			loginLabel.frame = CGRectMake(0, 0, 0, 0);
 		}
 	}
-	
+
 	//
 	
 	
@@ -138,6 +138,7 @@ static NSString* const keyLoginResult = @"loginResult";
     [self.view addSubview:loginview];
 	
 	[loginview sizeToFit];
+	 */
 	
 }
 

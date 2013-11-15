@@ -35,6 +35,10 @@
 
 #import <NSDate+Helpers.h>
 
+#import "Locations.h"
+#import "Locations+Manager.m"
+#import "LMSLocation.h"
+
 @interface LMSMapView ()
 
 @property (nonatomic, strong) NSMutableArray *selectedOptions;
@@ -81,6 +85,9 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 	self.closeButton.alpha = 0;
 	self.closeButton.tintColor = [UIColor colorWithRed:162/255.0 green:36.0/255.0 blue:60.0/255.0 alpha:1.0];
 	
+	self.stickerSelectionCollectionView.delegate = self;
+	self.stickerSelectionCollectionView.dataSource = self;
+	
 	[self addSubview:self.closeButton];
 	
 	[self updateToolBar];
@@ -123,16 +130,22 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 	[startLocation debug];
 	[endLocation debug];
 	
+	CLLocationCoordinate2D start = CLLocationCoordinate2DMake(startLocation.latitude, startLocation.longitude);
+	CLLocationCoordinate2D end = CLLocationCoordinate2DMake(endLocation.latitude, endLocation.longitude);
+	
+	if (CLLocationCoordinate2DIsValid(start) && CLLocationCoordinate2DIsValid(end)) {
+	
 	//	CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake([endLocationRecord.latitude floatValue], [endLocationRecord.longitude floatValue]);
 	
 	//	[self setCenterCoordinate:centerCoordinate animated:YES];
 	
 	MKCoordinateRegion region = { {0.0, 0.0 }, { 0.0, 0.0 } };
-    region.center.latitude = [endLocation.latitude floatValue];
-    region.center.longitude = [endLocation.longitude floatValue];
+    region.center.latitude = endLocation.latitude;
+    region.center.longitude = endLocation.longitude;
     region.span.longitudeDelta = 0.0015f;
     region.span.latitudeDelta = 0.0015f;
     [self setRegion:region animated:YES];
+	}
 	
 }
 
@@ -179,35 +192,52 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 
 - (void)addLMSPinForSticker:(LMSSticker *)sticker {
 	
-//	NSLog(@"%s | stickerId: %@", __PRETTY_FUNCTION__, stickerRecord.stickerId);
+	//	NSLog(@"%s | stickerId: %@", __PRETTY_FUNCTION__, stickerRecord.stickerId);
 	DLog(@"");
 	[sticker debug];
 	
-	NSArray *locationsRecordList = [[NSMutableArray alloc] init];//[LocationRecord findByAttribute:@"idSticker" withValue:stickerRecord.stickerId andOrderBy:@"createdAt" ascending:NO inContext:[NSManagedObjectContext MR_defaultContext]];
-	
-	NSLog(@"%s | locationsRecordList:%@", __PRETTY_FUNCTION__, locationsRecordList);
-	
-	LMSLocation *location = [locationsRecordList firstObject];
-	if (location) {
-		[location debug];
-		
-        LMSAnnotation *annotation = [[LMSAnnotation alloc] init];
-		
-        annotation.coordinate = CLLocationCoordinate2DMake([location.latitude floatValue], [location.longitude floatValue]);
-        annotation.title = [NSString stringWithFormat:@"lat: %@ - long: %@", location.latitude, location.longitude];
-        annotation.type = PVAttractionDefault;
-        annotation.subtitle = [location.updatedAt distanceOfTimeInWords];//[ConventionTools getDiffTimeInStringFromDate:locationRecord.updatedAt];
-        [self addAnnotation:annotation];
-		
-		[self zoomToLocation:location];
-	}
-	else {
-		//TODO: update location list
-		self.currentSticker = sticker;
-		[self updateLocationRecords];
-		//		[self updateLocationForCurrentSticker];
-	}
+	[sticker updateLocationsWithBlock:^(id object) {
+		DLog(@"object: %@", object);
+		if (object) {
+			Locations *locations = (Locations *)object;
+			DLog(@"locations.locations: %@", locations.locations);
+			
+			
+			for (LMSLocation *location in locations.locations) {
+				//			LMSLocation *location = [locations.locations lastObject];
+				if (location) {
+					if ([self addPinWithLocation:location] == YES)
+						break;
+					//				[location debug];
+					/*
+					CLLocationCoordinate2D locationCoordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude);
+					
+					if (CLLocationCoordinate2DIsValid(locationCoordinate)) {
+//						[self setCenterCoordinate:locationCoordinate animated:YES];
+						
+						LMSAnnotation *annotation = [[LMSAnnotation alloc] init];
+						
+						annotation.coordinate = locationCoordinate;
+						annotation.title = [NSString stringWithFormat:@"lat: %f - long: %f", location.latitude, location.longitude];
+						annotation.type = PVAttractionDefault;
+						annotation.subtitle = [location.updatedAt distanceOfTimeInWords];//[ConventionTools getDiffTimeInStringFromDate:locationRecord.updatedAt];
+						
+						DLog(@"location.latitude: %f - location.longitude: %f", location.latitude, location.longitude);
+						
+						
+						
+						[self addAnnotation:annotation];
+						
+						[self zoomToLocation:location];
+						break;
+					}
+					 */
+				}
+			}
+		}
+	}];
 }
+
 
 - (void)addHistoryForSticker:(LMSSticker *)sticker {
 	//INFO: all last position known by all the stickers
@@ -222,10 +252,10 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 			
 			LMSAnnotation *annotation = [[LMSAnnotation alloc] init];
 			
-			NSLog(@"%s | lat: %@ - long: %@", __PRETTY_FUNCTION__, location.latitude, location.longitude);
+			NSLog(@"%s | lat: %f - long: %f", __PRETTY_FUNCTION__, location.latitude, location.longitude);
 			
-			annotation.coordinate = CLLocationCoordinate2DMake([location.latitude floatValue], [location.longitude floatValue]);
-			annotation.title = [NSString stringWithFormat:@"lat: %@ - long: %@", location.latitude, location.longitude];
+			annotation.coordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude);
+			annotation.title = [NSString stringWithFormat:@"lat: %f - long: %f", location.latitude, location.longitude];
 			annotation.type = PVAttractionDefault;
 			annotation.subtitle = [location.updatedAt distanceOfTimeInWords];//[ConventionTools getDiffTimeInStringFromDate:locationRecord.updatedAt];
 			[self addAnnotation:annotation];
@@ -234,58 +264,76 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 }
 
 - (void)addRouteForSticker:(LMSSticker *)sticker {
-	NSArray *locationList = [[NSMutableArray alloc] init];//[LocationRecord findByAttribute:@"idSticker" withValue:stickerRecord.stickerId andOrderBy:@"createdAt" ascending:NO inContext:[NSManagedObjectContext MR_defaultContext]];
+//	NSArray *locationList = [[NSMutableArray alloc] init];//[LocationRecord findByAttribute:@"idSticker" withValue:stickerRecord.stickerId andOrderBy:@"createdAt" ascending:NO inContext:[NSManagedObjectContext MR_defaultContext]];
 	
-	DLog(@"locationList: %@", locationList);
 	
-	if ([locationList count] < 2)
-		return;
 	
-	LMSLocation *firstLocation = locationList[0];
-	LMSLocation *lastLocation = [locationList lastObject];
-	
-	if (firstLocation && lastLocation) {
-		if (!([firstLocation.latitude isEqual:lastLocation.latitude] && [firstLocation.longitude isEqual:lastLocation.latitude])) {
-			[self initRegionWithStartLocation:firstLocation andEndLocation:lastLocation];
+	[sticker updateLocationsWithBlock:^(id object) {
+		if (object == nil) {
+			return ;
 		}
-	}
-	
-	//[[NSOperationQueue mainQueue] addOperationWithBlock:^ {
-	
-	//Your code goes in here
-//	NSLog(@"Main Thread Code");
-	
-	
-	LMSLocation *savLocation = nil;
-	
-	DLog(@"pointsCount: %d", [locationList count]);
-	
-	CLLocationCoordinate2D pointsToUse[[locationList count]];
-	//	NSMutableArray *pointToUse = [[NSMutableArray alloc] init];
-	
-	int i = 0;
-	for (LMSLocation *location in locationList) {
-		[location debug];
-		/*		if (savLocationRecord == nil) {
-		 savLocationRecord = locationRecord;
-		 pointsToUse[i++] = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
-		 }
-		 else {
-		 */
-		if (!([location.latitude isEqual:location.latitude] && [location.longitude isEqual:location.latitude])) {
+		
+		Locations *locations = (Locations *)object;
+		DLog(@"locations.locations: %@", locations.locations);
+		
+		
+
+		
+		NSArray *locationList = [[NSArray alloc] initWithArray:locations.locations];
+		DLog(@"locationList: %@", locationList);
+		
+		if ([locationList count] < 2)
+			return;
+		
+		LMSLocation *firstLocation = locationList[0];
+		LMSLocation *lastLocation = [locationList lastObject];
+		
+		if (firstLocation && lastLocation) {
+			//		if (!(firstLocation.latitude isEqual:lastLocation.latitude] && [firstLocation.longitude isEqual:lastLocation.latitude])) {
+			[self initRegionWithStartLocation:firstLocation andEndLocation:lastLocation];
+			//		}
+		}
+		
+		//[[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+		
+		//Your code goes in here
+		//	NSLog(@"Main Thread Code");
+		
+		
+		LMSLocation *savLocation = nil;
+		
+		DLog(@"pointsCount: %d", [locationList count]);
+		
+		CLLocationCoordinate2D pointsToUse[[locationList count]];
+		//	NSMutableArray *pointToUse = [[NSMutableArray alloc] init];
+		
+		int i = 0;
+		for (LMSLocation *location in locationList) {
+			[location debug];
+			/*		if (savLocationRecord == nil) {
+			 savLocationRecord = locationRecord;
+			 pointsToUse[i++] = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
+			 }
+			 else {
+			 */
+			//		if (!([location.latitude isEqual:location.latitude] && [location.longitude isEqual:location.latitude])) {
 			//			CLLocationCoordinate2D *location = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
 			//			[pointToUse addObject:location];
 			
-			pointsToUse[i++] = CLLocationCoordinate2DMake([location.latitude floatValue], [location.longitude floatValue]);
+			pointsToUse[i++] = CLLocationCoordinate2DMake(location.latitude , location.longitude);
 			savLocation = location;
+			//		}
 		}
-	}
-	
-	if (i > 0) {
-		MKPolyline *myPolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:[locationList count]];
 		
-		[self addOverlay:myPolyline];
-	}
+		if (i > 0) {
+			MKPolyline *myPolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:[locationList count]];
+			
+			[self addOverlay:myPolyline];
+		}
+		
+	}];
+	
+	
 	//}];
 	
 }
@@ -297,108 +345,6 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 	// PVParkMapOverlay *overlay = [[PVParkMapOverlay alloc] initWithPark:self.park];
     //[self.mapView addOverlay:overlay];
 }
-/*
-- (void)addLMSPinsForStickerList {
-	
-	NSLog(@"%s", __PRETTY_FUNCTION__);
-	LMSLocation *location = [self.locationList lastObject];
-	//    for (LocationRecord *locationRecord in self.locationsRecordList) {
-	if (locationRecord) {
-		[locationRecord debug];
-		
-        LMSAnnotation *annotation = [[LMSAnnotation alloc] init];
-		
-        annotation.coordinate = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
-        annotation.title = [NSString stringWithFormat:@"lat: %@ - long: %@", locationRecord.latitude, locationRecord.longitude];
-        annotation.type = PVAttractionDefault;
-        annotation.subtitle = [ConventionTools getDiffTimeInStringFromDate:locationRecord.updatedAt];
-        [self addAnnotation:annotation];
-	}
-	
-}
-
-- (void)addHistoryForStickerList {
-	//INFO: all last position known by all the stickers
-	
-	NSLog(@"%s", __PRETTY_FUNCTION__);
-	//	LocationRecord *locationRecord = [self.locationsRecordList lastObject];
-	for (LocationRecord *locationRecord in self.locationsRecordList) {
-		if (locationRecord) {
-			[locationRecord debug];
-			
-			LMSAnnotation *annotation = [[LMSAnnotation alloc] init];
-			
-			annotation.coordinate = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
-			annotation.title = [NSString stringWithFormat:@"lat: %@ - long: %@", locationRecord.latitude, locationRecord.longitude];
-			annotation.type = PVAttractionDefault;
-			annotation.subtitle = [ConventionTools getDiffTimeInStringFromDate:locationRecord.updatedAt];
-			[self addAnnotation:annotation];
-		}
-	}
-}
-
-- (void)addRouteForStickerList {
-	NSLog(@"%s | %@", __PRETTY_FUNCTION__, self.locationsRecordList);
-	
-	LocationRecord *firstLocationRecord = self.locationsRecordList[0];
-	LocationRecord *lastLocationRecord = [self.locationsRecordList lastObject];
-	
-	
-	if (firstLocationRecord && lastLocationRecord) {
-		[self initRegionWithStartLocationRecord:firstLocationRecord andEndLocationRecord:lastLocationRecord];
-	}
-	NSInteger pointsCount = [self.locationsRecordList count];
-	
-    CLLocationCoordinate2D pointsToUse[pointsCount];
-	int i = 0;
-	for (LocationRecord *locationRecord in self.locationsRecordList) {
-		[locationRecord debug];
-		pointsToUse[i++] = CLLocationCoordinate2DMake([locationRecord.latitude floatValue], [locationRecord.longitude floatValue]);
-	}
-    
-	if (i > 0) {
-		MKPolyline *myPolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:pointsCount];
-		
-		[self addOverlay:myPolyline];
-	}
-}
-
-- (void)addBoundaryForStickerList {
-	NSLog(@"%s", __PRETTY_FUNCTION__);
-	//    MKPolygon *polygon = [MKPolygon polygonWithCoordinates:self.park.boundary
-	// count:self.park.boundaryPointsCount];
-	//    [self.mapView addOverlay:polygon];
-}
-*/
-- (void)addCharacterLocationForStickerList {
-	NSLog(@"%s", __PRETTY_FUNCTION__);
-	/*
-	 NSString *batmanFilePath = [[NSBundle mainBundle] pathForResource:@"BatmanLocations" ofType:@"plist"];
-	 NSArray *batmanLocations = [NSArray arrayWithContentsOfFile:batmanFilePath];
-	 CGPoint batmanPoint = CGPointFromString(batmanLocations[rand()%4]);
-	 PVCharacter *batman = (PVCharacter *)[PVCharacter circleWithCenterCoordinate:CLLocationCoordinate2DMake(batmanPoint.x, batmanPoint.y)
-	 radius:MAX(5, rand()%40)];
-	 batman.color = [UIColor blueColor];
-	 
-	 NSString *tazFilePath = [[NSBundle mainBundle] pathForResource:@"TazLocations" ofType:@"plist"];
-	 NSArray *tazLocations = [NSArray arrayWithContentsOfFile:tazFilePath];
-	 CGPoint tazPoint = CGPointFromString(tazLocations[rand()%4]);
-	 PVCharacter *taz = (PVCharacter *)[PVCharacter circleWithCenterCoordinate:CLLocationCoordinate2DMake(tazPoint.x, tazPoint.y)
-	 radius:MAX(5, rand()%40)];
-	 taz.color = [UIColor orangeColor];
-	 
-	 NSString *tweetyFilePath = [[NSBundle mainBundle] pathForResource:@"TweetyBirdLocations" ofType:@"plist"];
-	 NSArray *tweetyLocations = [NSArray arrayWithContentsOfFile:tweetyFilePath];
-	 CGPoint tweetyPoint = CGPointFromString(tweetyLocations[rand()%4]);
-	 PVCharacter *tweety = (PVCharacter *)[PVCharacter circleWithCenterCoordinate:CLLocationCoordinate2DMake(tweetyPoint.x, tweetyPoint.y)
-	 radius:MAX(5, rand()%40)];
-	 tweety.color = [UIColor yellowColor];
-	 
-	 [self.mapView addOverlay:batman];
-	 [self.mapView addOverlay:taz];
-	 [self.mapView addOverlay:tweety];
-	 */
-}
 
 - (void)loadSticker:(LMSSticker *)sticker {
 	//WARNINIG: may be move it to loadStickerList
@@ -406,16 +352,31 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 	if (self.isDisplayingStickerList == NO) {
 		[self removeAnnotations:self.annotations];
 		[self removeOverlays:self.overlays];
-		self.stickerSelectionCollectionView.delegate = nil;
+//		self.stickerSelectionCollectionView.delegate = nil;
 		
 	}
-	[self zoomToCurrentLocation:nil];
+//	[self zoomToCurrentLocation:nil];
 	
 	//	[self zoomToLocation:stickerRecord.lastLocation];
 	
+	[self addRouteForSticker:sticker];
+	[self addLMSPinForSticker:sticker];
+	return;
 	
-	
-	
+	/*
+	 Locations *locations = [[Locations alloc] init];
+	 [locations updateWithSticker:sticker andBlock:^(id object) {
+	 DLog(@"object: %@", object);
+	 if (object) {
+	 Locations *locations = (Locations *)object;
+	 DLog(@"locations.locations: %@", locations.locations);
+	 [self addLMSPinForSticker:sticker];
+	 //			self.friendList = [[NSMutableArray alloc] initWithArray:friends.friends];
+	 //WARNING: bad -> reload only the targeted cell
+	 //			[self.tableView reloadData];
+	 }
+	 }];
+	 */
 	for (NSNumber *mapOption in self.selectedOptions) {
 		
 		switch ([mapOption intValue]) {
@@ -559,29 +520,24 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 	[self loadSticker:sticker];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Deselect item
-	
-	//StickerRecord *stickerRecord = [self.stickerRecordList objectAtIndex:indexPath.row];
-	
-	//[self loadSticker:stickerRecord];
-}
-
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	LMSSticker *sticker = [self.stickerList objectAtIndex:indexPath.row];
-	
-	CGSize namelabelSize = [sticker.name sizeWithFont:[UIFont defaultFont] constrainedToSize:CGSizeMake(20000, kHeightStickerSelectionCollectionView) lineBreakMode:NSLineBreakByWordWrapping];
-	
-	NSLog(@"%s | %f %f", __PRETTY_FUNCTION__, namelabelSize.width, namelabelSize.height);
-	if (namelabelSize.width == 0) {
-		//WARNING: may be do more job
-	}
-	else {
-		namelabelSize.height = kHeightStickerSelectionCollectionView;
-		namelabelSize.width += 40.0;
-	}
-	return namelabelSize;
+	/*
+	 LMSSticker *sticker = [self.stickerList objectAtIndex:indexPath.row];
+	 
+	 CGSize namelabelSize = [sticker.name sizeWithFont:[UIFont defaultFont] constrainedToSize:CGSizeMake(20000, kHeightStickerSelectionCollectionView) lineBreakMode:NSLineBreakByWordWrapping];
+	 
+	 NSLog(@"%s | %f %f", __PRETTY_FUNCTION__, namelabelSize.width, namelabelSize.height);
+	 if (namelabelSize.width == 0) {
+	 //WARNING: may be do more job
+	 }
+	 else {
+	 namelabelSize.height = kHeightStickerSelectionCollectionView;
+	 namelabelSize.width += 40.0;
+	 }
+	 return
+	 */
+	return CGSizeMake(150.0, kHeightStickerSelectionCollectionView);
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -591,36 +547,36 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 	return [self.stickerList count];
 }
-
 //
-
-
-- (void)updateLocationRecords {
-	
-	if (self.currentSticker == nil)
-		return;
-	/*
-	[[AppDelegate appDelegate].locationManager updateLocationRecordsForSticker:self.currentStickerRecord success:^(NSMutableDictionary *JSON) {
-		
-		
-		for (NSDictionary *dic in JSON) {
-			NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, dic);
-			LocationRecord *locationRecord = [LocationRecord addUpdateWithDictionary:dic];
-			NSLog(@" %s| locationRecord: %@", __PRETTY_FUNCTION__, locationRecord);
-		}
-		if ([JSON count] > 0) {
-			[self loadSticker:self.currentStickerRecord];
-		}
-		
-	} failure:^(NSURLRequest *request, NSError *error, id JSON) {
-		NSLog(@"%s | Request: %@", __PRETTY_FUNCTION__, [request description]);
-		//		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
-		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
-		
-		
-	}];
-	 */
-}
+////
+//
+//
+//- (void)updateLocationRecords {
+//
+//	if (self.currentSticker == nil)
+//		return;
+//	/*
+//	[[AppDelegate appDelegate].locationManager updateLocationRecordsForSticker:self.currentStickerRecord success:^(NSMutableDictionary *JSON) {
+//
+//
+//		for (NSDictionary *dic in JSON) {
+//			NSLog(@" %s| dic: %@", __PRETTY_FUNCTION__, dic);
+//			LocationRecord *locationRecord = [LocationRecord addUpdateWithDictionary:dic];
+//			NSLog(@" %s| locationRecord: %@", __PRETTY_FUNCTION__, locationRecord);
+//		}
+//		if ([JSON count] > 0) {
+//			[self loadSticker:self.currentStickerRecord];
+//		}
+//
+//	} failure:^(NSURLRequest *request, NSError *error, id JSON) {
+//		NSLog(@"%s | Request: %@", __PRETTY_FUNCTION__, [request description]);
+//		//		NSLog(@"%s | Status Code: %d", __PRETTY_FUNCTION__, [response statusCode]);
+//		NSLog(@"%s | JSON: %@", __PRETTY_FUNCTION__, JSON);
+//
+//
+//	}];
+//	 */
+//}
 
 - (IBAction)zoomToCurrentLocation:(UIBarButtonItem *)sender {
     float spanX = 0.00725;
@@ -637,10 +593,10 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 - (void)zoomToLocation:(LMSLocation *)location {
     float spanX = 0.00725;
     float spanY = 0.00725;
-    
+	
     MKCoordinateRegion region;
-    region.center.latitude = [location.latitude doubleValue];
-    region.center.longitude = [location.longitude doubleValue];
+    region.center.latitude = location.latitude;
+    region.center.longitude = location.longitude;
     region.span.latitudeDelta = spanX;
     region.span.longitudeDelta = spanY;
     [self setRegion:region animated:YES];
@@ -725,5 +681,69 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 		[self.mapViewDelegate closeMapButtonHandler];
 	}
 }
+
+//
+
+- (BOOL)addLocation:(LMSLocation *)location {
+//	[LMSLocation up];
+	/*
+	CLLocationCoordinate2D locationCoordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude);
+	
+	if (CLLocationCoordinate2DIsValid(locationCoordinate)) {
+		//						[self setCenterCoordinate:locationCoordinate animated:YES];
+		
+		LMSAnnotation *annotation = [[LMSAnnotation alloc] init];
+		
+		annotation.coordinate = locationCoordinate;
+		annotation.title = [NSString stringWithFormat:@"lat: %f - long: %f", location.latitude, location.longitude];
+		annotation.type = PVAttractionDefault;
+		annotation.subtitle = [location.updatedAt distanceOfTimeInWords];//[ConventionTools getDiffTimeInStringFromDate:locationRecord.updatedAt];
+		
+		DLog(@"location.latitude: %f - location.longitude: %f", location.latitude, location.longitude);
+		
+		
+		
+		[self addAnnotation:annotation];
+		
+		[self zoomToLocation:location];
+//		break;
+		return YES;
+	}
+	 */
+	return NO;
+}
+
+- (BOOL)addPinWithLocation:(LMSLocation *)location {
+	//	[LMSLocation up];
+	CLLocationCoordinate2D locationCoordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude);
+	
+	if (CLLocationCoordinate2DIsValid(locationCoordinate)) {
+		//						[self setCenterCoordinate:locationCoordinate animated:YES];
+		
+		LMSAnnotation *annotation = [[LMSAnnotation alloc] init];
+		
+		annotation.coordinate = locationCoordinate;
+		annotation.title = [NSString stringWithFormat:@"lat: %f - long: %f", location.latitude, location.longitude];
+		annotation.type = PVAttractionDefault;
+		annotation.subtitle = [location.updatedAt distanceOfTimeInWords];//[ConventionTools getDiffTimeInStringFromDate:locationRecord.updatedAt];
+		
+		DLog(@"location.latitude: %f - location.longitude: %f", location.latitude, location.longitude);
+		
+		
+		
+		[self addAnnotation:annotation];
+		
+		[self zoomToLocation:location];
+		//		break;
+		return YES;
+	}
+	return NO;
+}
+
+- (void)addLiveLocation:(LMSLocation *)location {
+	[self addPinWithLocation:location];
+}
+
+
 
 @end

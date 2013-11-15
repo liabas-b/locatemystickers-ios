@@ -10,19 +10,26 @@
 #import "LMSStickerConfiguration.h"
 #import <JSONModel.h>
 
+@protocol LMSSticker
+@end
+
 @interface LMSSticker : JSONModel
 
-@property (nonatomic, retain) NSString * code;
-@property (nonatomic, retain) NSString * color;
-@property (nonatomic, retain) NSDate * createdAt;
-@property (nonatomic, retain) NSString * imageName;
-@property (nonatomic, retain) NSString * lastLocation;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * stickerConfigurationId;
-@property (nonatomic, retain) NSNumber * stickerId;
-@property (nonatomic, retain) NSNumber * stickerTypeId;
-@property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSDate * updatedAt;
-@property (nonatomic, retain) LMSStickerConfiguration *stickerConfiguration;
+@property (nonatomic, strong) NSString *code;
+@property (nonatomic, strong) NSString *color;
+@property (nonatomic, strong) NSDate *createdAt;
+@property (nonatomic, assign) int id;
+@property (nonatomic, assign) BOOL isActive;
+@property (nonatomic, assign) double lastLatitude;
+@property (nonatomic, assign) double lastLongitude;
+@property (nonatomic, strong) NSString *lastLocation;
+@property (nonatomic, strong) NSString *name;
+
+@property (nonatomic, assign) int stickerTypeId;
+@property (nonatomic, strong) NSString * text;
+
+@property (nonatomic, strong) NSDate *updatedAt;
+@property (nonatomic, assign) int userId;
+@property (nonatomic, assign) int version;
 
 @end

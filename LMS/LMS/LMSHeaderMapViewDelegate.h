@@ -12,5 +12,6 @@
 
 - (void)didToggleStickerButton:(id)sender;
 - (void)didToggleFriendButton:(id)sender;
+- (void)didToggleMenuButton:(id)sender;
 
 @end

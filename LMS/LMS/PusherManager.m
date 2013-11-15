@@ -36,10 +36,12 @@ static NSString *kDefaultChannelName = @"test_channel";
 #pragma mark Default
 
 - (PTPusherChannel *)subscribeToDefaultChannel {
+	DLog(@"subscribeToChannelName: %@", kDefaultChannelName);
 	return [self.pusher subscribeToChannelNamed:kDefaultChannelName];
 }
 
 - (PTPusherChannel *)subscribeToChannelName:(NSString *)channelName {
+	DLog(@"subscribeToChannelName: %@", channelName);
 	return [self.pusher subscribeToChannelNamed:channelName ? channelName : kDefaultChannelName];
 }
 

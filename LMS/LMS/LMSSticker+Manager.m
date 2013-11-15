@@ -11,7 +11,17 @@
 #import "LMSStickerConfiguration.h"
 #import "LMSStickerConfiguration+Manager.h"
 
+#import "Locations.h"
+#import "Locations+Manager.h"
+
 @implementation LMSSticker (Manager)
+
+
+- (void)updateLocationsWithBlock:(LocationsManagerHandler)completion {
+	return [Locations updateWithSticker:self andBlock:completion];
+}
+
+//INFO: to dlete
 
 + (LMSSticker *)addUpdateWithDictionary:(NSDictionary *)dictionary {
 #warning NOT IMPLEMENTED
@@ -77,19 +87,21 @@
 	
 	sticker.name = [dictionary objectForKey:@"name"];
 	sticker.code = [dictionary objectForKey:@"code"] != [NSNull null] ? [dictionary objectForKey:@"code"] : nil;
+	/*
 	sticker.imageName = @"";
-	sticker.stickerId = [NSNumber numberWithInt:[[dictionary objectForKey:@"id"] intValue]];
+	 */
+//	sticker.stickerId = [NSNumber numberWithInt:[[dictionary objectForKey:@"id"] intValue]];
 	sticker.createdAt = [NSDate getDate:[dictionary objectForKey:@"created_at"] withFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
 	sticker.updatedAt = [NSDate getDate:[dictionary objectForKey:@"updated_at"] withFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
 	//	sticker.isActive = [NSNumber numberWithBool:[[dictionary objectForKey:@"is_active"] boolValue]];
-	sticker.stickerTypeId = [NSNumber numberWithInt:[[dictionary objectForKey:@"sticker_type_id"] intValue]];
+//	sticker.stickerTypeId = [NSNumber numberWithInt:[[dictionary objectForKey:@"sticker_type_id"] intValue]];
 	sticker.text = [dictionary objectForKey:@"text"] != [NSNull null] ? [dictionary objectForKey:@"text"] : nil;
 	sticker.color = [dictionary objectForKey:@"color"] != [NSNull null] ? [dictionary objectForKey:@"color"] : nil;
 	//	sticker.frenquencyUpdate = @([[dictionary objectForKey:@"frequency_update"] intValue]);
 	sticker.lastLocation = [dictionary objectForKey:@"last_location"] != [NSNull null] ? [dictionary objectForKey:@"last_location"] : nil;
 	
 	LMSStickerConfiguration *stickerConfiguration = nil;//[LMSStickerConfiguration findFirstByAttribute:@"configurationId" withValue:sticker.stickerConfigurationId];
-	sticker.stickerConfiguration = stickerConfiguration;
+//	sticker.stickerConfiguration = stickerConfiguration;
 	
 	/*
 	if (stickerConfiguration == nil) {
@@ -128,10 +140,10 @@
  }
 
 - (void)debug {
-	DLog(@"code: %@ - color: %@ - createdAt: %@ - imageName: %@ - lastLocation: %@ - name: %@ - stickerConfigurationId: %@ - stickerId: %@ - stickerTypeId: %@ - text: %@ - updatedAt: %@ - stickerConfiguration: %@", self.code, self.color, self.createdAt, self.imageName, self.lastLocation, self.name, self.stickerConfigurationId, self.stickerId, self.stickerTypeId, self.text, self.updatedAt, self.stickerConfiguration);
+//	DLog(@"code: %@ - color: %@ - createdAt: %@ - imageName: %@ - lastLocation: %@ - name: %@ - stickerConfigurationId: %@ - stickerId: %@ - stickerTypeId: %@ - text: %@ - updatedAt: %@ - stickerConfiguration: %@", self.code, self.color, self.createdAt, self.imageName, self.lastLocation, self.name, self.stickerConfigurationId, self.stickerId, self.stickerTypeId, self.text, self.updatedAt, self.stickerConfiguration);
 
 	DLog(@"[stickerConfiguration debug]:")
-	[self.stickerConfiguration debug];
+//	[self.stickerConfiguration debug];
 }
 
 @end

@@ -185,12 +185,12 @@ static double kHeightLastLocationWithoutLabel = 25.0;
 	self.enableSwitch.on = NO;
 	self.enableSwitch.hidden = YES;
 	if (self.sticker) {
-		
+		/*
 		if ([self.sticker.stickerConfiguration.activate boolValue])
 			self.activatedImage.backgroundColor = [UIColor greenColor];
 		else
 			self.activatedImage.backgroundColor = [UIColor redColor];
-		
+		*/
 		self.nameLabel.text = self.sticker.name;
 		
 		self.createdAtLabel.text = [self.sticker.createdAt distanceOfTimeInWords];//[ConventionTools getDiffTimeInStringFromDate:self.stickerRecord.createdAt];
@@ -304,7 +304,7 @@ static double kHeightLastLocationWithoutLabel = 25.0;
 {
 	if ([[segue identifier] isEqualToString:@"EditStickerConfigurationSegue"]) {
 		StickerEditingViewController *stickerEditingViewController = [segue destinationViewController];
-		stickerEditingViewController.stickerConfiguration = self.sticker.stickerConfiguration;
+//		stickerEditingViewController.stickerConfiguration = self.sticker.stickerConfiguration;
 	}
 }
 

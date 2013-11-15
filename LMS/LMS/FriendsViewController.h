@@ -8,6 +8,8 @@
 
 #import "LMSViewController.h"
 
-@interface FriendsViewController : LMSViewController
+@interface FriendsViewController : LMSViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

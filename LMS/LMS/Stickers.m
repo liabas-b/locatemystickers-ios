@@ -1,14 +1,14 @@
 //
-//  LMSSticker.m
+//  Stickers.m
 //  LMS
 //
-//  Created by Adrien Guffens on 07/11/13.
+//  Created by Adrien Guffens on 15/11/13.
 //  Copyright (c) 2013 Team3000. All rights reserved.
 //
 
-#import "LMSSticker.h"
+#import "Stickers.h"
 
-@implementation LMSSticker
+@implementation Stickers
 
 + (BOOL)propertyIsOptional:(NSString*)propertyName
 {

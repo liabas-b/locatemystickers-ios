@@ -53,6 +53,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	[super touchesBegan:touches withEvent:event];
+	static UIColor *savColor;
 	
 	if (self.isToggled == YES) {
 		self.isToggled = NO;
@@ -60,7 +61,9 @@
                               delay:0.0
                             options:UIViewAnimationOptionAllowUserInteraction
                          animations:^{
-							 self.backgroundColor = [UIColor clearColor];
+
+							 self.backgroundColor = savColor;//[UIColor clearColor];
+							 
 							 self.layer.opacity = 1.0;
 							 self.buttonLabel.textColor = [UIColor defaultFontColor];
 							 self.buttonImageView.layer.opacity = 1.0;
@@ -75,8 +78,11 @@
                               delay:0.0
                             options:UIViewAnimationOptionAllowUserInteraction
                          animations:^{
+							 savColor = self.backgroundColor;
 							 UIColor *color = [UIColor colorWithWhite:0.5 alpha:0.5];//[UIColor applicationColor];
 
+
+							 
 							 self.backgroundColor = color;
 							 self.layer.opacity = 0.6;
 							 self.buttonLabel.textColor = [UIColor defaultSelectedFontColor];
@@ -85,6 +91,10 @@
                          }];
 	}
 	
+}
+
+- (void)deselect {
+	[self touchesBegan:nil withEvent:nil];
 }
 
 /*

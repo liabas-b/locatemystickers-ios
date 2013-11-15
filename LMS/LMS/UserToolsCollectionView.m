@@ -79,13 +79,14 @@ static NSString *CellIdentifier = @"UserToolsCollectionViewCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-	[self performSelector:@selector(deselectCell:) withObject:indexPath afterDelay:0.5];
+//	[self performSelector:@selector(deselectCell:) withObject:indexPath afterDelay:0.5];
 //	[collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 	NSString *identifier = [self.userToolsList objectAtIndex:indexPath.row];
 	
 	if (self.touchHandler) {
 		self.touchHandler(identifier);
 	}
+	[collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
 
 - (void)deselectCell:(id)sender {

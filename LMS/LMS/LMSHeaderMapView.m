@@ -55,8 +55,8 @@
 	
 	[self.profileImageView setImageWithURL:[NSURL URLWithString:gravatarUrl] placeholderImage:[UIImage imageNamed:@"locateMyStickersFushiaSmallLogo"]];
 	
-	[self.stickerMapViewButton setButtonImage:[UIImage imageNamed:@"pin.png"] withButtonValue:@"Stickers"];
-	[self.friendMapViewButton setButtonImage:[UIImage imageNamed:@"friend.png"] withButtonValue:@"Friends"];
+	[self.stickerMapViewButton setButtonImage:[UIImage imageNamed:@"pin"] withButtonValue:@"Stickers"];
+	[self.friendMapViewButton setButtonImage:[UIImage imageNamed:@"settings"] withButtonValue:@"Settings"];
 }
 
 - (void)configureView {
@@ -71,6 +71,13 @@
 	[[UITapGestureRecognizer alloc] initWithTarget:self
 											action:@selector(handleFriendSingleTap:)];
 	[self.friendMapViewButton addGestureRecognizer:friendSingleFingerTap];
+	
+	UITapGestureRecognizer *menuSingleFingerTap =
+	[[UITapGestureRecognizer alloc] initWithTarget:self
+											action:@selector(handleMenuSingleTap:)];
+	[self.menuMapViewButton addGestureRecognizer:menuSingleFingerTap];
+
+
 
 	self.layer.borderWidth = 1.0;
     self.layer.borderColor = [UIColor colorFromHexString:@"#DFDFDF"].CGColor;
@@ -95,24 +102,22 @@
 }
 
 - (void)handleStickerSingleTap:(UITapGestureRecognizer *)recognizer {
-	CGPoint location = [recognizer locationInView:[recognizer.view superview]];
+//	CGPoint location = [recognizer locationInView:[recognizer.view superview]];
 
 	[self.delegate didToggleStickerButton:self.stickerMapViewButton];
 }
 
 - (void)handleFriendSingleTap:(UITapGestureRecognizer *)recognizer {
-	CGPoint location = [recognizer locationInView:[recognizer.view superview]];
+//	CGPoint location = [recognizer locationInView:[recognizer.view superview]];
 	
 	[self.delegate didToggleFriendButton:self.friendMapViewButton];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+- (void)handleMenuSingleTap:(UITapGestureRecognizer *)recognizer {
+//	CGPoint location = [recognizer locationInView:[recognizer.view superview]];
+	
+	[self.delegate didToggleMenuButton:self.menuMapViewButton];
+	[self.menuMapViewButton deselect];
 }
-*/
 
 @end

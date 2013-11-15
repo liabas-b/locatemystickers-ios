@@ -17,8 +17,9 @@
 	LMSAPIManager *apiManager = ((AppDelegate *)[AppDelegate appDelegate]).apiManager;
 	
 	NSString *route = [NSString stringWithFormat:@"users/%d/friends.json", user.id];
+	NSLog(@"route: %@", route);
 	[apiManager GET:route parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		DLog(@"JSON: %@", [responseObject objectAtIndex:0]);
+//		DLog(@"JSON: %@", [responseObject objectAtIndex:0]);
 		NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:responseObject, @"friends", nil];
 		NSError *error;
 		Friends *friends = [[Friends alloc] initWithDictionary:dic error:&error];

@@ -11,7 +11,7 @@
 @implementation LMSLocation (Manager)
 
 - (void)debug {
-	DLog(@"createdAt: %@ - idLocation: %@ - latitude: %@ - longitude: %@ - updatedAt: %@ - idSticker: %@", self.createdAt, self.idLocation, self.latitude, self.longitude, self.updatedAt, self.idSticker);
+//	DLog(@"createdAt: %@ - idLocation: %@ - latitude: %@ - longitude: %@ - updatedAt: %@ - idSticker: %@", self.createdAt, self.idLocation, self.latitude, self.longitude, self.updatedAt, self.idSticker);
 }
 
 @end
