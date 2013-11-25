@@ -9,9 +9,12 @@
 #import "LMSViewController.h"
 #import "LMSTableView.h"
 #import "StickerCell.h"
+#import "ZBarSDK.h"
 
-@interface StickersViewController : LMSViewController <UITableViewDataSource, UITableViewDelegate, MCSwipeStickerTableViewCellDelegate>
+@interface StickersViewController : LMSViewController <UITableViewDataSource, UITableViewDelegate, MCSwipeStickerTableViewCellDelegate, ZBarReaderDelegate>
 
 @property (strong, nonatomic) IBOutlet LMSTableView *tableView;
+
+- (IBAction)scanHandler:(id)sender;
 
 @end

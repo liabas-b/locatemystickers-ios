@@ -23,6 +23,8 @@
 
 #import "NSDate+helpers.h"
 
+#import "HeaderScanView.h"
+
 static double kDefaultCellHeight = 80;
 
 static NSString *stickerCellIdentifier = @"StickerCell";
@@ -32,6 +34,8 @@ static NSString *stickerCellIdentifier = @"StickerCell";
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) Stickers *stickers;
 @property (nonatomic, strong) NSMutableArray *stickerList;
+
+@property (nonatomic, strong) ZBarReaderViewController *readerViewController;
 
 @end
 
@@ -284,5 +288,88 @@ static NSString *stickerCellIdentifier = @"StickerCell";
 	
 }
 
+
+- (IBAction)scanHandler:(id)sender {
+	NSLog(@"Scanning..");
+//    resultTextView.text = @"Scanning..";
+	
+    self.readerViewController = [[ZBarReaderViewController alloc] init];
+    self.readerViewController.readerDelegate = self;
+    self.readerViewController.supportedOrientationsMask = ZBarOrientationMaskAll;
+	
+    ZBarImageScanner *scanner = self.readerViewController.scanner;
+    [scanner setSymbology: ZBAR_I25 config: ZBAR_CFG_ENABLE to: 0];
+
+	UIView *mainView = [self.readerViewController.view.subviews objectAtIndex:0];
+	mainView.frame = self.readerViewController.view.bounds;
+	
+	UIView *tabBar = [self.readerViewController.view.subviews objectAtIndex:1];
+	tabBar.hidden = YES;
+//	tabBar.tintColor = [UIColor whiteColor];
+//	tabBar.backgroundColor = [UIColor whiteColor];
+	
+	for (UIView *view in self.readerViewController.view.subviews) {
+		DLog(@"view: %@", [view description]);
+	}
+	
+//	readerViewController.showsCameraControls = NO;  // for UIImagePickerController
+	self.readerViewController.showsZBarControls = YES;
+	self.readerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
+
+	
+	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, mainView.bounds.size.width, 50)];
+	view.backgroundColor = [UIColor whiteColor];
+	view.layer.opacity = 0.6;
+
+	HeaderScanView *containerView = [[HeaderScanView alloc] initWithFrame:CGRectMake(0, mainView.bounds.size.height - 50, view.bounds.size.width, 50)];
+	containerView.opaque = NO;
+	containerView.backHandler = ^(id object) {
+		//[self.readerViewController removeFromParentViewController];//dismissViewControllerAnimated:YES completion:^{
+//			DLog(@"Scan dismiss");
+//		}];
+		DLog(@"BAck or die");
+	};
+//	containerView.backgroundColor = [UIColor redColor];
+	
+	UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, view.bounds.size.width, 50)];//CGRectMake(0, mainView.bounds.size.height - 50, mainView.bounds.size.width, 50)];
+	[button setTitle:@"Back" forState:UIControlStateNormal];
+	[button setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+	[button addTarget:self action:@selector(backHandler:) forControlEvents:UIControlEventTouchDown];
+	
+	[containerView addSubview:view];
+	[containerView addSubview:button];
+	
+	self.readerViewController.cameraOverlayView = containerView;
+	
+    [self presentViewController:self.readerViewController animated:YES completion:nil];
+
+}
+
+- (void)backHandler:(id)sender {
+	DLog(@"Back");
+	[self.readerViewController dismissViewControllerAnimated:YES completion:^{
+		DLog(@"Scan dismiss");
+	}];
+}
+
+- (void)imagePickerController:(UIImagePickerController*) reader didFinishPickingMediaWithInfo: (NSDictionary*) info
+{
+    //  get the decode results
+    id<NSFastEnumeration> results = [info objectForKey: ZBarReaderControllerResults];
+	
+    ZBarSymbol *symbol = nil;
+    for(symbol in results)
+        // just grab the first barcode
+        break;
+	
+    // showing the result on textview
+//    resultTextView.text = symbol.data;
+	DLog(@"%@", symbol.data);
+	
+//    resultImageView.image = [info objectForKey: UIImagePickerControllerOriginalImage];
+	
+    // dismiss the controller
+    [reader dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end
