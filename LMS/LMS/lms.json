@@ -60,14 +60,6 @@
 			 "language": "en"
 			 },
 			 {
-			 "controller": "FriendsController",
-			 "name": "Friends",
-			 "image_name": "map_red-icon.png",
-			 "section": "1",
-			 "row": "2",
-			 "language": "en"
-			 },
-			 {
 			 "controller": "SearchController",
 			 "name": "Search",
 			 "image_name": "search_red-icon.png",

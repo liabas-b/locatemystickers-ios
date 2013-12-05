@@ -24,6 +24,7 @@
 #import "NSDate+helpers.h"
 
 #import "HeaderScanView.h"
+#import "StickerDetailViewController.h"
 
 static double kDefaultCellHeight = 80;
 
@@ -185,6 +186,9 @@ static NSString *stickerCellIdentifier = @"StickerCell";
 
 	DLog(@"Selected sticker: %@", sticker);
 //	[self performSegueWithIdentifier:@"stickerDetail" sender:self];
+	StickerDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"StickerDetailsController"];
+	vc.sticker = sticker;
+	[self.navigationController pushViewController:vc animated:YES];
 }
 
 

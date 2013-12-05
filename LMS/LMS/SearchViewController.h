@@ -7,7 +7,10 @@
 //
 
 #import "LMSViewController.h"
+#import "LMSTableView.h"
 
-@interface SearchViewController : LMSViewController
+@interface SearchViewController : LMSViewController <UISearchDisplayDelegate, UISearchBarDelegate>
+
+@property (strong, nonatomic) IBOutlet LMSTableView *tableView;
 
 @end

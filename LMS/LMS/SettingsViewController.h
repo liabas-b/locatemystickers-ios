@@ -14,6 +14,7 @@
 
 //@property(nonatomic, strong) OptionsRecord *optionsRecord;
 
+@property (strong, nonatomic) IBOutlet UIView *fbLoginView;
 
 @property (strong, nonatomic) IBOutlet UISwitch *locatePhoneEnabledSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *displayFollowedStickersEnabledSwitch;

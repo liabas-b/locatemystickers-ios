@@ -171,6 +171,7 @@
 		90B429711842BA1400ED069A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B429701842BA1400ED069A /* QuartzCore.framework */; };
 		90B429731842BA1D00ED069A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B429721842BA1D00ED069A /* libiconv.dylib */; };
 		90B4298D1842C97F00ED069A /* HeaderScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B4298C1842C97F00ED069A /* HeaderScanView.m */; };
+		90EA84AE18508DCA00C6D5BD /* LMSSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EA84AD18508DCA00C6D5BD /* LMSSearchBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -488,6 +489,8 @@
 		90B4298A1842BA4300ED069A /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
 		90B4298B1842C97E00ED069A /* HeaderScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderScanView.h; sourceTree = "<group>"; };
 		90B4298C1842C97F00ED069A /* HeaderScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderScanView.m; sourceTree = "<group>"; };
+		90EA84AC18508DCA00C6D5BD /* LMSSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSSearchBar.h; sourceTree = "<group>"; };
+		90EA84AD18508DCA00C6D5BD /* LMSSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSSearchBar.m; sourceTree = "<group>"; };
 		D0C681DE3E364AEF853C6553 /* Pods-LMS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LMS.xcconfig"; path = "Pods/Pods-LMS.xcconfig"; sourceTree = "<group>"; };
 		F7E78292728E4CE9BFE9B899 /* libPods-LMS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LMS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1285,6 +1288,7 @@
 		90835D37182D54B000D0B25C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				90EA84AB18508DB400C6D5BD /* LMSSearchBar */,
 				90ABD5EE18305CCC00840AD0 /* LMSCell */,
 				9014CAB81830099A006B5EFE /* LMSMenuImageView */,
 				9014CA8B182F12F4006B5EFE /* LMSTextField */,
@@ -1511,6 +1515,15 @@
 			path = zbar;
 			sourceTree = "<group>";
 		};
+		90EA84AB18508DB400C6D5BD /* LMSSearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				90EA84AC18508DCA00C6D5BD /* LMSSearchBar.h */,
+				90EA84AD18508DCA00C6D5BD /* LMSSearchBar.m */,
+			);
+			name = LMSSearchBar;
+			sourceTree = "<group>";
+		};
 		90F4DDBA182D0B5C007CD66B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1688,6 +1701,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90EA84AE18508DCA00C6D5BD /* LMSSearchBar.m in Sources */,
 				90835D27182D37B200D0B25C /* UIDevice+Hardware.m in Sources */,
 				901E94A2182BFE740048C761 /* LMSMapView.m in Sources */,
 				901E94B7182C00A50048C761 /* LMSLocation.m in Sources */,
