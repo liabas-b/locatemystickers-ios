@@ -21,5 +21,7 @@
 @property (strong, nonatomic) IBOutlet LMSMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIView *stickerListContainer;
 @property (strong, nonatomic) IBOutlet UIView *friendListContainer;
+//INFO: config button
+@property (strong, nonatomic) IBOutlet UIButton *autoFocusButton;
 
 @end

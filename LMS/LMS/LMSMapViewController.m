@@ -54,7 +54,34 @@
 	[self setupView];
 	
 	[self handleMessagePusher];
-//	[self.appDelegate.pusherManager.pusher sendEventNamed:@"my_event" data:@"Hello World 42 42" channel:@"test_channel"];
+
+	UITapGestureRecognizer *singleFingerTap =
+	[[UITapGestureRecognizer alloc] initWithTarget:self
+											action:@selector(handleSingleTap:)];
+	[self.mapView addGestureRecognizer:singleFingerTap];
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+	CGPoint location = [recognizer locationInView:[recognizer.view superview]];
+	
+	DLog(@"location.x: %f | location.y: %f", location.x, location.y);
+	
+	UIViewPosition stickerListPosition = self.headerMapView.stickerMapViewButton.isToggled == YES ? leftPosition : rightPosition;
+	
+	if (stickerListPosition == leftPosition) {
+		[self.stickerListContainer animateFromPosition:rightPosition];
+		[self.headerMapView.stickerMapViewButton deselect];
+	}
+	
+	UIViewPosition friendListPosition = self.headerMapView.friendMapViewButton.isToggled == YES ? topPosition : bottomPosition;
+
+	if (friendListPosition == topPosition) {
+		[self.friendListContainer animateFromPosition:bottomPosition];
+		[self.headerMapView.friendMapViewButton deselect];
+	}
+
+	
+//	[self.inputTextView.textView resignFirstResponder];
 }
 
 #pragma mark - Base logic
@@ -100,9 +127,6 @@
 			}];
 		}
 	}];
-			
-
-	
 }
 
 - (void)setupView {
@@ -137,15 +161,6 @@
 												 name:kMessageWebSocketReceived
 											   object:nil];
 
-	
-//	UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
-//											 initWithTarget:self action:@selector(respondToTapGesture:)];
-	
-	// Specify that the gesture must be a single tap
-//	tapRecognizer.numberOfTapsRequired = 1;
-	
-	// Add the tap gesture recognizer to the view
-//	[self.mapView addGestureRecognizer:tapRecognizer];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -186,7 +201,6 @@
 #pragma mark - Pusher Manger
 
 - (void)handleMessagePusher {
-//	NSString *channelName = [NSString stringWithFormat:@"%d_locations_channel", 1];
 	NSString *channelName = @"locations_channel";
 	PTPusherChannel *channel = [self.appDelegate.pusherManager subscribeToChannelName:channelName];
 		
@@ -204,15 +218,12 @@
 - (void)didToggleStickerButton:(id)sender {
 	DLog(@"");
 	
-	//[self.frostedViewController presentMenuViewController];
-	
 	UIViewPosition position = self.headerMapView.stickerMapViewButton.isToggled == YES ? leftPosition : rightPosition;
 	[self.stickerListContainer animateFromPosition:position];
 }
 
 - (void)didToggleFriendButton:(id)sender {
 	DLog(@"");
-//	[self.appDelegate.pusherManager.pusher sendEventNamed:@"my_event" data:@"{\"message\":\"hello 4242424242\"}" channel:@"test_channel"];
 	
 	UIViewPosition position = self.headerMapView.friendMapViewButton.isToggled == YES ? topPosition : bottomPosition;
 	[self.friendListContainer animateFromPosition:position];
@@ -227,6 +238,15 @@
 - (void)respondToTapGesture:(UIGestureRecognizer *)gr {
 	DLog(@"TAP TAP");
 	DLog(@"TAP TAP");
+}
+
+- (IBAction)autoFocusHandler:(id)sender {
+	DLog(@"autoFocusHandler");
+	
+	self.mapView.autoFocusEnabled = !self.mapView.autoFocusEnabled;
+	
+	UIImage *autoFocus = (self.mapView.autoFocusEnabled == NO) ? [UIImage imageNamed:@"red_target_icon"] : [UIImage imageNamed:@"green_target_icon"];
+	[self.autoFocusButton setImage:autoFocus forState:UIControlStateNormal];
 }
 
 @end

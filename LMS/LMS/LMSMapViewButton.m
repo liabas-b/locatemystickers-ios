@@ -94,6 +94,7 @@
 }
 
 - (void)deselect {
+	self.isToggled = YES;
 	[self touchesBegan:nil withEvent:nil];
 }
 

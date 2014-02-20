@@ -26,6 +26,8 @@
 
 #import <NSDate+Helpers.h>
 
+#import "LocationServices.h"
+
 #import "StickerEditingViewController.h"
 
 static double kHeightWithoutLabel = 55.0;
@@ -34,6 +36,7 @@ static double kHeightLastLocationWithoutLabel = 25.0;
 @interface StickerDetailViewController ()
 
 @property(nonatomic, assign) CGRect mapRect;
+@property (nonatomic, strong) LocationServices *locationService;
 
 @end
 
@@ -196,6 +199,15 @@ static double kHeightLastLocationWithoutLabel = 25.0;
 		self.createdAtLabel.text = [self.sticker.createdAt distanceOfTimeInWords];//[ConventionTools getDiffTimeInStringFromDate:self.stickerRecord.createdAt];
 		
 		NSString *lastLocation = [self.sticker.lastLocation stringByReplacingOccurrencesOfString:@"," withString:@"\n"];
+
+		
+//		self.locationService = [LocationServices defaultLocationServices];
+		
+
+//		NSString *locatedAt = [[placeMark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+		
+		//
+		
 		self.updatedAtLabel.text = lastLocation;
 		
 		self.textLabel.text = self.sticker.text;
@@ -261,10 +273,11 @@ static double kHeightLastLocationWithoutLabel = 25.0;
 #pragma mark - Map Handler
 
 - (void)mapSingleTapHandler:(UITapGestureRecognizer *)recognizer {
-	[self zoomOnMapView];
+//	[self zoomOnMapView];
 }
 
 - (IBAction)closeMapHandler:(id)sender {
+	
 	
 	[UIView animateWithDuration:0.3
                           delay:0

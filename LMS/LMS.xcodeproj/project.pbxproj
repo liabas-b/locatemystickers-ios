@@ -117,6 +117,11 @@
 		90269D911831AF9A00EA4697 /* Friends.m in Sources */ = {isa = PBXBuildFile; fileRef = 90269D901831AF9A00EA4697 /* Friends.m */; };
 		90269D941831B07D00EA4697 /* Friends+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 90269D931831B07D00EA4697 /* Friends+Manager.m */; };
 		9030E0CC18896FBF007424E5 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9030E0CB18896FBF007424E5 /* ScanViewController.m */; };
+		9035D64B18B69A5B000C69DB /* LocationServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 9035D64A18B69A5B000C69DB /* LocationServices.m */; };
+		9035D65018B6B708000C69DB /* green_target_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9035D64C18B6B708000C69DB /* green_target_icon.png */; };
+		9035D65118B6B708000C69DB /* green_target_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9035D64D18B6B708000C69DB /* green_target_icon@2x.png */; };
+		9035D65218B6B708000C69DB /* red_target_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9035D64E18B6B708000C69DB /* red_target_icon.png */; };
+		9035D65318B6B708000C69DB /* red_target_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9035D64F18B6B708000C69DB /* red_target_icon@2x.png */; };
 		90835D1D182D27FD00D0B25C /* ApiUrls.m in Sources */ = {isa = PBXBuildFile; fileRef = 90835D1C182D27FD00D0B25C /* ApiUrls.m */; };
 		90835D26182D37B200D0B25C /* UIDevice+VersionCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 90835D23182D37B200D0B25C /* UIDevice+VersionCheck.m */; };
 		90835D27182D37B200D0B25C /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 90835D25182D37B200D0B25C /* UIDevice+Hardware.m */; };
@@ -381,6 +386,12 @@
 		90269D931831B07D00EA4697 /* Friends+Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Friends+Manager.m"; sourceTree = "<group>"; };
 		9030E0CA18896FBF007424E5 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		9030E0CB18896FBF007424E5 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		9035D64918B69A5B000C69DB /* LocationServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationServices.h; sourceTree = "<group>"; };
+		9035D64A18B69A5B000C69DB /* LocationServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationServices.m; sourceTree = "<group>"; };
+		9035D64C18B6B708000C69DB /* green_target_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_target_icon.png; sourceTree = "<group>"; };
+		9035D64D18B6B708000C69DB /* green_target_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green_target_icon@2x.png"; sourceTree = "<group>"; };
+		9035D64E18B6B708000C69DB /* red_target_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_target_icon.png; sourceTree = "<group>"; };
+		9035D64F18B6B708000C69DB /* red_target_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red_target_icon@2x.png"; sourceTree = "<group>"; };
 		90835D1B182D27FD00D0B25C /* ApiUrls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiUrls.h; sourceTree = "<group>"; };
 		90835D1C182D27FD00D0B25C /* ApiUrls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiUrls.m; sourceTree = "<group>"; };
 		90835D22182D37B200D0B25C /* UIDevice+VersionCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+VersionCheck.h"; sourceTree = "<group>"; };
@@ -683,6 +694,10 @@
 		901E945F182BF9900048C761 /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
+				9035D64C18B6B708000C69DB /* green_target_icon.png */,
+				9035D64D18B6B708000C69DB /* green_target_icon@2x.png */,
+				9035D64E18B6B708000C69DB /* red_target_icon.png */,
+				9035D64F18B6B708000C69DB /* red_target_icon@2x.png */,
 				90A4658F1835E39600E864BC /* lms.png */,
 				90A465901835E39600E864BC /* lms@2x.png */,
 				90A465931835E39C00E864BC /* icons */,
@@ -897,6 +912,7 @@
 		901E94C4182C02CC0048C761 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				9035D64818B69A4A000C69DB /* Location */,
 				90B429651842B8F100ED069A /* Scan */,
 				90269D7E1831623200EA4697 /* Pusher */,
 				901E9536182C7D1A0048C761 /* Operation */,
@@ -1229,6 +1245,15 @@
 			name = Friends;
 			sourceTree = "<group>";
 		};
+		9035D64818B69A4A000C69DB /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				9035D64918B69A5B000C69DB /* LocationServices.h */,
+				9035D64A18B69A5B000C69DB /* LocationServices.m */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
 		90835D2B182D403E00D0B25C /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -1552,9 +1577,12 @@
 			files = (
 				9014CA76182E85B6006B5EFE /* google-icon.png in Resources */,
 				90A465921835E39600E864BC /* lms@2x.png in Resources */,
+				9035D65118B6B708000C69DB /* green_target_icon@2x.png in Resources */,
 				9014CA77182E85B6006B5EFE /* google-icon@2x.png in Resources */,
 				9014CA73182E801B006B5EFE /* twitter-icon@2x.png in Resources */,
 				9014CA6F182E8007006B5EFE /* facebook-icon@2x.png in Resources */,
+				9035D65018B6B708000C69DB /* green_target_icon.png in Resources */,
+				9035D65218B6B708000C69DB /* red_target_icon.png in Resources */,
 				90ABD5CD1830397F00840AD0 /* circle_red-icon.png in Resources */,
 				908C668C182D7A81001D329D /* lms-300.png in Resources */,
 				90A465911835E39600E864BC /* lms.png in Resources */,
@@ -1577,6 +1605,7 @@
 				908C6693182D7F1F001D329D /* back.png in Resources */,
 				90ABD5D01830397F00840AD0 /* search_red-icon.png in Resources */,
 				908C669A182D83FA001D329D /* logout-icon.png in Resources */,
+				9035D65318B6B708000C69DB /* red_target_icon@2x.png in Resources */,
 				9014CA6E182E8007006B5EFE /* facebook-icon.png in Resources */,
 				908C669B182D83FA001D329D /* settings-icon.png in Resources */,
 				9014CA72182E801B006B5EFE /* twitter-icon.png in Resources */,
@@ -1664,6 +1693,7 @@
 				90835D3F182D54F000D0B25C /* LMSLabel.m in Sources */,
 				90ABD5FB183065FD00840AD0 /* ToolsCell.m in Sources */,
 				901E94FE182C37290048C761 /* HistoriesViewController.m in Sources */,
+				9035D64B18B69A5B000C69DB /* LocationServices.m in Sources */,
 				901E953D182C81180048C761 /* Parameters.m in Sources */,
 				901E94EC182C30F00048C761 /* StickerAddingTableViewController.m in Sources */,
 				901E9506182C376A0048C761 /* AccountViewController.m in Sources */,
@@ -1902,8 +1932,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Adrien Guffens (GPRDQTBPV3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Adrien Guffens (GPRDQTBPV3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LMS/LMS-Prefix.pch";
 				INFOPLIST_FILE = "LMS/LMS-Info.plist";
@@ -1913,7 +1943,7 @@
 					"/Users/adril/Documents/Developement/Projects/LMS/locatemystickers-ios/LMS/LMS",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "043F67C2-0E79-4F6F-B727-077FE584DCD2";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1924,8 +1954,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Adrien Guffens (GPRDQTBPV3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Adrien Guffens (GPRDQTBPV3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LMS/LMS-Prefix.pch";
 				INFOPLIST_FILE = "LMS/LMS-Info.plist";
@@ -1935,7 +1965,7 @@
 					"/Users/adril/Documents/Developement/Projects/LMS/locatemystickers-ios/LMS/LMS",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "043F67C2-0E79-4F6F-B727-077FE584DCD2";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

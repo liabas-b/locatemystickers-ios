@@ -68,6 +68,7 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 	
 	self.delegate = self;
 	[self setShowsUserLocation:YES];
+	self.autoFocusEnabled = YES;
 	
 	[self.selectedOptions addObject:@(LMSMapHistory)];
 	[self.selectedOptions addObject:@(LMSMapLastLocation)];
@@ -424,13 +425,16 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 		indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
 	}
 	
-	[self selectStickerAtIndexPath:indexPath];
+	
+//	[self selectStickerAtIndexPath:indexPath];
 	
 	[self zoomToCurrentLocation:nil];
 	
 	for (LMSSticker *sticker in stickerList) {
 		[self loadSticker:sticker];
 	}
+
+	[self performSelector:@selector(selectStickerAtIndexPath:) withObject:indexPath afterDelay:1.0];
 }
 
 - (void)selectStickerAtIndexPath:(NSIndexPath *)indexPath {
@@ -591,6 +595,10 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 }
 
 - (void)zoomToLocation:(LMSLocation *)location {
+	
+	if (self.autoFocusEnabled == NO) {
+		return;
+	}
     float spanX = 0.00725;
     float spanY = 0.00725;
 	
@@ -723,7 +731,7 @@ static double kHeightStickerSelectionCollectionView = 50.0;
 		annotation.coordinate = locationCoordinate;
 		annotation.title = [NSString stringWithFormat:@"lat: %f - long: %f", location.latitude, location.longitude];
 		annotation.type = PVAttractionDefault;
-		annotation.subtitle = [location.updatedAt distanceOfTimeInWords];//[ConventionTools getDiffTimeInStringFromDate:locationRecord.updatedAt];
+		annotation.subtitle = [location.updatedAt distanceOfTimeInWords];
 		
 		DLog(@"location.latitude: %f - location.longitude: %f", location.latitude, location.longitude);
 		

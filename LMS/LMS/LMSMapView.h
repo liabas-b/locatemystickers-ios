@@ -42,6 +42,8 @@ typedef enum {
 
 @property (nonatomic, strong) IBOutlet LMSStickerCollectionView *stickerSelectionCollectionView;
 
+@property (nonatomic, assign) BOOL autoFocusEnabled;
+
 - (void)loadSelectedOptions;
 - (void)addCloseButton;
 
