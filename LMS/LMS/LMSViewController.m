@@ -68,7 +68,7 @@
 #pragma mark - Configure
 
 - (void)configure {
-	self.screenName = [[self class] description];
+//	self.screenName = [[self class] description];
 	self.appDelegate = [AppDelegate appDelegate];
 }
 

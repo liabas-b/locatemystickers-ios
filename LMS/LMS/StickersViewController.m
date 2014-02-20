@@ -26,6 +26,8 @@
 #import "HeaderScanView.h"
 #import "StickerDetailViewController.h"
 
+#import "ScanViewController.h"
+
 static double kDefaultCellHeight = 80;
 
 static NSString *stickerCellIdentifier = @"StickerCell";
@@ -36,7 +38,9 @@ static NSString *stickerCellIdentifier = @"StickerCell";
 @property (nonatomic, strong) Stickers *stickers;
 @property (nonatomic, strong) NSMutableArray *stickerList;
 
-@property (nonatomic, strong) ZBarReaderViewController *readerViewController;
+//@property (nonatomic, strong) ZBarReaderViewController *readerViewController;
+
+@property (nonatomic, strong) ScanViewController *scanViewController;
 
 @end
 
@@ -147,6 +151,7 @@ static NSString *stickerCellIdentifier = @"StickerCell";
 	//    cell.backgroundColor = [UIColor clearColor];
 	//	cell.selectedBackgroundView = nil;
 }
+
 
 #pragma mark -
 #pragma mark UITableView Datasource
@@ -295,7 +300,17 @@ static NSString *stickerCellIdentifier = @"StickerCell";
 
 - (IBAction)scanHandler:(id)sender {
 	NSLog(@"Scanning..");
+	
+	
+	[self performSegueWithIdentifier:@"ScanSegue" sender:self];
+//	ScanViewController *scanViewController = [[ScanViewController alloc] ini//initWithNibName:@"ScanViewController" bundle:nil];
+	
+//	[self presentViewController:scanViewController animated:YES completion:nil];
+	
+	
+	
 //    resultTextView.text = @"Scanning..";
+	/*
 	
     self.readerViewController = [[ZBarReaderViewController alloc] init];
     self.readerViewController.readerDelegate = self;
@@ -346,16 +361,20 @@ static NSString *stickerCellIdentifier = @"StickerCell";
 	self.readerViewController.cameraOverlayView = containerView;
 	
     [self presentViewController:self.readerViewController animated:YES completion:nil];
+	 */
 
 }
 
 - (void)backHandler:(id)sender {
+	/*
 	DLog(@"Back");
 	[self.readerViewController dismissViewControllerAnimated:YES completion:^{
 		DLog(@"Scan dismiss");
 	}];
+	 */
 }
 
+/*
 - (void)imagePickerController:(UIImagePickerController*) reader didFinishPickingMediaWithInfo: (NSDictionary*) info
 {
     //  get the decode results
@@ -375,5 +394,6 @@ static NSString *stickerCellIdentifier = @"StickerCell";
     // dismiss the controller
     [reader dismissViewControllerAnimated:YES completion:nil];
 }
+ */
 
 @end

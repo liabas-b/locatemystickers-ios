@@ -1,10 +1,10 @@
 # Uncomment this line to define a global platform for your project
-platform :ios, "6.1"
+platform :ios, "7.0"
 
 target "LMS" do
        pod "AFNetworking", '~> 2.0.2'
        pod 'FlatUIKit', '~> 1.2'
-       pod 'GoogleAnalytics-iOS-SDK', '~> 3.0.2'
+#       pod 'GoogleAnalytics-iOS-SDK', '~> 3.0.2'
        pod 'Colours', '~> 2.0'
        pod 'RSCategories', '~> 0.1'
        pod 'SocketRocket', '~> 0.3.1-beta2'
@@ -16,6 +16,7 @@ target "LMS" do
        pod 'JSONModel'
        pod 'Facebook-iOS-SDK', '~> 3.9.0'
        pod 'libPusher', '~> 1.4'
+       pod 'RSBarcodes'
 end
 
 target "LMSTests" do

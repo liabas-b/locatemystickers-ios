@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="YVE-vh-oZE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="YVE-vh-oZE">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -541,6 +541,7 @@
                         <outlet property="tableView" destination="xEv-Rf-hbQ" id="tW8-lv-d4K"/>
                         <segue destination="fuV-6p-ejV" kind="push" identifier="stickerDetail" id="rCv-x0-BBa"/>
                         <segue destination="rHz-Iy-Pla" kind="push" identifier="FriendsSegue" id="lyv-lv-a14"/>
+                        <segue destination="FKx-y0-lsp" kind="push" identifier="ScanSegue" id="7fe-Ld-LEU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="imO-Uw-M74" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1948,6 +1949,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tag-35-wGm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-9" y="298"/>
+        </scene>
+        <!--Scan View Controller-->
+        <scene sceneID="nka-1X-hfm">
+            <objects>
+                <viewController storyboardIdentifier="ScanViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FKx-y0-lsp" customClass="ScanViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PEF-NM-X6z"/>
+                        <viewControllerLayoutGuide type="bottom" id="7I6-ax-EbA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cp7-N5-yyz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBa-Ac-vFb" customClass="RSCornersView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wBa-Ac-vFb" firstAttribute="top" secondItem="Cp7-N5-yyz" secondAttribute="top" id="TpC-3e-boM"/>
+                            <constraint firstItem="wBa-Ac-vFb" firstAttribute="leading" secondItem="PEF-NM-X6z" secondAttribute="trailing" constant="-320" id="auJ-iP-qn6"/>
+                            <constraint firstItem="wBa-Ac-vFb" firstAttribute="leading" secondItem="Cp7-N5-yyz" secondAttribute="leading" id="iLb-bY-qcB"/>
+                            <constraint firstItem="7I6-ax-EbA" firstAttribute="top" secondItem="wBa-Ac-vFb" secondAttribute="bottom" id="qcX-nu-FWO"/>
+                            <constraint firstAttribute="trailing" secondItem="wBa-Ac-vFb" secondAttribute="trailing" id="rAZ-R2-cR9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZKL-xd-9cC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3av-pl-xwC" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1446" y="1849"/>
         </scene>
     </scenes>
     <resources>

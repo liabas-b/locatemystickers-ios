@@ -602,8 +602,6 @@ static double kHeightStickerSelectionCollectionView = 50.0;
     [self setRegion:region animated:YES];
 }
 
-
-
 - (IBAction)liveButtonHandler:(id)sender {
 	
 	NSLog(@"%s | self.selectedOptions: %@", __PRETTY_FUNCTION__, self.selectedOptions);

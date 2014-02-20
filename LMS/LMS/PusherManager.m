@@ -8,8 +8,8 @@
 
 #import "PusherManager.h"
 
-static NSString *kDefaultPusherAPIKey = @"ba676f4f7e8139bcf138";
-static NSString *kDefaultChannelName = @"test_channel";
+static NSString *kDefaultPusherAPIKey = @"374373cf842fdcba407d";
+static NSString *kDefaultChannelName = @"locations_channel";
 
 @implementation PusherManager
 

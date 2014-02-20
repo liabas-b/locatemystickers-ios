@@ -17,6 +17,7 @@
 - (id)init {
 	self = [super init];
 	if (self) {
+		/*
 		// Optional: automatically send uncaught exceptions to Google Analytics.
 		[GAI sharedInstance].trackUncaughtExceptions = YES;
 		[GAI sharedInstance].dispatchInterval = 20;
@@ -26,6 +27,7 @@
 		// Set the new tracker as the default tracker, globally.
 		[GAI sharedInstance].defaultTracker = newTracker;
 //		[[GAI sharedInstance].defaultTracker setAnonymize:YES];
+		 */
 	}
 	return self;
 }

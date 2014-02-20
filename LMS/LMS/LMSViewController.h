@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Team3000. All rights reserved.
 //
 
-#import <GAITrackedViewController.h>
+//#import <GAITrackedViewController.h>
 
 @class AppDelegate;
 
-@interface LMSViewController : GAITrackedViewController
+@interface LMSViewController : UIViewController /*GAITrackedViewController*/
 
 - (void)configure;
 
